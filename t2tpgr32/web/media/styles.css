@@ -1,0 +1,62 @@
+@font-face {
+  font-family: VarianeScript;
+  src:url("fonts/Variane Script.ttf") format(truetype);
+}
+
+*{
+  margin:0;
+  padding:0;
+}
+
+body
+{
+  background:#E4F3FE;
+}
+
+header .container{
+  background: #88CBFA;
+}
+
+
+header .logoH2{
+  font-family: VarianeScript, sans-serif;
+  font-size: 50px;
+  color:#0D389D;
+  text-shadow: 2px 2px 2px #000;
+}
+
+header .buscador{
+  margin-top: 20px;
+}
+
+header .form-control{
+  width:50%;
+}
+
+header .loginbtn{
+  display: block;
+  width: 55%;
+  margin-left: 23%;
+  padding:5px;
+}
+
+header .form-group #Usuario{
+  margin-left:25px;
+}
+
+header .imagenPerfil img{
+  width: 20%;
+  border-radius: 20%;
+  float:left;
+}
+
+header .nombre{
+  display: block;
+}
+
+header .nombre h3{
+  display: inline-block;
+  margin-top:8px;
+  margin-left:10px;
+  clear:both;
+}
