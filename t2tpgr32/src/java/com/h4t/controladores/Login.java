@@ -38,17 +38,22 @@ public class Login extends HttpServlet {
         switch (cu.comprobarUsuario(request.getParameter("Usuario"), request.getParameter("Pass")))
         {
             case 0://TODO OK
-                {request.getSession().setAttribute("Usuario", cu.getNickUsuario(request.getParameter("Usuario")));
-                request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGGED_IN);}
+                {
+                DataUsuario du = cu.infoCliente(cu.getNickUsuario(request.getParameter("Usuario")));
+                request.getSession().setAttribute("Usuario", du.getNickname());
+                request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGGED_IN);
+                String nombre = du.getNombre() + " " + du.getApellido();
+                request.getSession().setAttribute("Nombre", nombre);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
-                break;   
+                }
+                break;
             case 1://ERROR NOMBRE
                 break;
             case 2://ERROR PASS
-                break;                
+                break;
         }
-        
-        
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<form class="form-inline" action="Login" method="POST">
+<form class="form-inline FormularioLogin" action="Login" method="POST">
   <div class="form-group">
     <label for="Usuario">Usuario</label>
     <input type="text" class="form-control" name="Usuario" id="Usuario" placeholder="e.watson@gmail.com">

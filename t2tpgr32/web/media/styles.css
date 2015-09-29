@@ -13,10 +13,12 @@ body
   background:#E4F3FE;
 }
 
+
+/*ESTILOS DEL HEADER*/
 header .container{
   background: #88CBFA;
+  height: 9em;
 }
-
 
 header .logoH2{
   font-family: VarianeScript, sans-serif;
@@ -33,10 +35,14 @@ header .form-control{
   width:50%;
 }
 
+header .FormularioLogin .form-group{
+  margin-left:15%
+}
+
 header .loginbtn{
   display: block;
-  width: 55%;
-  margin-left: 23%;
+  width: 42%;
+  margin-left: 33%;
   padding:5px;
 }
 
@@ -53,6 +59,7 @@ header .imagenPerfil img{
 header .nombre{
   display: block;
 }
+
 
 header .nombre h3{
   display: inline-block;
