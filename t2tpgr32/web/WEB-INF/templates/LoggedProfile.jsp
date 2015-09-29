@@ -11,4 +11,3 @@
     <button type="button" name="cerrar_sesion" class="btn btn-link">Cerrar Sesión</button>
   </div>
 </div>
-<!--Test commit-->
