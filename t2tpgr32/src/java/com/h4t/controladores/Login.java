@@ -58,7 +58,7 @@ public class Login extends HttpServlet {
                 else
                 request.getSession().setAttribute("Imagen","media\\Images\\perfil.jpg");
                 //request.getRequestDispatcher("index.jsp").forward(request, response);
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("");//redirecciona al inicio
                 }
                 break;
             case 1://ERROR NOMBRE
