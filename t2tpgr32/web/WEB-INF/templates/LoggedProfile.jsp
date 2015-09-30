@@ -11,7 +11,7 @@
   </div>
   <div class="accion_perfil">
     <button type='button' class='btn btn-default carro'><span class="glyphicon glyphicon-shopping-cart"></span>Carro</button>
-    <button type="button" name="ver_perfil" class="btn btn-link">Ver Perfil</button>
+    <button type="button" name="ver_perfil" class="btn btn-link" onclick="location.href ='Perfil'">Ver Perfil</button>
     <button type="button" name="cerrar_sesion" class="btn btn-link" onclick="location.href ='Logout'">Cerrar Sesión</button>
   </div>
 </div>
