@@ -12,36 +12,34 @@
   <div class='container'>
     <div class="row">
       <!--Logo-->
-      <div class="logo col-xs-12 col-md-3">
+      <div class="logo col-xs-3">
         <h2 class="logoH2">H4T</h2>
       </div>
       <!--Buscador-->
-      <div class="col-xs-12 col-sm-4 col-md-4">
+      <div class="col-xs-4">
         <form class="buscador form-inline" action="" method="">
           <input type='search' class='form-control input-lg' placeholder='Buscar una publicación...' id="criterio">
           <button type='submit' class='btn btn-lg btn-default '>Buscar</button>
         </form>
       </div>
       <!--Perfil/Login-->
-      <div class="col-xs-12 col-md-5">
         <%
             if (request.getSession().getAttribute("estado_sesion") != null)
             {
                 switch((EstadoSesion)request.getSession().getAttribute("estado_sesion")){
 			case LOGGED_IN:%>
-                        <jsp:include page="LoggedProfile.jsp"/>      		
+                        <jsp:include page="LoggedProfile.jsp"/>
 				<%break;
 			default:%>
-                        <jsp:include page="NotLoggedProfile.jsp"/>        		
+                        <jsp:include page="NotLoggedProfile.jsp"/>
                                 <%
 		}
             }
             else{%>
             <jsp:include page="NotLoggedProfile.jsp"/>
-            <%};  
+            <%};
         %>
-        
-      </div>
+
 
     </div>
   </div>

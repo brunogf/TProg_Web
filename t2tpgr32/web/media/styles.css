@@ -17,7 +17,7 @@ body
 /*ESTILOS DEL HEADER*/
 header .container{
   background: #88CBFA;
-  height: 9em;
+  height: auto;
 }
 
 header .logoH2{
@@ -27,56 +27,34 @@ header .logoH2{
   text-shadow: 2px 2px 2px #000;
 }
 
-header .buscador{
-  margin-top: 20px;
-}
-
-header .form-control{
-  width:50%;
-}
-
-header .FormularioLogin .form-group{
-  margin-left:15%
-}
-
-header .loginbtn{
-  display: block;
-  width: 42%;
-  margin-left: 33%;
-  padding:5px;
-}
-
-header .form-group #Usuario{
-  margin-left:25px;
+header .imagenPerfil{
+  overflow: hidden;
 }
 
 header .imagenPerfil img{
-  width: 110px;
-  border-radius: 10px;
-  float:left;
+  margin-top: 5px;
+  width: 100px;
 }
 
-header .nombre{
-  display: block;
+header .datosPerfil{
+  /*background: rgb(54, 168, 175);*/
+  padding: 0px 0px;
 }
 
-header .accion_perfil .btn-link{
-  padding:0;
-  margin-left: 5px;
+header .datosPerfil .nombre{
+
+  margin-left: 30px;
 }
 
-
-header .nombre h3{
-  display: inline-block;
-  margin-top:8px;
-  margin-left:10px;
-  clear:both;
-}
-header .carrito_button{
-margin-left: 27%;
-margin-top: 2%;
+header .datosPerfil .accion_perfil{
+  margin: 0px 0px;
+  padding: 0px 0px;
 }
 
-header .perfil{
-  margin-left: 150px;
+header .datosPerfil .carro{
+  margin-bottom: 3px;
+}
+
+header .buscador{
+  margin-top:20px;
 }

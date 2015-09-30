@@ -5,25 +5,18 @@
  */
 package com.h4t.controladores;
 
-import com.h4t.modelo.EstadoSesion;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.*;
 
 /**
  *
- * @author Nico
+ * @author Usuario
  */
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
+public class Logout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,38 +29,8 @@ public class Login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorUsuario cu = fab.getControladorUsuario();
-        switch (cu.comprobarUsuario(request.getParameter("Usuario"), request.getParameter("Pass")))
-        {
-            case 0://TODO OK
-                {
-                DataUsuario du = cu.infoCliente(cu.getNickUsuario(request.getParameter("Usuario")));
-                request.getSession().setAttribute("Usuario", du.getNickname());
-                request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGGED_IN);
-                String nombre = du.getNombre() + " " + du.getApellido();
-                request.getSession().setAttribute("Nombre", nombre);
-                if(du.getImage() != null)
-                {
-                    File origen = new File(du.getImage());
-                    String destino = getServletContext().getRealPath("/") + "media\\Images\\" + origen.getName();
-                    File directory = new File(destino);
-                    Files.copy(origen.toPath(), directory.toPath(), REPLACE_EXISTING);
-                    request.getSession().setAttribute("Imagen","media\\Images\\" + origen.getName());
-                }
-                else
-                request.getSession().setAttribute("Imagen","media\\Images\\perfil.jpg");
-                //request.getRequestDispatcher("index.jsp").forward(request, response);
-                response.sendRedirect("index.jsp");
-                }
-                break;
-            case 1://ERROR NOMBRE
-                break;
-            case 2://ERROR PASS
-                break;
-        }
-
-
+        request.getSession().invalidate();
+        response.sendRedirect("index.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
