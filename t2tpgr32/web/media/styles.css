@@ -51,8 +51,8 @@ header .form-group #Usuario{
 }
 
 header .imagenPerfil img{
-  width: 25%;
-  border-radius: 20%;
+  width: 110px;
+  border-radius: 10px;
   float:left;
 }
 
@@ -78,5 +78,5 @@ margin-top: 2%;
 }
 
 header .perfil{
-  margin-left: 40%;
+  margin-left: 150px;
 }

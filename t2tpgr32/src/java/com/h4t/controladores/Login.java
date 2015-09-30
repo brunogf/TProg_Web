@@ -6,8 +6,11 @@
 package com.h4t.controladores;
 
 import com.h4t.modelo.EstadoSesion;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,6 +47,11 @@ public class Login extends HttpServlet {
                 request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGGED_IN);
                 String nombre = du.getNombre() + " " + du.getApellido();
                 request.getSession().setAttribute("Nombre", nombre);
+                File origen = new File(du.getImage());
+                String destino = getServletContext().getRealPath("/") + "media\\Images\\" + origen.getName();
+                File directory = new File(destino);
+                Files.copy(origen.toPath(), directory.toPath(), REPLACE_EXISTING);
+                request.getSession().setAttribute("Imagen","media\\Images\\" + origen.getName());
                 request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
                 break;

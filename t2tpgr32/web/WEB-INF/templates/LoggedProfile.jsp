@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="perfil">
   <div class="imagenPerfil">
-    <img src="media/Images/perfil.jpg" width="20px" alt="Imagen Perfil" />
+      <img src="${pageContext.session.getAttribute("Imagen")}" width="200px" alt="Imagen Perfil" />
   </div>
   <div class="nombre">
       <h3>${pageContext.session.getAttribute("Nombre")}<h3>
