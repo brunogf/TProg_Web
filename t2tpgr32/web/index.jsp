@@ -13,7 +13,7 @@
     <body>
         <jsp:include page="WEB-INF/templates/header.jsp"/>
           
-        <script src="js/jquery.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="media/js/jquery.min.js"></script>
+        <script src="media/js/bootstrap.min.js"></script>
     </body>
 </html>
