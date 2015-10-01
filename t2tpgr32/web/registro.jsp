@@ -21,7 +21,7 @@
                 <%--AJAX--%>
                 <div class="form-group">
                     <label for="Nick">Nick: </label>
-                    <input type="text" class="form-control" name="Nick" id="Nick" placeholder="NickName">
+                    <input type="text" class="form-control" name="nick" id="Nick" placeholder="NickName">
                 </div>
                 <br />                
                 <div class="form-group">

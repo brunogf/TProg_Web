@@ -7,11 +7,15 @@ package com.h4t.controladores;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.WebServlet;
+import java.util.*;
+import tpgr32.*;
 
 /**
  *
@@ -31,11 +35,31 @@ public class RegistrarCliente extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //FALTA CARGAR CLIENTE CON IMAGEN.
+        
+        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
-        } finally {
+        FabricaControladores fab = FabricaControladores.getInstancia();
+        IControladorUsuario cu = fab.getControladorUsuario();
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                       
+        String nick = (String) request.getParameter("nick");
+        String nombre = (String) request.getParameter("nombre");
+        String apellido = (String) request.getParameter("apellido");
+        String mail = (String) request.getParameter("email");
+        String pass = (String) request.getParameter("password");
+        
+        
+        try{
+            Date fnac = df.parse(request.getParameter("fechanac").toString());                       
+            cu.altaCliente(nick, nombre, apellido, mail, fnac, pass);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }catch(Exception e){
+            out.print("EXCEPCION!");
         }
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
