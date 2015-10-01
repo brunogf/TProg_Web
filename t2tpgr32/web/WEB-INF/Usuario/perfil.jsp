@@ -6,6 +6,8 @@
 
 <%@page import="tpgr32.*"%>
 <%@page import="java.util.*"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,6 +25,7 @@
             
             <% DataCliente info = (DataCliente) request.getAttribute("info"); %>
             <% Set<DataReserva> reservas = info.getReservas(); %>
+            <% DateFormat df = new SimpleDateFormat("dd-MM-yyyy"); %>
             
             <span class="contenedor">
                 <h2>Información básica</h2>
@@ -40,12 +43,12 @@
                 <label class="valor"><%=info.getApellido()%></label>
                 <br/>
                 <label class="rotulo">Fecha de Nacimiento:</label>
-                <label class="valor"><%=info.getFecha().toString() %></label>
+                <label class="valor"><%= df.format(info.getFecha()) %></label>
                 <br/>
                 <img class="imagen" width="200px" src="media/Images/eWatson.jpg" />
                 <br/>
                 <label class="rotulo">Reservas:</label> 
-                <%--! reservas.isEmpty(); --%>
+                <%-- reservas.isEmpty(); --%>
             </span>
         </div>
     </body>

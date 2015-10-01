@@ -12,3 +12,6 @@
     <button type="submit" class="btn btn-primary loginbtn">Log In<button>
   </form>
 </div>
+<div>
+    <button type="button" name="registrar" class="btn btn-link" onclick="location.href ='registro.jsp'">Registrar</button>
+</div>

@@ -18,6 +18,7 @@
         
         <registro>
             <form class="form-inline" action="Registrar" method="POST">
+                
                 <%--AJAX--%>
                 <div class="form-group">
                     <label for="Nick">Nick: </label>
@@ -30,6 +31,7 @@
                 </div>
                 <br />
                 <%--AJAX--%>
+                
                 <div class="form-group">
                     <label for="Nombre">Nombre: </label>
                     <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
@@ -40,6 +42,8 @@
                     <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
                 </div>
                 <br />
+                
+                <%--AJAX--%>
                 <div class="form-group">
                     <label for="Contraseña">Contraseña: </label>
                     <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
@@ -50,6 +54,8 @@
                     <input type="password" class="form-control" name="confpassword" id="confpassword" placeholder="Confirmar">
                 </div>
                 <br />
+                <%--AJAX--%>
+                
                 <div class="form-group">
                     <label for="Imagen">Imagen: </label>
 <!--                    <form method="post" action="${ pageContext.request.contextPath}/Uploader" encType="multipart/form-data">
