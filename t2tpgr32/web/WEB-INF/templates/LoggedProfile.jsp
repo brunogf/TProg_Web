@@ -12,12 +12,12 @@
   <div class="accion_perfil">
 
     <button type='button' class='btn btn-default carro'><span class="glyphicon glyphicon-shopping-cart"></span>Carro</button>
+    <select name="opciones" class="form-control">
+              <option value="perfil" onclick="location.href ='Perfil'">Mi Perfil</option>
+      </select>
     <button type="button" name="cerrar_sesion" class="btn btn-link" onclick="location.href ='Logout'">Cerrar Sesión</button>
   </div>
   <div>      
-      <select name="opciones">
-              <option value="perfil" onclick="location.href ='Perfil'">Mi Perfil</option>
-              //Agregar aca otras opciones a probar. 
-      </select>
+      
   </div>
 </div>

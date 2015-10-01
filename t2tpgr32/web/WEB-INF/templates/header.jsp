@@ -19,7 +19,7 @@
       <div class="col-xs-4">
         <form class="buscador form-inline" action="Search" method="POST">
           <input type='search' name="criterio"  id="criterio" class='form-control input-lg' placeholder='Buscar una publicación...'>
-          <button type='submit' class='btn btn-lg btn-default '>Buscar</button>
+          <button type='submit' class='btn btn-lg btn-default '><span class="glyphicon glyphicon-search"></span></button>
         </form>
       </div>
       <!--Perfil/Login-->

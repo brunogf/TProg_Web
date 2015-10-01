@@ -50,6 +50,26 @@ header .datosPerfil .accion_perfil{
   margin: 0px 0px;
   padding: 0px 0px;
 }
+header .datosPerfil .form-control{
+  padding: 0px 0px;
+  width: 30%;
+  display: inline-block;
+}
+
+header #Usuario{
+    margin-left:26px;
+}
+
+
+header .loginbtn{
+    margin-left: 85px;
+    margin-bottom: 3px;//para que haya separacion entre el boton login y el fin del header
+}
+
+header .notLoggedOpciones{
+    display:inline-block;
+    width:30%;
+}
 
 header .datosPerfil .carro{
   margin-bottom: 3px;
