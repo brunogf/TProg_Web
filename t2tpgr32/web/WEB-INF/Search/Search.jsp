@@ -22,7 +22,15 @@
             <%
                 Set<DataPublicacion> publicaciones =(HashSet) request.getAttribute("publicaciones");
                 if (!publicaciones.isEmpty())
-                {
+                {%>
+                <div class="row table-responsive">
+                    <table class="table">
+                        <tr class="cabeceraTabla">
+                            <td>Nombre</td>
+                            <td>Tipo</td>
+                            <td>Proveedor</td>
+                        </tr>
+                <%
                     for(DataPublicacion p : publicaciones)
                     {
                         String pos;
@@ -31,16 +39,17 @@
                         else
                             pos = "Promoción";
             %>
-            <div class="result">
-              <h5><%=p.getNombre()%></h5>
-              <span class="tipo"><%=pos%></span>
-              <span class="proveedor"><%=p.getProveedor()%></span>
-            </div><%
-            }
+            <tr>
+              <td><%=p.getNombre()%></td>
+              <td><%=pos%></td>
+              <td><%=p.getProveedor()%></td>
+            </tr><%
+            }%>
+                </table></div><%
            }
                 else{
             %>
-            <div class="noResult">
+            <div class="row noResult">
                 <span class="Message">No se encontró ninguna publicación
             </div>
             <%}%>
