@@ -47,6 +47,7 @@
                 <br/>
                 <img class="imagen" width="200px" height="200px" src="${pageContext.session.getAttribute("Imagen")}" alt="Imagen Perfil" />
                 <br/>
+                <br/>
                 <label class="rotulo">Reservas:</label>                
                 <div id="listar" class="perfil">
                     <%= "Cantidad: " + reservas.size() %>
