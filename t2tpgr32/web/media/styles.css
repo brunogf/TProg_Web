@@ -58,3 +58,9 @@ header .datosPerfil .carro{
 header .buscador{
   margin-top:20px;
 }
+
+/*Busqueda-Search.jsp*/
+
+.search .result{
+  background: #fff;
+}

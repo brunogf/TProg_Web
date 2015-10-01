@@ -16,7 +16,7 @@
     </head>
     <body>
         <jsp:include page="../templates/header.jsp"/>
-        <div class="container">
+        <div class="container search">
           <div class="col-xs-12">
             <%--Acá van los resultados--%>
             <%
@@ -42,7 +42,7 @@
             %>
             <div class="noResult">
                 <span class="Message">No se encontró ninguna publicación
-            </div>    
+            </div>
             <%}%>
           </div>
         </div>
