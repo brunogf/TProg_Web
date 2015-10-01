@@ -3,7 +3,8 @@
   <!--Por ahora vacia-->
 </div>
 <div class="imagenPerfil col-xs-1">
-    <img src="${pageContext.session.getAttribute("Imagen")}" width="200px" alt="Imagen Perfil" />
+    <a href="Perfil" target="_self">
+    <img src="${pageContext.session.getAttribute("Imagen")}" width="100px" height="100px" alt="Imagen Perfil"></a>
 </div>
 <div class="col-xs-3 datosPerfil">
   <div class="nombre">
