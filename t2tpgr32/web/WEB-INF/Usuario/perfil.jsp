@@ -16,20 +16,20 @@
         <meta name="viewport" content="width=device-width, user-scale=no, initial-scale=1.0">
         <link rel="stylesheet" href="media/css/bootstrap.min.css">
         <link rel="stylesheet" href="media/styles.css">
-        
+
         <title>Perfil usuario</title>
     </head>
     <body>
         <jsp:include page="../templates/header.jsp"/>
         <div class="profiler">
-            
+
             <% DataCliente info = (DataCliente) request.getAttribute("info"); %>
             <% Set<DataReserva> reservas = info.getReservas(); %>
-            <% DateFormat df = new SimpleDateFormat("dd-MM-yyyy"); %>
-            
+            <% DateFormat df = new SimpleDateFormat("dd-MM-yyyy");%>
+
             <span class="contenedor">
                 <h2>Información básica</h2>
-                
+
                 <label class="rotulo">Nick:</label>
                 <label class="valor"><%=info.getNickname()%></label>
                 <br/>
@@ -43,12 +43,31 @@
                 <label class="valor"><%=info.getApellido()%></label>
                 <br/>
                 <label class="rotulo">Fecha de Nacimiento:</label>
-                <label class="valor"><%= df.format(info.getFecha()) %></label>
+                <label class="valor"><%= df.format(info.getFecha())%></label>
                 <br/>
                 <img class="imagen" width="200px" height="200px" src="${pageContext.session.getAttribute("Imagen")}" alt="Imagen Perfil" />
                 <br/>
                 <label class="rotulo">Reservas:</label>                
-                <%-- reservas.iterator().hasNext(); --%>
+                <div id="listar" class="perfil">
+                    <%= "Cantidad: " + reservas.size() %>
+                    <br/>
+                    <br/>
+
+                    <%
+                        for (DataReserva dr : reservas) {
+                    %>
+                    
+                    <div class="reserva">
+                            <%= "ID: " + dr.getNum() %>
+                            <br/>
+                            <%= "Precio: " + dr.getPrecio_total() %>
+                            <br/>
+                            <%= "Estado: " + dr.getStringEstado() %>                         
+                            <br/>
+                            <br/>
+                    </div>		
+                    <% }%>
+                </div>
             </span>
         </div>
     </body>
