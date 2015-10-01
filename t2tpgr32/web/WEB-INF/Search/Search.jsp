@@ -29,7 +29,7 @@
                         if (p instanceof DataServicio)
                             pos = "Servicio";
                         else
-                            pos = "Publicacion";
+                            pos = "Promoción";
             %>
             <div class="result">
               <h5><%=p.getNombre()%></h5>
