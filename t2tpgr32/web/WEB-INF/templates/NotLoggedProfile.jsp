@@ -12,6 +12,9 @@
     <button type="submit" class="btn btn-primary loginbtn">Log In<button>
   </form>
 </div>
-<div>
-    <button type="button" name="registrar" class="btn btn-link" onclick="location.href ='registro.jsp'">Registrar</button>
+<div>      
+      <select name="opciones">
+              <option value="registrar" onclick="location.href ='registro.jsp'">Registrar</option>
+              //Agregar aca otras opciones a probar. 
+      </select>
 </div>

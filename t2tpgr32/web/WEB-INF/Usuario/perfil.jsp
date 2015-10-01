@@ -45,7 +45,7 @@
                 <label class="rotulo">Fecha de Nacimiento:</label>
                 <label class="valor"><%= df.format(info.getFecha()) %></label>
                 <br/>
-                <img class="imagen" width="200px" src="media/Images/eWatson.jpg" />
+                <img class="imagen" width="200px" src="${pageContext.session.getAttribute("Imagen")}" alt="Imagen Perfil" />
                 <br/>
                 <label class="rotulo">Reservas:</label> 
                 <%-- reservas.isEmpty(); --%>
