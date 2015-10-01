@@ -17,13 +17,13 @@
     <body>
         <jsp:include page="../templates/header.jsp"/>
         <div class="container search">
-          <div class="col-xs-12">
+          <div class="row">
             <%--Acá van los resultados--%>
             <%
                 Set<DataPublicacion> publicaciones =(HashSet) request.getAttribute("publicaciones");
                 if (!publicaciones.isEmpty())
                 {%>
-                <div class="row table-responsive">
+                <div class="col-xs-12 table-responsive">
                     <table class="table">
                         <tr class="cabeceraTabla">
                             <td>Nombre</td>
@@ -49,7 +49,7 @@
            }
                 else{
             %>
-            <div class="row noResult">
+            <div class="col-xs-12 noResult">
                 <span class="Message">No se encontró ninguna publicación
             </div>
             <%}%>

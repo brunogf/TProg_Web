@@ -17,7 +17,11 @@ body
 /*ESTILOS DEL HEADER*/
 header .container{
   background: #88CBFA;
-  height: auto;
+  padding-bottom: 5px;
+}
+
+header .primeraFila{
+    height: 105px;
 }
 
 header .logoH2{
@@ -29,24 +33,29 @@ header .logoH2{
 
 header .imagenPerfil{
   overflow: hidden;
+  display:inline-block;
+  float:left;
 }
 
 header .imagenPerfil img{
   margin-top: 5px;
-  width: 100px;
+  height: 60px;
+  width: 60px;
 }
 
 header .datosPerfil{
-  /*background: rgb(54, 168, 175);*/
   padding: 0px 0px;
 }
 
 header .datosPerfil .nombre{
+    display:inline-block;
+    margin-left: 30px;
+    color:black;
 
-  margin-left: 30px;
 }
 
 header .datosPerfil .accion_perfil{
+    clear:both;
   margin: 0px 0px;
   padding: 0px 0px;
 }
@@ -56,27 +65,22 @@ header .datosPerfil .form-control{
   display: inline-block;
 }
 
-header #Usuario{
-    margin-left:26px;
-}
-
-
-header .loginbtn{
-    margin-left: 85px;
-    margin-bottom: 3px;//para que haya separacion entre el boton login y el fin del header
-}
-
-header .notLoggedOpciones{
-    display:inline-block;
-    width:30%;
-}
-
-header .datosPerfil .carro{
-  margin-bottom: 3px;
+header .accion_perfil
+{
+    margin: 0px 0px;
+    padding: 0px 0px;
 }
 
 header .buscador{
   margin-top:20px;
+}
+
+header .FormularioLogin{
+    margin-top: 10px;
+}
+
+header .FormularioLogin .form-control{
+    width:200px;
 }
 
 /*Busqueda-Search.jsp*/

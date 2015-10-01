@@ -1,21 +1,25 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<div class="col-xs-5">
-    
-        <form class="form-inline FormularioLogin" action="Login" method="POST">
-        <div class="form-group">
-          <label for="Usuario">Usuario</label>
-          <input type="text" class="form-control" name="Usuario" id="Usuario" placeholder="e.watson@gmail.com">
-        </div>
-        <div class="form-group">
-          <label for="Pass">Contraseña</label>
-          <input type="password" class="form-control" name="Pass" id="Pass" placeholder="Ingresa tu contraseña...">
-        </div>
-        <br>
-        <button type="submit" class="btn btn-primary loginbtn">Log In</button>
-        <select name="opciones" class="form-control notLoggedOpciones">
-            <option value="registrar" onclick="location.href ='registro.jsp'">Registrar</option>
-        </select>
-        
-        </form>
+<div class="col-xs-1"></div>
+<div class="col-xs-4">
+    <form class="form-horizontal FormularioLogin" action="Login">
+            <div class="form-group-sm">
+              <label for="Usuario" class="col-sm-2 control-label">Usuario</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="Usuario" name="Usuario" placeholder="Email">
+              </div>
+            </div>
+            <div class="form-group-sm">
+              <label for="Pass" class="col-sm-2 control-label">Password</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="Pass" name="Pass" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group-sm">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary btn-sm">Log in</button>  
+                <button type="button" class="btn btn-link" onclick="location.href='registro.jsp'" >Registrarme</button> 
+              </div>
+            </div>
+          </form>
        
 </div>
