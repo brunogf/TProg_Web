@@ -85,8 +85,9 @@ header .FormularioLogin .form-control{
 
 /*Busqueda-Search.jsp*/
 
-.search .result{
-  background: #fff;
+.search .result:hover{
+  background: #BFE1FA;
+  cursor: pointer;
 }
 
 .search .cabeceraTabla{

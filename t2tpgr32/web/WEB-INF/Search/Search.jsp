@@ -39,7 +39,7 @@
                         else
                             pos = "Promoción";
             %>
-            <tr>
+            <tr class="result" onclick="location.href='#'"><!--link a servlet ver info publicacion-->
               <td><%=p.getNombre()%></td>
               <td><%=pos%></td>
               <td><%=p.getProveedor()%></td>

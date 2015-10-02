@@ -1,5 +1,9 @@
 $(document).ready(function(){
-$(document.getElementById("form-busqueda")).on("keyup", "#criterio", function() {  
+$(document.getElementById("form-busqueda")).on("keyup", "#criterio", function(e) { 
+    if (e.keyCode === 13)
+    {
+        $(document.getElementById("form-busqueda")).submit();
+    }
     $.get("AjaxRequest",{criterio : $("#criterio").val()} ,function(responseJson) {  
                 var arr =[];
                 $.each(responseJson, function(index, item) { 
