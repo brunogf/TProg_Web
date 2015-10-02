@@ -15,10 +15,10 @@
     </head>
     <body>
         <jsp:include page="WEB-INF/templates/header.jsp"/>
-        
-        <registro>
+
+        <div class="registro">
             <form class="form-inline" action="Registrar" method="POST">
-                
+
                 <%--AJAX--%>
                 <div class="form-group">
                     <label for="Nick">Nick: </label>
@@ -31,7 +31,7 @@
                 </div>
                 <br />
                 <%--AJAX--%>
-                
+
                 <div class="form-group">
                     <label for="Nombre">Nombre: </label>
                     <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
@@ -42,7 +42,7 @@
                     <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
                 </div>
                 <br />
-                
+
                 <%--AJAX--%>
                 <div class="form-group">
                     <label for="Contraseña">Contraseña: </label>
@@ -55,7 +55,7 @@
                 </div>
                 <br />
                 <%--AJAX--%>
-                
+
                 <div class="form-group">
                     <label for="Imagen">Imagen: </label>
 <!--                    <form method="post" action="${ pageContext.request.contextPath}/Uploader" encType="multipart/form-data">
@@ -71,6 +71,6 @@
                 <br />
                 <input type="submit" class="subbut" value="Registrar">
             </form>
-        </registro>
+        </div>
     </body>
 </html>

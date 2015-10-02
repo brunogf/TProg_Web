@@ -93,3 +93,51 @@ header .FormularioLogin .form-control{
     color:#000;
     font-size: 18px;
 }
+
+///////////////*REGISTRO*/////////////
+
+input{
+    display: inline-block;
+    width: 12em;
+}
+
+.registro .form-inline label{
+    color: #204d74; 
+    text-decoration: underline;
+}
+
+.registro .subbut{
+    padding: .2em .5em;
+}
+
+.registro .form-inline{
+    margin-left:50px;
+    margin-top: 15px;
+}
+
+///////////////*PERFIL*/////////////
+
+.contenedor label {
+    text-decoration: underline;
+}
+
+.contenedor{
+    margin-left: 50px;
+    font-size: 13px;
+}
+
+.basicinfo{
+    text-align:left;
+    float: left;
+}
+
+.contenedor h3{
+    color: #1b6d85;
+    text-decoration: underline;
+}
+
+.perfil {
+    margin-left:40px;
+    text-align:left;
+    float:left;
+}
