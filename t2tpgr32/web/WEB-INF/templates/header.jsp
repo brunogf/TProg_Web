@@ -8,6 +8,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="media/css/bootstrap.min.css">
 <link rel="stylesheet" href="media/styles.css">
+<script src="media/js/jquery.min.js"></script>
+<script src="media/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="media/js/jquery-ui/themes/smoothness/jquery-ui.min.css">
+<script src="media/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="media/js/Search.js"></script>
 <header>
   <div class='container'>
     <div class="row primeraFila">
@@ -17,7 +22,7 @@
       </div>
       <!--Buscador-->
       <div class="col-xs-4">
-        <form class="buscador form-inline" action="Search" method="GET">
+        <form id="form-busqueda" class="buscador form-inline" action="Search" method="GET">
           <input type='search' name="criterio"  id="criterio" class='form-control input-lg' placeholder='Buscar una publicación...'>
           <button type='submit' class='btn btn-lg btn-default '><span class="glyphicon glyphicon-search"></span></button>
         </form>
