@@ -27,8 +27,8 @@ import tpgr32.IControladorPublicacion;
  *
  * @author Usuario
  */
-@WebServlet(name = "AjaxRequest", urlPatterns = {"/AjaxRequest"})
-public class AjaxRequest extends HttpServlet {
+@WebServlet(name = "AjaxSearchRequest", urlPatterns = {"/AjaxSearchRequest"})
+public class AjaxSearchRequest extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
