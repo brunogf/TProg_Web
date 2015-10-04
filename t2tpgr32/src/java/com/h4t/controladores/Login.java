@@ -61,9 +61,17 @@ public class Login extends HttpServlet {
                 response.sendRedirect("");//redirecciona al inicio
                 }
                 break;
-            case 1://ERROR NOMBRE
+            case 1:
+                {
+                    request.getSession().setAttribute("estado_sesion", EstadoSesion.INVALID_LOGIN);
+                    response.sendRedirect("");//redirecciona al inicio
+                }
                 break;
-            case 2://ERROR PASS
+            case 2:
+                {
+                    request.getSession().setAttribute("estado_sesion", EstadoSesion.INVALID_LOGIN);
+                    response.sendRedirect("");//redirecciona al inicio
+                }
                 break;
         }
 
