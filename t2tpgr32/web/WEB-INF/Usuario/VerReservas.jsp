@@ -39,7 +39,7 @@
                         Format f = new SimpleDateFormat("dd-MM-yyyy");
                         String fecha = f.format(r.getCreacion());
                 %>
-                    <tr class="reservas" onclick="location.href='#'"><!--link a servlet ver info reserva-->
+                    <tr class="reservas" onclick="location.href='VerInfoReserva?nro=<%=r.getNum()%>'"><!--link a servlet ver info reserva-->
                       <td><%=r.getNum()%></td>
                       <td><%=r.getStringEstado()%></td>
                       <td><%=fecha%></td>
