@@ -47,9 +47,9 @@
     </div>
     <div class="row">
         <div class="col-xs-8">
-            <button class="btn btn-primary">Info Proveedor</button>
-            <button class="btn btn-primary">Info Promoción</button>   
-            <button class="btn btn-primary">Info Servicio</button>
+            <button class="btn btn-sm btn-primary">Info Proveedor</button>
+            <button class="btn btn-sm btn-primary">Info Promoción</button>   
+            <button class="btn btn-sm btn-primary">Info Servicio</button>
         </div>
          <%
             if (request.getSession().getAttribute("estado_sesion") != null)
@@ -58,7 +58,8 @@
 			case LOGGED_IN:%>
                         <div class="col-xs-4 accion_perfil">
                             <button type='button' class='btn btn-default carro'><span class="glyphicon glyphicon-shopping-cart"></span> Carro de compras</button>
-                            <button type="button" name="cerrar_sesion" class="btn btn-link" onclick="location.href ='Logout'">Cerrar Sesión</button>
+                            <button type="button" name="cerrar_sesion" class="btn btn-sm btn-primary" onclick="location.href ='MisReservas'">Mis Reservas</button>
+                            <button type="button" name="cerrar_sesion" class="btn btn-sm btn-link" onclick="location.href ='Logout'">Cerrar Sesión</button>
                         </div>            
                         <%break;
 			default:%>

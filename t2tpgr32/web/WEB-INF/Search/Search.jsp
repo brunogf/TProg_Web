@@ -50,7 +50,7 @@
                 else{
             %>
             <div class="col-xs-12 noResult">
-                <span class="Message">No se encontró ninguna publicación
+                <span class="Message">No se encontró ninguna publicación</span>
             </div>
             <%}%>
           </div>
