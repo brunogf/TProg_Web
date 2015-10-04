@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <div class="col-xs-1"></div>
 <div class="col-xs-4">
-    <form class="form-horizontal FormularioLogin" action="Login">
+    <form class="form-horizontal FormularioLogin" action="Login" method="POST">
             <div class="form-group-sm">
               <label for="Usuario" class="col-sm-2 control-label">Usuario</label>
               <div class="col-sm-10">
