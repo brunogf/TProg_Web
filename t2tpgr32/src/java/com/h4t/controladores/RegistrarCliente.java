@@ -58,8 +58,6 @@ public class RegistrarCliente extends HttpServlet {
         }catch(Exception e){
             out.print("EXCEPCION!");
         }
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

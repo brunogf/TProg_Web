@@ -9,4 +9,6 @@
 <link rel="stylesheet" href="media/css/bootstrap.min.css">
 <script src="media/js/jquery.min.js"></script>
 <script src="media/js/bootstrap.min.js"></script>
+<link rel="shortcut icon" type="image/png" href="media/Images/favicon.png"/>
 <title>Help4Traveling</title>
+

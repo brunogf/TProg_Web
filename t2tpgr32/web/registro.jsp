@@ -8,10 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, user-scale=no, initial-scale=1.0">
-        <link rel="stylesheet" href="media/css/bootstrap.min.css">
-        <title>Registrar Usuario</title>
+        <jsp:include page="WEB-INF/templates/head.jsp"/>
     </head>
     <body>
         <jsp:include page="WEB-INF/templates/header.jsp"/>

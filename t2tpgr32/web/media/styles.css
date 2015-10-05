@@ -145,6 +145,8 @@ input{
 .contenedor h3{
     color: #1b6d85;
     text-decoration: underline;
+    text-align: center;
+
 }
 
 .perfil {
@@ -163,11 +165,6 @@ input{
     text-decoration: underline;
     text-align: center;
 }
-
-.Perfil h3{
-    text-align: center;
-}
-
 
 
 /*Ver Reservas*/
