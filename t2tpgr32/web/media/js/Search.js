@@ -9,7 +9,7 @@ $(document.getElementById("form-busqueda")).on("keyup", "#criterio", function(e)
                 $.each(responseJson, function(index, item) { 
                     arr[index] = item;      
                 });
-                $("#critrio").autocomplete({source: arr});
+                $("#criterio").autocomplete({source: arr});
         });
     });
 });
