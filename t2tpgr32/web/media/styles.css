@@ -31,6 +31,10 @@ header .logoH2{
     text-shadow: 2px 2px 2px #000;
 }
 
+header .linklogo{
+    text-decoration: none;
+}
+
 header .imagenPerfil{
     overflow: hidden;
     display:inline-block;
@@ -108,6 +112,7 @@ header .invalid_login_message{
     /*CENTRADO*/
     position: absolute;
     left: 38%;
+    
     width: 300px;
     min-height: 200px;
     border-radius: 5px;
