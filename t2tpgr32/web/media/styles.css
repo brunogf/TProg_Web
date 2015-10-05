@@ -104,7 +104,7 @@ header .invalid_login_message{
 
 ///////////////*REGISTRO*/////////////
 
-input{
+.registro input{
     display: inline-block;
     width: 12em;
 }
@@ -125,26 +125,26 @@ input{
 
 ///////////////*PERFIL*/////////////
 
-.contenedor label {
+.perfilCliente .contenedor label {
     text-decoration: underline;
 }
 
-.contenedor{
+.perfilCliente .contenedor{
     margin-left: 50px;
     font-size: 13px;
 }
 
-.basicinfo{
+.perfilCliente .basicinfo{
     text-align:left;
     float: left;
 }
 
-.contenedor h3{
+.perfilCliente .contenedor h3{
     color: #1b6d85;
     text-decoration: underline;
 }
 
-.perfil {
+.perfilCliente .perfil {
     margin-left:40px;
     text-align:left;
     float:left;
@@ -161,4 +161,15 @@ input{
 .VerReservas .cabeceraTabla{
     color:#000;
     font-size: 18px;
+}
+
+/*Ver reserva*/
+
+.VerReserva .BloqueServicio{
+    display:inline-block;
+}
+
+.VerReserva .BloqueServicio .descripcionServicio{
+    width: 250px;
+    height: px;
 }

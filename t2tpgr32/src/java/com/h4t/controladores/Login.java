@@ -53,11 +53,11 @@ public class Login extends HttpServlet {
                     String destino = getServletContext().getRealPath("/") + "media\\Images\\" + origen.getName();
                     File directory = new File(destino);
                     Files.copy(origen.toPath(), directory.toPath(), REPLACE_EXISTING);
-                    request.getSession().setAttribute("Imagen","media/images/" + origen.getName());
+                    request.getSession().setAttribute("Imagen","media/Images/" + origen.getName());
                 }
                 else
-                request.getSession().setAttribute("Imagen","media/images/perfil.jpg");
-                //request.getRequestDispatcher("index.jsp").forward(request, response);
+                    request.getSession().setAttribute("Imagen","media/Images/perfil.jpg");
+                
                 response.sendRedirect("");//redirecciona al inicio
                 }
                 break;
