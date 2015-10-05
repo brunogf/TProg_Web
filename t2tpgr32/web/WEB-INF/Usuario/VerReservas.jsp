@@ -31,7 +31,7 @@
                             <td>#</td>
                             <td>Estado</td>
                             <td>Fecha Creación</td>
-                            <td>Cantidad Publicaciónes</td>
+                            <td>Cantidad Publicaciones</td>
                         </tr>
                 <%
                     for(DataReserva r : reservas)

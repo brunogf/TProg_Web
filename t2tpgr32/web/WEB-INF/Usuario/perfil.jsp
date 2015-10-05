@@ -25,7 +25,7 @@
         <% Set<DataReserva> reservas = info.getReservas(); %>
         <% DateFormat df = new SimpleDateFormat("dd-MM-yyyy");%>
 
-        <div class="contenedor">
+        <div class="contenedor Perfil">
             <div class="basicinfo">
                 <h3>Información básica</h3>
 
@@ -49,27 +49,29 @@
                 <br/>
             </div>
             <div id="listar" class="perfil">
-                <h3>Reservas</h3>                
+                <h3>Reservas</h3>        
 
-                <%= "Cantidad: " + reservas.size()%>
-                <br/>
-                <br/>
+                <div class="col-xs-12 table-responsive">
+                    <table class="table">
+                        <tr class="cabeceraTabla">
+                            <td>#</td>
+                            <td>Estado</td>
+                            <td>Fecha Creación</td>
+                            <td>Cantidad Publicaciones</td>
+                        </tr>
+                        <%
+                            for (DataReserva dr : reservas) {
+                        %>
 
-                <%
-                    for (DataReserva dr : reservas) {
-                %>
-
-                <div class="reserva">
-                    <%= "ID: " + dr.getNum()%>
-                    <br/>
-                    <%= "Precio: " + dr.getPrecio_total()%>
-                    <br/>
-                    <%= "Estado: " + dr.getStringEstado()%>                         
-                    <br/>
-                    <br/>
-                </div>		
-                <% }%>
+                        <tr class="reservas" onclick="location.href = '#'"><!--link a servlet ver info reserva-->
+                            <td><%=dr.getNum()%></td>
+                            <td><%=dr.getStringEstado()%></td>
+                            <td><%=dr.getCreacion().toString()%></td> 
+                            <td><%=dr.getdpd().size()%></td>
+                        </tr>
+                        <% }%>
+                    </table>
+                </div>
             </div>
-        </div>
     </body>
 </html>

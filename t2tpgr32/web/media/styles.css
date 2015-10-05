@@ -150,6 +150,23 @@ input{
     float:left;
 }
 
+.Perfil .cabeceraTabla{
+    color:#000;
+    font-size: 18px;
+}
+
+.Perfil .reservas{
+    cursor: pointer;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.Perfil h3{
+    text-align: center;
+}
+
+
+
 /*Ver Reservas*/
 
 .VerReservas .reservas:hover{
