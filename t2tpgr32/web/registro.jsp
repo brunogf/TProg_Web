@@ -12,62 +12,31 @@
     </head>
     <body>
         <jsp:include page="WEB-INF/templates/header.jsp"/>
+        <div class="container registro">
+            <section id="formulario">
+                <p id="titulo">Ingresa tus datos</p>
+                <form action="Registrar" method="POST">
 
-        <div class="registro">
-            <form class="form-inline" action="Registrar" method="POST">
-
-                <%--AJAX--%>
-                <div class="form-group">
-                    <label for="Nick">Nick: </label>
+                    <%--AJAX--%>
                     <input type="text" class="form-control" name="nick" id="Nick" placeholder="NickName">
-                </div>
-                <br />                
-                <div class="form-group">
-                    <label for="Email">Correo Electrónico: </label>
-                    <input type="email" class="form-control" name="email" id="Email" placeholder="E-mail">
-                </div>
-                <br />
-                <%--AJAX--%>
-
-                <div class="form-group">
-                    <label for="Nombre">Nombre: </label>
+                    <input type="email" class="form-control" name="email" id="Email" placeholder="Correo Electronico">
+                    <%--AJAX--%>
                     <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
-                </div>
-                <br />
-                <div class="form-group">
-                    <label for="Apellido">Apellido: </label>
                     <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
-                </div>
-                <br />
-
-                <%--AJAX--%>
-                <div class="form-group">
-                    <label for="Contraseña">Contraseña: </label>
+                    <%--AJAX--%>
                     <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
-                </div>
-                <br />
-                <div class="form-group">
-                    <label for="ConfirmarContraseña">Confirmar contraseña: </label>
-                    <input type="password" class="form-control" name="confpassword" id="confpassword" placeholder="Confirmar">
-                </div>
-                <br />
-                <%--AJAX--%>
+                    <input type="password" class="form-control" name="confpassword" id="confpassword" placeholder="Confirmar contraseña">
+                    <%--AJAX--%>
 
-                <div class="form-group">
-                    <label for="Imagen">Imagen: </label>
-<!--                    <form method="post" action="${ pageContext.request.contextPath}/Uploader" encType="multipart/form-data">
-                        <input type="file" name="file" value="select images..."/>
-                        <input type="submit" value="start upload"/>
-                    </form>-->
-                </div>
-                <br />
-                <div class="form-group">
-                    <label for="fechanac">Fecha de nacimiento: </label>
-                    <input type="date" class="form-control" name="fechanac" id="fechanac" placeholder="dd/mm/yy">
-                </div>
-                <br />
-                <input type="submit" class="subbut" value="Registrar">
-            </form>
+                    <%--IMAGEN--%>
+    <!--                    <form method="post" action="${ pageContext.request.contextPath}/Uploader" encType="multipart/form-data">
+                            <input type="file" name="file" value="select images..."/>
+                            <input type="submit" value="start upload"/>
+                        </form>-->
+                    <input type="date" class="form-control" name="fechanac" id="fechanac" placeholder="dd-mm-yy">
+                    <input type="submit" class="subbut" value="Enviar">
+                </form>
+            </section>
         </div>
     </body>
 </html>

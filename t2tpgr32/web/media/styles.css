@@ -102,36 +102,53 @@ header .invalid_login_message{
     font-size: 18px;
 }
 
-///////////////*REGISTRO*/////////////
+/*REGISTRO*/
 
-input{
-    display: inline-block;
-    width: 12em;
+#formulario{
+    /*CENTRADO*/
+    position: absolute;
+    left: 38%;
+    width: 300px;
+    min-height: 200px;
+    border-radius: 5px;
 }
 
-.registro .form-inline label{
-    color: #204d74; 
-    text-decoration: underline;
+.registro #titulo{
+    color: #00498f;
+    font-size: 1.6em;
+    text-align: center;
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 5px;
 }
 
-.registro .subbut{
-    padding: .2em .5em;
+.registro .form-control{
+    width: 300px;
+    margin-top: 10px;
+    height: 30px;
+    font-size: 1.1em;
+    background-color: #BFE1FA;
+    border: 0px;
 }
 
-.registro .form-inline{
-    margin-left:50px;
+input[type="submit"]{
+    width:300px;
+    height: 35px;
     margin-top: 15px;
+    background-color: #0b58a2;
+    color: white;
+    font-size: 1.1em;
+    outline: none; 
+    border: 0px;
+    border-radius: 5px;
 }
 
-///////////////*PERFIL*/////////////
 
-.contenedor label {
+
+/*PERFIL*/
+
+.Perfil label {
     text-decoration: underline;
-}
-
-.contenedor{
-    margin-left: 50px;
-    font-size: 13px;
 }
 
 .basicinfo{
@@ -164,6 +181,7 @@ input{
     cursor: pointer;
     text-decoration: underline;
     text-align: center;
+    overflow: auto;
 }
 
 
