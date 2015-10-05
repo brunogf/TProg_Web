@@ -1,23 +1,23 @@
 @font-face {
-  font-family: VarianeScript;
-  src:url("fonts/Variane Script.ttf") format(truetype);
+    font-family: VarianeScript;
+    src:url("fonts/Variane Script.ttf") format(truetype);
 }
 
 *{
-  margin:0;
-  padding:0;
+    margin:0;
+    padding:0;
 }
 
 body
 {
-  background:#E4F3FE;
+    background:#E4F3FE;
 }
 
 
 /*ESTILOS DEL HEADER*/
 header .container{
-  background: #88CBFA;
-  padding-bottom: 5px;
+    background: #88CBFA;
+    padding-bottom: 5px;
 }
 
 header .primeraFila{
@@ -25,26 +25,26 @@ header .primeraFila{
 }
 
 header .logoH2{
-  font-family: VarianeScript, sans-serif;
-  font-size: 50px;
-  color:#0D389D;
-  text-shadow: 2px 2px 2px #000;
+    font-family: VarianeScript, sans-serif;
+    font-size: 50px;
+    color:#0D389D;
+    text-shadow: 2px 2px 2px #000;
 }
 
 header .imagenPerfil{
-  overflow: hidden;
-  display:inline-block;
-  float:left;
+    overflow: hidden;
+    display:inline-block;
+    float:left;
 }
 
 header .imagenPerfil img{
-  margin-top: 5px;
-  height: 60px;
-  width: 60px;
+    margin-top: 5px;
+    height: 60px;
+    width: 60px;
 }
 
 header .datosPerfil{
-  padding: 0px 0px;
+    padding: 0px 0px;
 }
 
 header .datosPerfil .nombre{
@@ -56,13 +56,13 @@ header .datosPerfil .nombre{
 
 header .datosPerfil .accion_perfil{
     clear:both;
-  margin: 0px 0px;
-  padding: 0px 0px;
+    margin: 0px 0px;
+    padding: 0px 0px;
 }
 header .datosPerfil .form-control{
-  padding: 0px 0px;
-  width: 30%;
-  display: inline-block;
+    padding: 0px 0px;
+    width: 30%;
+    display: inline-block;
 }
 
 header .accion_perfil
@@ -72,7 +72,7 @@ header .accion_perfil
 }
 
 header .buscador{
-  margin-top:20px;
+    margin-top:20px;
 }
 
 header .FormularioLogin{
@@ -92,9 +92,9 @@ header .invalid_login_message{
 /*Busqueda-Search.jsp*/
 
 .search .result:hover{
-  background: #BFE1FA;
-  cursor: pointer;
-  text-decoration: underline;
+    background: #BFE1FA;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .search .cabeceraTabla{
@@ -135,8 +135,11 @@ input{
 }
 
 .basicinfo{
-    text-align:left;
+    text-align:center;
     float: left;
+    width: 500px;
+    border-right: 2px solid #DDDDDD;
+    border-left: 2px solid #DDDDDD;
 }
 
 .contenedor h3{
@@ -170,9 +173,9 @@ input{
 /*Ver Reservas*/
 
 .VerReservas .reservas:hover{
-  background: #BFE1FA;
-  cursor: pointer;
-  text-decoration: underline;
+    background: #BFE1FA;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .VerReservas .cabeceraTabla{
