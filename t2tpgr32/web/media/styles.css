@@ -102,7 +102,7 @@ header .invalid_login_message{
     font-size: 18px;
 }
 
-///////////////*REGISTRO*/////////////
+/*Registro*/
 
 .registro input{
     display: inline-block;
@@ -123,7 +123,7 @@ header .invalid_login_message{
     margin-top: 15px;
 }
 
-///////////////*PERFIL*/////////////
+/*Perfil*/
 
 .perfilCliente .contenedor label {
     text-decoration: underline;
@@ -170,6 +170,23 @@ header .invalid_login_message{
 }
 
 .VerReserva .BloqueServicio .descripcionServicio{
-    width: 250px;
-    height: px;
+    width: 250px
 }
+
+.VerReserva .BloquePublicacion{
+    background: #BFE1FA;
+    border-style: solid;
+    border-color: #88CBFA;
+}
+
+.VerReserva .BloquePublicacion:hover{
+    background: #80C7FA ;
+    border-style: solid;
+    border-color: #4BB1F9 ;
+    cursor: pointer; 
+}
+
+.VerReserva .promosDiv{
+    display:inline-block;
+}
+

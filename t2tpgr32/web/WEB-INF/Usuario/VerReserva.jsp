@@ -53,7 +53,7 @@
                             DataServicio ds = (DataServicio)dpd.getDpub_();
                             DataDisponibilidad dd = dpd.getDd_();
                         %>
-                    <div class="BloqueServicio">
+                    <div class="BloqueServicio BloquePublicacion">
                         <span>Nombre: <%=ds.getNombre() %></span><br>
                         <div class="descripcionServicio">
                             <p class="pdescripcion">Descripción:<%=ds.getDescripcion() %> </p>
@@ -74,7 +74,7 @@
                     {%>
                        <span class="promociones">Promociones</span>
                         <br>
-                        <div class="promosDiv">
+                        <div class="promosDiv BloquePublicacion">
                             <%for(ParDPD dpd : dr.getdpd())
                             {
                                 if(dpd.getDpub_() instanceof DataPromocion)
@@ -90,11 +90,6 @@
                                 <span>Fecha inicio: <%=f.format(dd.getFechaIni()) %></span><br>
                                 <span>Fecha fin: <%=f.format(dd.getFechaFin()) %></span><br>
                                 <span>Cantidad: <%=dd.getCant() %></span><br>
-                                <div class="imagenes">
-                                    <img src="#" alt="Imagen #1" width="50px" height="50px">
-                                    <img src="#" alt="Imagen #2" width="50px" height="50px">
-                                    <img src="#" alt="Imagen #3" width="50px" height="50px">
-                                </div>
                             </div>
                     <%}}} %>
                 </div>

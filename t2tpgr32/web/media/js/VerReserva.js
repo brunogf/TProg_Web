@@ -17,6 +17,7 @@ $(document).ready(
                 }
                 $(p[i]).text(recortado);
             }
+            $(p[i]).css("margin","0px");
         }
     }
 );
