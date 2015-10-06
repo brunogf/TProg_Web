@@ -34,12 +34,17 @@
                     for(DataPublicacion p : publicaciones)
                     {
                         String pos;
-                        if (p instanceof DataServicio)
+                        String link;
+                        if (p instanceof DataServicio){
                             pos = "Servicio";
-                        else
+                           link = "VerInfoServicio?servicio=" + p.getNombre() +"&proveedor="+ p.getProveedor();
+                        }
+                        else{
                             pos = "Promoción";
+                            link = "#";
+                            }
             %>
-            <tr class="result" onclick="location.href='#'"><!--link a servlet ver info publicacion-->
+            <tr class="result" onclick="location.href='<%=link%>'"><!--link a servlet ver info publicacion-->
               <td><%=p.getNombre()%></td>
               <td><%=pos%></td>
               <td><%=p.getProveedor()%></td>
