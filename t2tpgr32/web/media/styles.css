@@ -164,14 +164,14 @@ input[type="submit"]{
     border-left: 2px solid #DDDDDD;
 }
 
-.contenedor h3{
+.perfilCliente .contenedor h3{
     color: #1b6d85;
     text-decoration: underline;
     text-align: center;
 
 }
 
-.perfil {
+.perfilCliente .perfil {
     margin-left:40px;
     text-align:left;
     float:left;
@@ -202,3 +202,31 @@ input[type="submit"]{
     color:#000;
     font-size: 18px;
 }
+
+/*Ver reserva*/
+
+.VerReserva .BloqueServicio{
+    display:inline-block;
+}
+
+.VerReserva .BloqueServicio .descripcionServicio{
+    width: 250px
+}
+
+.VerReserva .BloquePublicacion{
+    background: #BFE1FA;
+    border-style: solid;
+    border-color: #88CBFA;
+}
+
+.VerReserva .BloquePublicacion:hover{
+    background: #80C7FA ;
+    border-style: solid;
+    border-color: #4BB1F9 ;
+    cursor: pointer; 
+}
+
+.VerReserva .promosDiv{
+    display:inline-block;
+}
+

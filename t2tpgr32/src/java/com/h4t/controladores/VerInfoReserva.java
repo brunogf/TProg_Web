@@ -5,7 +5,6 @@
  */
 package com.h4t.controladores;
 
-import com.h4t.modelo.EstadoSesion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,18 +12,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.DataCliente;
-import tpgr32.DataUsuario;
 import tpgr32.FabricaControladores;
 import tpgr32.IControladorReserva;
-import tpgr32.IControladorUsuario;
 
 /**
  *
  * @author Nico
  */
-@WebServlet(name = "ListarReservasCliente", urlPatterns = {"/MisReservas"})
-public class ListarReservasCliente extends HttpServlet {
+@WebServlet(name = "VerInfoReserva", urlPatterns = {"/VerInfoReserva"})
+public class VerInfoReserva extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,17 +33,13 @@ public class ListarReservasCliente extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGGED_IN)
-        {
-            FabricaControladores fb = FabricaControladores.getInstancia();
-            IControladorReserva cr = fb.getControladorReserva();
-            IControladorUsuario cu = fb.getControladorUsuario();
-            DataCliente du = (DataCliente)cu.infoCliente((String)request.getSession().getAttribute("Usuario"));
-            request.setAttribute("reservas_usuario", du.getReservas());
-            request.getRequestDispatcher("/WEB-INF/Usuario/VerReservas.jsp").forward(request, response);
-        }
-        else
-            response.sendRedirect("");//redirecciona al inicio
+        //Requiere el nro de la reserva en request.getAtribute("nro");
+        int nro = Integer.parseInt((String)request.getParameter("nro"));
+        
+        FabricaControladores fab = FabricaControladores.getInstancia();
+        IControladorReserva cr = fab.getControladorReserva();
+        request.setAttribute("info_reserva_dr", cr.infoReserva(nro));
+        request.getRequestDispatcher("WEB-INF/Usuario/VerReserva.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
