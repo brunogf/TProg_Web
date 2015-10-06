@@ -18,7 +18,7 @@
     <div class="row primeraFila">
       <!--Logo-->
       <div class="logo col-xs-3">
-          <a class="linklogo" href="index.jsp"><h2 class="logoH2">H4T</h2></a>
+          <a class="linklogo" href="/t2tpgr32"><h2 class="logoH2">H4T</h2></a>
       </div>
       <!--Buscador-->
       <div class="col-xs-4">
