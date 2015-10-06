@@ -58,7 +58,7 @@
                             for (DataReserva dr : reservas) {
                         %>
 
-                        <tr class="reservas" onclick="location.href = '#'"><!--link a servlet ver info reserva-->
+                        <tr class="reservas" onclick="location.href = 'VerInfoReserva?nro=<%=dr.getNum()%>'"><!--link a servlet ver info reserva-->
                             <td><%=dr.getNum()%></td>
                             <td><%=dr.getStringEstado()%></td>
                             <td><%=dr.getCreacion().toString()%></td> 
