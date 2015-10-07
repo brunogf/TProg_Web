@@ -201,6 +201,15 @@ header .invalid_login_message{
 }
 
 /*Ver reserva*/
+.VerReserva{
+    background: #D2EBFD;
+    margin-top: 20px;
+    padding-bottom: 100px;
+}
+
+.VerReserva .infoReserva{
+    padding-left: 10px;
+}
 
 .VerReserva .BloqueServicio{
     display:inline-block;
@@ -214,6 +223,7 @@ header .invalid_login_message{
     background: #BFE1FA;
     border-style: solid;
     border-color: #C3E4FB;
+    margin-left: 10px;
 }
 
 .VerReserva .BloquePublicacion:hover{
@@ -225,5 +235,17 @@ header .invalid_login_message{
 
 .VerReserva .promosDiv{
     display:inline-block;
+}
+
+.VerReserva .Titulo{
+    text-align: center;
+}
+
+.VerReserva .servicios{
+    text-align: center;
+}
+
+.VerReserva .promociones{
+    text-align: center;
 }
 
