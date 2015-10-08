@@ -43,9 +43,7 @@ public class AgregarAlCarro extends HttpServlet {
              
          }
         
-        
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion pub = fab.getControladorPublicacion();
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
