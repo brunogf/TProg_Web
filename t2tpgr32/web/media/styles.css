@@ -144,48 +144,17 @@ header .invalid_login_message{
     outline: none; 
 }
 
-
-
-
 /*PERFIL*/
 
-.Perfil label {
-    text-decoration: underline;
-}
-
-.Perfil .basicinfo{
-    text-align:center;
-    float: left;
-    width: 500px;
-    border-right: 2px solid #DDDDDD;
-    border-left: 2px solid #DDDDDD;
-}
-
-.Perfil .contenedor h3{
-    color: #1b6d85;
-    text-decoration: underline;
+.perfil h3{
     text-align: center;
-
 }
 
-.Perfil {
-    margin-left:40px;
-    text-align:left;
-    float:left;
-}
-
-.Perfil .cabeceraTabla{
-    color:#000;
-    font-size: 18px;
-}
-
-.Perfil .reservas{
+.perfil .reservas:hover{
+    background: #BFE1FA;
     cursor: pointer;
     text-decoration: underline;
-    text-align: center;
-    overflow: auto;
 }
-
 
 /*Ver Reservas*/
 
@@ -226,4 +195,3 @@ header .invalid_login_message{
 .VerReserva .promosDiv{
     display:inline-block;
 }
-
