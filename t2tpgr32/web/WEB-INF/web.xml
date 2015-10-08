@@ -16,6 +16,10 @@
         <servlet-name>VerInfoservicio</servlet-name>
         <servlet-class>com.h4t.controladores.VerInfoservicio</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AgregarAlCarro</servlet-name>
+        <servlet-class>com.h4t.controladores.AgregarAlCarro</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>VerInfoservicio</servlet-name>
         <url-pattern>/VerInfoservicio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarAlCarro</servlet-name>
+        <url-pattern>/AgregarAlCarro</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
