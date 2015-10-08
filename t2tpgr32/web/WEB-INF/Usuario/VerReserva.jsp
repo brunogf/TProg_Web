@@ -4,6 +4,7 @@
     Author     : Nico
 --%>
 
+<%@page import="tpgr32.Estado"%>
 <%@page import="tpgr32.DataPromocion"%>
 <%@page import="tpgr32.DataDisponibilidad"%>
 <%@page import="tpgr32.DataServicio"%>
@@ -30,6 +31,10 @@
                 <span class="creacionReserva">Fecha de creación: <%=f.format(dr.getCreacion())%></span>
                 <br>
                 <span class="estadoReserva">Estado: <%=dr.getStringEstado()%></span> 
+                <%if((dr.getEstado() == Estado.Registrada) && (((String)session.getAttribute("Usuario")).equals(dr.getCliente()))){%>
+                <span> - </span>
+                <span onclick="location.href='CancelarReserva?nro=' + <%=dr.getNum()%>">Cancelar</span>
+                <%}%>
             </div>
             <br>
             <div class="row infoPublicacionesReserva">
