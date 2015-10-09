@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="media/styles.css">
 <script src="media/js/jquery.min.js"></script>
 <script src="media/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="media/js/jquery-ui/themes/smoothness/jquery-ui.min.css">
+<link rel="stylesheet" href="media/js/jquery-ui/themes/cupertino/jquery-ui.min.css">
 <script src="media/js/jquery-ui/jquery-ui.min.js"></script>
 <script src="media/js/Search.js"></script>
 <header>
@@ -18,7 +18,7 @@
     <div class="row primeraFila">
       <!--Logo-->
       <div class="logo col-xs-3">
-        <h2 class="logoH2">H4T</h2>
+          <a class="linklogo" href="/t2tpgr32"><h2 class="logoH2">H4T</h2></a>
       </div>
       <!--Buscador-->
       <div class="col-xs-4">

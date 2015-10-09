@@ -31,6 +31,10 @@ header .logoH2{
     text-shadow: 2px 2px 2px #000;
 }
 
+header .linklogo{
+    text-decoration: none;
+}
+
 header .imagenPerfil{
     overflow: hidden;
     display:inline-block;
@@ -102,70 +106,55 @@ header .invalid_login_message{
     font-size: 18px;
 }
 
-///////////////*REGISTRO*/////////////
+/*REGISTRO*/
 
-input{
-    display: inline-block;
-    width: 12em;
+.registro #formulario{
+    /*CENTRADO*/
+    position: absolute;
+    left: 38%;
+    
+    width: 300px;
+    min-height: 200px;
+    border-radius: 5px;
 }
 
-.registro .form-inline label{
-    color: #204d74; 
-    text-decoration: underline;
-}
-
-.registro .subbut{
-    padding: .2em .5em;
-}
-
-.registro .form-inline{
-    margin-left:50px;
-    margin-top: 15px;
-}
-
-///////////////*PERFIL*/////////////
-
-.contenedor label {
-    text-decoration: underline;
-}
-
-.contenedor{
-    margin-left: 50px;
-    font-size: 13px;
-}
-
-.basicinfo{
-    text-align:center;
-    float: left;
-    width: 500px;
-    border-right: 2px solid #DDDDDD;
-    border-left: 2px solid #DDDDDD;
-}
-
-.contenedor h3{
-    color: #1b6d85;
-    text-decoration: underline;
+.registro #titulo{
+    color: #00498f;
+    font-size: 1.6em;
     text-align: center;
-
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 5px;
 }
 
-.perfil {
-    margin-left:40px;
-    text-align:left;
-    float:left;
+.registro .form-control{
+    width: 300px;
+    margin-top: 10px;
+    height: 30px;
+    font-size: 1.1em;
+    background-color: #BFE1FA;
+    border: 0px;
 }
 
-.Perfil .cabeceraTabla{
-    color:#000;
-    font-size: 18px;
+.registro input[type="submit"]{
+    width:300px;
+    height: 35px;
+    margin-top: 15px;
+    font-size: 1.1em;
+    outline: none; 
 }
 
-.Perfil .reservas{
+/*PERFIL*/
+
+.perfil h3{
+    text-align: center;
+}
+
+.perfil .reservas:hover{
+    background: #BFE1FA;
     cursor: pointer;
     text-decoration: underline;
-    text-align: center;
 }
-
 
 /*Ver Reservas*/
 
@@ -178,4 +167,31 @@ input{
 .VerReservas .cabeceraTabla{
     color:#000;
     font-size: 18px;
+}
+
+/*Ver reserva*/
+
+.VerReserva .BloqueServicio{
+    display:inline-block;
+}
+
+.VerReserva .BloqueServicio .descripcionServicio{
+    width: 250px
+}
+
+.VerReserva .BloquePublicacion{
+    background: #BFE1FA;
+    border-style: solid;
+    border-color: #C3E4FB;
+}
+
+.VerReserva .BloquePublicacion:hover{
+    background: #80C7FA ;
+    border-style: solid;
+    border-color: #4BB1F9 ;
+    cursor: pointer; 
+}
+
+.VerReserva .promosDiv{
+    display:inline-block;
 }

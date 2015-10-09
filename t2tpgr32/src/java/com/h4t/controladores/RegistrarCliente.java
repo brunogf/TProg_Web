@@ -54,7 +54,7 @@ public class RegistrarCliente extends HttpServlet {
         try{
             Date fnac = df.parse(request.getParameter("fechanac").toString());                       
             cu.altaCliente(nick, nombre, apellido, mail, fnac, pass);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            response.sendRedirect("");
         }catch(Exception e){
             out.print("EXCEPCION!");
         }

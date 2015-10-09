@@ -56,8 +56,7 @@ public class Login extends HttpServlet {
                     request.getSession().setAttribute("Imagen","media/Images/" + origen.getName());
                 }
                 else
-                request.getSession().setAttribute("Imagen","media/Images/perfil.jpg");
-                //request.getRequestDispatcher("index.jsp").forward(request, response);
+                    request.getSession().setAttribute("Imagen","media/Images/perfil.jpg");
                 response.sendRedirect("");//redirecciona al inicio
                 }
                 break;

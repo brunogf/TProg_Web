@@ -4,7 +4,7 @@ $(document.getElementById("form-busqueda")).on("keyup", "#criterio", function(e)
     {
         $(document.getElementById("form-busqueda")).submit();
     }
-    $.get("AjaxRequest",{criterio : $("#criterio").val()} ,function(responseJson) {  
+    $.get("AjaxSearchRequest",{criterio : $("#criterio").val()} ,function(responseJson) {  
                 var arr =[];
                 $.each(responseJson, function(index, item) { 
                     arr[index] = item;      

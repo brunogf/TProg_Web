@@ -17,55 +17,50 @@
     <body>
         <jsp:include page="../templates/header.jsp"/>
         <% DataCliente info = (DataCliente) request.getAttribute("info"); %>
-        <% Set<DataReserva> reservas = info.getReservas(); %>
-        <% DateFormat df = new SimpleDateFormat("dd-MM-yyyy");%>
+        <% Set<DataReserva> reservas = info.getReservas();%>
 
-        <div class="contenedor Perfil">
-            <div class="basicinfo">
-                <h3>Información básica</h3>
+        <div class="container perfil">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#infobasica" data-toggle="tab">Información básica</a></li>
+                <li><a href="#reservas" data-toggle="tab">Reservas</a></li>
+            </ul>
 
-                <label class="rotulo">Nick:</label>
-                <label class="valor"><%=info.getNickname()%></label>
-                <br/>
-                <label class="rotulo">Email:</label>
-                <label class="valor"><%=info.getCorreo()%></label>
-                <br/>
-                <label class="rotulo">Nombre:</label>
-                <label class="valor"><%=info.getNombre()%></label>
-                <br/>
-                <label class="rotulo">Apellido:</label>
-                <label class="valor"><%=info.getApellido()%></label>
-                <br/>
-                <label class="rotulo">Fecha de Nacimiento:</label>
-                <label class="valor"><%= df.format(info.getFecha())%></label>
-                <br/>
-                <img class="imagen" width="200px" height="200px" src="${pageContext.session.getAttribute("Imagen")}" alt="Imagen Perfil" />
-                <br/>
-                <br/>
-            </div>
-            <div id="listar" class="perfil">
-                <h3>Reservas</h3>        
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="infobasica">
+                    <h3>Información Básica</h3>
+                    <br/>
+                    <label>Nombre:</label><%=info.getNombre()%>
+                    <br/>
+                    <label>Apellido:</label><%=info.getApellido()%>
+                    <br/>
+                    <label>Nickname:</label><%=info.getNickname()%>
+                    <br/>
+                    <label>Correo:</label><%=info.getCorreo()%>
+                </div>
 
-                <div class="col-xs-12 table-responsive">
-                    <table class="table">
-                        <tr class="cabeceraTabla">
-                            <td>#</td>
-                            <td>Estado</td>
-                            <td>Fecha Creación</td>
-                            <td>Cantidad Publicaciones</td>
-                        </tr>
-                        <%
-                            for (DataReserva dr : reservas) {
-                        %>
+                <div class="tab-pane fade" id="reservas">
+                    <h3>Reservas</h3>
 
-                        <tr class="reservas" onclick="location.href = '#'"><!--link a servlet ver info reserva-->
-                            <td><%=dr.getNum()%></td>
-                            <td><%=dr.getStringEstado()%></td>
-                            <td><%=dr.getCreacion().toString()%></td> 
-                            <td><%=dr.getdpd().size()%></td>
-                        </tr>
-                        <% }%>
-                    </table>
+                    <div class="col-xs-12 table-responsive">
+                        <table class="table">
+                            <tr class="cabeceraTabla">
+                                <td>#</td>
+                                <td>Estado</td>
+                                <td>Fecha Creación</td>
+                                <td>Cantidad Publicaciones</td>
+                            </tr>
+                            <%
+                                for (DataReserva dr : reservas) {
+                            %>
+
+                            <tr class="reservas" onclick="location.href = 'VerInfoReserva?nro=<%=dr.getNum()%>'"><!--link a servlet ver info reserva-->
+                                <td><%=dr.getNum()%></td>
+                                <td><%=dr.getStringEstado()%></td>
+                                <td><%=dr.getCreacion().toString()%></td> 
+                                <td><%=dr.getdpd().size()%></td>
+                            </tr>
+                            <% }%>
+                    </div>
                 </div>
             </div>
     </body>
