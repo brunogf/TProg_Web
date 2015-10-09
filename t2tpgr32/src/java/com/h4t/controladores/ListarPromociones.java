@@ -40,8 +40,8 @@ public class ListarPromociones extends HttpServlet {
             throws ServletException, IOException {
         FabricaControladores fab = FabricaControladores.getInstancia();
         IControladorPublicacion cp = fab.getControladorPublicacion();
-        Set<DataPromocion> SetPromociones = cp.listarPromociones();
-        request.setAttribute("promociones", SetPromociones);
+        Set<DataPromocion> Promociones = cp.listarPromociones();
+        request.setAttribute("Promociones", Promociones);
         request.getRequestDispatcher("WEB-INF/Search/InfoPromocion.jsp").forward(request, response);
     }
 

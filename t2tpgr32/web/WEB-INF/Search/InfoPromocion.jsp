@@ -19,30 +19,33 @@
         <jsp:include page="../templates/header.jsp"/>
         <div class="container">
           <div class="row">
-            <%--Acá van los resultados--%>           
-                Set<DataPromocion> promociones =(HashSet) request.getAttribute("promociones");
-                if (!promociones.isEmpty())
-                {
-                <div class="col-xs-12 table-responsive">
-                    <table class="table">
-                            <tr class="cabeceraTabla">
-                                <td>Nombre</td>
-                                <td>Proveedor</td>
-                            </tr>                            
-                        for(DataPromocion p : promociones)
-                        {                                    
-                            <tr class="result" onclick="location.href='#'"><!--link a servlet ver info publicacion-->
-                              <td>p.getNombre()</td>
-                              <td>p.getProveedor()</td>
-                            </tr>
-                        }
-                    </table></div>
-                    }
-                else{
+            <%--Acá van los resultados--%>       
+            <%
+                Set<DataPromocion> Promociones =(HashSet) request.getAttribute("Promociones");
+                if (!Promociones.isEmpty())
+                {%>                             
+                    <div class="col-xs-12 table-responsive">
+                        <table class="table">
+                                <tr class="cabeceraTabla">
+                                    <td>Nombre</td>
+                                    <td>Proveedor</td>
+                                </tr>    
+                        <%        
+                            for(DataPromocion p : Promociones)
+                            {%>                                   
+                                <tr class="result" onclick="location.href='#'"><!--link a servlet ver info publicacion-->
+                                    <td><%=p.getNombre()%></td>
+                                    <td><%=p.getProveedor()%></td>
+                                </tr>
+                            <%}%>
+                        </table></div>
+                <%}
+                else
+                {%>               
                     <div class="col-xs-12 noResult">
                         <span class="Message">No se encontró ninguna promoción</span>
                     </div>
-                    }
+                <%}%>    
           </div>
         </div>
     </body>
