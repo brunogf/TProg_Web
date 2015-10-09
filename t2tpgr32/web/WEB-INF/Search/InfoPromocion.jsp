@@ -17,7 +17,7 @@
     </head>
     <body>
         <jsp:include page="../templates/header.jsp"/>
-        <div class="container search">
+        <div class="container">
           <div class="row">
             <%--Acá van los resultados--%>           
                 Set<DataPromocion> promociones =(HashSet) request.getAttribute("promociones");
