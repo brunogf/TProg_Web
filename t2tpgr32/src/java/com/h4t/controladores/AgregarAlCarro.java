@@ -45,8 +45,9 @@ public class AgregarAlCarro extends HttpServlet {
         
          response.setContentType("text/html;charset=UTF-8");
          PrintWriter out = response.getWriter();
-         if(request.getSession().getAttribute("publicaciones-carro") == null){
-             Set<ParDPD> carro = new HashSet<ParDPD>();
+         Set<ParDPD> carro = (Set<ParDPD>)request.getSession().getAttribute("publicaciones-carro");
+         if(carro == null){
+             carro = new HashSet<ParDPD>();
              request.getSession().setAttribute("publicaciones-carro", request);
          }
          FabricaControladores fab = FabricaControladores.getInstancia();
@@ -67,6 +68,9 @@ public class AgregarAlCarro extends HttpServlet {
          
          ParDPD par = new ParDPD(dp,dd);
          
+         carro.add(par);
+         request.getSession().setAttribute("publicaciones-carro", carro);
+         response.sendRedirect("");
          }
          catch(Exception e){
             out.print("EXCEPCION!");
