@@ -52,7 +52,7 @@ public class AgregarAlCarro extends HttpServlet {
          }
          FabricaControladores fab = FabricaControladores.getInstancia();
          IControladorPublicacion pub = fab.getControladorPublicacion();
-         DataPublicacion dp = pub.infoServicio(request.getParameter("publicacion"),request.getParameter("proveedor"));
+         DataPublicacion dp = pub.infoServicio(request.getParameter("proveedor").toString(),request.getParameter("publicacion").toString());
          try{
          String fechaini = request.getParameter("fechaini").toString();
          String fechafin = request.getParameter("fechafin").toString();
@@ -65,15 +65,14 @@ public class AgregarAlCarro extends HttpServlet {
                                ,Integer.parseInt(datosfechafin[0]));
          DataDisponibilidad dd = new DataDisponibilidad(Integer.parseInt(request.getParameter("cantidad")),
                                      fechainicial,fechafinal);
-         
+      
          ParDPD par = new ParDPD(dp,dd);
-         
          carro.add(par);
          request.getSession().setAttribute("publicaciones-carro", carro);
          response.sendRedirect("");
          }
          catch(Exception e){
-            out.print("EXCEPCION!");
+            out.print(e.getMessage());
         }
          
          
