@@ -20,7 +20,10 @@
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script>
            $(function() {
-           $( "#datepicker" ).datepicker();
+           $( "#fechaini" ).datepicker();
+           });
+            $(function() {
+           $( "#fechafin" ).datepicker();
            });
         </script>
     </head>
@@ -87,7 +90,7 @@
 		           } --%>
 	               </script>
                        <% 
-                            String link = "AgregarAlCarro?publicacion =" + info.getNombre() + "&proveedor=" +info.getProveedor(); 
+                            String link = "AgregarAlCarro?publicacion=" + info.getNombre() + "&proveedor=" +info.getProveedor(); 
                        %>
                         <form id="submit_form" action= "<%=link%>" method="post">
 		           <label for="cantidad">Cantidad de reservas:</label>
@@ -95,11 +98,11 @@
                           <%-- <span id="error_cantidadnon" class="error">Debes ingresar una cantidad correcta</span> --%>
 		           <br/>
 		           <label for="fechaini">Fecha de inicio:</label>
-		           <input type="text" id="datepicker" name="fechaini"/>
+		           <input type="text" id="fechaini" name="fechaini"/>
 		           <%-- <span id="error_fechaini" class="error">Debes ingresar fecha posterior a la actual</span> --%>
 		           <br/>
                            <label for="fechafin">Fecha de fin:</label>
-                           <input type="text" id="fechafin" name="fechafin" value=""/>
+                           <input type="text" id="fechafin" name="fechafin"/>
                            <%-- <span id="error_fechafin" class="error">Debes ingresar fecha posterior a la de inicio</span> --%>
 		           <br/>
                            <%
