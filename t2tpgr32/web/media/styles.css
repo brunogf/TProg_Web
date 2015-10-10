@@ -13,6 +13,10 @@ body
     background:#E4F3FE;
 }
 
+.container {
+    background-color: white;
+}
+
 
 /*ESTILOS DEL HEADER*/
 header .container{
@@ -146,7 +150,7 @@ header .invalid_login_message{
 
 /*PERFIL*/
 
-.perfil h3{
+.perfil h3.titulo{
     text-align: center;
 }
 
@@ -154,6 +158,14 @@ header .invalid_login_message{
     background: #BFE1FA;
     cursor: pointer;
     text-decoration: underline;
+}
+
+.perfil .nav-tabs{
+    background-color: #E4F3FE;
+}
+
+.perfil td h4{
+    color: black;
 }
 
 /*Ver Reservas*/
@@ -195,3 +207,4 @@ header .invalid_login_message{
 .VerReserva .promosDiv{
     display:inline-block;
 }
+
