@@ -39,8 +39,8 @@ public class VerInfoPromocion extends HttpServlet {
         IControladorPublicacion cp = fab.getControladorPublicacion();       
         String promocion = (String)request.getParameter("promocion");
         String proveedor = (String)request.getParameter("proveedor");
-        request.setAttribute("info_promocion", cp.infoPromocion(promocion, proveedor));
-        request.getRequestDispatcher("/InfoPromocion.jsp").forward(request, response);
+        request.setAttribute("info_promocion", cp.infoPromocion(proveedor, promocion));
+        request.getRequestDispatcher("WEB-INF/Search/InfoPromocion.jsp").forward(request, response);
         
     }
 

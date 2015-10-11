@@ -15,7 +15,6 @@
         <jsp:include page="../templates/header.jsp"/>
         <div class="container">
           <div class="row">  
-              
               <% DataPromocion info_promocion = (DataPromocion) request.getAttribute("info_promocion");%>
               <h3>Información de la promoción</h3>
                     <br/>
