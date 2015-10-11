@@ -195,3 +195,17 @@ header .invalid_login_message{
 .VerReserva .promosDiv{
     display:inline-block;
 }
+
+/* Listar Promociones */
+
+.Promociones .result:hover{
+    background: #BFE1FA;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.Promociones .cabeceraTabla{
+    color: #000;
+    font-size: 18px;
+}
+

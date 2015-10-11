@@ -26,7 +26,7 @@
                 {%>                             
                     <div class="col-xs-12 table-responsive">
                         <table class="table">
-                                <tr class="cabeceraTablaPromo">
+                                <tr class="cabeceraTabla">
                                     <td>Nombre</td>
                                     <td>Proveedor</td>
                                 </tr>    
@@ -49,3 +49,6 @@
                     </div>
                 <%}%>    
           </div>
+        </div>
+    </body>
+</html>
