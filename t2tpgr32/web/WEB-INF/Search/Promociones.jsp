@@ -34,7 +34,7 @@
                             String link;
                             for(DataPromocion p : Promociones)
                             {    
-                                link = "VerInfoPromocion?promocion=" + p.getNombre() +"&proveedor="+ p.getProveedor();%>
+                                link = "VerInfoPublicacion?Promocion=" + p.getNombre() +"&proveedor="+ p.getProveedor();%>
                                 <tr class="result" onclick="location.href='<%=link%>'">
                                     <td><%=p.getNombre()%></td>
                                     <td><%=p.getProveedor()%></td>
