@@ -22,27 +22,50 @@
     <body>
         <jsp:include page="WEB-INF/templates/header.jsp"/>
         <% DataServicio info = (DataServicio)request.getAttribute("info_servicio"); %>
-        <div class = "container">
-                <h3><%=info.getNombre()%></h3>
+        <div class = "container InfoServicio">
+            <div class="row">    
+                <div class="col-xs-4">
+                    <p>  IMAGENES </p>
+                </div>
+                <div class="col-xs-8">
+                  <h3><%=info.getNombre()%></h3>
+                  <br/>
+                   <p><%=info.getDescripcion()%></p>
                 <br/>
-                <label>Descripción:</label>
-                <p><%=info.getDescripcion()%></p>
+                </div>
+            </div>
                 <br/>
-                <br/>
-                <label>Precio:</label>
-                <label><%=info.getPrecio()%></label>
-                <br/>
-                <label>Origen:</label>
-                <label><%= info.getCiudadOrigen()%></label>
-                <br/>
-                <label>Destino:</label>
-                <label><%= info.getCiudadDestino()%></label>
-                <br/>
-                <label>Proveedor:</label>
-                <label><%=info.getProveedor()%></label>
-                <br/>
-                <br/>
-                <%
+                <div class ="row">
+                    <div class ="col-xs-4 table-responsive">
+                        <table class ="table">
+                          <tr class ="active">
+                          <td>Proveedor:</td>
+                          <td class="result">
+                              <%=info.getProveedor() %>
+                          </td>
+                          </tr>
+                          <tr class = "success">
+                          <td>Origen:</td>
+                          <td class="result">
+                              <%=info.getCiudadOrigen() %>
+                          </td>
+                          </tr>
+                          <tr class="active">
+                          <td>Destino:</td>
+                          <td class="result">
+                              <%=info.getCiudadDestino() %>
+                          </td>
+                          </tr>
+                          <tr class= "success">
+                          <td>Precio:</td>
+                          <td class="result">
+                              <%=info.getPrecio() %>
+                          </td>
+                          </tr>
+                        </table>
+                    </div>
+                          <div class ="col-xs-8">
+                              <%
             if (request.getSession().getAttribute("estado_sesion") != null)
             {
                 switch((EstadoSesion)request.getSession().getAttribute("estado_sesion")){
@@ -84,22 +107,24 @@
                        <% 
                             String link = "AgregarAlCarro?publicacion=" + info.getNombre() + "&proveedor=" +info.getProveedor(); 
                        %>
-                        <form id="submit_form" action= "<%=link%>" method="post">
+                        <form class="form-horizontal" id="submit_form" action= "<%=link%>" method="post">
+                            <div class ="form-group">
 		           <label for="cantidad">Cantidad de reservas:</label>
 		           <input type="number" id="cantidad" name="cantidad" value="1"/>
                           <%-- <span id="error_cantidadnon" class="error">Debes ingresar una cantidad correcta</span> --%>
-		           <br/>
+                            </div>
+                            <div class ="form-group">
 		           <label for="fechaini">Fecha de inicio:</label>
 		           <input type="date" id="fechaini" name="fechaini"/>
+                            </div>
 		           <%-- <span id="error_fechaini" class="error">Debes ingresar fecha posterior a la actual</span> --%>
-		           <br/>
+		           <div class ="form-group">
                            <label for="fechafin">Fecha de fin:</label>
-                           <input  type="date" id="fechafin" name="fechafin"/> >
-		           <br/>
-                           <%
-                            
-                            %>
+                           <input  type="date" id="fechafin" name="fechafin"/> 
+                           </div>
+                           <div class ="form-group"> 
 		         <button type='submit' class='btn btn-default carro'><span class="glyphicon glyphicon-shopping-cart"></span>Agregar al Carro</button>
+                           </div>
 	               </form>
 
                                     
@@ -118,8 +143,11 @@
                 para agregar al Carro de Compras</p>
            
             <%};
-        %>                
-            </div>
+        %>   
+                          </div>
+                </div>
+                             
+      </div>
                 
     </body>
 </html>
