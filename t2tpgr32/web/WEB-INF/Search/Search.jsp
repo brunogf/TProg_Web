@@ -35,7 +35,8 @@
                     for(DataPublicacion p : publicaciones)
                     {
                         String pos;
-                        if (p instanceof DataServicio)
+                        String link;
+                        if (p instanceof DataServicio){
                             pos = "Servicio";
                         else
                             pos = "Promocion";
