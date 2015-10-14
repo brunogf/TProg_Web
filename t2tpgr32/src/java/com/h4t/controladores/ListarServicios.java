@@ -38,7 +38,7 @@ public class ListarServicios extends HttpServlet {
         IControladorPublicacion cp = fab.getControladorPublicacion();
         Set<DataServicio> Servicios = cp.listarServicios();
         request.setAttribute("Servicios", Servicios);
-        request.getRequestDispatcher("WEB-INF/Search/Servicios.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/Publicacion/Servicios.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

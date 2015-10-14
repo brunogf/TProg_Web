@@ -4,10 +4,8 @@
     Author     : spesamosca
 --%>
 
-<%@page import="tpgr32.DataServicio"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Set"%>
-<%@page import="tpgr32.DataPublicacion"%>
 <%@page import="tpgr32.DataPromocion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

@@ -41,12 +41,12 @@ public class VerInfoPublicacion extends HttpServlet {
         String proveedor = (String)request.getParameter("proveedor");
         if (!(promocion == null)){
             request.setAttribute("info_promocion", cp.infoPromocion(proveedor, promocion));
-            request.getRequestDispatcher("WEB-INF/Search/InfoPublicacion.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/Publicacion/InfoPublicacion.jsp").forward(request, response);
         }
         else{
             String servicio = (String)request.getParameter("Servicio");
             request.setAttribute("info_servicio", cp.infoServicio(proveedor, servicio));
-            request.getRequestDispatcher("WEB-INF/Search/InfoPublicacion.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/Publicacion/InfoPublicacion.jsp").forward(request, response);
         }
     }
 
