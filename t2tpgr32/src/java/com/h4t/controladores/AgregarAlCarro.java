@@ -48,22 +48,17 @@ public class AgregarAlCarro extends HttpServlet {
          Set<ParDPD> carro = (Set<ParDPD>)request.getSession().getAttribute("publicaciones-carro");
          if(carro == null){
              carro = new HashSet<ParDPD>();
-             request.getSession().setAttribute("publicaciones-carro", request);
+             request.getSession().setAttribute("publicaciones-carro", carro);
          }
          FabricaControladores fab = FabricaControladores.getInstancia();
          IControladorPublicacion pub = fab.getControladorPublicacion();
          DataPublicacion dp = pub.infoServicio(request.getParameter("proveedor").toString(),request.getParameter("publicacion").toString());
          try{
-         String fechaini = request.getParameter("fechaini").toString();
-         String fechafin = request.getParameter("fechafin").toString();
-         String datosfechaini[] = fechaini.split("[/]");
-         String datosfechafin[] = fechafin.split("[/]");
-         
-         Date fechainicial =  new Date(Integer.parseInt(datosfechaini[2]),Integer.parseInt(datosfechaini[1])
-                               ,Integer.parseInt(datosfechaini[0]));
-         Date fechafinal =  new Date(Integer.parseInt(datosfechafin[2]),Integer.parseInt(datosfechafin[1])
-                               ,Integer.parseInt(datosfechafin[0]));
-         DataDisponibilidad dd = new DataDisponibilidad(Integer.parseInt(request.getParameter("cantidad")),
+          DateFormat dfini = new SimpleDateFormat("dd-MM-yyyy");
+          DateFormat dffin = new SimpleDateFormat("dd-MM-yyyy");
+          Date fechainicial = dfini.parse(request.getParameter("fechaini").toString());
+          Date fechafinal = dffin.parse(request.getParameter("fechafin").toString());
+           DataDisponibilidad dd = new DataDisponibilidad(Integer.parseInt(request.getParameter("cantidad")),
                                      fechainicial,fechafinal);
       
          ParDPD par = new ParDPD(dp,dd);
