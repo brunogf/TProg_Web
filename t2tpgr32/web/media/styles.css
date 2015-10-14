@@ -150,10 +150,6 @@ header .invalid_login_message{
 
 /*PERFIL*/
 
-.perfil h3.titulo{
-    text-align: center;
-}
-
 .perfil .reservas:hover{
     background: #BFE1FA;
     cursor: pointer;
@@ -168,6 +164,23 @@ header .invalid_login_message{
     color: black;
 }
 
+.perfil img{
+    margin: auto;
+    width: 10%;
+    margin-top: 20px; 
+}
+
+.perfil .nom{
+    margin: auto;
+}
+
+.perfil #infobasica{
+    margin-left: 15px; 
+}
+
+.perfil .tab-content{
+    margin-top: 30px; 
+}
 /*Ver Reservas*/
 
 .VerReservas .reservas:hover{
