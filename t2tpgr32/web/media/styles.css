@@ -221,3 +221,7 @@ header .invalid_login_message{
     display:inline-block;
 }
 
+.InfoServicio label{
+    padding-left: 40px;
+    padding-right: 40px;
+}
