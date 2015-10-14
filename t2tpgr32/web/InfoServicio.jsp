@@ -109,8 +109,8 @@
                        %>
                         <form class="form-horizontal" id="submit_form" action= "<%=link%>" method="post">
                             <div class ="form-group">
-		           <label for="cantidad">Cantidad de reservas:</label>
-		           <input type="number" id="cantidad" name="cantidad" value="1"/>
+		           <label for="cantidad" class="col-xs-3">Cantidad de reservas:</label>
+		           <input type="number" id="cantidad" class="col-xs-4" name="cantidad" value="1"/>
                           <%-- <span id="error_cantidadnon" class="error">Debes ingresar una cantidad correcta</span> --%>
                             </div>
                             <div class ="form-group">
