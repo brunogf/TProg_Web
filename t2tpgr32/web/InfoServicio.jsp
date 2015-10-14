@@ -114,16 +114,16 @@
                           <%-- <span id="error_cantidadnon" class="error">Debes ingresar una cantidad correcta</span> --%>
                             </div>
                             <div class ="form-group">
-		           <label for="fechaini">Fecha de inicio:</label>
-		           <input type="date" id="fechaini" name="fechaini"/>
+		           <label for="fechaini" class="col-xs-3">Fecha de inicio:</label>
+		           <input type="date" id="fechaini" class="col-xs-4" name="fechaini"/>
                             </div>
 		           <%-- <span id="error_fechaini" class="error">Debes ingresar fecha posterior a la actual</span> --%>
 		           <div class ="form-group">
-                           <label for="fechafin">Fecha de fin:</label>
-                           <input  type="date" id="fechafin" name="fechafin"/> 
+                           <label for="fechafin" class="col-xs-3">Fecha de fin:</label>
+                           <input  type="date" id="fechafin" class="col-xs-4" name="fechafin"/> 
                            </div>
                            <div class ="form-group"> 
-		         <button type='submit' class='btn btn-default carro'><span class="glyphicon glyphicon-shopping-cart"></span>Agregar al Carro</button>
+		         <button type='submit' class='btn btn-default carro'><span class="glyphicon glyphicon-shopping-cart col-xs-3"></span>Agregar al Carro</button>
                            </div>
 	               </form>
 
