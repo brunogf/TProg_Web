@@ -18,14 +18,6 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script>
-           $(function() {
-           $( "#fechaini" ).datepicker();
-           });
-            $(function() {
-           $( "#fechafin" ).datepicker();
-           });
-        </script>
     </head>
     <body>
         <jsp:include page="WEB-INF/templates/header.jsp"/>
@@ -98,12 +90,11 @@
                           <%-- <span id="error_cantidadnon" class="error">Debes ingresar una cantidad correcta</span> --%>
 		           <br/>
 		           <label for="fechaini">Fecha de inicio:</label>
-		           <input type="text" id="fechaini" name="fechaini"/>
+		           <input type="date" id="fechaini" name="fechaini"/>
 		           <%-- <span id="error_fechaini" class="error">Debes ingresar fecha posterior a la actual</span> --%>
 		           <br/>
                            <label for="fechafin">Fecha de fin:</label>
-                           <input type="text" id="fechafin" name="fechafin"/>
-                           <%-- <span id="error_fechafin" class="error">Debes ingresar fecha posterior a la de inicio</span> --%>
+                           <input  type="date" id="fechafin" name="fechafin"/> >
 		           <br/>
                            <%
                             
