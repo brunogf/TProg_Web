@@ -49,7 +49,7 @@
         <div class="col-xs-8">
             <button class="btn btn-sm btn-primary">Info Proveedor</button>
             <button type="button" class="btn btn-sm btn-primary" onclick="location.href = 'ListarPromociones'">Info Promoción</button>   
-            <button class="btn btn-sm btn-primary">Info Servicio</button>
+            <button class="btn btn-sm btn-primary" onclick="location.href = 'ListarServicios'">Info Servicio</button>
         </div>
          <%
             if (request.getSession().getAttribute("estado_sesion") != null)

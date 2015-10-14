@@ -1,14 +1,12 @@
 <%-- 
-    Document   : Promociones
-    Created on : 10/10/2015, 10:28:37 PM
+    Document   : Servicios
+    Created on : 14/10/2015, 10:47:15 AM
     Author     : spesamosca
 --%>
 
 <%@page import="tpgr32.DataServicio"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Set"%>
-<%@page import="tpgr32.DataPublicacion"%>
-<%@page import="tpgr32.DataPromocion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,12 +15,12 @@
     </head>
     <body>
         <jsp:include page="../templates/header.jsp"/>
-        <div class="container Promociones">
+        <div class="container Servicios">
           <div class="row">
             <%--Acá van los resultados--%>       
             <%
-                Set<DataPromocion> Promociones =(HashSet) request.getAttribute("Promociones");
-                if (!Promociones.isEmpty())
+                Set<DataServicio> Servicios =(HashSet) request.getAttribute("Servicios");
+                if (!Servicios.isEmpty())
                 {%>                             
                     <div class="col-xs-12 table-responsive">
                         <table class="table">
@@ -32,12 +30,12 @@
                                 </tr>    
                         <%    
                             String link;
-                            for(DataPromocion p : Promociones)
+                            for(DataServicio s : Servicios)
                             {    
-                                link = "VerInfoPublicacion?Promocion=" + p.getNombre() +"&proveedor="+ p.getProveedor();%>
+                                link = "VerInfoPublicacion?Servicio=" + s.getNombre() +"&proveedor="+ s.getProveedor();%>
                                 <tr class="result" onclick="location.href='<%=link%>'">
-                                    <td><%=p.getNombre()%></td>
-                                    <td><%=p.getProveedor()%></td>
+                                    <td><%=s.getNombre()%></td>
+                                    <td><%=s.getProveedor()%></td>
                                 </tr>
                             <%}%>
                         </table></div>
@@ -45,7 +43,7 @@
                 else
                 {%>               
                     <div class="col-xs-12 noResult">
-                        <span class="Message">No se encontró ninguna promoción</span>
+                        <span class="Message">No se encontró ningún servicio</span>
                     </div>
                 <%}%>    
           </div>

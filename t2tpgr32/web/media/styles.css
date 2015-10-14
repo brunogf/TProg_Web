@@ -209,3 +209,14 @@ header .invalid_login_message{
     font-size: 18px;
 }
 
+.Servicios .result:hover{
+    background: #BFE1FA;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.Servicios .cabeceraTabla{
+    color: #000;
+    font-size: 18px;
+}
+

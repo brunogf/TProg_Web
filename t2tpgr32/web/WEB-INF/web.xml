@@ -23,7 +23,7 @@
     <servlet>
         <servlet-name>Promociones</servlet-name>
         <servlet-class>Promociones</servlet-class>
-    </servlet>
+    </servlet>   
     <servlet>
         <servlet-name>ListarServicios</servlet-name>
         <servlet-class>com.h4t.controladores.ListarServicios</servlet-class>
@@ -51,7 +51,7 @@
     <servlet-mapping>
         <servlet-name>Promociones</servlet-name>
         <url-pattern>/Promociones</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>   
     <servlet-mapping>
         <servlet-name>ListarServicios</servlet-name>
         <url-pattern>/ListarServicios</url-pattern>
@@ -61,4 +61,6 @@
             30
         </session-timeout>
     </session-config>
-</web-app>
+
+   / *
+    </web-app>
