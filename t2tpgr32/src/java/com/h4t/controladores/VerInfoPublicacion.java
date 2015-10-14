@@ -7,15 +7,14 @@ package com.h4t.controladores;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.DataPromocion;
-import tpgr32.FabricaControladores;
-import tpgr32.IControladorPublicacion;
+import tpgr32.*;
 
 /**
  *
@@ -36,17 +35,19 @@ public class VerInfoPublicacion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cp = fab.getControladorPublicacion();       
+        IControladorPublicacion cp = fab.getControladorPublicacion();     
+        IControladorUsuario cu = fab.getControladorUsuario();
         String promocion = (String)request.getParameter("Promocion");
         String proveedor = (String)request.getParameter("proveedor");
-        if (!(promocion == null)){
-            request.setAttribute("info_promocion", cp.infoPromocion(proveedor, promocion));
-            request.getRequestDispatcher("WEB-INF/Publicacion/InfoPublicacion.jsp").forward(request, response);
+        if (promocion != null){
+            request.setAttribute("info_promocion", cp.infoPromocion(proveedor, promocion));   
+            request.setAttribute("servicios_de_promocion", cp.infoPromocion(proveedor, promocion).getServicios());
+            request.getRequestDispatcher("WEB-INF/Publicacion/InfoPromocion.jsp").forward(request, response);
         }
         else{
             String servicio = (String)request.getParameter("Servicio");
             request.setAttribute("info_servicio", cp.infoServicio(proveedor, servicio));
-            request.getRequestDispatcher("WEB-INF/Publicacion/InfoPublicacion.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/Publicacion/InfoServicio.jsp").forward(request, response);
         }
     }
 

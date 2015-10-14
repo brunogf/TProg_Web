@@ -1,9 +1,11 @@
 <%-- 
-    Document   : InfoPromocion
-    Created on : 10/10/2015, 03:27:14 PM
+    Document   : InfoServicio
+    Created on : 14/10/2015, 02:26:01 PM
     Author     : spesamosca
 --%>
 
+<%@page import="java.util.HashSet"%>
+<%@page import="java.util.Set"%>
 <%@page import="com.h4t.modelo.EstadoSesion"%>
 <%@page import="tpgr32.DataServicio"%>
 <%@page import="tpgr32.DataPromocion"%>
@@ -16,32 +18,8 @@
     <body>
         <jsp:include page="../templates/header.jsp"/>
         <div class="container"> 
-              <% DataPromocion info_promocion = (DataPromocion) request.getAttribute("info_promocion");
-                 DataServicio info_servicio = (DataServicio) request.getAttribute("info_servicio");
-                 if (!(info_promocion == null)){
-              %>
-                    <h3>Información de la promoción</h3>
-                        <br/>
-                        <label>Nombre:</label><%=info_promocion.getNombre()%>
-                        <br/>
-                        <label>Proveedor:</label><%=info_promocion.getProveedor()%>
-                        <br/>
-                        <label>Descuento:</label><%=info_promocion.getDescuento()%>
-                        <br/>
-                        <label>Precio Total:</label><%=info_promocion.getPrecioTotal()%>
-                <%}
-                 else{%>
-                    <%--<h3>Información del servicio</h3>
-                        <br/>
-                        <label>Nombre:</label><%=info_servicio.getNombre()%>
-                        <br/>
-                        <label>Proveedor:</label><%=info_servicio.getProveedor()%>
-                        <br/>
-                        <label>Descripción:</label><%=info_servicio.getDescripcion()%>
-                        <br/>
-                        <label>Precio:</label><%=info_servicio.getPrecio()%> --%>
-                    
-                    <h3><%=info_servicio.getNombre()%></h3>
+            <%DataServicio info_servicio = (DataServicio) request.getAttribute("info_servicio");%>
+            <h3><%=info_servicio.getNombre()%></h3>
                 <br/>
                 <label>Descripción:</label>
                 <p><%=info_servicio.getDescripcion()%></p>
@@ -136,9 +114,7 @@
                 para agregar al Carro de Compras</p>
            
             <%};
-        %>
-                    
-                    <%}%>
+        %>                   
 
         </div>
     </body>
