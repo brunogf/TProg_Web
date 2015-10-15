@@ -5,28 +5,22 @@
  */
 package com.h4t.controladores;
 
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Set;
-import javax.imageio.ImageIO;
-import javax.imageio.ImageWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.*;
+import tpgr32.FabricaControladores;
+import tpgr32.IControladorPublicacion;
+import tpgr32.IControladorUsuario;
 
 /**
  *
- * @author piñe
+ * @author spesamosca
  */
-@WebServlet(name = "VerInfoServicio", urlPatterns = {"/VerInfoServicio"})
-public class VerInfoservicio extends HttpServlet {
+public class VerInfoPromocion extends HttpServlet {
+    private Object cp;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,32 +33,14 @@ public class VerInfoservicio extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
-        String servicio = (String)request.getParameter("Servicio");
-        String proveedor = (String)request.getParameter("proveedor");
-        
         FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion pub = fab.getControladorPublicacion();
-        DataServicio dts = pub.infoServicio(proveedor, servicio);
-        Set<Image> imagenes = dts.getImagenes();
-        int num = 0;
-        for (Image i : imagenes){
-            BufferedImage bi = (BufferedImage)i;
-            String destino = getServletContext().getRealPath("/") + "media\\Images\\"+servicio+String.valueOf(num)+".jpg";
-            File arch = new File(destino);
-            if (!(arch.exists())){
-              BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),
-			bi.getHeight(), BufferedImage.TYPE_INT_RGB);
-	      newBufferedImage.createGraphics().drawImage(bi, 0, 0, Color.WHITE, null);
-              ImageIO.write(newBufferedImage,"jpg",arch);
-            }
-            String atr = "imagen"+String.valueOf(num);
-            request.setAttribute(atr,"media/Images/"+servicio+String.valueOf(num)+".jpg");
-            num++;
-        }
-        request.setAttribute("info_servicio",pub.infoServicio(proveedor, servicio));
-        request.getRequestDispatcher("/InfoServicio.jsp").forward(request, response);
+        IControladorPublicacion cp = fab.getControladorPublicacion();     
+        IControladorUsuario cu = fab.getControladorUsuario();
+        String promocion = (String)request.getParameter("Promocion");
+        String proveedor = (String)request.getParameter("proveedor");
+        request.setAttribute("info_promocion", cp.infoPromocion(proveedor, promocion));   
+        request.setAttribute("servicios_de_promocion", cp.infoPromocion(proveedor, promocion).getServicios());
+        request.getRequestDispatcher("InfoPromocion.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
