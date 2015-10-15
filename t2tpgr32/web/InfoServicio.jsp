@@ -17,36 +17,51 @@
     </head>
     <body>
         <jsp:include page="WEB-INF/templates/header.jsp"/>
-        <% DataServicio info = (DataServicio)request.getAttribute("info_servicio"); %>
+        <% DataServicio info = (DataServicio)request.getAttribute("info_servicio"); 
+           String imagen0 = (String)request.getAttribute("imagen0");
+           String imagen1 = (String)request.getAttribute("imagen1");
+           String imagen2 = (String)request.getAttribute("imagen2");
+        %>
         <div class = "container InfoServicio">
             <div class="row">    
                 <div class="col-xs-4">
                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
                       <!-- Indicators -->
                       <ol class="carousel-indicators">
+                         <% if (imagen0 != null)
+                         { %>
                          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                         <% } 
+                         if (imagen1 != null)
+                         { %>
                          <li data-target="#myCarousel" data-slide-to="1"></li>
+                         <% }
+                         if (imagen2 != null)
+                         { %>
                          <li data-target="#myCarousel" data-slide-to="2"></li>
-                         <li data-target="#myCarousel" data-slide-to="3"></li>
+                         <% } %>
                       </ol>
 
                       <!-- Wrapper for slides -->
                       <div class="carousel-inner" role="listbox">
-                         <div class="item active">
-                            <img src="media/Images/IM1.jpg" alt="Chania">
+                         <% if (imagen0 != null)
+                         { %>
+                          <div class="item active">
+                            <img src="C:/Users/Foto0069.jpg" alt="hola">
                          </div>
-
+                         <% }
+                          if (imagen1 != null)
+                          { %>
                          <div class="item">
-                            <img src="media/Images/IM2.jpg" alt="Chania">
+                            <img src='<%=imagen1%>' alt="Chania">
                          </div>
-
+                          <% }
+                          if (imagen2 != null)
+                          { %>
                          <div class="item">
-                            <img src="media/Images/IM3.jpg" alt="Flower">
+                            <img src='<%=imagen2%>' alt="Flower">
                          </div>
-
-                         <div class="item">
-                            <img src="media/Images/IM4.jpg" alt="Flower">
-                         </div>
+                          <% } %>
                       </div>
 
                      <!-- Left and right controls -->

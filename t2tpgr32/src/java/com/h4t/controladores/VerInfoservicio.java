@@ -5,8 +5,14 @@
  */
 package com.h4t.controladores;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Set;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,6 +45,19 @@ public class VerInfoservicio extends HttpServlet {
         
         FabricaControladores fab = FabricaControladores.getInstancia();
         IControladorPublicacion pub = fab.getControladorPublicacion();
+        DataServicio dts = pub.infoServicio(proveedor, servicio);
+        Set<Image> imagenes = dts.getImagenes();
+        int num = 0;
+        for (Image i : imagenes){
+            BufferedImage bi = (BufferedImage)i;
+            String destino = getServletContext().getRealPath("/") + "media\\Images\\"+servicio+String.valueOf(num)+".jpg";
+            File arch = new File(destino);
+            if (!(arch.exists()))
+              ImageIO.write(bi,"jpg",arch);
+            String atr = "imagen"+String.valueOf(num);
+            request.setAttribute(atr,destino);
+            num++;
+        }
         request.setAttribute("info_servicio",pub.infoServicio(proveedor, servicio));
         request.getRequestDispatcher("/InfoServicio.jsp").forward(request, response);
     }
