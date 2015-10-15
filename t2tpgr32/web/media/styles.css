@@ -262,3 +262,7 @@ header .invalid_login_message{
     color: #000;
     font-size: 14px;
 }
+
+.InfoServicio {
+    padding: 10px;
+}
