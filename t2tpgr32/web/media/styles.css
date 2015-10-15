@@ -225,3 +225,40 @@ header .invalid_login_message{
 .InfoServicio .precio {
     font-size: 50px;
 }
+
+/* Listar Promociones */
+
+.Promociones .result:hover{
+    background: #BFE1FA;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.Promociones .cabeceraTabla{
+    color: #000;
+    font-size: 18px;
+}
+
+/* Listar Servicios */
+
+.Servicios .result:hover{
+    background: #BFE1FA;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.Servicios .cabeceraTabla{
+    color: #000;
+    font-size: 18px;
+}
+
+.InfoPromocion .result:hover{
+    background: #BFE1FA;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.InfoPromocion .cabeceraTabla{
+    color: #000;
+    font-size: 14px;
+}

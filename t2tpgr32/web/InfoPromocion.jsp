@@ -17,7 +17,7 @@
     </head>
     <body>
         <jsp:include page="WEB-INF/templates/header.jsp"/>
-        <div class="container"> 
+        <div class="container InfoPromocion"> 
               <% 
                  DataPromocion info_promocion = (DataPromocion) request.getAttribute("info_promocion");
                  Set<DataServicio> servicios_de_promocion =(HashSet) request.getAttribute("servicios_de_promocion");                 
