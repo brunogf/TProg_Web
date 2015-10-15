@@ -5,6 +5,7 @@
  */
 package com.h4t.controladores;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -52,8 +53,12 @@ public class VerInfoservicio extends HttpServlet {
             BufferedImage bi = (BufferedImage)i;
             String destino = getServletContext().getRealPath("/") + "media\\Images\\"+servicio+String.valueOf(num)+".jpg";
             File arch = new File(destino);
-            if (!(arch.exists()))
-              ImageIO.write(bi,"jpg",arch);
+            if (!(arch.exists())){
+              BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),
+			bi.getHeight(), BufferedImage.TYPE_INT_RGB);
+	      newBufferedImage.createGraphics().drawImage(bi, 0, 0, Color.WHITE, null);
+              ImageIO.write(newBufferedImage,"jpg",arch);
+            }
             String atr = "imagen"+String.valueOf(num);
             request.setAttribute(atr,"media/Images/"+servicio+String.valueOf(num)+".jpg");
             num++;
