@@ -163,7 +163,7 @@
 		           } --%>
 	               </script>
                        <% 
-                            String link = "AgregarAlCarro?publicacion=" + info.getNombre() + "&proveedor=" +info.getProveedor(); 
+                            String link = "AgregarAlCarro?servicio=" + info.getNombre() + "&proveedor=" +info.getProveedor(); 
                        %>
                         <form class="form-horizontal" id="submit_form" action= "<%=link%>" method="post">
                             <div class ="form-group">

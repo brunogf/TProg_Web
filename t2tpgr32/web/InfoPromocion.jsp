@@ -53,7 +53,91 @@
                                     <%}%>
                                 </table></div>
                             </div>
-                        </div>  
+                        </div> 
+                        <%-- DESDE ACA --%>        
+                        <div class ="col-xs-8">
+                              <%
+            if (request.getSession().getAttribute("estado_sesion") != null)
+            {
+                switch((EstadoSesion)request.getSession().getAttribute("estado_sesion")){
+			case LOGGED_IN:{%>
+                        <script type="text/javascript">
+		      <%--   function validate()
+		           {
+			     var correct = true;
+		
+			     var cantidad = $('#cantidad').val().toString();
+                        
+                             if(!/^([0-9])*$/.test(cantidad)){
+			       $('#error_cantidadnon').show();
+		               correct = false;
+                             }
+                             else
+                              $('#error_cantidadnon').hide();
+			
+                            
+                            var fechaini = $('#fechaini').val().toString();
+			    
+                            if(fechaini === '') {
+				$('#error_fechaini').show();
+				correct = false;
+			    } else
+				$('#error_fechaini').hide();
+                            
+                            var fechafin = $('#fechafin').val().toString();
+			    
+                            if(fechafin === '') {
+				$('#error_fechafin').show();
+				correct = false;
+			    } else
+				$('#error_fechafin').hide();
+		
+			    return correct;
+		           } --%>
+	               </script>
+                       <% 
+                            link = "AgregarAlCarro?promocion=" + info_promocion.getNombre() + "&proveedor=" +info_promocion.getProveedor(); 
+                       %>
+                        <form class="form-horizontal" id="submit_form" action= "<%=link%>" method="post">
+                            <div class ="form-group">
+		           <label for="cantidad" class="col-xs-3">Cantidad de reservas:</label>
+		           <input type="number" id="cantidad" class="col-xs-1" name="cantidad" value="1"/>
+                          <%-- <span id="error_cantidadnon" class="error">Debes ingresar una cantidad correcta</span> --%>
+                            </div>
+                            <div class ="form-group">
+		           <label for="fechaini" class="col-xs-3">Fecha de inicio:</label>
+		           <input type="date" id="fechaini" class="col-xs-4" name="fechaini"/>
+                            </div>
+		           <%-- <span id="error_fechaini" class="error">Debes ingresar fecha posterior a la actual</span> --%>
+		           <div class ="form-group">
+                           <label for="fechafin" class="col-xs-3">Fecha de fin:</label>
+                           <input  type="date" id="fechafin" class="col-xs-4" name="fechafin"/> 
+                           </div>
+                           <div class ="form-group"> 
+		         <button type='submit' class='btn btn-default carro'><span class="glyphicon glyphicon-shopping-cart col-xs-3"></span>Agregar al Carro</button>
+                           </div>
+	               </form>
+
+                                    
+                        <%}
+                        break; 
+
+                        default:{%>
+                         <p>Debe <a href="index.jsp">Iniciar sesión</a> o <a href="registro.jsp"> Registrase</a>
+                            para agregar al Carro de Compras</p>
+                        <%}
+                            
+		}
+            }
+            else{%>
+            <p>Debe <a href="index.jsp">Iniciar sesión</a> o <a href="registro.jsp"> Registrase</a>
+                para agregar al Carro de Compras</p>
+           
+            <%};
+        %>   
+                          </div>       
+                                
+                        <%-- HASTA ACA --%>        
                     </div>
     </body>
 </html>

@@ -4,6 +4,8 @@
     Author     : piñe
 --%>
 
+<%@page import="tpgr32.DataServicio"%>
+<%@page import="tpgr32.DataPublicacion"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.DateFormat"%>
@@ -40,10 +42,15 @@
                     for(ParDPD p : par)
                     {
                         String pos;
-                        String link;
-                        pos = "Servicio";
-                        link = "VerInfoServicio?servicio=" + p.getDpub_().getNombre() +"&proveedor="+ p.getDpub_().getProveedor();
-             
+                        String link;                       
+                        if (p.getDpub_() instanceof DataServicio){
+                            pos = "Servicio";
+                            link = "VerInfoServicio?Servicio=" + p.getDpub_().getNombre() +"&proveedor="+ p.getDpub_().getProveedor();
+                        }
+                        else{
+                            pos = "Promocion";
+                            link = "VerInfoPromocion?Promocion=" + p.getDpub_().getNombre() +"&proveedor="+ p.getDpub_().getProveedor();
+                        }
 
             %>
             <tr class="result" onclick="location.href='<%=link%>'"><!--link a servlet ver info publicacion-->

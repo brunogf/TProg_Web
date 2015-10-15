@@ -42,36 +42,63 @@ public class AgregarAlCarro extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
-        
-         response.setContentType("text/html;charset=UTF-8");
-         PrintWriter out = response.getWriter();
-         Set<ParDPD> carro = (Set<ParDPD>)request.getSession().getAttribute("publicaciones-carro");
-         if(carro == null){
-             carro = new HashSet<ParDPD>();
-             request.getSession().setAttribute("publicaciones-carro", carro);
-         }
-         FabricaControladores fab = FabricaControladores.getInstancia();
-         IControladorPublicacion pub = fab.getControladorPublicacion();
-         DataPublicacion dp = pub.infoServicio(request.getParameter("proveedor").toString(),request.getParameter("publicacion").toString());
-         try{
-          DateFormat dfini = new SimpleDateFormat("dd-MM-yyyy");
-          DateFormat dffin = new SimpleDateFormat("dd-MM-yyyy");
-          Date fechainicial = dfini.parse(request.getParameter("fechaini").toString());
-          Date fechafinal = dffin.parse(request.getParameter("fechafin").toString());
-           DataDisponibilidad dd = new DataDisponibilidad(Integer.parseInt(request.getParameter("cantidad")),
-                                     fechainicial,fechafinal);
-      
-         ParDPD par = new ParDPD(dp,dd);
-         carro.add(par);
-         request.getSession().setAttribute("publicaciones-carro", carro);
-         response.sendRedirect("");
-         }
-         catch(Exception e){
-            out.print(e.getMessage());
+        String Promo = (String)request.getParameter("promocion");
+        if (Promo == null){
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            Set<ParDPD> carro = (Set<ParDPD>)request.getSession().getAttribute("publicaciones-carro");
+            if(carro == null){
+                carro = new HashSet<ParDPD>();
+                request.getSession().setAttribute("publicaciones-carro", carro);
+            }
+            FabricaControladores fab = FabricaControladores.getInstancia();
+            IControladorPublicacion pub = fab.getControladorPublicacion();
+            DataPublicacion dp = pub.infoServicio(request.getParameter("proveedor").toString(),request.getParameter("servicio").toString());
+            try{
+             DateFormat dfini = new SimpleDateFormat("dd-MM-yyyy");
+             DateFormat dffin = new SimpleDateFormat("dd-MM-yyyy");
+             Date fechainicial = dfini.parse(request.getParameter("fechaini").toString());
+             Date fechafinal = dffin.parse(request.getParameter("fechafin").toString());
+              DataDisponibilidad dd = new DataDisponibilidad(Integer.parseInt(request.getParameter("cantidad")),
+                                        fechainicial,fechafinal);
+
+            ParDPD par = new ParDPD(dp,dd);
+            carro.add(par);
+            request.getSession().setAttribute("publicaciones-carro", carro);
+            response.sendRedirect("");
+            }
+            catch(Exception e){
+               out.print(e.getMessage());
+           }        
         }
-         
-         
-        
+        else{
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            Set<ParDPD> carro = (Set<ParDPD>)request.getSession().getAttribute("publicaciones-carro");
+            if(carro == null){
+                carro = new HashSet<ParDPD>();
+                request.getSession().setAttribute("publicaciones-carro", carro);
+            }
+            FabricaControladores fab = FabricaControladores.getInstancia();
+            IControladorPublicacion pub = fab.getControladorPublicacion();
+            DataPublicacion dp = pub.infoPromocion(request.getParameter("proveedor").toString(),request.getParameter("promocion").toString());
+            try{
+             DateFormat dfini = new SimpleDateFormat("dd-MM-yyyy");
+             DateFormat dffin = new SimpleDateFormat("dd-MM-yyyy");
+             Date fechainicial = dfini.parse(request.getParameter("fechaini").toString());
+             Date fechafinal = dffin.parse(request.getParameter("fechafin").toString());
+              DataDisponibilidad dd = new DataDisponibilidad(Integer.parseInt(request.getParameter("cantidad")),
+                                        fechainicial,fechafinal);
+
+            ParDPD par = new ParDPD(dp,dd);
+            carro.add(par);
+            request.getSession().setAttribute("publicaciones-carro", carro);
+            response.sendRedirect("");
+            }
+            catch(Exception e){
+               out.print(e.getMessage());
+            }
+        }
      
     }
 
