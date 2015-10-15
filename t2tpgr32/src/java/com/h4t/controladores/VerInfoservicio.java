@@ -55,7 +55,7 @@ public class VerInfoservicio extends HttpServlet {
             if (!(arch.exists()))
               ImageIO.write(bi,"jpg",arch);
             String atr = "imagen"+String.valueOf(num);
-            request.setAttribute(atr,destino);
+            request.setAttribute(atr,"media/Images/"+servicio+String.valueOf(num)+".jpg");
             num++;
         }
         request.setAttribute("info_servicio",pub.infoServicio(proveedor, servicio));
