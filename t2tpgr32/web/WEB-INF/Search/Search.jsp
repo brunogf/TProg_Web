@@ -37,11 +37,11 @@
                         String link;
                         if (p instanceof DataServicio){
                             pos = "Servicio";
-                           link = "VerInfoServicio?servicio=" + p.getNombre() +"&proveedor="+ p.getProveedor();
+                            link = "VerInfoServicio?Servicio=" + p.getNombre() +"&proveedor="+ p.getProveedor();
                         }
                         else{
                             pos = "Promoción";
-                            link = "#";
+                            link = "VerInfoPromocion?Promocion=" + p.getNombre() +"&proveedor="+ p.getProveedor();
                             }
             %>
             <tr class="result" onclick="location.href='<%=link%>'"><!--link a servlet ver info publicacion-->
