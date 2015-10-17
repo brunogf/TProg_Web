@@ -12,16 +12,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.FabricaControladores;
-import tpgr32.IControladorPublicacion;
-import tpgr32.IControladorUsuario;
+import tpgr32.*;
 
 /**
  *
  * @author spesamosca
  */
-@WebServlet(name = "VerInfoPromocion", urlPatterns = {"/VerInfoPromocion"})
-public class VerInfoPromocion extends HttpServlet {
+@WebServlet(name = "VerInfoProveedor", urlPatterns = {"/VerInfoProveedor"})
+public class VerInfoProveedor extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -31,16 +30,15 @@ public class VerInfoPromocion extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cp = fab.getControladorPublicacion();     
+        FabricaControladores fab = FabricaControladores.getInstancia();    
         IControladorUsuario cu = fab.getControladorUsuario();
-        String promocion = (String)request.getParameter("Promocion");
-        String proveedor = (String)request.getParameter("proveedor");
-        request.setAttribute("info_promocion", cp.infoPromocion(proveedor, promocion));   
-        request.setAttribute("servicios_de_promocion", cp.infoPromocion(proveedor, promocion).getServicios());
-        request.getRequestDispatcher("InfoPromocion.jsp").forward(request, response);
+        String proveedor = (String)request.getParameter("Proveedor");
+        request.setAttribute("info_proveedor", cu.infoProveedor(proveedor));   
+        request.setAttribute("publicaciones_de_proveedor", cu.listarPublicacionesProveedor(proveedor));
+        request.getRequestDispatcher("InfoProveedor.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
