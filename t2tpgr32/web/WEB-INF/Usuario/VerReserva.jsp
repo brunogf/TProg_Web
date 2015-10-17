@@ -33,7 +33,7 @@
                 <span class="estadoReserva">Estado: <%=dr.getStringEstado()%></span> 
                 <%if((dr.getEstado() == Estado.Registrada) && (((String)session.getAttribute("Usuario")).equals(dr.getCliente()))){%>
                 <span> - </span>
-                <span onclick="location.href='CancelarReserva?nro=' + <%=dr.getNum()%>">Cancelar</span>
+                <span class ="cancelar-reserva btn-link" onclick="cancelar(<%=dr.getNum()%>)">Cancelar</span>
                 <%}%>
             </div>
             <br>
@@ -59,9 +59,10 @@
                         {
                             DataServicio ds = (DataServicio)dpd.getDpub_();
                             DataDisponibilidad dd = dpd.getDd_();
+                            String link = "VerInfoServicio?Servicio=" + ds.getNombre() +"&proveedor="+ ds.getProveedor();
                         %>
-                    <div class="BloqueServicio BloquePublicacion">
-                        <span>Nombre: <%=ds.getNombre() %></span><br>
+                        <div class="BloqueServicio BloquePublicacion" onclick="location.href='<%=link%>'">
+                        <span class="nombre-servicio"> <%=ds.getNombre() %></span><br>
                         <div class="descripcionServicio">
                             <p class="pdescripcion">Descripción:<%=ds.getDescripcion() %> </p>
                         </div>
@@ -70,11 +71,7 @@
                         <span>Fecha inicio: <%=f.format(dd.getFechaIni()) %></span><br>
                         <span>Fecha fin: <%=f.format(dd.getFechaFin()) %></span><br>
                         <span>Cantidad: <%=dd.getCant() %></span><br>
-                        <div class="imagenes">
-                            <img src="#" alt="Imagen #1" width="50px" height="50px">
-                            <img src="#" alt="Imagen #2" width="50px" height="50px">
-                            <img src="#" alt="Imagen #3" width="50px" height="50px">
-                        </div>
+                        
                     </div>
                     <%}}}
                     if (cant_promo >0)
@@ -88,9 +85,10 @@
                                 {
                                     DataPromocion dp = (DataPromocion)dpd.getDpub_();
                                     DataDisponibilidad dd = dpd.getDd_();
+                                    String link = "VerInfoPromocion?Promocion=" + dp.getNombre() +"&proveedor="+ dp.getProveedor();
                                 %>
-                            <div>
-                                <span>Nombre: <%=dp.getNombre() %></span><br>
+                            <div onclick="location.href='<%=link%>'">
+                                <span class="nombre-promocion"> <%=dp.getNombre() %></span><br>
                                 <span>Descuento:<%=dp.getDescuento() %> </span><br>
                                 <span>Precio: $<%=dp.getPrecioTotal() %></span><br>
                                 <span>Proveedor: <%=dp.getProveedor() %></span><br>
@@ -102,6 +100,15 @@
                 </div>
             </div>
         </div>
-        
+        <script>
+            function cancelar(nro) {
+               var r = confirm("Una vez cancelada la reserva, no se podrá revertir el cambio!. Cancelar de todas formas?");
+               if (r === true)
+               {
+                   var url = "CancelarReserva?nro=" + nro;
+                   window.location = url;
+               }
+            }
+            </script>
     </body>
 </html>
