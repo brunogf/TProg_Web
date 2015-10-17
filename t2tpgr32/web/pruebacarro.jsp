@@ -20,14 +20,13 @@
     </head>
     <body>
         <jsp:include page="WEB-INF/templates/header.jsp"/>
-        <h1>Hello World!</h1>
         
          <div class="container search">
           <div class="row">
             <%--Acá van los resultados--%>
             <%
                 Set<ParDPD> par = (HashSet)request.getSession().getAttribute("publicaciones-carro");
-                if (!par.isEmpty())
+                if (request.getSession().getAttribute("publicaciones-carro") != null)
                 {%>
                 <div class="col-xs-12 table-responsive">
                     <table class="table">
@@ -60,9 +59,9 @@
                 else{
             %>
             <div class="col-xs-12 noResult">
-                <span class="Message">No se encontró ninguna publicación</span>
+                <span class="Message">No hay ninguna publicación agregada al carro</span>
             </div>
-            <%}%>
+            <% } %>
           </div>
         </div>
     </body>
