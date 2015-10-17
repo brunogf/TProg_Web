@@ -52,7 +52,7 @@
                 %>
               <td><%=p.getDpub_().getNombre()%></td>
               <td><%=pos%></td>
-              <td><%= p.getDd_().getFechaIni().toString()%></td>
+              <td><%= df.format(p.getDd_().getFechaIni()) %></td>
             </tr><%
             }%>
                 </table></div><%
