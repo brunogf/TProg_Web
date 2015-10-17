@@ -12,6 +12,26 @@
         <servlet-name>Search</servlet-name>
         <servlet-class>com.h4t.controladores.Search</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VerInfoservicio</servlet-name>
+        <servlet-class>com.h4t.controladores.VerInfoservicio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AgregarAlCarro</servlet-name>
+        <servlet-class>com.h4t.controladores.AgregarAlCarro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VerInfoPromocion</servlet-name>
+        <servlet-class>com.h4t.controladores.VerInfoPromocion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarPromociones</servlet-name>
+        <servlet-class>com.h4t.controladores.ListarPromociones</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarServicios</servlet-name>
+        <servlet-class>com.h4t.controladores.ListarServicios</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
@@ -24,9 +44,31 @@
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerInfoservicio</servlet-name>
+        <url-pattern>/VerInfoservicio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarAlCarro</servlet-name>
+        <url-pattern>/AgregarAlCarro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerInfoPromocion</servlet-name>
+        <url-pattern>/VerInfoPromocion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarPromociones</servlet-name>
+        <url-pattern>/ListarPromociones</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarServicios</servlet-name>
+        <url-pattern>/ListarServicios</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-</web-app>
+
+   / *
+    </web-app>

@@ -69,18 +69,21 @@
                     {
                         String pos;
                         float precio;
+                        String link;
                         if (p instanceof DataServicio)
                         {
                             pos = "Servicio";
                             precio = ((DataServicio)p).getPrecio();
+                            link = "VerInfoServicio?Servicio=" + p.getNombre() +"&proveedor="+ p.getProveedor();
                         }
                         else
                         {
                             pos = "Promoción";
+                            link = "VerInfoPromocion?Promocion=" + p.getNombre() +"&proveedor="+ p.getProveedor();
                             precio = ((DataPromocion)p).getPrecioTotal();
                         }
             %>
-            <tr class="result" onclick="location.href='#'"><!--link a servlet ver info publicacion-->
+            <tr class="result" onclick="location.href='<%=link%>'"><!--link a servlet ver info publicacion-->
               <td><%=p.getNombre()%></td>
               <td><%=pos%></td>
               <td><%=p.getProveedor()%></td>
