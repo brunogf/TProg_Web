@@ -4,6 +4,7 @@
     Author     : Nico
 --%>
 
+<%@page import="tpgr32.Estado"%>
 <%@page import="tpgr32.DataPromocion"%>
 <%@page import="tpgr32.DataDisponibilidad"%>
 <%@page import="tpgr32.DataServicio"%>
@@ -24,12 +25,18 @@
             <div class="row infoReserva">
                 <%Format f = new SimpleDateFormat("dd-MM-yyyy");
                 DataReserva dr = ((DataReserva)request.getAttribute("info_reserva_dr"));%>
+                <h2 class="Titulo">Detalles de la reserva</h2>
                 <span class="nroReserva">Número de reserva: <%=dr.getNum()%></span>
                 <br>
                 <span class="creacionReserva">Fecha de creación: <%=f.format(dr.getCreacion())%></span>
                 <br>
                 <span class="estadoReserva">Estado: <%=dr.getStringEstado()%></span> 
+                <%if((dr.getEstado() == Estado.Registrada) && (((String)session.getAttribute("Usuario")).equals(dr.getCliente()))){%>
+                <span> - </span>
+                <span onclick="location.href='CancelarReserva?nro=' + <%=dr.getNum()%>">Cancelar</span>
+                <%}%>
             </div>
+            <br>
             <div class="row infoPublicacionesReserva">
                 <%  int cant_servicios = 0;
                     int cant_promo = 0;
@@ -43,8 +50,8 @@
                     if (cant_servicios > 0)
                     {
                     %>
-                <span class="servicios">Servicios</span>
-                <br>
+                <h4 class="servicios">Servicios</h4>
+
                 <div class="serviciosDiv">
                     <%for(ParDPD dpd : dr.getdpd())
                     {
@@ -72,8 +79,8 @@
                     <%}}}
                     if (cant_promo >0)
                     {%>
-                       <span class="promociones">Promociones</span>
-                        <br>
+                       <h4 class="promociones">Promociones</h4>
+
                         <div class="promosDiv BloquePublicacion">
                             <%for(ParDPD dpd : dr.getdpd())
                             {
