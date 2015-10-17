@@ -97,25 +97,25 @@
                     <div class ="col-xs-4 table-responsive">
                         <table class ="table">
                           <tr class ="active">
-                          <td>Proveedor:</td>
+                          <td class="tablaInfoServ">Proveedor:</td>
                           <td class="result">
                               <%=info.getProveedor() %>
                           </td>
                           </tr>
                           <tr class = "success">
-                          <td>Origen:</td>
+                          <td class="tablaInfoServ">Origen:</td>
                           <td class="result">
                               <%=info.getCiudadOrigen() %>
                           </td>
                           </tr>
                           <tr class="active">
-                          <td>Destino:</td>
+                          <td class="tablaInfoServ">Destino:</td>
                           <td class="result">
                               <%=info.getCiudadDestino() %>
                           </td>
                           </tr>
                           <tr class= "success">
-                          <td>Precio:</td>
+                          <td class="tablaInfoServ">Precio:</td>
                           <td class="result">
                               <%="USD "+String.valueOf(info.getPrecio()) %>
                           </td>
@@ -172,13 +172,57 @@
                           <%-- <span id="error_cantidadnon" class="error">Debes ingresar una cantidad correcta</span> --%>
                             </div>
                             <div class ="form-group">
-		           <label for="fechaini" class="col-xs-3">Fecha de inicio:</label>
-		           <input type="date" id="fechaini" class="col-xs-4" name="fechaini"/>
+		           <label for="Diaini" class="col-xs-3">Fecha de inicio:</label>
+		           <select class="col-md-2" name="Diaini" id="Diaini">
+                              <option value="1" selected>Dia</option>
+                                <% for(int i = 1; i <= 31 ; i++){
+                                %>  
+                              <option value="<%=i%>"><%=String.valueOf(i)%></option>
+                                 <%} %>
+                           </select>
+                           
+                           <select class="col-md-2" name="Mesini" id="Mesini">
+                              <option value="1" selected>Mes</option>
+                              <% for(int i = 1; i <= 12 ; i++){
+                              %>  
+                                 <option value="<%=i%>"><%=String.valueOf(i)%></option>
+                              <% } %>
+                           </select> 
+                
+                           <select class="col-md-2" name="Anoini" id="Anoini">
+                              <option value="2015" selected>Año</option>
+                              <% for(int i = 2015; i <= 2020 ; i++){
+                              %>  
+                                  <option value="<%=i%>"><%=String.valueOf(i)%></option>
+                              <%}%>
+                           </select> 
                             </div>
 		           <%-- <span id="error_fechaini" class="error">Debes ingresar fecha posterior a la actual</span> --%>
 		           <div class ="form-group">
-                           <label for="fechafin" class="col-xs-3">Fecha de fin:</label>
-                           <input  type="date" id="fechafin" class="col-xs-4" name="fechafin"/> 
+                           <label for="Diafin" class="col-xs-3">Fecha de fin:</label>
+                             <select class="col-md-2" name="Diafin" id="Diafin">
+                              <option value="1" selected>Dia</option>
+                                <% for(int i = 1; i <= 31 ; i++){
+                                %>  
+                              <option value="<%=i%>"><%=String.valueOf(i)%></option>
+                                 <%} %>
+                           </select>
+                           
+                           <select class="col-md-2" name="Mesfin" id="Mesfin">
+                              <option value="1" selected>Mes</option>
+                              <% for(int i = 1; i <= 12 ; i++){
+                              %>  
+                                 <option value="<%=i%>"><%=String.valueOf(i)%></option>
+                              <% } %>
+                           </select> 
+                
+                           <select class="col-md-2" name="Anofin" id="Anofin">
+                              <option value="2015" selected>Año</option>
+                              <% for(int i = 2015; i <= 2020 ; i++){
+                              %>  
+                                  <option value="<%=i%>"><%=String.valueOf(i)%></option>
+                              <%}%>
+                           </select>
                            </div>
                            <div class ="form-group"> 
 		         <button type='submit' class='btn btn-default carro'><span class="glyphicon glyphicon-shopping-cart col-xs-3"></span>Agregar al Carro</button>

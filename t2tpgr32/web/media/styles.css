@@ -225,3 +225,12 @@ header .invalid_login_message{
 .InfoServicio .precio {
     font-size: 50px;
 }
+
+.InfoServicio{
+    padding: 10px;
+}
+
+
+.tablaInfoServ{
+    font-weight: bold;
+}
