@@ -42,7 +42,7 @@ public class Search extends HttpServlet {
         }
         else
         {
-            Set<DataPublicacion> publicaciones = cp.buscarPublicacion((String)request.getParameter("criterio"));
+            Set<DataPublicacion> publicaciones = cp.buscarPublicacionCompleta(((String)request.getParameter("criterio")));
             request.setAttribute("publicaciones", publicaciones);
         }
         request.getRequestDispatcher("WEB-INF/Search/Search.jsp").forward(request, response);
