@@ -47,9 +47,9 @@
     </div>
     <div class="row">
         <div class="col-xs-8">
-            <button class="btn btn-sm btn-primary">Info Proveedor</button>
-            <button class="btn btn-sm btn-primary">Info Promoción</button>   
-            <button class="btn btn-sm btn-primary">Info Servicio</button>
+            <button class="btn btn-sm btn-primary">Proveedores</button>
+            <button type="button" class="btn btn-sm btn-primary" onclick="location.href = 'ListarPromociones'">Promociones</button>   
+            <button class="btn btn-sm btn-primary" onclick="location.href = 'ListarServicios'">Servicios</button>
         </div>
          <%
             if (request.getSession().getAttribute("estado_sesion") != null)

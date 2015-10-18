@@ -120,6 +120,21 @@
                               <%="USD "+String.valueOf(info.getPrecio()) %>
                           </td>
                           </tr>
+                          <tr class= "active">
+                          <td>Categorias:</td>
+                          <td class="result">
+                              <% 
+                                boolean flag = false;
+                                String s = "";
+                                for (String c : info.getCategorias())
+                                { if(flag){
+                                    s = s +", " + c;
+                                } else s = s + c;
+                                flag = true;}
+                              %>
+                                <%=s%>
+                          </td>
+                          </tr>
                         </table>
                     </div>
                           <div class ="col-xs-8">
@@ -163,7 +178,7 @@
 		           } --%>
 	               </script>
                        <% 
-                            String link = "AgregarAlCarro?publicacion=" + info.getNombre() + "&proveedor=" +info.getProveedor(); 
+                            String link = "AgregarAlCarro?servicio=" + info.getNombre() + "&proveedor=" +info.getProveedor(); 
                        %>
                         <form class="form-horizontal" id="submit_form" action= "<%=link%>" method="post">
                             <div class ="form-group">

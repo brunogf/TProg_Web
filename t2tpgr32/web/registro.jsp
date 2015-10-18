@@ -33,7 +33,7 @@
                             <input type="file" name="file" value="select images..."/>
                             <input type="submit" value="start upload"/>
                         </form>-->
-                    <input type="date" class="form-control" name="fechanac" id="fechanac" placeholder="Fecha de Nacimiento (dd-mm-yyyy)">
+                    <input type="date" class="form-control" name="fechanac" id="fechanac" placeholder="Fecha de Nacimiento (dd-mm-yy)">
                     <input type="submit" class="btn btn-primary" value="Enviar">
                 </form>
             </section>

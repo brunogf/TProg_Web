@@ -6,11 +6,15 @@
 package com.h4t.controladores;
 
 import com.h4t.modelo.EstadoSesion;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,16 +51,21 @@ public class Login extends HttpServlet {
                 request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGGED_IN);
                 String nombre = du.getNombre() + " " + du.getApellido();
                 request.getSession().setAttribute("Nombre", nombre);
+                
                 if(du.getImage() != null)
                 {
-                    File origen = new File(du.getImage());
-                    String destino = getServletContext().getRealPath("/") + "media\\Images\\" + origen.getName();
-                    File directory = new File(destino);
-                    Files.copy(origen.toPath(), directory.toPath(), REPLACE_EXISTING);
-                    request.getSession().setAttribute("Imagen","media/Images/" + origen.getName());
-                }
-                else
-                    request.getSession().setAttribute("Imagen","media/Images/perfil.jpg");
+                    
+                    Image i = cu.getImagenDelUsuario(du.getNickname()); 
+                    BufferedImage bi = (BufferedImage)i;
+                    String destino = getServletContext().getRealPath("/") + "media\\Images\\" + du.getNickname().toLowerCase() + ".jpg";
+                    File d = new File(destino);
+                    if (!(d.exists())){
+                        BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),
+			bi.getHeight(), BufferedImage.TYPE_INT_RGB);
+                        newBufferedImage.createGraphics().drawImage(bi, 0, 0, Color.WHITE, null);
+                         ImageIO.write(newBufferedImage,"jpg",d);
+                    }
+                }                   
                 response.sendRedirect("");//redirecciona al inicio
                 }
                 break;
