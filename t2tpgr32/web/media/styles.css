@@ -157,24 +157,41 @@ header .invalid_login_message{
 
 /*REGISTRO*/
 
-.registro #formulario{
-    /*CENTRADO*/
-    position: absolute;
-    left: 38%;
-    
-    width: 300px;
-    min-height: 200px;
-    border-radius: 5px;
+.registro .titulo_registro{
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 425px;
 }
 
-.registro #titulo{
-    color: #00498f;
-    font-size: 1.6em;
-    text-align: center;
+.img_div
+{
+    position:relative;
+    width: 300px;
     margin-top: 10px;
-    background-color: white;
-    border-radius: 5px;
+    height: 30px;
+    overflow:hidden;
 }
+
+.img_div button
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.img_div input
+{
+    font: 500px monospace;
+    opacity:0;
+    filter: alpha(opacity=0);
+    position: absolute;
+    z-index: 1;
+    top:0;
+    right:0;
+    padding:0;
+    margin: 0;
+}
+
 
 .registro .form-control{
     width: 300px;
