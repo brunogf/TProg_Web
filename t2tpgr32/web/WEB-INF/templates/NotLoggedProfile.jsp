@@ -18,7 +18,7 @@
         <%  
             if(session.getAttribute("estado_sesion") == EstadoSesion.INVALID_LOGIN)
             {%>
-            <span class="invalid_login_message">Usuario ó contraseña incorrecto.</span>
+            <span class="invalid_login_message">Usuario o contraseña incorrecto.</span>
             <%
             session.setAttribute("estado_sesion", EstadoSesion.NOT_LOGGED_IN);
             }    
