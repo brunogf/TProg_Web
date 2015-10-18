@@ -308,19 +308,17 @@ header .invalid_login_message{
     font-weight: bold;
 }
 
-.carro{
-    padding: 100px;
-    padding-top: 20px;
-    background-color: #000000;
+.carro_de_compras{
+
 }
 
-.carro .result:hover{
+.carro_de_compras .result:hover{
     background: #BFE1FA;
     cursor: pointer;
     text-decoration: underline;
 }
 
-.carro .cabeceraTabla{
+.carro_de_compras .cabeceraTabla{
     color:#000;
     font-size: 18px;
 }
