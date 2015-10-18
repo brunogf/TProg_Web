@@ -7,21 +7,23 @@ package com.h4t.controladores;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import tpgr32.DataServicio;
 import tpgr32.FabricaControladores;
 import tpgr32.IControladorPublicacion;
-import tpgr32.IControladorUsuario;
 
 /**
  *
  * @author spesamosca
  */
-@WebServlet(name = "VerInfoPromocion", urlPatterns = {"/VerInfoPromocion"})
-public class VerInfoPromocion extends HttpServlet {
+@WebServlet(name = "ListarServiciosDeCategoria", urlPatterns = {"/ListarServiciosDeCategoria"})
+public class ListarServiciosDeCategoria extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,13 +36,11 @@ public class VerInfoPromocion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cp = fab.getControladorPublicacion();     
-        IControladorUsuario cu = fab.getControladorUsuario();
-        String promocion = (String)request.getParameter("Promocion");
-        String proveedor = (String)request.getParameter("proveedor");
-        request.setAttribute("info_promocion", cp.infoPromocion(proveedor, promocion));   
-        request.setAttribute("servicios_de_promocion", cp.infoPromocion(proveedor, promocion).getServicios());
-        request.getRequestDispatcher("InfoPromocion.jsp").forward(request, response);
+        IControladorPublicacion cp = fab.getControladorPublicacion();   
+        String Categoria = (String)request.getParameter("Categoria");
+        Set<DataServicio> ServiciosDeCategoria = cp.listarServiciosDeCategoria(Categoria);
+        request.setAttribute("ServiciosDeCategoria", ServiciosDeCategoria);
+        request.getRequestDispatcher("ServiciosDeCategoria.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

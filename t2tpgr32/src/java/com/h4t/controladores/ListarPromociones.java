@@ -40,7 +40,7 @@ public class ListarPromociones extends HttpServlet {
         IControladorPublicacion cp = fab.getControladorPublicacion();
         Set<DataPromocion> Promociones = cp.listarPromociones();
         request.setAttribute("Promociones", Promociones);
-        request.getRequestDispatcher("/Promociones.jsp").forward(request, response);
+        request.getRequestDispatcher("/Promociones.jsp").forward(request, response);       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
