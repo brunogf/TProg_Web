@@ -21,7 +21,7 @@
     <body>
         <jsp:include page="WEB-INF/templates/header.jsp"/>
         
-         <div class="container search">
+         <div class="container carro">
           <div class="row">
             <%--Acá van los resultados--%>
             <%

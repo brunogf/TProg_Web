@@ -50,7 +50,6 @@
             <button class="btn btn-sm btn-primary">Info Proveedor</button>
             <button class="btn btn-sm btn-primary">Info Promoción</button>   
             <button class="btn btn-sm btn-primary">Info Servicio</button>
-            <button class="btn btn-sm btn-primary" onclick="location.href='PruebaArbol.jsp'">Arbol Categorias</button>
         </div>
          <%
             if (request.getSession().getAttribute("estado_sesion") != null)

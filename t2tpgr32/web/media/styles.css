@@ -234,3 +234,20 @@ header .invalid_login_message{
 .tablaInfoServ{
     font-weight: bold;
 }
+
+.carro{
+    padding: 100px;
+    padding-top: 20px;
+    background-color: #000000;
+}
+
+.carro .result:hover{
+    background: #BFE1FA;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.carro .cabeceraTabla{
+    color:#000;
+    font-size: 18px;
+}
