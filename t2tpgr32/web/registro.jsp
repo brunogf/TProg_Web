@@ -9,7 +9,6 @@
 <html>
     <head>
         <jsp:include page="WEB-INF/templates/head.jsp"/>
-        <script src="media/js/bootstrap-filestyle.min.js"></script>
     </head>
     <body>
        <jsp:include page="WEB-INF/templates/header.jsp"/>
@@ -56,16 +55,13 @@
          </div>
          
          <script>
+             var asd;
              $(document).ready(function(){
-             $(document.getElementById("formulario_registro")).on("keyup", "#nick_registro", function(e) { 
-                $.get("RegistroAjax",{nick : $("#nick_registro").val()} ,function(responseJson) {  
-                            var arr =[];
-                            $.each(responseJson, function(index, item) { 
-                                arr[index] = item;      
-                            });
-                            $("#criterio").autocomplete({source: arr});
-                    });
-                });
+             $("#nick_registro").keyup(function(){
+                 $.get("RegistroAjax", {nick : $("#nick_registro").val()}, function(responseJson) {
+                     asd = $.parseJSON(responseJson);
+                 });
+             });
             });
          </script>
     </body>

@@ -40,7 +40,6 @@ public class RegistroAjax extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         FabricaControladores fab = FabricaControladores.getInstancia();
         IControladorUsuario cu = fab.getControladorUsuario();
-        String json;
         boolean[] array = new boolean[2];
         Arrays.fill(array, false);
         if (request.getParameter("nick") != null)
@@ -56,7 +55,9 @@ public class RegistroAjax extends HttpServlet {
                 array[1] = true;
         }
         
-        json = new Gson().toJson(array);
+        String json = "{\"nick\" : ";
+        json = json + "\"" + Boolean.toString(array[0]) +"\"";
+        json = json + ", \"email\" : \"" + Boolean.toString(array[1]) + "\"}";
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);
