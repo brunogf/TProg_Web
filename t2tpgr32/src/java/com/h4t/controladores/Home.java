@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import tpgr32.CatTree;
 import tpgr32.DataPromocion;
 import tpgr32.FabricaControladores;
 import tpgr32.IControladorPublicacion;
@@ -21,9 +22,8 @@ import tpgr32.IControladorPublicacion;
  *
  * @author spesamosca
  */
-
-@WebServlet(name = "ListarPromociones", urlPatterns = {"/ListarPromociones"})
-public class ListarPromociones extends HttpServlet {
+@WebServlet(name = "Home", urlPatterns = {"/Home"})
+public class Home extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,11 +36,13 @@ public class ListarPromociones extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cp = fab.getControladorPublicacion();
-        Set<DataPromocion> Promociones = cp.listarPromociones();
-        request.setAttribute("Promociones", Promociones);
-        request.getRequestDispatcher("/Promociones.jsp").forward(request, response);       
+        FabricaControladores fb = FabricaControladores.getInstancia();
+        IControladorPublicacion cp = fb.getControladorPublicacion();
+        CatTree cats = cp.getCatTree();
+        request.setAttribute("categorias", cats);
+        Set<DataPromocion> Promos = cp.listarPromociones();
+        request.setAttribute("Promos", Promos);
+        request.getRequestDispatcher("Home.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

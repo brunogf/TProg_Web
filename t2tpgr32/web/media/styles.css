@@ -291,3 +291,79 @@ header .invalid_login_message{
     font-size: 14px;
 }
 
+/* Arbol de Categorias y Promociones*/
+
+ul#menu_arbol li {
+     padding: 0 10px;
+     margin-left: 5px;
+     margin-bottom: 5px;
+  }
+
+ul#menu_arbol ul {
+     margin-left: 30px;
+  }
+  
+ul#menu_arbol li {
+     padding: 0 10px;
+}
+
+
+.Categorias .promo:hover{
+    background: #BFE1FA;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.Categorias .hoja:hover{
+    background: #BFE1FA;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+//PRUEBA DEL ARBOL
+
+#menu_arbol {
+	font-size: 90%;
+	list-style-image: url(imasmenu/doct.gif);
+	border: 1px solid #006699;
+	width: 200px;
+	padding-top: .5em;
+	padding-bottom: .5em;
+	list-style: inside;
+}
+
+.cAbierta{
+	list-style-type: none;
+	list-style-image: url(imasmenu/carpabiertat.gif);
+}
+.cAbiertaSeleccionada{
+	list-style-type: none;
+	list-style-image: url(imasmenu/carpabiertasel.gif);
+}
+.cCerradaSeleccionada{
+	list-style-type: none;
+	list-style-image: url(imasmenu/carpcerradasel.gif);
+}
+.cCerrada{
+	list-style-type: none;
+	list-style-image: url(imasmenu/carpcerradat.gif);
+}
+.menuDoc{
+	list-style-type: none;
+	list-style-image: url(imasmenu/doct.gif);
+}
+.tagApartado, a.tagApartado{
+	cursor: pointer;
+	font-weight: bold;
+	text-decoration: none;
+}
+.documentoActual{
+	list-style-image: url(imasmenu/docsel.gif);
+}
+
+#menu_arbol a {
+	color: #006699;
+}
+.documentoActual a{
+	color:#993300;
+}

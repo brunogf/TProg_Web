@@ -8,10 +8,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:include page="WEB-INF/templates/head.jsp"/>
+        <meta http-equiv="refresh" content="0;URL='/t2tpgr32/Home'"/>
     </head>
-    <body>
-        <jsp:include page="WEB-INF/templates/header.jsp"/>
-          
-    </body>
 </html>

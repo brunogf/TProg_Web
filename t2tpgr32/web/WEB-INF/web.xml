@@ -40,6 +40,14 @@
         <servlet-name>VerInfoProveedor</servlet-name>
         <servlet-class>com.h4t.controladores.VerInfoProveedor</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListarCategorias</servlet-name>
+        <servlet-class>com.h4t.controladores.ListarCategorias</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Home</servlet-name>
+        <servlet-class>com.h4t.controladores.Home</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
@@ -79,6 +87,14 @@
     <servlet-mapping>
         <servlet-name>VerInfoProveedor</servlet-name>
         <url-pattern>/VerInfoProveedor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarCategorias</servlet-name>
+        <url-pattern>/ListarCategorias</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Home</servlet-name>
+        <url-pattern>/Home</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
