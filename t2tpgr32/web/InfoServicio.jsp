@@ -121,7 +121,7 @@
                           </td>
                           </tr>
                           <tr class= "active">
-                          <td>Categorias:</td>
+                          <td class="tablaInfoServ">Categorias:</td>
                           <td class="result">
                               <% 
                                 boolean flag = false;
