@@ -98,7 +98,12 @@
                             </div>
                     <%}}} %>
                 </div>
+                
             </div>
+                <br>
+                <div class="col-xs-offset-10">
+                <span class="precioSubtotal">Total: US$ <%=dr.getPrecio_total()%></span>
+                </div>
         </div>
         <script>
             function cancelar(nro) {
