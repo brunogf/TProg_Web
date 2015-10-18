@@ -5,7 +5,13 @@
  */
 package com.h4t.controladores;
 
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -15,6 +21,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.WebServlet;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.Part;
 import tpgr32.*;
 
 /**
@@ -22,41 +33,53 @@ import tpgr32.*;
  * @author Bruno González
  */
 @WebServlet(name = "Registrar", urlPatterns = {"/Registrar"})
+@MultipartConfig
 public class RegistrarCliente extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private final static Logger LOGGER = 
+            Logger.getLogger(RegistrarCliente.class.getCanonicalName());
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //FALTA CARGAR CLIENTE CON IMAGEN.
-        
-        
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        
+        Part filePart = request.getPart("file");
+        InputStream fileContent = filePart.getInputStream();
+        BufferedImage iBuff = ImageIO.read(fileContent);
+        
+   
+       
         FabricaControladores fab = FabricaControladores.getInstancia();
         IControladorUsuario cu = fab.getControladorUsuario();
-        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                        
-        String nick = (String) request.getParameter("nick");
-        String nombre = (String) request.getParameter("nombre");
-        String apellido = (String) request.getParameter("apellido");
-        String mail = (String) request.getParameter("email");
-        String pass = (String) request.getParameter("password");
+        String nick = (String) request.getParameter("nick_registro");
+        String nombre = (String) request.getParameter("nombre_registro");
+        String apellido = (String) request.getParameter("apellido_registro");
+        String mail = (String) request.getParameter("email_registro");
+        String pass = (String) request.getParameter("contrasena_registro");
         
         
         try{
-            Date fnac = df.parse(request.getParameter("fechanac").toString());                       
+            Date fnac = df.parse(request.getParameter("fecha_registro").toString());                       
             cu.altaCliente(nick, nombre, apellido, mail, fnac, pass);
+            
+            
+            String destino = getServletContext().getRealPath("/") + "media\\Images\\" + nick + ".jpg";
+            File d = new File(destino);
+            if(d.exists())
+                d.delete();
+            if (!(d.exists())){
+                        BufferedImage newBufferedImage = new BufferedImage(iBuff.getWidth(),
+			iBuff.getHeight(), BufferedImage.TYPE_INT_RGB);
+                        newBufferedImage.createGraphics().drawImage(iBuff, 0, 0, Color.WHITE, null);
+                        ImageIO.write(newBufferedImage,"jpg",d);
+                    }
+
             response.sendRedirect("");
         }catch(Exception e){
-            out.print("EXCEPCION!");
+            
         }
     }
 

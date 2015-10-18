@@ -63,7 +63,7 @@ public class Login extends HttpServlet {
                         BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),
 			bi.getHeight(), BufferedImage.TYPE_INT_RGB);
                         newBufferedImage.createGraphics().drawImage(bi, 0, 0, Color.WHITE, null);
-                         ImageIO.write(newBufferedImage,"jpg",d);
+                        ImageIO.write(newBufferedImage,"jpg",d);
                     }
                 }                   
                 response.sendRedirect("");//redirecciona al inicio
