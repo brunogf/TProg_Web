@@ -49,7 +49,7 @@ public class GenerarReserva extends HttpServlet {
             cr.cambiarFechaCreacionReserva(par.getDd_().getFechaIni(), nro);
         }
         request.getSession().setAttribute("publicaciones-carro", null);
-        response.sendRedirect("");
+        request.getRequestDispatcher("MisReservas").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

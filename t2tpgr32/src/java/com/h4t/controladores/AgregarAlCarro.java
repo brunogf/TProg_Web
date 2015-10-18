@@ -64,7 +64,7 @@ public class AgregarAlCarro extends HttpServlet {
          ParDPD par = new ParDPD(dp,dd);
          carro.add(par);
          request.getSession().setAttribute("publicaciones-carro", carro);
-         response.sendRedirect("");
+         request.getRequestDispatcher("/CarroDeCompras.jsp").forward(request, response);
          }
          catch(Exception e){
             out.print(e.getMessage());
