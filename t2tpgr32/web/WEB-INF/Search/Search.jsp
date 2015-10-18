@@ -16,21 +16,9 @@
 <html>
     <head>
         <jsp:include page="../templates/head.jsp"/>
-        <script src="media/js/css-pop.js"></script>
+        
     </head>
     <body>
-        <div id="blanket" class="blanket" style="display:none"></div> 
-        <div id="popUpDiv" class="popUpDiv" style="display:none">
-            <form class="form-horizontal form-carro-search" action="VerReservas"  id="form_carro_search" method="GET">
-                <div class="form-group">
-                    <label for="inputCant" class="col-sm-5 control-label">Cantidad</label>
-                    <div class="col-sm-3">
-                    <input type="number" class="form-control" id="inputCant" placeholder="">
-                    </div>
-                </div>
-                <button type="submit">Submit</button>
-              </form>
-        </div>
         <jsp:include page="../templates/header.jsp"/>
         <div class="container search">
           <div class="row">
@@ -40,14 +28,17 @@
                 if (!publicaciones.isEmpty())
                 {%>
                 <div class="col-xs-12 table-responsive">
-                    <table class="table">
+                    <table class="table tablesorter" id="resultados_busqueda">
+                        <thead>
                         <tr class="cabeceraTabla">
-                            <td>Nombre</td>
-                            <td>Tipo</td>
-                            <td>Proveedor</td>
-                            <td>Precio</td>
-                            <td></td>
+                            <th>Nombre <span class="glyphicon glyphicon-sort"></span></th>
+                            <th>Tipo <span class="glyphicon glyphicon-sort"></span></th>
+                            <th>Proveedor <span class="glyphicon glyphicon-sort"></span></th>
+                            <th>Precio <span class="glyphicon glyphicon-sort"></span></th>
+                            <th></th>
                         </tr>
+                        </thead>
+                         <tbody>
                 <%
                     for(DataPublicacion p : publicaciones)
                     {
@@ -67,6 +58,7 @@
                             precio = ((DataPromocion)p).getPrecioTotal();
                         }
             %>
+           
             <tr class="result" ><!--link a servlet ver info publicacion-->
               <td onclick="location.href='<%=link%>'"><%=p.getNombre()%></td>
               <td onclick="location.href='<%=link%>'"><%=pos%></td>
@@ -94,7 +86,7 @@
               }%>
               </tr><%
             }%>
-                </table></div><%
+            </tbody> </table></div><%
            }
                 else{
             %>
@@ -104,15 +96,13 @@
             <%}%>
           </div>
         </div>
+          <script src="media/js/jquery.tablesorter.min.js"></script>
           <script>
-              function setPub(nombre, proveedor){
-                  var link = "AgregarAlCarro?servicio=";
-                  link.concat(nombre);
-                  link.concat("&proveedor=");
-                  link.concat(proveedor);
-                  var element = document.getElementById("form_carro_search");
-                  element.action = link;
-                 }
+              $(document).ready(function() 
+                { 
+                    $("#resultados_busqueda").tablesorter(); 
+                } 
+            ); 
         </script>
     </body>
 </html>

@@ -104,16 +104,6 @@ header .invalid_login_message{
     cursor: pointer;
     text-decoration: underline;
 }
-/*
-.search .icono-carro{
-    width: 35px;
-    height: 50px;
-}
-
-.search .glyphicon-shopping-cart:hover{
-    font-size: 20px;
-    transition: opacity 0.5s ease;
-}*/
 
 .search .icono-ok{
     font-size:15px;
@@ -122,36 +112,22 @@ header .invalid_login_message{
     height: 0px;
 }
 
-.search .cabeceraTabla{
+.search thead{
     color:#000;
     font-size: 18px;
 }
 
-.blanket
-{
-    background-color:#111; 
-    opacity: 0.65; 
-    *background:none; 
-    position:absolute; 
-    z-index: 9001; 
-    top:0px; 
-    left:0px; 
-    width:100%;
+.search .cabeceraTabla .glyphicon-sort{
+    font-size: 10px;
+    width:15px;
 }
 
-.popUpDiv { 
-    position:absolute;
-    background: #fff;
-    width:400px; 
-    height:400px; 
-    border:5px solid #000; 
-    z-index: 9002; 
-    padding:20px;
+.search .cabeceraTabla .glyphicon-sort:hover{
+    font-size: 15px;
 }
 
-.popUpDiv .form-carro-search{
-    margin-left: 30px;
-    margin-top: 30px;
+.search .cabeceraTabla th:hover{
+    cursor:pointer;
 }
 
 
@@ -255,6 +231,7 @@ header .invalid_login_message{
     color:#000;
     font-size: 18px;
 }
+
 
 /*Ver reserva*/
 .VerReserva{
