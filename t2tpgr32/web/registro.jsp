@@ -54,5 +54,19 @@
                 </form>
           </div>
          </div>
+         
+         <script>
+             $(document).ready(function(){
+             $(document.getElementById("formulario_registro")).on("keyup", "#nick_registro", function(e) { 
+                $.get("RegistroAjax",{nick : $("#nick_registro").val()} ,function(responseJson) {  
+                            var arr =[];
+                            $.each(responseJson, function(index, item) { 
+                                arr[index] = item;      
+                            });
+                            $("#criterio").autocomplete({source: arr});
+                    });
+                });
+            });
+         </script>
     </body>
 </html>
