@@ -63,6 +63,11 @@
             </div>
             <% } %>
           </div>
+          <div class="row">
+              <form id="formcomprar" class="formcomprar" action="GenerarReserva" method="post">
+                <button type="submit" class="btn btn-primary btn-lg">Comprar</button>
+              </form>
+          </div>
         </div>
     </body>
 </html>

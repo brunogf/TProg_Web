@@ -20,6 +20,10 @@
         <servlet-name>AgregarAlCarro</servlet-name>
         <servlet-class>com.h4t.controladores.AgregarAlCarro</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GenerarReserva</servlet-name>
+        <servlet-class>com.h4t.controladores.GenerarReserva</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>AgregarAlCarro</servlet-name>
         <url-pattern>/AgregarAlCarro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GenerarReserva</servlet-name>
+        <url-pattern>/GenerarReserva</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
