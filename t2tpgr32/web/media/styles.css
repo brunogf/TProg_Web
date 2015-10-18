@@ -333,11 +333,11 @@ ul#menu_arbol li {
 }
 
 .cAbierta{
-	list-style-type: none;
+	list-style-type: square;
 	list-style-image: url(imasmenu/carpabiertat.gif);
 }
 .cAbiertaSeleccionada{
-	list-style-type: none;
+	list-style-type: square;
 	list-style-image: url(imasmenu/carpabiertasel.gif);
 }
 .cCerradaSeleccionada{
@@ -345,12 +345,12 @@ ul#menu_arbol li {
 	list-style-image: url(imasmenu/carpcerradasel.gif);
 }
 .cCerrada{
-	list-style-type: none;
+	list-style-type: circle;
 	list-style-image: url(imasmenu/carpcerradat.gif);
 }
 .menuDoc{
 	list-style-type: none;
-	list-style-image: url(imasmenu/doct.gif);
+	list-style-image: url(Images/favicon.png);
 }
 .tagApartado, a.tagApartado{
 	cursor: pointer;
