@@ -1,6 +1,6 @@
 @font-face {
     font-family: VarianeScript;
-    src:url("fonts/Variane Script.ttf") format(truetype);
+    src:local('☺'), url("Variane Script.woff") format('woff');
 }
 
 *{
