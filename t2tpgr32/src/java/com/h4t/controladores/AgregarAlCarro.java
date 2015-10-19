@@ -53,8 +53,8 @@ public class AgregarAlCarro extends HttpServlet {
             IControladorPublicacion pub = fab.getControladorPublicacion();
             DataPublicacion dp = pub.infoServicio(request.getParameter("proveedor").toString(),request.getParameter("servicio").toString());
             try{
-             DateFormat dfini = new SimpleDateFormat("dd-MM-yyyy");
-             DateFormat dffin = new SimpleDateFormat("dd-MM-yyyy");
+             DateFormat dfini = new SimpleDateFormat("yyyy-MM-dd");
+             DateFormat dffin = new SimpleDateFormat("yyyy-MM-dd");
              Date fechainicial = dfini.parse(request.getParameter("fechaini").toString());
              Date fechafinal = dffin.parse(request.getParameter("fechafin").toString());
               DataDisponibilidad dd = new DataDisponibilidad(Integer.parseInt(request.getParameter("cantidad")),

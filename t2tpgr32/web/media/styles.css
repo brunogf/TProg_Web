@@ -326,6 +326,11 @@ header .invalid_login_message{
     font-size: 18px;
 }
 
+.carro_de_compras .subtotal{
+    font-size: 35px;
+}
+
+
 .VerReserva .servicios{
     text-align: center;
 }
