@@ -34,11 +34,10 @@ public class ListarReservasCliente extends HttpServlet {
             throws ServletException, IOException {
         if(request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGGED_IN)
         {
-            FabricaControladores fb = FabricaControladores.getInstancia();
-            IControladorReserva cr = fb.getControladorReserva();
-            IControladorUsuario cu = fb.getControladorUsuario();
-            DataCliente du = (DataCliente)cu.infoCliente((String)request.getSession().getAttribute("Usuario"));
-            request.setAttribute("reservas_usuario", du.getReservas());
+            FabricaControladores fab = FabricaControladores.getInstancia();
+            IControladorUsuario cont_usr = fab.getControladorUsuario();
+            DataCliente data_sur = (DataCliente)cont_usr.infoCliente((String)request.getSession().getAttribute("Usuario"));
+            request.setAttribute("reservas_usuario", data_sur.getReservas());
             request.getRequestDispatcher("/WEB-INF/Usuario/VerReservas.jsp").forward(request, response);
         }
         else

@@ -33,8 +33,8 @@ public class ListarProveedores extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorUsuario cu = fab.getControladorUsuario();
-        Set<DataUsuario> Proveedores = cu.listarProveedores();
+        IControladorUsuario cont_usr = fab.getControladorUsuario();
+        Set<DataUsuario> Proveedores = cont_usr.listarProveedores();
         request.setAttribute("Proveedores", Proveedores);
         request.getRequestDispatcher("/Proveedores.jsp").forward(request, response);
     }

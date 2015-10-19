@@ -36,8 +36,8 @@ public class ListarPromociones extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cp = fab.getControladorPublicacion();
-        Set<DataPromocion> Promociones = cp.listarPromociones();
+        IControladorPublicacion cont_pub = fab.getControladorPublicacion();
+        Set<DataPromocion> Promociones = cont_pub.listarPromociones();
         request.setAttribute("Promociones", Promociones);
         request.getRequestDispatcher("/Promociones.jsp").forward(request, response);       
     }
