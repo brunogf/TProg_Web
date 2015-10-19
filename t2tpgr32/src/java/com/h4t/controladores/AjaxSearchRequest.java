@@ -42,7 +42,7 @@ public class AjaxSearchRequest extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cp = fab.getControladorPublicacion();
+        IControladorPublicacion cont_pub = fab.getControladorPublicacion();
         String json;
         if ((request.getParameter("criterio"))==null)
         {
@@ -51,7 +51,7 @@ public class AjaxSearchRequest extends HttpServlet {
         }
         else
         {
-            Set<DataPublicacion> publicaciones = cp.buscarPublicacion((String)request.getParameter("criterio"));
+            Set<DataPublicacion> publicaciones = cont_pub.buscarPublicacion((String)request.getParameter("criterio"));
             request.setAttribute("publicaciones", publicaciones);
             List<String> lista = new ArrayList<String>();
             for(DataPublicacion p : publicaciones)

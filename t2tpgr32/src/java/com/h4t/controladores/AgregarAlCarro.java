@@ -51,16 +51,16 @@ public class AgregarAlCarro extends HttpServlet {
             }
             FabricaControladores fab = FabricaControladores.getInstancia();
             IControladorPublicacion pub = fab.getControladorPublicacion();
-            DataPublicacion dp = pub.infoServicio(request.getParameter("proveedor").toString(),request.getParameter("servicio").toString());
+            DataPublicacion d_pub = pub.infoServicio(request.getParameter("proveedor").toString(),request.getParameter("servicio").toString());
             try{
              DateFormat dfini = new SimpleDateFormat("yyyy-MM-dd");
              DateFormat dffin = new SimpleDateFormat("yyyy-MM-dd");
              Date fechainicial = dfini.parse(request.getParameter("fechaini").toString());
              Date fechafinal = dffin.parse(request.getParameter("fechafin").toString());
-              DataDisponibilidad dd = new DataDisponibilidad(Integer.parseInt(request.getParameter("cantidad")),
+              DataDisponibilidad d_disp = new DataDisponibilidad(Integer.parseInt(request.getParameter("cantidad")),
                                         fechainicial,fechafinal);
 
-            ParDPD par = new ParDPD(dp,dd);
+            ParDPD par = new ParDPD(d_pub,d_disp);
             carro.add(par);
             request.getSession().setAttribute("publicaciones-carro", carro);
             response.sendRedirect("");
@@ -79,16 +79,16 @@ public class AgregarAlCarro extends HttpServlet {
             }
             FabricaControladores fab = FabricaControladores.getInstancia();
             IControladorPublicacion pub = fab.getControladorPublicacion();
-            DataPublicacion dp = pub.infoPromocion(request.getParameter("proveedor").toString(),request.getParameter("promocion").toString());
+            DataPublicacion d_pub = pub.infoPromocion(request.getParameter("proveedor").toString(),request.getParameter("promocion").toString());
             try{
              DateFormat dfini = new SimpleDateFormat("yyyy-MM-dd");
              DateFormat dffin = new SimpleDateFormat("yyyy-MM-dd");
              Date fechainicial = dfini.parse(request.getParameter("fechaini").toString());
              Date fechafinal = dffin.parse(request.getParameter("fechafin").toString());
-              DataDisponibilidad dd = new DataDisponibilidad(Integer.parseInt(request.getParameter("cantidad")),
+              DataDisponibilidad d_disp = new DataDisponibilidad(Integer.parseInt(request.getParameter("cantidad")),
                                         fechainicial,fechafinal);
 
-            ParDPD par = new ParDPD(dp,dd);
+            ParDPD par = new ParDPD(d_pub,d_disp);
             carro.add(par);
             request.getSession().setAttribute("publicaciones-carro", carro);
             response.sendRedirect("");

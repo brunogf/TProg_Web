@@ -146,6 +146,9 @@ footer .datos{
 
 /*REGISTRO*/
 
+.registro {
+    margin-top: 10px;
+}
 .registro .titulo_registro{
     font-size: 25px;
     font-weight: bold;

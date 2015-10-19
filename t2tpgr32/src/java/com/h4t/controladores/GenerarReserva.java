@@ -38,15 +38,15 @@ public class GenerarReserva extends HttpServlet {
          
         Set<ParDPD> pubs = (HashSet)request.getSession().getAttribute("publicaciones-carro");
         FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorReserva cr = fab.getControladorReserva();
-        cr.borrarPublicacionesSeleccionadas();
+        IControladorReserva cont_r = fab.getControladorReserva();
+        cont_r.borrarPublicacionesSeleccionadas();
         for(ParDPD par: pubs){
             
-            cr.seleccionarProveedor(par.getDpub_().getProveedor());
-            cr.seleccionarCliente(request.getSession().getAttribute("Usuario").toString());
-            cr.seleccionarPublicacion(par.getDpub_().getNombre(),par.getDd_().getCant(),par.getDd_().getFechaIni(),par.getDd_().getFechaFin());
-            int nro = cr.confirmarReserva();
-            cr.cambiarFechaCreacionReserva(par.getDd_().getFechaIni(), nro);
+            cont_r.seleccionarProveedor(par.getDpub_().getProveedor());
+            cont_r.seleccionarCliente(request.getSession().getAttribute("Usuario").toString());
+            cont_r.seleccionarPublicacion(par.getDpub_().getNombre(),par.getDd_().getCant(),par.getDd_().getFechaIni(),par.getDd_().getFechaFin());
+            int nro = cont_r.confirmarReserva();
+            cont_r.cambiarFechaCreacionReserva(par.getDd_().getFechaIni(), nro);
         }
         request.getSession().setAttribute("publicaciones-carro", null);
         request.getRequestDispatcher("MisReservas").forward(request, response);
@@ -82,13 +82,13 @@ public class GenerarReserva extends HttpServlet {
     }
 
     /**
-     * Returns a short description of the servlet.
+     * Returns a short descont_ription of the servlet.
      *
-     * @return a String containing servlet description
+     * @return a String containing servlet descont_ription
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Short descont_ription";
     }// </editor-fold>
 
 }

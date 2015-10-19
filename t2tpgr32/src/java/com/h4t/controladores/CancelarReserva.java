@@ -40,11 +40,11 @@ public class CancelarReserva extends HttpServlet {
                 String usr = (String)request.getSession().getAttribute("Usuario");
                 int reserva = Integer.parseInt(request.getParameter("nro"));
                 FabricaControladores fab = FabricaControladores.getInstancia();
-                IControladorReserva cr = fab.getControladorReserva();
-                if (cr.getInfoClienteReserva(reserva).getNickname().equals(usr))
+                IControladorReserva cont_reserva = fab.getControladorReserva();
+                if (cont_reserva.getInfoClienteReserva(reserva).getNickname().equals(usr))
                         {
                             try{
-                            cr.actualizarEstado(reserva, Estado.Cancelada);
+                            cont_reserva.actualizarEstado(reserva, Estado.Cancelada);
                             }catch(Exception ex){}
                              response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/VerInfoReserva?nro=" + request.getParameter("nro")));
                         }
@@ -81,13 +81,13 @@ public class CancelarReserva extends HttpServlet {
     }
 
     /**
-     * Returns a short description of the servlet.
+     * Returns a short descont_reservaiption of the servlet.
      *
-     * @return a String containing servlet description
+     * @return a String containing servlet descont_reservaiption
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Short descont_reservaiption";
     }// </editor-fold>
 
 }
