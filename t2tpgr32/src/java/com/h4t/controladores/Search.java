@@ -6,7 +6,6 @@
 package com.h4t.controladores;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashSet;
 import java.util.Set;
 import javax.servlet.ServletException;

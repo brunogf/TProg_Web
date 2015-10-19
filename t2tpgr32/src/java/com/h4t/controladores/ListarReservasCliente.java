@@ -7,17 +7,12 @@ package com.h4t.controladores;
 
 import com.h4t.modelo.EstadoSesion;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.DataCliente;
-import tpgr32.DataUsuario;
-import tpgr32.FabricaControladores;
-import tpgr32.IControladorReserva;
-import tpgr32.IControladorUsuario;
+import tpgr32.*;
 
 /**
  *
