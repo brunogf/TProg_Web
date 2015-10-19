@@ -5,8 +5,13 @@
  */
 package com.h4t.controladores;
 
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,6 +43,21 @@ public class VerInfoProveedor extends HttpServlet {
         String proveedor = (String)request.getParameter("Proveedor");
         request.setAttribute("info_proveedor", cu.infoProveedor(proveedor));   
         request.setAttribute("publicaciones_de_proveedor", cu.listarPublicacionesProveedor(proveedor));
+        DataUsuario du = cu.infoProveedor(proveedor);
+        if(du.getImage() != null)
+                {
+                    
+                    Image i = cu.getImagenDelUsuario(du.getNickname()); 
+                    BufferedImage bi = (BufferedImage)i;
+                    String destino = getServletContext().getRealPath("/") + "media\\Images\\" + du.getNickname().toLowerCase() + ".jpg";
+                    File d = new File(destino);
+                    if (!(d.exists())){
+                        BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),
+			bi.getHeight(), BufferedImage.TYPE_INT_RGB);
+                        newBufferedImage.createGraphics().drawImage(bi, 0, 0, Color.WHITE, null);
+                        ImageIO.write(newBufferedImage,"jpg",d);
+                    }
+                }
         request.getRequestDispatcher("InfoProveedor.jsp").forward(request, response);
     }
 

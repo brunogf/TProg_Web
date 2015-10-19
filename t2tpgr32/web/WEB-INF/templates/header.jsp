@@ -55,13 +55,17 @@
             if (request.getSession().getAttribute("estado_sesion") != null)
             {
                 switch((EstadoSesion)request.getSession().getAttribute("estado_sesion")){
-			case LOGGED_IN:%>
+			case LOGGED_IN:{
+                           String offset = ""; 
+                        
+          if(((String)request.getSession().getAttribute("TipoUsuario")).equals("cliente")){ %>
                         <div class="col-xs-4 accion_perfil">
                             <button type='button' class='btn btn-default carro' onclick="location.href='CarroDeCompras.jsp'"><span class="glyphicon glyphicon-shopping-cart"></span> Carro de compras</button>
-                            <button type="button" name="cerrar_sesion" class="btn btn-sm btn-primary" onclick="location.href ='MisReservas'">Mis Reservas</button>
-                            <button type="button" name="cerrar_sesion" class="btn btn-sm btn-link" onclick="location.href ='Logout'">Cerrar Sesión</button>
+                            <button type="button"  class="btn btn-sm btn-primary" onclick="location.href ='MisReservas'">Mis Reservas</button><%}
+                                else{offset = " col-xs-offset-2";}    %>
+                            <button type="button" name="cerrar_sesion" class="btn btn-sm btn-link<%=offset%>" onclick="location.href ='Logout'">Cerrar Sesión</button>
                         </div>            
-                        <%break;
+                        <%}break;
 			default:%>
                         
                          <%
