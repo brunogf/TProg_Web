@@ -30,18 +30,21 @@
                         <label>Nombre:</label><%=info_proveedor.getNombre()%>
                         <br/>
                         <label>Empresa:</label><%=info_proveedor.getEmpresa()%>
-                        <br/>
-                        <%--IMAGEN--%>
+                        <br/>  
+                            <%  
+                                String imagen = "media/Images/";
+                                
+                                imagen = imagen + info_proveedor.getNickname().toLowerCase() + ".jpg";
+                            %>   
+                            <img src="<%=imagen%>" width="150px" height="150px" alt="Imagen Perfil" onError="this.onerror=null;this.src='media/Images/perfil.jpg';" class="img-thumbnail"> 
                         <br/>
                         <h4>Publicaciones</h4>                        
-                        <div class="container publicacionesDeProveedor"> 
-                            <div class="row">
+                        
                                 <div class="col-xs-6 table-responsive">
                                 <table class="table">
                                         <tr class="cabeceraTabla">
                                             <td>Nombre</td>
                                             <td>Tipo</td>
-                                            <td>Proveedor</td>
                                         </tr>    
                                 <%    
                                     String link;
@@ -59,13 +62,11 @@
                                         <tr class="result" onclick="location.href='<%=link%>'">
                                             <td><%=p.getNombre()%></td>
                                             <td><%=pos%></td>
-                                            <td><%=p.getProveedor()%></td>
                                         </tr>
                                     <%}%>
                                 </table>
-                                </div>
-                            </div>
-                        </div>
+                               </div>                          
+                        
         </div>
     </body>
 </html>
