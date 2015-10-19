@@ -59,18 +59,18 @@ public class RegistrarCliente extends HttpServlet {
             Date fnac = date_format.parse(request.getParameter("fecha_registro").toString());                       
             cont_usr.altaCliente(nick, nombre, apellido, mail, fnac, pass);
             
-            
-            String destino = getServletContext().getRealPath("/") + "/media/Images/" + nick + ".jpg";
-            File file_d = new File(destino);
-            if(file_d.exists())
-                file_d.delete();
-            if (!(file_d.exists())){
-                        BufferedImage newBufferedImage = new BufferedImage(iBuff.getWidth(),
-			iBuff.getHeight(), BufferedImage.TYPE_INT_RGB);
-                        newBufferedImage.createGraphics().drawImage(iBuff, 0, 0, Color.WHITE, null);
-                        ImageIO.write(newBufferedImage,"jpg",file_d);
-                    }
-
+            if(iBuff != null){
+                String destino = getServletContext().getRealPath("/") + "/media/Images/" + nick + ".jpg";
+                File file_d = new File(destino);
+                if(file_d.exists())
+                    file_d.delete();
+                if (!(file_d.exists())){
+                            BufferedImage newBufferedImage = new BufferedImage(iBuff.getWidth(),
+                            iBuff.getHeight(), BufferedImage.TYPE_INT_RGB);
+                            newBufferedImage.createGraphics().drawImage(iBuff, 0, 0, Color.WHITE, null);
+                            ImageIO.write(newBufferedImage,"jpg",file_d);
+                        }
+            }
             response.sendRedirect("");
         }catch(ErrorRegistrarCliente e){
             response.sendError(404); // error en registrar el cliente
