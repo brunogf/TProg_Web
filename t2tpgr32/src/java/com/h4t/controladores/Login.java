@@ -49,9 +49,11 @@ public class Login extends HttpServlet {
                 DataUsuario du;
                 try{
                 du = cu.infoCliente(cu.getNickUsuario(request.getParameter("Usuario")));
+                request.getSession().setAttribute("TipoUsuario", "cliente");
                 }catch(Exception e)
                 {
                     du = cu.infoProveedor(cu.getNickUsuario(request.getParameter("Usuario")));
+                    request.getSession().setAttribute("TipoUsuario", "proveedor");
                 }
                 request.getSession().setAttribute("Usuario", du.getNickname());
                 request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGGED_IN);
