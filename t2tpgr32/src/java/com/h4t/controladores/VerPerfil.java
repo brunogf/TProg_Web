@@ -49,24 +49,45 @@ public class VerPerfil extends HttpServlet {
         ControladorUsuario cu = fab.getControladorUsuario();
         
         try {
-            Cliente usr = (Cliente)mu.encontrarUsuario(request.getSession().getAttribute("Usuario").toString());
-            DataCliente du = (DataCliente)cu.infoCliente(usr.getNickname());
-            if(du.getImage() != null)
-            {
-                    
-                    Image i = cu.getImagenDelUsuario(du.getNickname()); 
-                    BufferedImage bi = (BufferedImage)i;
-                    String destino = getServletContext().getRealPath("/") + "media\\Images\\" + du.getNickname().toLowerCase() + ".jpg";
-                    File d = new File(destino);
-                    if (!(d.exists())){
-                        BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),
-			bi.getHeight(), BufferedImage.TYPE_INT_RGB);
-                        newBufferedImage.createGraphics().drawImage(bi, 0, 0, Color.WHITE, null);
-                        ImageIO.write(newBufferedImage,"jpg",d);
-                    }
+            Usuario usr = (Usuario)mu.encontrarUsuario(request.getSession().getAttribute("Usuario").toString());
+            if (usr instanceof Cliente){
+                DataCliente du = (DataCliente)cu.infoCliente(usr.getNickname());
+                if(du.getImage() != null)
+                {
+
+                        Image i = cu.getImagenDelUsuario(du.getNickname()); 
+                        BufferedImage bi = (BufferedImage)i;
+                        String destino = getServletContext().getRealPath("/") + "media\\Images\\" + du.getNickname().toLowerCase() + ".jpg";
+                        File d = new File(destino);
+                        if (!(d.exists())){
+                            BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),
+                            bi.getHeight(), BufferedImage.TYPE_INT_RGB);
+                            newBufferedImage.createGraphics().drawImage(bi, 0, 0, Color.WHITE, null);
+                            ImageIO.write(newBufferedImage,"jpg",d);
+                        }
+                }
+                request.setAttribute("info", du);
+                request.getRequestDispatcher("/WEB-INF/Usuario/perfil.jsp").forward(request, response);
             }
-            request.setAttribute("info", du);
-            request.getRequestDispatcher("/WEB-INF/Usuario/perfil.jsp").forward(request, response);
+            else{
+                DataProveedor du = (DataProveedor)cu.infoProveedor(usr.getNickname());
+                if(du.getImage() != null)
+                {
+
+                        Image i = cu.getImagenDelUsuario(du.getNickname()); 
+                        BufferedImage bi = (BufferedImage)i;
+                        String destino = getServletContext().getRealPath("/") + "media\\Images\\" + du.getNickname().toLowerCase() + ".jpg";
+                        File d = new File(destino);
+                        if (!(d.exists())){
+                            BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),
+                            bi.getHeight(), BufferedImage.TYPE_INT_RGB);
+                            newBufferedImage.createGraphics().drawImage(bi, 0, 0, Color.WHITE, null);
+                            ImageIO.write(newBufferedImage,"jpg",d);
+                        }
+                }
+                request.setAttribute("info", du);
+                request.getRequestDispatcher("/WEB-INF/Usuario/perfil.jsp").forward(request, response);
+            }
 	}finally{
         }
     }
