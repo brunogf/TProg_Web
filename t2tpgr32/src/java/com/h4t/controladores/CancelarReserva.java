@@ -35,8 +35,7 @@ public class CancelarReserva extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(request.getSession() != null)
-            if((request.getSession().getAttribute("estado_sesion")) == EstadoSesion.LOGGED_IN)
+            if((request.getSession() != null) && (request.getSession().getAttribute("estado_sesion")) == EstadoSesion.LOGGED_IN)
             {
                 String usr = (String)request.getSession().getAttribute("Usuario");
                 int reserva = Integer.parseInt(request.getParameter("nro"));

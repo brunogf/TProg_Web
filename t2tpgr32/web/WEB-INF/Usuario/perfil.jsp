@@ -122,10 +122,8 @@
                          <br/>
                      </div>
                   </div>
-                </div>
-                
+                </div>         
                 <% }%>
-            
-       <jsp:include page="../templates/footer.jsp"/>
+        <jsp:include page="../templates/footer.jsp"/>
     </body>
 </html>
