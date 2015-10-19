@@ -35,11 +35,11 @@ public class Home extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaControladores fb = FabricaControladores.getInstancia();
-        IControladorPublicacion cp = fb.getControladorPublicacion();
-        CatTree cats = cp.getCatTree();
+        FabricaControladores fab = FabricaControladores.getInstancia();
+        IControladorPublicacion cont_pub = fab.getControladorPublicacion();
+        CatTree cats = cont_pub.getCatTree();
         request.setAttribute("categorias", cats);
-        Set<DataPromocion> Promos = cp.listarPromociones();
+        Set<DataPromocion> Promos = cont_pub.listarPromociones();
         request.setAttribute("Promos", Promos);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
     }
