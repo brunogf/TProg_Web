@@ -115,5 +115,6 @@
                }
             }
             </script>
+            <jsp:include page="../templates/footer.jsp"/>
     </body>
 </html>

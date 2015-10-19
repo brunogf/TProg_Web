@@ -97,6 +97,19 @@ header .invalid_login_message{
     margin-left: 75px;
 }
 
+footer .container{
+    background: #88CBFA;
+    margin-top: 15px;
+    height: 45px;
+}
+
+footer .row{
+    padding-top:5px;
+}
+
+footer .datos{
+    padding-top: 6px;
+}
 /*Busqueda-Search.jsp*/
 
 .search .result:hover{

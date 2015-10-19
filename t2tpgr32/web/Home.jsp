@@ -42,11 +42,13 @@
                         </li>
                         <jsp:include page="WEB-INF/templates/NodoCatTree.jsp"/>
                     </ul>
+                        
                     <script type="text/javascript">                       
                             iniciaMenu('menu_arbol');                       
                     </script>
                 </div>
             </div>
         </div>
+                    <jsp:include page="WEB-INF/templates/footer.jsp"/>
     </body>
 </html>

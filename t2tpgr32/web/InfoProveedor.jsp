@@ -68,5 +68,6 @@
                                </div>                          
                         
         </div>
+                                <jsp:include page="WEB-INF/templates/footer.jsp"/>
     </body>
 </html>
