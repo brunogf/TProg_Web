@@ -40,47 +40,47 @@ public class VerPerfil extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         FabricaControladores fab = FabricaControladores.getInstancia();
-        ManejadorUsuario mu = ManejadorUsuario.getInstance();
-        ControladorUsuario cu = fab.getControladorUsuario();
+        ManejadorUsuario m_usr = ManejadorUsuario.getInstance();
+        ControladorUsuario cont_usr = fab.getControladorUsuario();
         
         try {
-            Usuario usr = (Usuario)mu.encontrarUsuario(request.getSession().getAttribute("Usuario").toString());
+            Usuario usr = (Usuario)m_usr.encontrarUsuario(request.getSession().getAttribute("Usuario").toString());
             if (usr instanceof Cliente){
-                DataCliente du = (DataCliente)cu.infoCliente(usr.getNickname());
-                if(du.getImage() != null)
+                DataCliente data_usr = (DataCliente)cont_usr.infoCliente(usr.getNickname());
+                if(data_usr.getImage() != null)
                 {
 
-                        Image i = cu.getImagenDelUsuario(du.getNickname()); 
-                        BufferedImage bi = (BufferedImage)i;
-                        String destino = getServletContext().getRealPath("/") + "media\\Images\\" + du.getNickname().toLowerCase() + ".jpg";
-                        File d = new File(destino);
-                        if (!(d.exists())){
-                            BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),
-                            bi.getHeight(), BufferedImage.TYPE_INT_RGB);
-                            newBufferedImage.createGraphics().drawImage(bi, 0, 0, Color.WHITE, null);
-                            ImageIO.write(newBufferedImage,"jpg",d);
+                        Image img = cont_usr.getImagenDelUsuario(data_usr.getNickname()); 
+                        BufferedImage b_img = (BufferedImage)img;
+                        String destino = getServletContext().getRealPath("/") + "media\\Images\\" + data_usr.getNickname().toLowerCase() + ".jpg";
+                        File file_d = new File(destino);
+                        if (!(file_d.exists())){
+                            BufferedImage newBufferedImage = new BufferedImage(b_img.getWidth(),
+                            b_img.getHeight(), BufferedImage.TYPE_INT_RGB);
+                            newBufferedImage.createGraphics().drawImage(b_img, 0, 0, Color.WHITE, null);
+                            ImageIO.write(newBufferedImage,"jpg",file_d);
                         }
                 }
-                request.setAttribute("info", du);
+                request.setAttribute("info", data_usr);
                 request.getRequestDispatcher("/WEB-INF/Usuario/perfil.jsp").forward(request, response);
             }
             else{
-                DataProveedor du = (DataProveedor)cu.infoProveedor(usr.getNickname());
-                if(du.getImage() != null)
+                DataProveedor data_usr = (DataProveedor)cont_usr.infoProveedor(usr.getNickname());
+                if(data_usr.getImage() != null)
                 {
 
-                        Image i = cu.getImagenDelUsuario(du.getNickname()); 
-                        BufferedImage bi = (BufferedImage)i;
-                        String destino = getServletContext().getRealPath("/") + "media\\Images\\" + du.getNickname().toLowerCase() + ".jpg";
-                        File d = new File(destino);
-                        if (!(d.exists())){
-                            BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),
-                            bi.getHeight(), BufferedImage.TYPE_INT_RGB);
-                            newBufferedImage.createGraphics().drawImage(bi, 0, 0, Color.WHITE, null);
-                            ImageIO.write(newBufferedImage,"jpg",d);
+                        Image img = cont_usr.getImagenDelUsuario(data_usr.getNickname()); 
+                        BufferedImage b_img = (BufferedImage)img;
+                        String destino = getServletContext().getRealPath("/") + "media\\Images\\" + data_usr.getNickname().toLowerCase() + ".jpg";
+                        File file_d = new File(destino);
+                        if (!(file_d.exists())){
+                            BufferedImage newBufferedImage = new BufferedImage(b_img.getWidth(),
+                            b_img.getHeight(), BufferedImage.TYPE_INT_RGB);
+                            newBufferedImage.createGraphics().drawImage(b_img, 0, 0, Color.WHITE, null);
+                            ImageIO.write(newBufferedImage,"jpg",file_d);
                         }
                 }
-                request.setAttribute("info", du);
+                request.setAttribute("info", data_usr);
                 request.getRequestDispatcher("/WEB-INF/Usuario/perfil.jsp").forward(request, response);
             }
 	}finally{
