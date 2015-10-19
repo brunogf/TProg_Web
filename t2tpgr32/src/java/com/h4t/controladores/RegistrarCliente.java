@@ -5,6 +5,7 @@
  */
 package com.h4t.controladores;
 
+import com.h4t.exceptions.ErrorRegistrarCliente;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -71,7 +72,13 @@ public class RegistrarCliente extends HttpServlet {
                     }
 
             response.sendRedirect("");
-        }catch(Exception e){
+        }catch(ErrorRegistrarCliente e){
+            response.sendError(404); // error en registrar el cliente
+	    request.getRequestDispatcher("/WEB-INF/errorPages/500.jsp").
+						include(request, response);
+				return;
+        }
+        catch(Exception e){
             
         }
     }
