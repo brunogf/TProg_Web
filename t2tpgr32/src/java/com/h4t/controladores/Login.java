@@ -63,7 +63,7 @@ public class Login extends HttpServlet {
                     
                     Image i = cu.getImagenDelUsuario(du.getNickname()); 
                     BufferedImage bi = (BufferedImage)i;
-                    String destino = getServletContext().getRealPath("/") + "media/Images/" + du.getNickname().toLowerCase() + ".jpg";
+                    String destino = getServletContext().getRealPath("/") + "/media/Images/" + du.getNickname().toLowerCase() + ".jpg";
                     File d = new File(destino);
                     if (!(d.exists())){
                         BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),

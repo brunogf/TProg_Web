@@ -51,7 +51,7 @@ public class VerInfoservicio extends HttpServlet {
         int num = 0;
         for (Image i : imagenes){
             BufferedImage bi = (BufferedImage)i;
-            String destino = getServletContext().getRealPath("/") + "media/Images/"+servicio+String.valueOf(num)+".jpg";
+            String destino = getServletContext().getRealPath("/") + "/media/Images/"+servicio+String.valueOf(num)+".jpg";
             File arch = new File(destino);
             if (!(arch.exists())){
               BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),
