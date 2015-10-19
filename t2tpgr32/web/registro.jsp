@@ -9,7 +9,6 @@
 <html>
     <head>
         <jsp:include page="WEB-INF/templates/head.jsp"/>
-        <script src="media/js/bootstrap-filestyle.min.js"></script>
     </head>
     <body>
        <jsp:include page="WEB-INF/templates/header.jsp"/>
@@ -54,5 +53,16 @@
                 </form>
           </div>
          </div>
+         
+         <script>
+             var asd;
+             $(document).ready(function(){
+             $("#nick_registro").keyup(function(){
+                 $.get("RegistroAjax", {nick : $("#nick_registro").val()}, function(responseJson) {
+                     asd = $.parseJSON(responseJson);
+                 });
+             });
+            });
+         </script>
     </body>
 </html>

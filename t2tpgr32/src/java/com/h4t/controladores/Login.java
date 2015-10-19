@@ -46,7 +46,13 @@ public class Login extends HttpServlet {
         {
             case 0://TODO OK
                 {
-                DataUsuario du = cu.infoCliente(cu.getNickUsuario(request.getParameter("Usuario")));
+                DataUsuario du;
+                try{
+                du = cu.infoCliente(cu.getNickUsuario(request.getParameter("Usuario")));
+                }catch(Exception e)
+                {
+                    du = cu.infoProveedor(cu.getNickUsuario(request.getParameter("Usuario")));
+                }
                 request.getSession().setAttribute("Usuario", du.getNickname());
                 request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGGED_IN);
                 String nombre = du.getNombre() + " " + du.getApellido();
@@ -57,7 +63,7 @@ public class Login extends HttpServlet {
                     
                     Image i = cu.getImagenDelUsuario(du.getNickname()); 
                     BufferedImage bi = (BufferedImage)i;
-                    String destino = getServletContext().getRealPath("/") + "media\\Images\\" + du.getNickname().toLowerCase() + ".jpg";
+                    String destino = getServletContext().getRealPath("/") + "/media/Images/" + du.getNickname().toLowerCase() + ".jpg";
                     File d = new File(destino);
                     if (!(d.exists())){
                         BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),
