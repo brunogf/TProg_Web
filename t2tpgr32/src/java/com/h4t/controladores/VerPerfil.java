@@ -5,6 +5,10 @@
  */
 package com.h4t.controladores;
 
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,6 +21,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import tpgr32.*;
 import java.util.*;
+import javax.imageio.ImageIO;
 
 
 /**
@@ -45,8 +50,22 @@ public class VerPerfil extends HttpServlet {
         
         try {
             Cliente usr = (Cliente)mu.encontrarUsuario(request.getSession().getAttribute("Usuario").toString());
-            DataCliente info = (DataCliente)cu.infoCliente(usr.getNickname());
-            request.setAttribute("info", info);
+            DataCliente du = (DataCliente)cu.infoCliente(usr.getNickname());
+            if(du.getImage() != null)
+            {
+                    
+                    Image i = cu.getImagenDelUsuario(du.getNickname()); 
+                    BufferedImage bi = (BufferedImage)i;
+                    String destino = getServletContext().getRealPath("/") + "media\\Images\\" + du.getNickname().toLowerCase() + ".jpg";
+                    File d = new File(destino);
+                    if (!(d.exists())){
+                        BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),
+			bi.getHeight(), BufferedImage.TYPE_INT_RGB);
+                        newBufferedImage.createGraphics().drawImage(bi, 0, 0, Color.WHITE, null);
+                        ImageIO.write(newBufferedImage,"jpg",d);
+                    }
+            }
+            request.setAttribute("info", du);
             request.getRequestDispatcher("/WEB-INF/Usuario/perfil.jsp").forward(request, response);
 	}finally{
         }

@@ -47,7 +47,12 @@
                     <br/>
                     <label>Fecha de nacimiento:</label><%=" " + df.format(info.getFecha())%>
                     <br/>
-                    <!--IMAGEN-->
+                    <%
+                        String imagen = "media/Images/";
+                        imagen = imagen + info.getNickname().toLowerCase() + ".jpg";
+                    %>
+                    <img src="<%=imagen%>" width="150px" height="150px" alt="Imagen Perfil" onError="this.onerror=null;this.src='media/Images/perfil.jpg';" class="img-thumbnail"> 
+                    <br/>
                 </div>
 
                 <div class="tab-pane fade" id="reservas">
