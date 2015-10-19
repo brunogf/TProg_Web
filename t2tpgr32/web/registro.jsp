@@ -21,9 +21,11 @@
                     <div class="form-group">
                         <div class="col-xs-4 col-xs-offset-4">
                             <input type="text" class="form-control" name="nick_registro" id="nick_registro" placeholder="Nickname">
+                            <span class="glyphicon glyphicon-warning-sign" id="nick_warning"></span>
                         </div>
                         <div class="col-xs-4 col-xs-offset-4">
                             <input type="email" class="form-control" name="email_registro" id="email_registro" placeholder="Correo electronico">
+                            <span class="glyphicon glyphicon-warning-sign" id="email_warning"></span>
                         </div>
                         <div class="col-xs-4 col-xs-offset-4">
                             <input type="text" class="form-control" name="nombre_registro" id="nombre_registro" placeholder="Nombre">
@@ -47,7 +49,7 @@
                             </div>
                         </div>
                         <div class="col-xs-4 col-xs-offset-4">
-                            <input type="submit" class="btn btn-primary">
+                            <input type="submit"  id="submit_btn_registro" class="btn btn-primary">
                         </div>
                     </div>
                 </form>
@@ -55,14 +57,70 @@
          </div>
          
          <script>
-             var asd;
+             var arr;
              $(document).ready(function(){
              $("#nick_registro").keyup(function(){
-                 $.get("RegistroAjax", {nick : $("#nick_registro").val()}, function(responseJson) {
-                     asd = $.parseJSON(responseJson);
+                 $.get("RegistroAjax", {nick : $("#nick_registro").val(), email : $("#email_registro").val()}, function(responseJson) {
+                     arr = responseJson;
+                     if (arr.nick)
+                     {
+                         $("#nick_registro").css('color', 'red');
+                         $("#submit_btn_registro").attr('disabled', 'disabled');
+                         $("#nick_warning").css('visibility', 'visible');
+                     }
+                     else
+                     {
+                         $("#nick_warning").css('visibility', 'hidden');
+                         $("#nick_registro").css('color', 'inherit');
+                     }
+                     
+                     if (arr.email)
+                     {
+                         $("#email_registro").css('color', 'red');
+                          $("#submit_btn_registro").attr('disabled', 'disabled');
+                          $("#email_warning").css('visibility', 'visible');
+                     }
+                      else
+                      {
+                          $("#email_warning").css('visibility', 'hidden');
+                         $("#email_registro").css('color', 'black');
+                     }
+                     if (!arr.nick && !arr.email)
+                              $("#submit_btn_registro").removeAttr('disabled');
+                 });
+             });
+             $("#email_registro").keyup(function(){
+                 $.get("RegistroAjax", {nick : $("#nick_registro").val(), email : $("#email_registro").val()}, function(responseJson) {
+                     arr = responseJson;
+                     if (arr.nick)
+                     {
+                         $("#nick_registro").css('color', 'red');
+                         $("#submit_btn_registro").attr('disabled', 'disabled');
+                         $("#nick_warning").css('visibility', 'visible');
+                     }
+                     else
+                     {
+                         $("#nick_warning").css('visibility', 'hidden');
+                         $("#nick_registro").css('color', 'inherit');
+                     }
+                     
+                     if (arr.email)
+                     {
+                         $("#email_registro").css('color', 'red');
+                          $("#submit_btn_registro").attr('disabled', 'disabled');
+                          $("#email_warning").css('visibility', 'visible');
+                     }
+                      else
+                      {
+                          $("#email_warning").css('visibility', 'hidden');
+                         $("#email_registro").css('color', 'black');
+                     }
+                        if (!arr.nick && !arr.email)
+                              $("#submit_btn_registro").removeAttr('disabled');
                  });
              });
             });
+            
          </script>
     </body>
 </html>

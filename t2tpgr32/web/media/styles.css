@@ -139,6 +139,20 @@ header .invalid_login_message{
     margin-left: 425px;
 }
 
+.registro #nick_registro{
+    display: inline-block;
+}
+
+.registro #email_registro{
+    display: inline-block;
+}
+
+.registro .glyphicon-warning-sign{
+    font-size: 17px;
+    visibility: hidden;
+    color: #FFCC00;
+}
+
 .img_div
 {
     position:relative;

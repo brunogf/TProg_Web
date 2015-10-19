@@ -56,8 +56,8 @@ public class RegistroAjax extends HttpServlet {
         }
         
         String json = "{\"nick\" : ";
-        json = json + "\"" + Boolean.toString(array[0]) +"\"";
-        json = json + ", \"email\" : \"" + Boolean.toString(array[1]) + "\"}";
+        json = json + Boolean.toString(array[0]);
+        json = json + ", \"email\" : " + Boolean.toString(array[1]) + "}";
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);
