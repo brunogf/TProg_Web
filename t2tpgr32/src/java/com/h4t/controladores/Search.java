@@ -34,14 +34,14 @@ public class Search extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cp = fab.getControladorPublicacion();
+        IControladorPublicacion cont_pub = fab.getControladorPublicacion();
         if ((request.getParameter("criterio"))==null)
         {
             request.setAttribute("publicaciones", new HashSet<DataPublicacion>());
         }
         else
         {
-            Set<DataPublicacion> publicaciones = cp.buscarPublicacionCompleta(((String)request.getParameter("criterio")));
+            Set<DataPublicacion> publicaciones = cont_pub.buscarPublicacionCompleta(((String)request.getParameter("criterio")));
             request.setAttribute("publicaciones", publicaciones);
         }
         request.getRequestDispatcher("WEB-INF/Search/Search.jsp").forward(request, response);

@@ -48,13 +48,13 @@ public class VerInfoservicio extends HttpServlet {
         Set<Image> imagenes = dts.getImagenes();
         int num = 0;
         for (Image i : imagenes){
-            BufferedImage bi = (BufferedImage)i;
+            BufferedImage b_img = (BufferedImage)i;
             String destino = getServletContext().getRealPath("/") + "/media/Images/"+servicio+String.valueOf(num)+".jpg";
             File arch = new File(destino);
             if (!(arch.exists())){
-              BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),
-			bi.getHeight(), BufferedImage.TYPE_INT_RGB);
-	      newBufferedImage.createGraphics().drawImage(bi, 0, 0, Color.WHITE, null);
+              BufferedImage newBufferedImage = new BufferedImage(b_img.getWidth(),
+			b_img.getHeight(), BufferedImage.TYPE_INT_RGB);
+	      newBufferedImage.createGraphics().drawImage(b_img, 0, 0, Color.WHITE, null);
               ImageIO.write(newBufferedImage,"jpg",arch);
             }
             String atr = "imagen"+String.valueOf(num);

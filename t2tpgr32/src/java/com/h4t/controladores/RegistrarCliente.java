@@ -44,8 +44,8 @@ public class RegistrarCliente extends HttpServlet {
    
        
         FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorUsuario cu = fab.getControladorUsuario();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        IControladorUsuario cont_usr = fab.getControladorUsuario();
+        DateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
                        
         String nick = (String) request.getParameter("nick_registro");
         String nombre = (String) request.getParameter("nombre_registro");
@@ -55,19 +55,19 @@ public class RegistrarCliente extends HttpServlet {
         
         
         try{
-            Date fnac = df.parse(request.getParameter("fecha_registro").toString());                       
-            cu.altaCliente(nick, nombre, apellido, mail, fnac, pass);
+            Date fnac = date_format.parse(request.getParameter("fecha_registro").toString());                       
+            cont_usr.altaCliente(nick, nombre, apellido, mail, fnac, pass);
             
             
             String destino = getServletContext().getRealPath("/") + "/media/Images/" + nick + ".jpg";
-            File d = new File(destino);
-            if(d.exists())
-                d.delete();
-            if (!(d.exists())){
+            File file_d = new File(destino);
+            if(file_d.exists())
+                file_d.delete();
+            if (!(file_d.exists())){
                         BufferedImage newBufferedImage = new BufferedImage(iBuff.getWidth(),
 			iBuff.getHeight(), BufferedImage.TYPE_INT_RGB);
                         newBufferedImage.createGraphics().drawImage(iBuff, 0, 0, Color.WHITE, null);
-                        ImageIO.write(newBufferedImage,"jpg",d);
+                        ImageIO.write(newBufferedImage,"jpg",file_d);
                     }
 
             response.sendRedirect("");

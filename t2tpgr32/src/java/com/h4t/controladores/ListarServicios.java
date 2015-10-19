@@ -33,8 +33,8 @@ public class ListarServicios extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {       
         FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cp = fab.getControladorPublicacion();
-        Set<DataServicio> Servicios = cp.listarServicios();
+        IControladorPublicacion cont_pub = fab.getControladorPublicacion();
+        Set<DataServicio> Servicios = cont_pub.listarServicios();
         request.setAttribute("Servicios", Servicios);
         request.getRequestDispatcher("Servicios.jsp").forward(request, response);
     }

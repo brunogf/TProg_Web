@@ -36,8 +36,8 @@ public class VerInfoReserva extends HttpServlet {
         int nro = Integer.parseInt((String)request.getParameter("nro"));
         
         FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorReserva cr = fab.getControladorReserva();
-        request.setAttribute("info_reserva_dr", cr.infoReserva(nro));
+        IControladorReserva cont_res = fab.getControladorReserva();
+        request.setAttribute("info_reserva_dr", cont_res.infoReserva(nro));
         request.getRequestDispatcher("WEB-INF/Usuario/VerReserva.jsp").forward(request, response);
     }
 

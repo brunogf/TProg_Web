@@ -38,23 +38,23 @@ public class VerInfoProveedor extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         FabricaControladores fab = FabricaControladores.getInstancia();    
-        IControladorUsuario cu = fab.getControladorUsuario();
+        IControladorUsuario cont_usr = fab.getControladorUsuario();
         String proveedor = (String)request.getParameter("Proveedor");
-        request.setAttribute("info_proveedor", cu.infoProveedor(proveedor));   
-        request.setAttribute("publicaciones_de_proveedor", cu.listarPublicacionesProveedor(proveedor));
-        DataUsuario du = cu.infoProveedor(proveedor);
-        if(du.getImage() != null)
+        request.setAttribute("info_proveedor", cont_usr.infoProveedor(proveedor));   
+        request.setAttribute("publicaciones_de_proveedor", cont_usr.listarPublicacionesProveedor(proveedor));
+        DataUsuario data_usr = cont_usr.infoProveedor(proveedor);
+        if(data_usr.getImage() != null)
                 {
                     
-                    Image i = cu.getImagenDelUsuario(du.getNickname()); 
-                    BufferedImage bi = (BufferedImage)i;
-                    String destino = getServletContext().getRealPath("/") + "media\\Images\\" + du.getNickname().toLowerCase() + ".jpg";
-                    File d = new File(destino);
-                    if (!(d.exists())){
-                        BufferedImage newBufferedImage = new BufferedImage(bi.getWidth(),
-			bi.getHeight(), BufferedImage.TYPE_INT_RGB);
-                        newBufferedImage.createGraphics().drawImage(bi, 0, 0, Color.WHITE, null);
-                        ImageIO.write(newBufferedImage,"jpg",d);
+                    Image img = cont_usr.getImagenDelUsuario(data_usr.getNickname()); 
+                    BufferedImage b_img = (BufferedImage)img;
+                    String destino = getServletContext().getRealPath("/") + "media\\Images\\" + data_usr.getNickname().toLowerCase() + ".jpg";
+                    File file_d = new File(destino);
+                    if (!(file_d.exists())){
+                        BufferedImage newBufferedImage = new BufferedImage(b_img.getWidth(),
+			b_img.getHeight(), BufferedImage.TYPE_INT_RGB);
+                        newBufferedImage.createGraphics().drawImage(b_img, 0, 0, Color.WHITE, null);
+                        ImageIO.write(newBufferedImage,"jpg",file_d);
                     }
                 }
         request.getRequestDispatcher("InfoProveedor.jsp").forward(request, response);

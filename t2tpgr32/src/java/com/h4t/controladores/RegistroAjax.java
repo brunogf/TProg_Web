@@ -35,19 +35,19 @@ public class RegistroAjax extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorUsuario cu = fab.getControladorUsuario();
+        IControladorUsuario cont_usr = fab.getControladorUsuario();
         boolean[] array = new boolean[2];
         Arrays.fill(array, false);
         if (request.getParameter("nick") != null)
         {
-            String du = cu.getNickUsuario(request.getParameter("nick"));
-            if (du != null)
+            String usr = cont_usr.getNickUsuario(request.getParameter("nick"));
+            if (usr != null)
                 array[0] = true;
         }
         if (request.getParameter("email") != null)
         {
-            String du = cu.getNickUsuario(request.getParameter("email"));
-            if (du != null)
+            String usr = cont_usr.getNickUsuario(request.getParameter("email"));
+            if (usr != null)
                 array[1] = true;
         }
         

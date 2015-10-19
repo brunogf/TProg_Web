@@ -27,18 +27,17 @@ public class VerInfoPromocion extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
+     * @throws ServletException if a servlet-specific error occont_usrrs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cp = fab.getControladorPublicacion();     
-        IControladorUsuario cu = fab.getControladorUsuario();
+        IControladorPublicacion cont_pub = fab.getControladorPublicacion();     
         String promocion = (String)request.getParameter("Promocion");
         String proveedor = (String)request.getParameter("proveedor");
-        request.setAttribute("info_promocion", cp.infoPromocion(proveedor, promocion));   
-        request.setAttribute("servicios_de_promocion", cp.infoPromocion(proveedor, promocion).getServicios());
+        request.setAttribute("info_promocion", cont_pub.infoPromocion(proveedor, promocion));   
+        request.setAttribute("servicios_de_promocion", cont_pub.infoPromocion(proveedor, promocion).getServicios());
         request.getRequestDispatcher("InfoPromocion.jsp").forward(request, response);
     }
 

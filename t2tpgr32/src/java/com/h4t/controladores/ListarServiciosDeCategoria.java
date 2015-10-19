@@ -35,9 +35,9 @@ public class ListarServiciosDeCategoria extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cp = fab.getControladorPublicacion();   
+        IControladorPublicacion cont_pub = fab.getControladorPublicacion();   
         String Categoria = (String)request.getParameter("Categoria");
-        Set<DataServicio> ServiciosDeCategoria = cp.listarServiciosDeCategoria(Categoria);
+        Set<DataServicio> ServiciosDeCategoria = cont_pub.listarServiciosDeCategoria(Categoria);
         request.setAttribute("ServiciosDeCategoria", ServiciosDeCategoria);
         request.getRequestDispatcher("ServiciosDeCategoria.jsp").forward(request, response);
     }
