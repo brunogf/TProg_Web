@@ -52,6 +52,10 @@
         <servlet-name>Home</servlet-name>
         <servlet-class>com.h4t.controladores.Home</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ErrorRegistrarCliente</servlet-name>
+        <servlet-class>com.h4t.exceptions.ErrorRegistrarCliente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
@@ -87,7 +91,7 @@
     <servlet-mapping>
         <servlet-name>ListarServicios</servlet-name>
         <url-pattern>/ListarServicios</url-pattern>
->>>>>>> master
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; master
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListarProveedores</servlet-name>
@@ -104,6 +108,10 @@
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
         <url-pattern>/Home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ErrorRegistrarCliente</servlet-name>
+        <url-pattern>/ErrorRegistrarCliente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
