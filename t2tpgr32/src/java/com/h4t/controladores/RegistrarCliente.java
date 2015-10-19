@@ -66,7 +66,7 @@ public class RegistrarCliente extends HttpServlet {
             cu.altaCliente(nick, nombre, apellido, mail, fnac, pass);
             
             
-            String destino = getServletContext().getRealPath("/") + "media\\Images\\" + nick + ".jpg";
+            String destino = getServletContext().getRealPath("/") + "/media/Images/" + nick + ".jpg";
             File d = new File(destino);
             if(d.exists())
                 d.delete();

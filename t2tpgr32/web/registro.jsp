@@ -40,7 +40,7 @@
                             <input type="password" class="form-control" name="conf_contrasena_registro" id="conf_contrasena_registro" placeholder="Confirmar contraseña">
                         </div>
                         <div class="col-xs-4 col-xs-offset-4">
-                            <input type="date" class="form-control" name="fecha_registro" id="fecha_registro" placeholder="dd/MM/yyyy">
+                            <input type="date" class="form-control" name="fecha_registro" id="fecha_registro" placeholder="yyyy-MM-dd">
                         </div>
                         <div class="col-xs-4 col-xs-offset-4">
                             <div class="img_div">
