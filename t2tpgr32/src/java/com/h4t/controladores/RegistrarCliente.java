@@ -36,8 +36,6 @@ import tpgr32.*;
 @MultipartConfig
 public class RegistrarCliente extends HttpServlet {
 
-    private final static Logger LOGGER = 
-            Logger.getLogger(RegistrarCliente.class.getCanonicalName());
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
