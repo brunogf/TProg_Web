@@ -25,19 +25,6 @@
                     <ul id="menu_arbol">
                         <li id ="promociones_li" onclick="promo()">Promociones                     
                         <ul>
-                            <%
-                            String link;
-                            if (!Promociones.isEmpty()){
-                                for(DataPromocion p : Promociones){
-                                    link = "VerInfoPromocion?Promocion=" + p.getNombre() +"&proveedor="+ p.getProveedor();%>
-                                    <li>
-                                        <div class ="promo" onclick="location.href='<%=link%>'">
-                                        <%=p.getNombre()%>
-                                        </div>
-                                    </li>                                       
-                                <%}
-                            }
-                            %>
                         </ul>
                         </li>
                         <jsp:include page="WEB-INF/templates/NodoCatTree.jsp"/>
