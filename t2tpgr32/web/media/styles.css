@@ -136,12 +136,13 @@ footer .datos{
     width:15px;
 }
 
-.search .cabeceraTabla .glyphicon-sort:hover{
-    font-size: 15px;
-}
-
 .search .cabeceraTabla th:hover{
     cursor:pointer;
+}
+
+.search .cabeceraTabla th:hover span{
+    cursor: pointer;
+    font-size: 15px;
 }
 
 
