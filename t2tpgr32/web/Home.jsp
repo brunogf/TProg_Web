@@ -23,7 +23,7 @@
             <div class ="row">
                 <div class ="col-xs-4 tree_home">
                     <ul id="menu_arbol">
-                        <li onclick="promo()">Promociones                     
+                        <li id ="promociones_li" onclick="promo()">Promociones                     
                         <ul>
                             <%
                             String link;
@@ -72,8 +72,11 @@
             
                 
             function promo(){
+                if($("#promociones_li").hasClass("cCerrada")){
+                    $("#tbody_home").empty();
+                }
+                else{
                 $.get("HomeAjax",{tipo : "Promocion", cat : ""}, function(responseJson){
-
                     $("#tbody_home").empty();
                     for(var key in responseJson)
                     {
@@ -87,7 +90,7 @@
                         $('#tbody_home:last-child').append(tr);
                         
                     }
-                });
+                });}
             }
             
             function servicio(categoria){
