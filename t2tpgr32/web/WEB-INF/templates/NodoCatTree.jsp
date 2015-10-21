@@ -30,10 +30,11 @@
                 <%}
                 else{
                 String link;
-                link = "ListarServiciosDeCategoria?Categoria=" + raiz.nombre();
+                //link = "ListarServiciosDeCategoria?Categoria=" + raiz.nombre();
+                link = "servicio('" + raiz.nombre() +"')";
                 %>             
                     <li>
-                        <div class ="hoja" onclick="location.href='<%=link%>'">
+                        <div class ="hoja" onclick="<%=link%>">
                         <%=raiz.nombre()%>
                         </div>
                     </li>

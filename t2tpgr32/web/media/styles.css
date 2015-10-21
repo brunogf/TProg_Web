@@ -450,6 +450,55 @@ ul#menu_arbol li {
 }
 
 
+.Categorias{
+    background: #E4F3FE;
+}
+
+.Categorias .tree_home{
+
+    background: #fff;
+    height: inherit;
+    
+}
+
+.Categorias .separador{
+    width: 10px;
+    background: #E4F3FE;
+}
+
+.Categorias .pub{
+    background: #fff;
+}
+
+.Categorias .home_pub{
+    height: 40px;
+}
+
+.Categorias tr.home_pub td{
+    border-bottom: 1px solid black;
+}
+
+.Categorias .table_home{
+    margin-top: 8px;
+    
+}
+
+.Categorias .Nombre_pub_home{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.Categorias .Proveedor_pub_home{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.Categorias .Precio_pub_home{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
 .Categorias .promo:hover{
     background: #BFE1FA;
     cursor: pointer;

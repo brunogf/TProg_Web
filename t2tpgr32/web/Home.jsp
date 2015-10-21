@@ -21,9 +21,9 @@
         <%Set<DataPromocion> Promociones =(HashSet) request.getAttribute("Promos");%>
         <div class ="container Categorias">
             <div class ="row">
-                <div class ="col-xs-6">
+                <div class ="col-xs-4 tree_home">
                     <ul id="menu_arbol">
-                        <li>Promociones                     
+                        <li onclick="promo()">Promociones                     
                         <ul>
                             <%
                             String link;
@@ -46,9 +46,58 @@
                     <script type="text/javascript">                       
                             iniciaMenu('menu_arbol');                       
                     </script>
+                    
+                </div>
+                <div class="col-xs-8">
+                    
+                    <div class="col-xs-11 pub">
+                        <table class="table_home">
+                            <tbody id="tbody_home">
+                                  
+                            </tbody>
+                        </table>
+                    </div>
+                   
                 </div>
             </div>
         </div>
-                    <jsp:include page="WEB-INF/templates/footer.jsp"/>
+        <jsp:include page="WEB-INF/templates/footer.jsp"/>
+        <script>
+
+            function promo(){
+                $.get("HomeAjax",{tipo : "Promocion", cat : ""}, function(responseJson){
+
+                    $("#tbody_home").empty();
+                    for(var key in responseJson)
+                    {
+                        var item = responseJson[key];
+                        var precio = item.precioTotal_.toFixed(2);
+                        var tr = '<tr class="home_pub"><td class="Nombre_pub_home col-xs-3">';
+                        tr = tr + item.nombre_ + '</td><td class="Proveedor_pub_home col-xs-3">';
+                        tr = tr + item.proveedor_ + '</td><td class="Precio_pub_home col-xs-3"> US$ ';
+                        tr = tr + precio + '</td></tr>'
+                        
+                        $('#tbody_home:last-child').append(tr);
+                        
+                    }
+                });
+            }
+            
+            function servicio(categoria){
+                $.get("HomeAjax",{tipo : "Servicio", cat : categoria}, function(responseJson){
+                    $("#tbody_home").empty();
+                    for(var key in responseJson){
+                        var item = responseJson[key];
+                        var precio = item.precio_.toFixed(2);
+                        var tr = '<tr class="home_pub"><td class="Nombre_pub_home col-xs-3">';
+                        tr = tr + item.nombre_ + '</td><td class="Proveedor_pub_home col-xs-3">';
+                        tr = tr + item.proveedor_ + '</td><td class="Precio_pub_home col-xs-3"> US$ ';
+                        tr = tr + precio + '</td></tr>'
+                        
+                        $('#tbody_home:last-child').append(tr);
+                    }
+                });
+            }
+        </script>
     </body>
 </html>
