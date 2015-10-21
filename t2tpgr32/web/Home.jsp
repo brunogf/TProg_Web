@@ -55,7 +55,7 @@
                             <thead class="row">
                                 <th class="col-xs-4">Nombre</th>
                                 <th class="col-xs-4">Proveedor</th>
-                                <th lcass="col-xs-4">Precio</th>
+                                <th class="col-xs-4">Precio</th>
                             </thead>
                             <tbody class="row" id="tbody_home">
                                   
@@ -94,7 +94,7 @@
                         tr = tr + '"><td class="Nombre_pub_home col-xs-4">';
                         tr = tr + item.nombre_ + '</td><td class="Proveedor_pub_home col-xs-4">';
                         tr = tr + item.proveedor_ + '</td><td class="Precio_pub_home col-xs-4"> US$ ';
-                        tr = tr + precio + '</td></tr>'
+                        tr = tr + precio + ' <span class="home_oferta">¡Promoción!</span> </td></tr>'
                         
                         $('#tbody_home:last-child').append(tr);
                         

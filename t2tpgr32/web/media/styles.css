@@ -473,12 +473,26 @@ ul#menu_arbol li {
 .Categorias .home_pub{
     height: 40px;
 }
+
+.Categorias .home_oferta{
+    color: red;
+    margin-left: 5px;
+    font-size: 15px;
+    font-style: italic;
+}
+
 .Categorias .home_pub:hover{
     background: #BFE1FA;
     cursor: pointer;
     text-decoration: underline;
     cursor: pointer;
 }
+
+.Categorias .table_home th{
+    font-size: 20px;
+    border-bottom: 1px solid black;
+}
+
 
 .Categorias tr.home_pub td{
     border-bottom: 1px solid black;
