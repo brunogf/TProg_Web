@@ -66,10 +66,8 @@
             
                 
             function promo(){
-                if($("#promociones_li").hasClass("cCerrada")){
-                    $("#tbody_home").empty();
-                }
-                else{
+               
+                
                 $.get("HomeAjax",{tipo : "Promocion", cat : ""}, function(responseJson){
                     $("#tbody_home").empty();
                     for(var key in responseJson)
@@ -86,7 +84,7 @@
                         $('#tbody_home:last-child').append(tr);
                         
                     }
-                });}
+                });
             }
             
             function servicio(categoria){
