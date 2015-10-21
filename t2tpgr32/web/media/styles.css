@@ -473,6 +473,12 @@ ul#menu_arbol li {
 .Categorias .home_pub{
     height: 40px;
 }
+.Categorias .home_pub:hover{
+    background: #BFE1FA;
+    cursor: pointer;
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 .Categorias tr.home_pub td{
     border-bottom: 1px solid black;
@@ -485,17 +491,17 @@ ul#menu_arbol li {
 
 .Categorias .Nombre_pub_home{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .Categorias .Proveedor_pub_home{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .Categorias .Precio_pub_home{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 
