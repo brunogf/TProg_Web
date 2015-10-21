@@ -52,7 +52,12 @@
                     
                     <div class="col-xs-12 pub">
                         <table class="table_home col-xs-12">
-                            <tbody id="tbody_home">
+                            <thead class="row">
+                                <th class="col-xs-4">Nombre</th>
+                                <th class="col-xs-4">Proveedor</th>
+                                <th lcass="col-xs-4">Precio</th>
+                            </thead>
+                            <tbody class="row" id="tbody_home">
                                   
                             </tbody>
                         </table>
@@ -68,6 +73,8 @@
             $("#Vuelos_tree > a").click();
             $("#Alojamientos_tree > a").click();
             $("#Automóviles_tree > a").click();
+            $(document).ready(function(){$("#promociones_li > a").click();});
+            
             
             
                 
