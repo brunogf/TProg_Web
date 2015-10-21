@@ -63,7 +63,14 @@
         </div>
         <jsp:include page="WEB-INF/templates/footer.jsp"/>
         <script>
-
+            $("#Categorias_tree > a").click();
+            
+            $("#Vuelos_tree > a").click();
+            $("#Alojamientos_tree > a").click();
+            $("#Automóviles_tree > a").click();
+            
+            
+                
             function promo(){
                 $.get("HomeAjax",{tipo : "Promocion", cat : ""}, function(responseJson){
 

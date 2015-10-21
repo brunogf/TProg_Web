@@ -14,9 +14,9 @@
                 {
                     Set<CatTree> cs = raiz.getHijos();
                 %>                  
-                        <li class = "padre">
+                        <li class = "padre" id='<%=raiz.nombre() + "_tree"%>'>
                             
-                            <%=raiz.nombre()%>
+                           <%=raiz.nombre()%>
                             
                                           
                             <ul>
