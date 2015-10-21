@@ -82,7 +82,9 @@
                     {
                         var item = responseJson[key];
                         var precio = item.precioTotal_.toFixed(2);
-                        var tr = '<tr class="home_pub"><td class="Nombre_pub_home col-xs-4">';
+                        var tr = '<tr class="home_pub" onclick="location.href='
+                        tr = tr + '\'VerInfoPromocion?Promocion=' + item.nombre_ + '&proveedor=' + item.proveedor_ + '\''; 
+                        tr = tr + '"><td class="Nombre_pub_home col-xs-4">';
                         tr = tr + item.nombre_ + '</td><td class="Proveedor_pub_home col-xs-4">';
                         tr = tr + item.proveedor_ + '</td><td class="Precio_pub_home col-xs-4"> US$ ';
                         tr = tr + precio + '</td></tr>'
@@ -99,7 +101,10 @@
                     for(var key in responseJson){
                         var item = responseJson[key];
                         var precio = item.precio_.toFixed(2);
-                        var tr = '<tr class="home_pub"><td class="Nombre_pub_home col-xs-4">';
+                        var tr = '<tr class="home_pub" ';
+                        tr = tr + 'onclick="location.href=\'VerInfoServicio?Servicio=' + item.nombre_;
+                        tr = tr + '&proveedor=' + item.proveedor_ + '\'"';
+                        tr = tr + '><td class="Nombre_pub_home col-xs-4">';
                         tr = tr + item.nombre_ + '</td><td class="Proveedor_pub_home col-xs-4">';
                         tr = tr + item.proveedor_ + '</td><td class="Precio_pub_home col-xs-4"> US$ ';
                         tr = tr + precio + '</td></tr>'
