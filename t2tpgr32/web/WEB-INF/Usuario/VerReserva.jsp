@@ -78,7 +78,7 @@
                     {%>
                        <h4 class="promociones">Promociones</h4>
 
-                        <div class="promosDiv BloquePublicacion">
+                        
                             <%for(ParDPD dpd : dr.getdpd())
                             {
                                 if(dpd.getDpub_() instanceof DataPromocion)
@@ -87,7 +87,7 @@
                                     DataDisponibilidad dd = dpd.getDd_();
                                     String link = "VerInfoPromocion?Promocion=" + dp.getNombre() +"&proveedor="+ dp.getProveedor();
                                 %>
-                            <div onclick="location.href='<%=link%>'">
+                            <div class="promosDiv BloquePublicacion" onclick="location.href='<%=link%>'">
                                 <span class="nombre-promocion"> <%=dp.getNombre() %></span><br>
                                 <span>Descuento:<%=dp.getDescuento() %> </span><br>
                                 <span>Precio: $<%=dp.getPrecioTotal() %></span><br>
@@ -97,7 +97,7 @@
                                 <span>Cantidad: <%=dd.getCant() %></span><br>
                             </div>
                     <%}}} %>
-                </div>
+                
                 
             </div>
                 <br>
