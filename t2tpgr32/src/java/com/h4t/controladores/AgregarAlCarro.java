@@ -63,7 +63,7 @@ public class AgregarAlCarro extends HttpServlet {
             ParDPD par = new ParDPD(d_pub,d_disp);
             carro.add(par);
             request.getSession().setAttribute("publicaciones-carro", carro);
-            response.sendRedirect("");
+            request.getRequestDispatcher("CarroDeCompras.jsp").forward(request, response);
             }
             catch(Exception e){
                out.print(e.getMessage());
@@ -91,7 +91,7 @@ public class AgregarAlCarro extends HttpServlet {
             ParDPD par = new ParDPD(d_pub,d_disp);
             carro.add(par);
             request.getSession().setAttribute("publicaciones-carro", carro);
-            response.sendRedirect("");
+            request.getRequestDispatcher("CarroDeCompras.jsp").forward(request, response);
             }
             catch(Exception e){
                out.print(e.getMessage());
