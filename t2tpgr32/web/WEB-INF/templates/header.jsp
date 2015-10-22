@@ -47,6 +47,7 @@
     </div>
     <div class="row">
         <div class="col-xs-8">
+            <button class="btn btn-sm btn-primary" onclick="location.href = 'Home'">Home</button>
             <button class="btn btn-sm btn-primary" onclick="location.href = 'ListarProveedores'">Proveedores</button>
             <button type="button" class="btn btn-sm btn-primary" onclick="location.href = 'ListarPromociones'">Promociones</button>   
             <button class="btn btn-sm btn-primary" onclick="location.href = 'ListarServicios'">Servicios</button>
