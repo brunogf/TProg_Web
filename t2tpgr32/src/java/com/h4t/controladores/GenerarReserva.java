@@ -6,6 +6,8 @@
 package com.h4t.controladores;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.servlet.ServletException;
@@ -44,9 +46,11 @@ public class GenerarReserva extends HttpServlet {
             cont_r.seleccionarProveedor(par.getDpub_().getProveedor());
             cont_r.seleccionarCliente(request.getSession().getAttribute("Usuario").toString());
             cont_r.seleccionarPublicacion(par.getDpub_().getNombre(),par.getDd_().getCant(),par.getDd_().getFechaIni(),par.getDd_().getFechaFin());
-            int nro = cont_r.confirmarReserva();
-            cont_r.cambiarFechaCreacionReserva(par.getDd_().getFechaIni(), nro);
+            
         }
+        int nro = cont_r.confirmarReserva();
+        Date fechaactual = new Date();
+        cont_r.cambiarFechaCreacionReserva(fechaactual, nro);
         request.getSession().setAttribute("publicaciones-carro", null);
         request.getRequestDispatcher("MisReservas").forward(request, response);
     }
