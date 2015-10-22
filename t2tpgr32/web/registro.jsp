@@ -14,18 +14,18 @@
        <jsp:include page="WEB-INF/templates/header.jsp"/>
          <div class="container registro">
              <div clas="row">
-                <span class="titulo_registro">Ingresa tus datos:</span>
+                <span class="titulo_registro">Completa todos los campos:</span>
              </div>
             <div class="row">
                 <form class="form-horizontal formulario_registro" action="Registrar" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <div class="col-xs-4 col-xs-offset-4">
+                        <div class="col-xs-8 col-xs-offset-4">
                             <input type="text" class="form-control" name="nick_registro" id="nick_registro" placeholder="Nickname">
-                            <span class="glyphicon glyphicon-warning-sign" id="nick_warning"></span>
+                            <span id="nick_warning"><span class="glyphicon glyphicon-warning-sign"></span><p class="msj_error"> Este nick ya está en uso.</p></span>
                         </div>
-                        <div class="col-xs-4 col-xs-offset-4">
+                        <div class="col-xs-8 col-xs-offset-4">
                             <input type="email" class="form-control" name="email_registro" id="email_registro" placeholder="Correo electronico">
-                            <span class="glyphicon glyphicon-warning-sign" id="email_warning"></span>
+                            <span id="email_warning"><span class="glyphicon glyphicon-warning-sign"></span><p class="msj_error"> Este email ya está en uso.</p></span>
                         </div>
                         <div class="col-xs-4 col-xs-offset-4">
                             <input type="text" class="form-control" name="nombre_registro" id="nombre_registro" placeholder="Nombre">
@@ -36,8 +36,9 @@
                         <div class="col-xs-4 col-xs-offset-4">
                             <input type="password" class="form-control" name="contrasena_registro" id="contrasena_registro" placeholder="Contraseña">
                         </div>
-                        <div class="col-xs-4 col-xs-offset-4">
+                        <div class="col-xs-8 col-xs-offset-4">
                             <input type="password" class="form-control" name="conf_contrasena_registro" id="conf_contrasena_registro" placeholder="Confirmar contraseña">
+                            <span id="cont_warning"><span class="glyphicon glyphicon-warning-sign"></span><p class="msj_error"> Las contraseñas no coinciden.</p></span>
                         </div>
                         <div class="col-xs-4 col-xs-offset-4">
                             <input type="date" class="form-control" name="fecha_registro" id="fecha_registro" placeholder="yyyy-MM-dd">
@@ -57,16 +58,36 @@
          </div>
          
          <script>
-             var arr;
+             var arr = {nick : false, email : false};
+             function val(){
+             if ((($("#nick_registro").val()) === ("")) || (($("#email_registro").val()) === ("")) || (($("#nombre_registro").val()) === ("")) || (($("#apellido_registro").val()) === ("")) || (($("#contrasena_registro").val()) === ("")) || (($("#fecha_registro").val()) === ("")))
+                 $("#submit_btn_registro").attr('disabled', 'disabled');
+             else if ((arr.nick) || (arr.email))
+             {
+                 $("#submit_btn_registro").attr('disabled', 'disabled');
+             }
+             else if(($("#contrasena_registro").val()) !== ($('#conf_contrasena_registro').val()))
+             {
+                 $("#cont_warning").css('visibility', 'visible');
+                 $("#submit_btn_registro").attr('disabled', 'disabled');
+            }
+             else
+             {
+                  $("#cont_warning").css('visibility', 'hidden');
+                 $("#submit_btn_registro").removeAttr('disabled');
+             }
+             }
              $(document).ready(function(){
+             $("#submit_btn_registro").attr('disabled', 'disabled');
              $("#nick_registro").keyup(function(){
                  $.get("RegistroAjax", {nick : $("#nick_registro").val(), email : $("#email_registro").val()}, function(responseJson) {
                      arr = responseJson;
+                     val();
                      if (arr.nick)
                      {
                          $("#nick_registro").css('color', 'red');
-                         $("#submit_btn_registro").attr('disabled', 'disabled');
                          $("#nick_warning").css('visibility', 'visible');
+                         $("#submit_btn_registro").attr('disabled', 'disabled');
                      }
                      else
                      {
@@ -74,52 +95,50 @@
                          $("#nick_registro").css('color', 'inherit');
                      }
                      
-                     if (arr.email)
-                     {
-                         $("#email_registro").css('color', 'red');
-                          $("#submit_btn_registro").attr('disabled', 'disabled');
-                          $("#email_warning").css('visibility', 'visible');
-                     }
-                      else
-                      {
-                          $("#email_warning").css('visibility', 'hidden');
-                         $("#email_registro").css('color', 'black');
-                     }
-                     if (!arr.nick && !arr.email)
-                              $("#submit_btn_registro").removeAttr('disabled');
                  });
              });
              $("#email_registro").keyup(function(){
                  $.get("RegistroAjax", {nick : $("#nick_registro").val(), email : $("#email_registro").val()}, function(responseJson) {
                      arr = responseJson;
-                     if (arr.nick)
-                     {
-                         $("#nick_registro").css('color', 'red');
-                         $("#submit_btn_registro").attr('disabled', 'disabled');
-                         $("#nick_warning").css('visibility', 'visible');
-                     }
-                     else
-                     {
-                         $("#nick_warning").css('visibility', 'hidden');
-                         $("#nick_registro").css('color', 'inherit');
-                     }
-                     
+                     val();
                      if (arr.email)
                      {
                          $("#email_registro").css('color', 'red');
-                          $("#submit_btn_registro").attr('disabled', 'disabled');
                           $("#email_warning").css('visibility', 'visible');
+                          $("#submit_btn_registro").attr('disabled', 'disabled');
                      }
                       else
                       {
                           $("#email_warning").css('visibility', 'hidden');
-                         $("#email_registro").css('color', 'black');
+                         $("#email_registro").css('color', 'inherit');
                      }
-                        if (!arr.nick && !arr.email)
-                              $("#submit_btn_registro").removeAttr('disabled');
                  });
              });
-            });
+             
+             $("#fecha_registro").keyup(function(){
+                 val();
+             });
+             
+             $("#conf_contrasena_registro").focusout(function(){
+                 val();
+             });
+             
+             $("#conf_contrasena_registro").keyup(function(){
+                 val();
+             });
+             
+             $("#contrasena_registro").keyup(function(){
+                 val();
+             });
+             
+             $("#apellido_registro").keyup(function(){
+                 val();
+             });
+             
+             $("#nombre_registro").keyup(function(){
+                 val();
+             });
+             });
             
          </script>
          <jsp:include page="WEB-INF/templates/footer.jsp"/>

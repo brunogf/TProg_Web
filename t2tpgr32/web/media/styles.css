@@ -151,20 +151,40 @@ footer .datos{
 .registro .titulo_registro{
     font-size: 25px;
     font-weight: bold;
-    margin-left: 425px;
+    margin-left: 360px;
 }
 
 .registro #nick_registro{
     display: inline-block;
 }
 
+.registro .msj_error{
+    color: red;
+    display: inline;
+    word-spacing: 5px;
+}
+
 .registro #email_registro{
-    display: inline-block;
+    display: inline;
+}
+
+.registro #conf_contrasena_registro{
+    display: inline;
+}
+
+.registro #nick_warning{
+        visibility: hidden;
+}
+.registro #email_warning{
+        visibility: hidden;
+}
+
+.registro #cont_warning{
+        visibility: hidden;
 }
 
 .registro .glyphicon-warning-sign{
     font-size: 17px;
-    visibility: hidden;
     color: #FFCC00;
 }
 
