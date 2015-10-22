@@ -7,6 +7,7 @@ package com.h4t.controladores;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,10 +39,13 @@ public class QuitarDelCarro extends HttpServlet {
         String nombre = (String)request.getParameter("Nombre");
         int cant = Integer.parseInt((String)request.getParameter("Cantidad"));
         String prov = (String)request.getParameter("Proveedor");
-        for(ParDPD p: pub){
-            if((p.getDpub_().getNombre().equals(nombre))  && (p.getDpub_().getProveedor().equals(prov)) && (p.getDd_().getCant() == cant)){
-                pub.remove(p);
-            }
+        ParDPD p;
+        Iterator<ParDPD> it =pub.iterator();
+        while (it.hasNext()){
+              p = it.next();
+              if((p.getDpub_().getNombre().equals(nombre))  && (p.getDpub_().getProveedor().equals(prov)) && (p.getDd_().getCant() == cant)){
+                it.remove();
+              }
         }
         request.getSession().setAttribute("publicaciones-carro", pub);
         request.getRequestDispatcher("CarroDeCompras.jsp").forward(request, response);
