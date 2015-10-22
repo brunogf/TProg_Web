@@ -50,6 +50,8 @@
                         float precio;
                         String link;
                         String descr ="";
+                        String linkQuitar = "QuitarDelCarro?Nombre=" + p.getDpub_().getNombre() +"&Cantidad=" + String.valueOf(p.getDd_().getCant())
+                                              + "&Proveedor=" + p.getDpub_().getProveedor();
                         if (p.getDpub_() instanceof DataServicio)
                         {
                             pos = "Servicio";
@@ -83,6 +85,7 @@
               <% } %>
               <td><%= p.getDd_().getCant() %></td>
               <td><%= "USD "+String.valueOf(df.format(p.getDd_().getCant()* precio)) %></td>
+              <td><button type="button" onclick="location.href='<%=linkQuitar%>'" class="btn btn-primary">X</button></td>
             </tr><%
             }%>
                     </table></div>

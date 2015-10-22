@@ -6,12 +6,14 @@
 package com.h4t.controladores;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import tpgr32.*;
 
 /**
  *
@@ -32,7 +34,17 @@ public class QuitarDelCarro extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         
+        Set<ParDPD> pub = (HashSet)request.getSession().getAttribute("publicaciones-carro");
+        String nombre= (String)request.getParameter("Nombre");
+        String cant = (String)request.getParameter("Cantidad");
+        String prov = (String)request.getParameter("Proveedor");
+        for(ParDPD p: pub){
+            if((p.getDpub_().getNombre().equals(nombre)) && (p.getDpub_().getProveedor().equals(prov)) 
+                    && (String.valueOf(p.getDd_().getCant()).equals(prov)))
+               pub.remove(p);
+        }
+        request.getSession().setAttribute("publicaciones-carro", pub);
+        request.getRequestDispatcher("CarroDeCompras.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
