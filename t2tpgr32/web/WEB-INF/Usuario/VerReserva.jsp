@@ -105,6 +105,7 @@
                 <span class="precioSubtotal">Total: US$ <%=dr.getPrecio_total()%></span>
                 </div>
         </div>
+        </div>
         <script>
             function cancelar(nro) {
                var r = confirm("Una vez cancelada la reserva, no se podrá revertir el cambio!. Cancelar de todas formas?");
