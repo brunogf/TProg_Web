@@ -34,14 +34,14 @@ public class QuitarDelCarro extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Set<ParDPD> pub = (HashSet)request.getSession().getAttribute("publicaciones-carro");
-        String nombre= (String)request.getParameter("Nombre");
-        String cant = (String)request.getParameter("Cantidad");
+        Set<ParDPD> pub = (Set<ParDPD>)request.getSession().getAttribute("publicaciones-carro");
+        String nombre = (String)request.getParameter("Nombre");
+        int cant = Integer.parseInt((String)request.getParameter("Cantidad"));
         String prov = (String)request.getParameter("Proveedor");
         for(ParDPD p: pub){
-            if((p.getDpub_().getNombre().equals(nombre)) && (p.getDpub_().getProveedor().equals(prov)) 
-                    && (String.valueOf(p.getDd_().getCant()).equals(prov)))
-               pub.remove(p);
+            if((p.getDpub_().getNombre().equals(nombre))  && (p.getDpub_().getProveedor().equals(prov)) && (p.getDd_().getCant() == cant)){
+                pub.remove(p);
+            }
         }
         request.getSession().setAttribute("publicaciones-carro", pub);
         request.getRequestDispatcher("CarroDeCompras.jsp").forward(request, response);
