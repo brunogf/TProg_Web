@@ -20,7 +20,7 @@
     <body>
         <p>
         Ocurrió un error al procesar la página. Puedes intentar recargar o 
-        <a href="/">volver</a> al inicio.
+        <a href="t2tpgr32/Home">volver</a> al inicio.
         </p>
         <div class="main">
             <pre><%= exception.getClass().getName() %>: <%= exception.getMessage() %>

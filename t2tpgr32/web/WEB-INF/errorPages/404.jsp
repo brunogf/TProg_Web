@@ -20,8 +20,8 @@
     <body>
         <p>
 	Intentaste entrar a una página que no existe.
-	Por suerte esto los servidores no mueren por esto. Puedes
-	<a href="/">volver</a> al inicio.
+	Por suerte los servidores no mueren por esto. Puedes
+	<a href="/t2tpgr32/Home">volver</a> al inicio.
 	</p>
     </body>
 </html>

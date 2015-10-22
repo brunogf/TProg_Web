@@ -12,6 +12,14 @@
         <servlet-name>Search</servlet-name>
         <servlet-class>com.h4t.controladores.Search</servlet-class>
     </servlet>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/errorPages/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/errorPages/500.jsp</location>
+    </error-page>
     <servlet>
         <servlet-name>VerInfoservicio</servlet-name>
         <servlet-class>com.h4t.controladores.VerInfoservicio</servlet-class>
@@ -91,7 +99,6 @@
     <servlet-mapping>
         <servlet-name>ListarServicios</servlet-name>
         <url-pattern>/ListarServicios</url-pattern>
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; master
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListarProveedores</servlet-name>
@@ -118,6 +125,4 @@
             30
         </session-timeout>
     </session-config>
-
-   / *
     </web-app>
