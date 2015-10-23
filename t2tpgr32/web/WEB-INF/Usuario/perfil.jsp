@@ -57,6 +57,7 @@
                     <br/>
                 </div>
 
+
                 <div class="tab-pane fade" id="reservas">
                     <div class="col-xs-12 table-responsive">
                         <table class="table">
@@ -82,47 +83,49 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <%} else {
+
+        <%} else {
             DataProveedor info2 = (DataProveedor) info;%>           
-            <% DateFormat df = new SimpleDateFormat("dd-MM-yyyy");%>
+        <% DateFormat df = new SimpleDateFormat("dd-MM-yyyy");%>
 
-            <div class="container perfil">
+        <div class="container perfil">
 
                  <!--img src="${pageContext.session.getAttribute("Imagen")}" width="100px" height="100px" alt="Imagen Perfil"-->
-                <!--Imagen a la izquierda y div nom a su derecha -->
+            <!--Imagen a la izquierda y div nom a su derecha -->
 
-                <div class="nom">
-                    <h3><%=info.getNombre() + " " + info.getApellido()%></h3>
-                    <h5><%=info.getCorreo().toLowerCase()%></h5>
+            <div class="nom">
+                <h3><%=info.getNombre() + " " + info.getApellido()%></h3>
+                <h5><%=info.getCorreo().toLowerCase()%></h5>
+                <br/>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#infobasica" data-toggle="tab"><b>Información básica</b></a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="infobasica">
+                    <label>Nombre:</label><%=" " + info.getNombre()%>
+                    <br/>
+                    <label>Apellido:</label><%=" " + info.getApellido()%>
+                    <br/>
+                    <label>Nickname:</label><%=" " + info.getNickname()%>
+                    <br/>
+                    <label>Correo:</label><%=" " + info.getCorreo().toLowerCase()%>
+                    <br/>
+                    <label>Fecha de nacimiento:</label><%=" " + df.format(info.getFecha())%>
+                    <br/>
+                    <%
+                        String imagen = "media/Images/";
+                        imagen = imagen + info.getNickname().toLowerCase() + ".jpg";
+                    %>
+                    <img src="<%=imagen%>" width="150px" height="150px" alt="Imagen Perfil" onError="this.onerror=null;this.src='media/Images/perfil.jpg';" class="img-thumbnail"> 
                     <br/>
                 </div>
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#infobasica" data-toggle="tab"><b>Información básica</b></a></li>
-                </ul>
-
-                <div class="tab-content">
-                    <div class="tab-pane fade in active" id="infobasica">
-                        <label>Nombre:</label><%=" " + info.getNombre()%>
-                        <br/>
-                        <label>Apellido:</label><%=" " + info.getApellido()%>
-                        <br/>
-                        <label>Nickname:</label><%=" " + info.getNickname()%>
-                        <br/>
-                        <label>Correo:</label><%=" " + info.getCorreo().toLowerCase()%>
-                        <br/>
-                        <label>Fecha de nacimiento:</label><%=" " + df.format(info.getFecha())%>
-                        <br/>
-                        <%
-                            String imagen = "media/Images/";
-                            imagen = imagen + info.getNickname().toLowerCase() + ".jpg";
-                        %>
-                        <img src="<%=imagen%>" width="150px" height="150px" alt="Imagen Perfil" onError="this.onerror=null;this.src='media/Images/perfil.jpg';" class="img-thumbnail"> 
-                        <br/>
-                    </div>
-                </div>
-            </div>         
-            <% }%>
-            <jsp:include page="../templates/footer.jsp"/>
+            </div>
+        </div>
+        <% }%>
+        <jsp:include page="../templates/footer.jsp"/>
     </body>
 </html>
