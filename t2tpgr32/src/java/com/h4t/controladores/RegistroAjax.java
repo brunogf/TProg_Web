@@ -46,8 +46,7 @@ public class RegistroAjax extends HttpServlet {
         }
         if (request.getParameter("email") != null)
         {
-            String usr = cont_usr.getNickUsuario(request.getParameter("email"));
-            if (usr != null)
+            if (cont_usr.existeMail(request.getParameter("email")))
                 array[1] = true;
         }
         
