@@ -64,6 +64,10 @@
         <servlet-name>ErrorRegistrarCliente</servlet-name>
         <servlet-class>com.h4t.exceptions.ErrorRegistrarCliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>QuitarDelCarro</servlet-name>
+        <servlet-class>com.h4t.controladores.QuitarDelCarro</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
@@ -120,9 +124,13 @@
         <servlet-name>ErrorRegistrarCliente</servlet-name>
         <url-pattern>/ErrorRegistrarCliente</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuitarDelCarro</servlet-name>
+        <url-pattern>/QuitarDelCarro</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    </web-app>
+</web-app>

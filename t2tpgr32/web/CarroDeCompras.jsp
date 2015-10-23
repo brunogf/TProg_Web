@@ -30,7 +30,7 @@
                 DecimalFormat df = new DecimalFormat();
                 df.setMaximumFractionDigits(2);
                 Set<ParDPD> par = (HashSet)request.getSession().getAttribute("publicaciones-carro");
-                if (request.getSession().getAttribute("publicaciones-carro") != null)
+                if ((request.getSession().getAttribute("publicaciones-carro") != null) && ( par.size() != 0) )
                 { %>
                 <div class="row">
                 <div class="col-xs-12 table-responsive">
@@ -50,6 +50,8 @@
                         float precio;
                         String link;
                         String descr ="";
+                        String linkQuitar = "QuitarDelCarro?Nombre=" + p.getDpub_().getNombre() +"&Cantidad=" + String.valueOf(p.getDd_().getCant())
+                                              + "&Proveedor=" + p.getDpub_().getProveedor();
                         if (p.getDpub_() instanceof DataServicio)
                         {
                             pos = "Servicio";
@@ -67,8 +69,8 @@
                         subt = subt + p.getDd_().getCant()* precio;
 
             %>
-            <tr class="result" onclick="location.href='<%=link%>'"><!--link a servlet ver info publicacion-->
-                <td class="col-xs-4"><h3><%=p.getDpub_().getNombre()%></h3>
+            <tr class="result"><!--link a servlet ver info publicacion-->
+                <td class="col-xs-4" onclick="location.href='<%=link%>'"><h3><%=p.getDpub_().getNombre()%></h3>
                     <p><%=descr%></p>
                 </td>
               <td><%=pos%></td>
@@ -83,6 +85,7 @@
               <% } %>
               <td><%= p.getDd_().getCant() %></td>
               <td><%= "USD "+String.valueOf(df.format(p.getDd_().getCant()* precio)) %></td>
+              <td><button type="button" onclick="location.href='<%=linkQuitar%>'" class="btn btn-primary">X</button></td>
             </tr><%
             }%>
                     </table></div>
