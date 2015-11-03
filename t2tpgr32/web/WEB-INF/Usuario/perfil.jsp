@@ -4,7 +4,11 @@
     Author     : Bruno González
 --%>
 
-<%@page import="tpgr32.*"%>
+
+<%@page import="com.h4t.servicios.DataProveedorBean"%>
+<%@page import="com.h4t.servicios.DataReserva"%>
+<%@page import="com.h4t.servicios.DataCliente"%>
+<%@page import="com.h4t.servicios.DataUsuario"%>
 <%@page import="java.util.*"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -19,7 +23,11 @@
         <% DataUsuario info = (DataUsuario) request.getAttribute("info"); %>
         <%if (info instanceof DataCliente) {
                 DataCliente info2 = (DataCliente) info;%>
-        <% Set<DataReserva> reservas = info2.getReservas();%>
+        <% Set<DataReserva> reservas = new HashSet<DataReserva>();
+           for(DataReserva dtrs : info2.getReservas())
+               reservas.add(dtrs);
+                
+         %>
         <% DateFormat df = new SimpleDateFormat("dd-MM-yyyy");%>
 
         <div class="container perfil">
@@ -47,7 +55,7 @@
                     <br/>
                     <label>Correo:</label><%=" " + info.getCorreo().toLowerCase()%>
                     <br/>
-                    <label>Fecha de nacimiento:</label><%=" " + df.format(info.getFecha())%>
+                    <label>Fecha de nacimiento:</label><%=" " + df.format(info.getFecha().toGregorianCalendar().getTime())%>
                     <br/>
                     <%
                         String imagen = "media/Images/";
@@ -68,15 +76,15 @@
                                 <td><h4>Cantidad publicaciones</h4></td>
                             </tr>
                             <%
-                                for (DataReserva dr : reservas) {
-                                    String creacion = df.format(dr.getCreacion());
+                               for (DataReserva dr : reservas) {
+                                 String creacion = df.format(dr.getCreacion().toGregorianCalendar().getTime()); 
                             %>
 
                             <tr class="reservas" onclick="location.href = 'VerInfoReserva?nro=<%=dr.getNum()%>'"><!--link a servlet ver info reserva-->
                                 <td><%=dr.getNum()%></td>
-                                <td><%=dr.getStringEstado()%></td>
+                                <td><%=dr.getEstado().toString() %></td>
                                 <td><%=creacion%></td>
-                                <td><%=dr.getdpd().size()%></td>
+                                <td><%=dr.getDpd().size()%></td>
                             </tr>
                             <% }%>
                         </table>
@@ -87,7 +95,7 @@
 
 
         <%} else {
-            DataProveedor info2 = (DataProveedor) info;%>           
+            DataProveedorBean info2 = (DataProveedorBean) info;%>           
         <% DateFormat df = new SimpleDateFormat("dd-MM-yyyy");%>
 
         <div class="container perfil">

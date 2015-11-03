@@ -5,6 +5,8 @@
  */
 package com.h4t.controladores;
 
+import com.h4t.servicios.PublicadorControladorUsuario;
+import com.h4t.servicios.PublicadorControladorUsuarioService;
 import java.io.IOException;
 import java.util.Arrays;
 import javax.servlet.ServletException;
@@ -12,8 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.FabricaControladores;
-import tpgr32.IControladorUsuario;
 
 /**
  *
@@ -34,19 +34,20 @@ public class RegistroAjax extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorUsuario cont_usr = fab.getControladorUsuario();
+        PublicadorControladorUsuarioService servicio = new PublicadorControladorUsuarioService();
+        PublicadorControladorUsuario port = servicio.getPublicadorControladorUsuarioPort();
+        
         boolean[] array = new boolean[2];
         Arrays.fill(array, false);
         if (request.getParameter("nick") != null)
         {
-            String usr = cont_usr.getNickUsuario(request.getParameter("nick"));
+            String usr = port.getNickUsuario(request.getParameter("nick"));
             if (usr != null)
                 array[0] = true;
         }
         if (request.getParameter("email") != null)
         {
-            if (cont_usr.existeMail(request.getParameter("email")))
+            if (port.existeMail(request.getParameter("email")))
                 array[1] = true;
         }
         

@@ -5,9 +5,15 @@
  */
 package com.h4t.controladores;
 
+import com.h4t.servicios.DataCliente;
+import com.h4t.servicios.DataProveedorBean;
+import com.h4t.servicios.DataUsuario;
+import com.h4t.servicios.PublicadorControladorUsuario;
+import com.h4t.servicios.PublicadorControladorUsuarioService;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -15,7 +21,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.WebServlet;
-import tpgr32.*;
 import javax.imageio.ImageIO;
 
 
@@ -39,20 +44,18 @@ public class VerPerfil extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        ManejadorUsuario m_usr = ManejadorUsuario.getInstance();
-        ControladorUsuario cont_usr = fab.getControladorUsuario();
+        PublicadorControladorUsuarioService servicio = new PublicadorControladorUsuarioService();
+        PublicadorControladorUsuario port = servicio.getPublicadorControladorUsuarioPort();
+        
         
         try {
-            Usuario usr = (Usuario)m_usr.encontrarUsuario(request.getSession().getAttribute("Usuario").toString());
-            if (usr instanceof Cliente){
-                DataCliente data_usr = (DataCliente)cont_usr.infoCliente(usr.getNickname());
-                if(data_usr.getImage() != null)
+            DataUsuario usr = (DataUsuario)port.infoUsuario(request.getSession().getAttribute("Usuario").toString());
+            if (usr instanceof DataCliente){
+                if(usr.getImg() != null)
                 {
-
-                        Image img = cont_usr.getImagenDelUsuario(data_usr.getNickname()); 
-                        BufferedImage b_img = (BufferedImage)img;
-                        String destino = getServletContext().getRealPath("/") + "media\\Images\\" + data_usr.getNickname().toLowerCase() + ".jpg";
+                        byte[] bArray = port.getImagenDelUsuario(usr.getNickname()); 
+                        BufferedImage b_img = ImageIO.read(new ByteArrayInputStream(bArray));
+                        String destino = getServletContext().getRealPath("/") + "media\\Images\\" + usr.getNickname().toLowerCase() + ".jpg";
                         File file_d = new File(destino);
                         if (!(file_d.exists())){
                             BufferedImage newBufferedImage = new BufferedImage(b_img.getWidth(),
@@ -61,17 +64,15 @@ public class VerPerfil extends HttpServlet {
                             ImageIO.write(newBufferedImage,"jpg",file_d);
                         }
                 }
-                request.setAttribute("info", data_usr);
+                request.setAttribute("info", usr);
                 request.getRequestDispatcher("/WEB-INF/Usuario/perfil.jsp").forward(request, response);
             }
             else{
-                DataProveedor data_usr = (DataProveedor)cont_usr.infoProveedor(usr.getNickname());
-                if(data_usr.getImage() != null)
+                if(usr.getImg() != null)
                 {
-
-                        Image img = cont_usr.getImagenDelUsuario(data_usr.getNickname()); 
-                        BufferedImage b_img = (BufferedImage)img;
-                        String destino = getServletContext().getRealPath("/") + "media\\Images\\" + data_usr.getNickname().toLowerCase() + ".jpg";
+                        byte[] bArray = port.getImagenDelUsuario(usr.getNickname()); 
+                        BufferedImage b_img = ImageIO.read(new ByteArrayInputStream(bArray));
+                        String destino = getServletContext().getRealPath("/") + "media\\Images\\" + usr.getNickname().toLowerCase() + ".jpg";
                         File file_d = new File(destino);
                         if (!(file_d.exists())){
                             BufferedImage newBufferedImage = new BufferedImage(b_img.getWidth(),
@@ -80,7 +81,7 @@ public class VerPerfil extends HttpServlet {
                             ImageIO.write(newBufferedImage,"jpg",file_d);
                         }
                 }
-                request.setAttribute("info", data_usr);
+                request.setAttribute("info", usr);
                 request.getRequestDispatcher("/WEB-INF/Usuario/perfil.jsp").forward(request, response);
             }
 	}finally{
