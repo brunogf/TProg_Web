@@ -6,8 +6,11 @@
 package com.h4t.controladores;
 
 import com.h4t.exceptions.ErrorRegistrarCliente;
+import com.h4t.servicios.PublicadorControladorUsuario;
+import com.h4t.servicios.PublicadorControladorUsuarioService;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +25,6 @@ import java.util.*;
 import javax.imageio.ImageIO;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
-import tpgr32.*;
 
 /**
  *
@@ -43,9 +45,9 @@ public class RegistrarCliente extends HttpServlet {
         BufferedImage iBuff = ImageIO.read(fileContent);
         
    
-       
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorUsuario cont_usr = fab.getControladorUsuario();
+       PublicadorControladorUsuarioService servicio = new PublicadorControladorUsuarioService();
+        PublicadorControladorUsuario port = servicio.getPublicadorControladorUsuarioPort();
+        
         DateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
                        
         String nick = (String) request.getParameter("nick_registro");
@@ -56,10 +58,14 @@ public class RegistrarCliente extends HttpServlet {
         
         
         try{
-            Date fnac = date_format.parse(request.getParameter("fecha_registro").toString());                       
-            cont_usr.altaCliente(nick, nombre, apellido, mail, fnac, pass);
-            
-            if(iBuff != null){
+            DateFormat dtf = new SimpleDateFormat("dd-MM-yyyy");
+            Date fnac = date_format.parse(request.getParameter("fecha_registro").toString()); 
+            if (iBuff == null)
+                port.altaCliente(nick, nombre, apellido, mail, dtf.format(fnac), pass);
+            else if(iBuff != null){
+                ByteArrayOutputStream bArray = new ByteArrayOutputStream();
+                ImageIO.write(iBuff, "jpg", bArray);
+                port.altaClienteConImg(nick, nombre, apellido, mail, dtf.format(fnac), bArray.toByteArray(), pass);
                 String destino = getServletContext().getRealPath("/") + "/media/Images/" + nick + ".jpg";
                 File file_d = new File(destino);
                 if(file_d.exists())
@@ -72,14 +78,11 @@ public class RegistrarCliente extends HttpServlet {
                         }
             }
             response.sendRedirect("");
-        }catch(ErrorRegistrarCliente e){
+        }catch(Exception e){
             response.sendError(404); // error en registrar el cliente
 	    request.getRequestDispatcher("/WEB-INF/errorPages/500.jsp").
 						include(request, response);
 				return;
-        }
-        catch(Exception e){
-            
         }
     }
 
