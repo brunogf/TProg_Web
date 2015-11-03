@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.9-b130926.1035 svn-revision#5f6196f2b90e9460065a4c2f4e30e065b245e51e. --><xs:schema xmlns:tns="http://Servidor/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://Servidor/">
+
+<xs:element name="Exception" type="tns:Exception"></xs:element>
+
+<xs:complexType name="dataPublicacion" abstract="true">
+<xs:sequence>
+<xs:element name="nombre_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="proveedor_" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataUsuario" abstract="true">
+<xs:sequence>
+<xs:element name="nickname_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nombre_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="apellido_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="correo_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fecha_" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="img_" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataProveedorBean">
+<xs:complexContent>
+<xs:extension base="tns:dataUsuario">
+<xs:sequence>
+<xs:element name="nombre_empresa" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="url" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="dataCliente">
+<xs:complexContent>
+<xs:extension base="tns:dataUsuario">
+<xs:sequence>
+<xs:element name="reservas_" type="tns:dataReserva" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="dataReserva">
+<xs:sequence>
+<xs:element name="num_" type="xs:int"></xs:element>
+<xs:element name="cliente_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="creacion_" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="estado_" type="tns:estado" minOccurs="0"></xs:element>
+<xs:element name="precio_total_" type="xs:float"></xs:element>
+<xs:element name="dpd_" type="tns:parDPD" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="parDPD">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="estado">
+<xs:restriction base="xs:string">
+<xs:enumeration value="Registrada"></xs:enumeration>
+<xs:enumeration value="Cancelada"></xs:enumeration>
+<xs:enumeration value="Pagada"></xs:enumeration>
+<xs:enumeration value="Facturada"></xs:enumeration>
+</xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="dataPublicacionArray" final="#all">
+<xs:sequence>
+<xs:element name="item" type="tns:dataPublicacion" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataUsuarioArray" final="#all">
+<xs:sequence>
+<xs:element name="item" type="tns:dataUsuario" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

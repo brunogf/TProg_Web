@@ -6,9 +6,14 @@
 package com.h4t.controladores;
 
 import com.h4t.modelo.EstadoSesion;
+import com.h4t.servicios.DataCliente;
+import com.h4t.servicios.DataUsuario;
+import com.h4t.servicios.PublicadorControladorUsuario;
+import com.h4t.servicios.PublicadorControladorUsuarioService;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -17,7 +22,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.*;
 
 /**
  *
@@ -37,16 +41,16 @@ public class Login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorUsuario cu = fab.getControladorUsuario();
+        PublicadorControladorUsuarioService servicio = new PublicadorControladorUsuarioService();
+        PublicadorControladorUsuario port = servicio.getPublicadorControladorUsuarioPort();
         String usr = request.getParameter("Usuario");
-        switch (cu.comprobarUsuario(usr, request.getParameter("Pass")))
+        switch (port.comprobarUsuario(usr, request.getParameter("Pass")))
         {
             case 0://TODO OK
                 {
                 DataUsuario du;
                 
-                du = cu.infoUsuario(cu.getNickUsuario(usr));
+                du = port.infoUsuario(port.getNickUsuario(usr));
                 if(du instanceof DataCliente)
                 request.getSession().setAttribute("TipoUsuario", "cliente");
                 else
@@ -57,11 +61,9 @@ public class Login extends HttpServlet {
                 String nombre = du.getNombre() + " " + du.getApellido();
                 request.getSession().setAttribute("Nombre", nombre);
                 
-                if(du.getImage() != null)
+                if(port.getImagenDelUsuario(du.getNickname()) != null)
                 {
-                    
-                    Image i = cu.getImagenDelUsuario(du.getNickname()); 
-                    BufferedImage bi = (BufferedImage)i;
+                    BufferedImage bi = ImageIO.read(new ByteArrayInputStream(port.getImagenDelUsuario(du.getNickname())));
                     String destino = getServletContext().getRealPath("/") + "/media/Images/" + du.getNickname().toLowerCase() + ".jpg";
                     File d = new File(destino);
                     if (!(d.exists())){
