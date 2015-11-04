@@ -6,13 +6,15 @@
 package com.h4t.controladores;
 
 import com.h4t.modelo.EstadoSesion;
+import com.h4t.servicios.DataCliente;
+import com.h4t.servicios.PublicadorControladorUsuario;
+import com.h4t.servicios.PublicadorControladorUsuarioService;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.*;
 
 /**
  *
@@ -34,9 +36,9 @@ public class ListarReservasCliente extends HttpServlet {
             throws ServletException, IOException {
         if(request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGGED_IN)
         {
-            FabricaControladores fab = FabricaControladores.getInstancia();
-            IControladorUsuario cont_usr = fab.getControladorUsuario();
-            DataCliente data_sur = (DataCliente)cont_usr.infoCliente((String)request.getSession().getAttribute("Usuario"));
+            PublicadorControladorUsuarioService servicio = new PublicadorControladorUsuarioService();
+            PublicadorControladorUsuario port = servicio.getPublicadorControladorUsuarioPort();
+            DataCliente data_sur = port.infoCliente((String)request.getSession().getAttribute("Usuario"));
             request.setAttribute("reservas_usuario", data_sur.getReservas());
             request.getRequestDispatcher("/WEB-INF/Usuario/VerReservas.jsp").forward(request, response);
         }

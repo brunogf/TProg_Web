@@ -4,9 +4,11 @@
     Author     : Nico
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.h4t.servicios.DataReserva"%>
 <%@page import="java.text.Format"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="tpgr32.DataReserva"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Set"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,7 +22,7 @@
         <div class="container VerReservas">
             <div class="row">
                 <%
-                Set<DataReserva> reservas =(HashSet) request.getAttribute("reservas_usuario");
+                List<DataReserva> reservas = (ArrayList)request.getAttribute("reservas_usuario");
                 if (!(reservas == null))
                 {
                 if (!reservas.isEmpty())
@@ -37,13 +39,13 @@
                     for(DataReserva r : reservas)
                     {
                         Format f = new SimpleDateFormat("dd-MM-yyyy");
-                        String fecha = f.format(r.getCreacion());
+                        String fecha = f.format(r.getCreacion().toGregorianCalendar().getTime());
                 %>
                     <tr class="reservas" onclick="location.href='VerInfoReserva?nro=<%=r.getNum()%>'"><!--link a servlet ver info reserva-->
                       <td><%=r.getNum()%></td>
-                      <td><%=r.getStringEstado()%></td>
+                      <td><%=r.getEstado().toString() %></td>
                       <td><%=fecha%></td>
-                      <td><%=r.getdpd().size()%></td>
+                      <td><%=r.getDpd().size()%></td>
                     </tr><%
             }%>
                 </table></div><%
