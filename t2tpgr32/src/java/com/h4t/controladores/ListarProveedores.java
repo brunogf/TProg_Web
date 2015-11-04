@@ -5,15 +5,16 @@
  */
 package com.h4t.controladores;
 
+import com.h4t.servicios.DataUsuario;
+import com.h4t.servicios.PublicadorControladorUsuario;
+import com.h4t.servicios.PublicadorControladorUsuarioService;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.DataUsuario;
-import tpgr32.FabricaControladores;
-import tpgr32.IControladorUsuario;
 
 /**
  *
@@ -32,9 +33,11 @@ public class ListarProveedores extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorUsuario cont_usr = fab.getControladorUsuario();
-        Set<DataUsuario> Proveedores = cont_usr.listarProveedores();
+        PublicadorControladorUsuarioService servicio = new PublicadorControladorUsuarioService();
+        PublicadorControladorUsuario port = servicio.getPublicadorControladorUsuarioPort();
+        Set<DataUsuario> Proveedores = new HashSet<DataUsuario>();
+        for(DataUsuario dtu : (port.listarProveedores().getItem()))
+            Proveedores.add(dtu);
         request.setAttribute("Proveedores", Proveedores);
         request.getRequestDispatcher("/Proveedores.jsp").forward(request, response);
     }
