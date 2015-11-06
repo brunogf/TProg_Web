@@ -15,17 +15,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="dataUsuario" abstract="true">
-<xs:sequence>
-<xs:element name="nickname_" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="nombre_" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="apellido_" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="correo_" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="fecha_" type="xs:dateTime" minOccurs="0"></xs:element>
-<xs:element name="img_" type="xs:string" minOccurs="0"></xs:element>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="dataProveedorBean">
 <xs:complexContent>
 <xs:extension base="tns:dataUsuario">
@@ -35,6 +24,17 @@
 </xs:sequence>
 </xs:extension>
 </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="dataUsuario" abstract="true">
+<xs:sequence>
+<xs:element name="nickname_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nombre_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="apellido_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="correo_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fecha_" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="img_" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="dataCliente">
@@ -59,7 +59,18 @@
 </xs:complexType>
 
 <xs:complexType name="parDPD">
-<xs:sequence></xs:sequence>
+<xs:sequence>
+<xs:element name="dpub_" type="tns:dataPublicacion" minOccurs="0"></xs:element>
+<xs:element name="dd_" type="tns:dataDisponibilidad" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataDisponibilidad">
+<xs:sequence>
+<xs:element name="cant_" type="xs:int"></xs:element>
+<xs:element name="fechaIni_" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaFin_" type="xs:dateTime" minOccurs="0"></xs:element>
+</xs:sequence>
 </xs:complexType>
 
 <xs:simpleType name="estado">

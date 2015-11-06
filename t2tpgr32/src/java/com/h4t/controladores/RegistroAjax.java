@@ -5,8 +5,8 @@
  */
 package com.h4t.controladores;
 
-import com.h4t.servicios.PublicadorControladorUsuario;
-import com.h4t.servicios.PublicadorControladorUsuarioService;
+import com.h4t.servicios_usuario.PublicadorControladorUsuario;
+import com.h4t.servicios_usuario.PublicadorControladorUsuarioService;
 import java.io.IOException;
 import java.util.Arrays;
 import javax.servlet.ServletException;

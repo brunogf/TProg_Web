@@ -5,11 +5,11 @@
  */
 package com.h4t.controladores;
 
-import com.h4t.servicios.DataCliente;
-import com.h4t.servicios.DataProveedorBean;
-import com.h4t.servicios.DataUsuario;
-import com.h4t.servicios.PublicadorControladorUsuario;
-import com.h4t.servicios.PublicadorControladorUsuarioService;
+import com.h4t.servicios_usuario.DataCliente;
+import com.h4t.servicios_usuario.DataProveedorBean;
+import com.h4t.servicios_usuario.DataUsuario;
+import com.h4t.servicios_usuario.PublicadorControladorUsuario;
+import com.h4t.servicios_usuario.PublicadorControladorUsuarioService;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;

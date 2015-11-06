@@ -2,49 +2,13 @@
 
 <xs:element name="Exception" type="tns:Exception"></xs:element>
 
-<xs:complexType name="dataPublicacion" abstract="true">
-<xs:sequence>
-<xs:element name="nombre_" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="proveedor_" type="xs:string" minOccurs="0"></xs:element>
-</xs:sequence>
-</xs:complexType>
+<xs:element name="ParseException" type="tns:ParseException"></xs:element>
 
-<xs:complexType name="Exception">
+<xs:complexType name="ParseException">
 <xs:sequence>
+<xs:element name="errorOffset" type="xs:int"></xs:element>
 <xs:element name="message" type="xs:string" minOccurs="0"></xs:element>
 </xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="dataProveedorBean">
-<xs:complexContent>
-<xs:extension base="tns:dataUsuario">
-<xs:sequence>
-<xs:element name="nombre_empresa" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="url" type="xs:string" minOccurs="0"></xs:element>
-</xs:sequence>
-</xs:extension>
-</xs:complexContent>
-</xs:complexType>
-
-<xs:complexType name="dataUsuario" abstract="true">
-<xs:sequence>
-<xs:element name="nickname_" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="nombre_" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="apellido_" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="correo_" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="fecha_" type="xs:dateTime" minOccurs="0"></xs:element>
-<xs:element name="img_" type="xs:string" minOccurs="0"></xs:element>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="dataCliente">
-<xs:complexContent>
-<xs:extension base="tns:dataUsuario">
-<xs:sequence>
-<xs:element name="reservas_" type="tns:dataReserva" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
-</xs:sequence>
-</xs:extension>
-</xs:complexContent>
 </xs:complexType>
 
 <xs:complexType name="dataReserva">
@@ -65,11 +29,24 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="dataPublicacion" abstract="true">
+<xs:sequence>
+<xs:element name="nombre_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="proveedor_" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="dataDisponibilidad">
 <xs:sequence>
 <xs:element name="cant_" type="xs:int"></xs:element>
 <xs:element name="fechaIni_" type="xs:dateTime" minOccurs="0"></xs:element>
 <xs:element name="fechaFin_" type="xs:dateTime" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"></xs:element>
 </xs:sequence>
 </xs:complexType>
 
@@ -82,15 +59,9 @@
 </xs:restriction>
 </xs:simpleType>
 
-<xs:complexType name="dataPublicacionArray" final="#all">
+<xs:complexType name="parDPDArray" final="#all">
 <xs:sequence>
-<xs:element name="item" type="tns:dataPublicacion" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="dataUsuarioArray" final="#all">
-<xs:sequence>
-<xs:element name="item" type="tns:dataUsuario" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
+<xs:element name="item" type="tns:parDPD" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

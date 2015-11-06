@@ -5,13 +5,11 @@
 --%>
 
 <%@page import="java.text.DecimalFormat"%>
-<%@page import="tpgr32.DataPromocion"%>
-<%@page import="tpgr32.DataServicio"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.util.HashSet"%>
-<%@page import="tpgr32.ParDPD"%>
+
 <%@page import="java.util.Set"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

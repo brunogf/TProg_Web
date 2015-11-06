@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.9-b130926.1035 svn-revision#5f6196f2b90e9460065a4c2f4e30e065b245e51e. --><xs:schema xmlns:tns="http://Servidor/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://Servidor/">
+
+<xs:complexType name="dataServicioBean">
+<xs:complexContent>
+<xs:extension base="tns:dataPublicacion">
+<xs:sequence>
+<xs:element name="descripcion_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="precio_" type="xs:float"></xs:element>
+<xs:element name="paisOrigen_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ciudadOrigen_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="paisDestino_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ciudadDestino_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="imagenes_" type="xs:base64Binary" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+<xs:element name="categorias_" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="dataPublicacion" abstract="true">
+<xs:sequence>
+<xs:element name="nombre_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="proveedor_" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataUbicacion">
+<xs:sequence>
+<xs:element name="pais_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ciudad_" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="catTree">
+<xs:sequence>
+<xs:element name="cat_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="hijos_" type="tns:catTree" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataPromocion">
+<xs:complexContent>
+<xs:extension base="tns:dataPublicacion">
+<xs:sequence>
+<xs:element name="descuento_" type="xs:float"></xs:element>
+<xs:element name="precioTotal_" type="xs:float"></xs:element>
+<xs:element name="servicios_" type="tns:dataServicio" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="dataServicio">
+<xs:complexContent>
+<xs:extension base="tns:dataPublicacion">
+<xs:sequence>
+<xs:element name="descripcion_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="precio_" type="xs:float"></xs:element>
+<xs:element name="paisOrigen_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ciudadOrigen_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="paisDestino_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ciudadDestino_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="imagenes_" type="xs:base64Binary" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+<xs:element name="categorias_" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="dataServicioBeanArray" final="#all">
+<xs:sequence>
+<xs:element name="item" type="tns:dataServicioBean" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataPublicacionArray" final="#all">
+<xs:sequence>
+<xs:element name="item" type="tns:dataPublicacion" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataPromocionArray" final="#all">
+<xs:sequence>
+<xs:element name="item" type="tns:dataPromocion" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

@@ -41,8 +41,7 @@ public class GenerarReserva extends HttpServlet {
         FabricaControladores fab = FabricaControladores.getInstancia();
         IControladorReserva cont_r = fab.getControladorReserva();
         cont_r.borrarPublicacionesSeleccionadas();
-        for(ParDPD par: pubs){
-            
+        for(ParDPD par: pubs){   
             cont_r.seleccionarProveedor(par.getDpub_().getProveedor());
             cont_r.seleccionarCliente(request.getSession().getAttribute("Usuario").toString());
             cont_r.seleccionarPublicacion(par.getDpub_().getNombre(),par.getDd_().getCant(),par.getDd_().getFechaIni(),par.getDd_().getFechaFin());

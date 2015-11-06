@@ -4,12 +4,11 @@
     Author     : spesamosca
 --%>
 
-<%@page import="tpgr32.DataServicio"%>
+<%@page import="com.h4t.servicios.DataPublicacion"%>
+<%@page import="com.h4t.servicios.DataProveedorBean"%>
 <%@page import="java.util.HashSet"%>
-<%@page import="tpgr32.DataPublicacion"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.Set"%>
-<%@page import="tpgr32.DataProveedor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,7 +19,7 @@
         <jsp:include page="WEB-INF/templates/header.jsp"/>
         <div class="container InfoProveedor"> 
               <% 
-                 DataProveedor info_proveedor = (DataProveedor) request.getAttribute("info_proveedor");
+                 DataProveedorBean info_proveedor = (DataProveedorBean) request.getAttribute("info_proveedor");
                  Set<DataPublicacion> publicaciones_de_proveedor =(HashSet) request.getAttribute("publicaciones_de_proveedor");                 
               %>
                     <h3>Información del proveedor</h3>
@@ -29,7 +28,7 @@
                         <br/>
                         <label>Nombre:</label><%=info_proveedor.getNombre()%>
                         <br/>
-                        <label>Empresa:</label><%=info_proveedor.getEmpresa()%>
+                        <label>Empresa:</label><%=info_proveedor.getNombreEmpresa()%>
                         <br/>  
                             <%  
                                 String imagen = "media/Images/";
@@ -47,18 +46,20 @@
                                             <td>Tipo</td>
                                         </tr>    
                                 <%    
-                                    String link;
-                                    String pos;
+                                    String link = null;
+                                    String pos = null;
+                                    
+
                                     for(DataPublicacion p : publicaciones_de_proveedor)
-                                    { 
-                                        if (p instanceof DataServicio){
+                                    { /*                                  FALTA PASAR A WEB-SERVICES
+                                        if (p instanceof DataPromocion){
                                             link = "VerInfoServicio?Servicio=" + p.getNombre() +"&proveedor="+ p.getProveedor();
                                             pos = "Servicio";
                                         }
                                         else{
                                             link = "VerInfoPromocion?Promocion=" + p.getNombre() +"&proveedor="+ p.getProveedor();
                                             pos = "Promocion";
-                                        }%>
+                                        }*/%>
                                         <tr class="result" onclick="location.href='<%=link%>'">
                                             <td><%=p.getNombre()%></td>
                                             <td><%=pos%></td>

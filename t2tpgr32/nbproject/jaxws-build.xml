@@ -26,9 +26,25 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
+    <target name="wsimport-client-controlador_reserva" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/controlador_reserva"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/controlador_reserva" destdir="${build.generated.dir}/jax-wsCache/controlador_reserva" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/controlador_reserva/wsdl/localhost_9128/controlador_reserva.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:9128/controlador_reserva?wsdl" xnocompile="true" xendorsed="true" package="com.h4t.servicios_reserva">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/controlador_reserva/wsdl/localhost_9128/controlador_reserva.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/controlador_reserva"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/controlador_reserva">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-controlador_reserva" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/h4t/servicios_reserva"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/controlador_reserva"/>
+    </target>
     <target name="wsimport-client-controlador_usuario" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/controlador_usuario"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/controlador_usuario" destdir="${build.generated.dir}/jax-wsCache/controlador_usuario" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/controlador_usuario/wsdl/localhost_9128/controlador_usuario.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:9128/controlador_usuario?wsdl" xnocompile="true" xendorsed="true" package="com.h4t.servicios">
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/controlador_usuario" destdir="${build.generated.dir}/jax-wsCache/controlador_usuario" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/controlador_usuario/wsdl/localhost_9128/controlador_usuario.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:9128/controlador_usuario?wsdl" xnocompile="true" xendorsed="true" package="com.h4t.servicios_usuario">
             <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/controlador_usuario/wsdl/localhost_9128/controlador_usuario.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/controlador_usuario"/>
         </wsimport>
@@ -39,8 +55,24 @@
         </copy>
     </target>
     <target name="wsimport-client-clean-controlador_usuario" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/com/h4t/servicios"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/h4t/servicios_usuario"/>
         <delete dir="${build.generated.dir}/jax-wsCache/controlador_usuario"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-controlador_usuario"/>
+    <target name="wsimport-client-controlador_publicacion" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/controlador_publicacion"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/controlador_publicacion" destdir="${build.generated.dir}/jax-wsCache/controlador_publicacion" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/controlador_publicacion/wsdl/localhost_9128/controlador_publicacion.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:9128/controlador_publicacion?wsdl" xnocompile="true" xendorsed="true" package="com.h4t.servicios_publicacion">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/controlador_publicacion/wsdl/localhost_9128/controlador_publicacion.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/controlador_publicacion"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/controlador_publicacion">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-controlador_publicacion" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/h4t/servicios_publicacion"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/controlador_publicacion"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-controlador_reserva, wsimport-client-controlador_usuario, wsimport-client-controlador_publicacion"/>
 </project>

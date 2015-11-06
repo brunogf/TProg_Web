@@ -5,18 +5,25 @@
  */
 package com.h4t.controladores;
 
+import com.h4t.servicios_usuario.DataPublicacion;
+import com.h4t.servicios_usuario.DataUsuario;
+import com.h4t.servicios_usuario.PublicadorControladorUsuario;
+import com.h4t.servicios_usuario.PublicadorControladorUsuarioService;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.*;
 
 /**
  *
@@ -37,17 +44,22 @@ public class VerInfoProveedor extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaControladores fab = FabricaControladores.getInstancia();    
-        IControladorUsuario cont_usr = fab.getControladorUsuario();
+        PublicadorControladorUsuarioService servicio = new PublicadorControladorUsuarioService();
+        PublicadorControladorUsuario port = servicio.getPublicadorControladorUsuarioPort();
         String proveedor = (String)request.getParameter("Proveedor");
-        request.setAttribute("info_proveedor", cont_usr.infoProveedor(proveedor));   
-        request.setAttribute("publicaciones_de_proveedor", cont_usr.listarPublicacionesProveedor(proveedor));
-        DataUsuario data_usr = cont_usr.infoProveedor(proveedor);
-        if(data_usr.getImage() != null)
+        request.setAttribute("info_proveedor", port.infoProveedor(proveedor));   
+        port.listarPublicacionesProveedor(proveedor).getItem();
+        Set<DataPublicacion> sdtp = new HashSet<DataPublicacion>();
+        List<DataPublicacion> ldp = port.listarPublicacionesProveedor(proveedor).getItem();
+        for (DataPublicacion dtpub : ldp)
+            sdtp.add(dtpub);
+        request.setAttribute("publicaciones_de_proveedor", sdtp);
+        DataUsuario data_usr = port.infoProveedor(proveedor);
+        if(data_usr.getImg() != null)
                 {
                     
-                    Image img = cont_usr.getImagenDelUsuario(data_usr.getNickname()); 
-                    BufferedImage b_img = (BufferedImage)img;
+                    byte[] img = port.getImagenDelUsuario(data_usr.getNickname()); 
+                    BufferedImage b_img = ImageIO.read(new ByteArrayInputStream(img));
                     String destino = getServletContext().getRealPath("/") + "media\\Images\\" + data_usr.getNickname().toLowerCase() + ".jpg";
                     File file_d = new File(destino);
                     if (!(file_d.exists())){
