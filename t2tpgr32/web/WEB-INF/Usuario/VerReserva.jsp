@@ -104,6 +104,11 @@
                 <br>
                 <div class="col-xs-offset-10">
                 <span class="precioSubtotal">Total: US$ <%=dr.getPrecioTotal()%></span>
+                <br>
+                <br>
+                <%if(dr.getEstado() == Estado.REGISTRADA){%>
+                <span class="boton-pagar btn btn-primary btn-lg" onclick="pagar(<%=dr.getNum()%>)">Pagar</span>
+                <%}%>
                 </div>
         </div>
         </div>
@@ -113,6 +118,15 @@
                if (r === true)
                {
                    var url = "CancelarReserva?nro=" + nro;
+                   window.location = url;
+               }
+            }
+            
+            function pagar(nro) {
+               var r = confirm("Una vez realizado el pago debes esperar hasta que todos los proveedores confirmen el pago.");
+               if (r === true)
+               {
+                   var url = "PagarReserva?nro=" + nro;
                    window.location = url;
                }
             }

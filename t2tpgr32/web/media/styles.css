@@ -297,6 +297,9 @@ footer .datos{
     font-size: 20px;
 }
 
+.VerReserva .boton-pagar{
+    width: 150px;
+}
 .VerReserva .infoReserva{
     padding-left: 10px;
 }
