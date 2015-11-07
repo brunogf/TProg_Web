@@ -18,12 +18,6 @@
 <message name="getInfoClienteReservaResponse">
 <part name="return" type="tns:dataUsuario"></part>
 </message>
-<message name="infoReserva">
-<part name="arg0" type="xsd:int"></part>
-</message>
-<message name="infoReservaResponse">
-<part name="return" type="tns:dataReserva"></part>
-</message>
 <message name="actualizarEstado">
 <part name="arg0" type="xsd:int"></part>
 <part name="arg1" type="tns:estado"></part>
@@ -31,6 +25,12 @@
 <message name="actualizarEstadoResponse"></message>
 <message name="Exception">
 <part name="fault" element="tns:Exception"></part>
+</message>
+<message name="infoReserva">
+<part name="arg0" type="xsd:int"></part>
+</message>
+<message name="infoReservaResponse">
+<part name="return" type="tns:dataReserva"></part>
 </message>
 <message name="generarReserva">
 <part name="arg0" type="tns:parDPDArray"></part>
@@ -49,14 +49,14 @@
 <input wsam:Action="http://Servidor/PublicadorControladorReserva/getInfoClienteReservaRequest" message="tns:getInfoClienteReserva"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorReserva/getInfoClienteReservaResponse" message="tns:getInfoClienteReservaResponse"></output>
 </operation>
-<operation name="infoReserva">
-<input wsam:Action="http://Servidor/PublicadorControladorReserva/infoReservaRequest" message="tns:infoReserva"></input>
-<output wsam:Action="http://Servidor/PublicadorControladorReserva/infoReservaResponse" message="tns:infoReservaResponse"></output>
-</operation>
 <operation name="actualizarEstado" parameterOrder="arg0 arg1">
 <input wsam:Action="http://Servidor/PublicadorControladorReserva/actualizarEstadoRequest" message="tns:actualizarEstado"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorReserva/actualizarEstadoResponse" message="tns:actualizarEstadoResponse"></output>
 <fault message="tns:Exception" name="Exception" wsam:Action="http://Servidor/PublicadorControladorReserva/actualizarEstado/Fault/Exception"></fault>
+</operation>
+<operation name="infoReserva">
+<input wsam:Action="http://Servidor/PublicadorControladorReserva/infoReservaRequest" message="tns:infoReserva"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorReserva/infoReservaResponse" message="tns:infoReservaResponse"></output>
 </operation>
 <operation name="generarReserva" parameterOrder="arg0 arg1">
 <input wsam:Action="http://Servidor/PublicadorControladorReserva/generarReservaRequest" message="tns:generarReserva"></input>
@@ -86,15 +86,6 @@
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
 </output>
 </operation>
-<operation name="infoReserva">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</output>
-</operation>
 <operation name="actualizarEstado">
 <soap:operation soapAction=""></soap:operation>
 <input>
@@ -106,6 +97,15 @@
 <fault name="Exception">
 <soap:fault name="Exception" use="literal"></soap:fault>
 </fault>
+</operation>
+<operation name="infoReserva">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</output>
 </operation>
 <operation name="generarReserva">
 <soap:operation soapAction=""></soap:operation>

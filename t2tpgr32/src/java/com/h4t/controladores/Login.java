@@ -60,8 +60,8 @@ public class Login extends HttpServlet {
                 request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGGED_IN);
                 String nombre = du.getNombre() + " " + du.getApellido();
                 request.getSession().setAttribute("Nombre", nombre);
-                
-                if(port.getImagenDelUsuario(du.getNickname()) != null)
+                String nick = du.getNickname();
+                if(port.tieneImagen(nick))
                 {
                     BufferedImage bi = ImageIO.read(new ByteArrayInputStream(port.getImagenDelUsuario(du.getNickname())));
                     String destino = getServletContext().getRealPath("/") + "/media/Images/" + du.getNickname().toLowerCase() + ".jpg";

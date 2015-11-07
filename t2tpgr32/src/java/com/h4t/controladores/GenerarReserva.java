@@ -47,12 +47,14 @@ public class GenerarReserva extends HttpServlet {
         PublicadorControladorReservaService servicio = new PublicadorControladorReservaService();
         PublicadorControladorReserva port = servicio.getPublicadorControladorReservaPort();    
         List<ParDPD> arrPDPD = null;
-        if (pubs.size() > 0)
-            arrPDPD = new ArrayList<ParDPD>(pubs);
-        
         ParDPDArray Array = new ParDPDArray();
-        Array.setItem(arrPDPD);
-
+        if (pubs.size() > 0){
+            arrPDPD = new ArrayList<ParDPD>(pubs);
+            Array.getItem().addAll(arrPDPD);
+        }
+        
+        port.generarReserva(Array, (String)(request.getSession().getAttribute("Usuario")));
+        
         int nro = port.generarReserva(Array,(String)(request.getSession().getAttribute("Usuario")));
         Date fechaactual = new Date();
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");

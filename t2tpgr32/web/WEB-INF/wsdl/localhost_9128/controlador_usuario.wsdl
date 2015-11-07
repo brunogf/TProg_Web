@@ -10,6 +10,16 @@
 <message name="infoClienteResponse">
 <part name="return" type="tns:dataCliente"></part>
 </message>
+<message name="listarPublicacionesProveedor">
+<part name="arg0" type="xsd:string"></part>
+</message>
+<message name="listarPublicacionesProveedorResponse">
+<part name="return" type="tns:dataPublicacionArray"></part>
+</message>
+<message name="listarProveedores"></message>
+<message name="listarProveedoresResponse">
+<part name="return" type="tns:dataUsuarioArray"></part>
+</message>
 <message name="altaClienteConImg">
 <part name="arg0" type="xsd:string"></part>
 <part name="arg1" type="xsd:string"></part>
@@ -35,22 +45,21 @@
 <part name="arg8" type="xsd:string"></part>
 </message>
 <message name="altaProveedorConImgResponse"></message>
-<message name="listarPublicacionesProveedor">
-<part name="arg0" type="xsd:string"></part>
-</message>
-<message name="listarPublicacionesProveedorResponse">
-<part name="return" type="tns:dataPublicacionArray"></part>
-</message>
 <message name="getImagenDelUsuario">
 <part name="arg0" type="xsd:string"></part>
 </message>
 <message name="getImagenDelUsuarioResponse">
 <part name="return" type="xsd:base64Binary"></part>
 </message>
-<message name="listarProveedores"></message>
-<message name="listarProveedoresResponse">
-<part name="return" type="tns:dataUsuarioArray"></part>
+<message name="altaCliente">
+<part name="arg0" type="xsd:string"></part>
+<part name="arg1" type="xsd:string"></part>
+<part name="arg2" type="xsd:string"></part>
+<part name="arg3" type="xsd:string"></part>
+<part name="arg4" type="xsd:string"></part>
+<part name="arg5" type="xsd:string"></part>
 </message>
+<message name="altaClienteResponse"></message>
 <message name="altaProveedor">
 <part name="arg0" type="xsd:string"></part>
 <part name="arg1" type="xsd:string"></part>
@@ -62,30 +71,9 @@
 <part name="arg7" type="xsd:string"></part>
 </message>
 <message name="altaProveedorResponse"></message>
-<message name="altaCliente">
-<part name="arg0" type="xsd:string"></part>
-<part name="arg1" type="xsd:string"></part>
-<part name="arg2" type="xsd:string"></part>
-<part name="arg3" type="xsd:string"></part>
-<part name="arg4" type="xsd:string"></part>
-<part name="arg5" type="xsd:string"></part>
-</message>
-<message name="altaClienteResponse"></message>
 <message name="listarClientes"></message>
 <message name="listarClientesResponse">
 <part name="return" type="tns:dataUsuarioArray"></part>
-</message>
-<message name="infoProveedor">
-<part name="arg0" type="xsd:string"></part>
-</message>
-<message name="infoProveedorResponse">
-<part name="return" type="tns:dataProveedorBean"></part>
-</message>
-<message name="existeMail">
-<part name="arg0" type="xsd:string"></part>
-</message>
-<message name="existeMailResponse">
-<part name="return" type="xsd:boolean"></part>
 </message>
 <message name="comprobarUsuario">
 <part name="arg0" type="xsd:string"></part>
@@ -100,16 +88,42 @@
 <message name="getNickUsuarioResponse">
 <part name="return" type="xsd:string"></part>
 </message>
+<message name="infoProveedor">
+<part name="arg0" type="xsd:string"></part>
+</message>
+<message name="infoProveedorResponse">
+<part name="return" type="tns:dataProveedorBean"></part>
+</message>
 <message name="infoUsuario">
 <part name="arg0" type="xsd:string"></part>
 </message>
 <message name="infoUsuarioResponse">
 <part name="return" type="tns:dataUsuario"></part>
 </message>
+<message name="existeMail">
+<part name="arg0" type="xsd:string"></part>
+</message>
+<message name="existeMailResponse">
+<part name="return" type="xsd:boolean"></part>
+</message>
+<message name="tieneImagen">
+<part name="arg0" type="xsd:string"></part>
+</message>
+<message name="tieneImagenResponse">
+<part name="return" type="xsd:boolean"></part>
+</message>
 <portType name="PublicadorControladorUsuario">
 <operation name="infoCliente">
 <input wsam:Action="http://Servidor/PublicadorControladorUsuario/infoClienteRequest" message="tns:infoCliente"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorUsuario/infoClienteResponse" message="tns:infoClienteResponse"></output>
+</operation>
+<operation name="listarPublicacionesProveedor">
+<input wsam:Action="http://Servidor/PublicadorControladorUsuario/listarPublicacionesProveedorRequest" message="tns:listarPublicacionesProveedor"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorUsuario/listarPublicacionesProveedorResponse" message="tns:listarPublicacionesProveedorResponse"></output>
+</operation>
+<operation name="listarProveedores">
+<input wsam:Action="http://Servidor/PublicadorControladorUsuario/listarProveedoresRequest" message="tns:listarProveedores"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorUsuario/listarProveedoresResponse" message="tns:listarProveedoresResponse"></output>
 </operation>
 <operation name="altaClienteConImg" parameterOrder="arg0 arg1 arg2 arg3 arg4 arg5 arg6">
 <input wsam:Action="http://Servidor/PublicadorControladorUsuario/altaClienteConImgRequest" message="tns:altaClienteConImg"></input>
@@ -121,39 +135,23 @@
 <output wsam:Action="http://Servidor/PublicadorControladorUsuario/altaProveedorConImgResponse" message="tns:altaProveedorConImgResponse"></output>
 <fault message="tns:Exception" name="Exception" wsam:Action="http://Servidor/PublicadorControladorUsuario/altaProveedorConImg/Fault/Exception"></fault>
 </operation>
-<operation name="listarPublicacionesProveedor">
-<input wsam:Action="http://Servidor/PublicadorControladorUsuario/listarPublicacionesProveedorRequest" message="tns:listarPublicacionesProveedor"></input>
-<output wsam:Action="http://Servidor/PublicadorControladorUsuario/listarPublicacionesProveedorResponse" message="tns:listarPublicacionesProveedorResponse"></output>
-</operation>
 <operation name="getImagenDelUsuario">
 <input wsam:Action="http://Servidor/PublicadorControladorUsuario/getImagenDelUsuarioRequest" message="tns:getImagenDelUsuario"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorUsuario/getImagenDelUsuarioResponse" message="tns:getImagenDelUsuarioResponse"></output>
-</operation>
-<operation name="listarProveedores">
-<input wsam:Action="http://Servidor/PublicadorControladorUsuario/listarProveedoresRequest" message="tns:listarProveedores"></input>
-<output wsam:Action="http://Servidor/PublicadorControladorUsuario/listarProveedoresResponse" message="tns:listarProveedoresResponse"></output>
-</operation>
-<operation name="altaProveedor" parameterOrder="arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7">
-<input wsam:Action="http://Servidor/PublicadorControladorUsuario/altaProveedorRequest" message="tns:altaProveedor"></input>
-<output wsam:Action="http://Servidor/PublicadorControladorUsuario/altaProveedorResponse" message="tns:altaProveedorResponse"></output>
-<fault message="tns:Exception" name="Exception" wsam:Action="http://Servidor/PublicadorControladorUsuario/altaProveedor/Fault/Exception"></fault>
 </operation>
 <operation name="altaCliente" parameterOrder="arg0 arg1 arg2 arg3 arg4 arg5">
 <input wsam:Action="http://Servidor/PublicadorControladorUsuario/altaClienteRequest" message="tns:altaCliente"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorUsuario/altaClienteResponse" message="tns:altaClienteResponse"></output>
 <fault message="tns:Exception" name="Exception" wsam:Action="http://Servidor/PublicadorControladorUsuario/altaCliente/Fault/Exception"></fault>
 </operation>
+<operation name="altaProveedor" parameterOrder="arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7">
+<input wsam:Action="http://Servidor/PublicadorControladorUsuario/altaProveedorRequest" message="tns:altaProveedor"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorUsuario/altaProveedorResponse" message="tns:altaProveedorResponse"></output>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://Servidor/PublicadorControladorUsuario/altaProveedor/Fault/Exception"></fault>
+</operation>
 <operation name="listarClientes">
 <input wsam:Action="http://Servidor/PublicadorControladorUsuario/listarClientesRequest" message="tns:listarClientes"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorUsuario/listarClientesResponse" message="tns:listarClientesResponse"></output>
-</operation>
-<operation name="infoProveedor">
-<input wsam:Action="http://Servidor/PublicadorControladorUsuario/infoProveedorRequest" message="tns:infoProveedor"></input>
-<output wsam:Action="http://Servidor/PublicadorControladorUsuario/infoProveedorResponse" message="tns:infoProveedorResponse"></output>
-</operation>
-<operation name="existeMail">
-<input wsam:Action="http://Servidor/PublicadorControladorUsuario/existeMailRequest" message="tns:existeMail"></input>
-<output wsam:Action="http://Servidor/PublicadorControladorUsuario/existeMailResponse" message="tns:existeMailResponse"></output>
 </operation>
 <operation name="comprobarUsuario" parameterOrder="arg0 arg1">
 <input wsam:Action="http://Servidor/PublicadorControladorUsuario/comprobarUsuarioRequest" message="tns:comprobarUsuario"></input>
@@ -163,14 +161,44 @@
 <input wsam:Action="http://Servidor/PublicadorControladorUsuario/getNickUsuarioRequest" message="tns:getNickUsuario"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorUsuario/getNickUsuarioResponse" message="tns:getNickUsuarioResponse"></output>
 </operation>
+<operation name="infoProveedor">
+<input wsam:Action="http://Servidor/PublicadorControladorUsuario/infoProveedorRequest" message="tns:infoProveedor"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorUsuario/infoProveedorResponse" message="tns:infoProveedorResponse"></output>
+</operation>
 <operation name="infoUsuario">
 <input wsam:Action="http://Servidor/PublicadorControladorUsuario/infoUsuarioRequest" message="tns:infoUsuario"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorUsuario/infoUsuarioResponse" message="tns:infoUsuarioResponse"></output>
+</operation>
+<operation name="existeMail">
+<input wsam:Action="http://Servidor/PublicadorControladorUsuario/existeMailRequest" message="tns:existeMail"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorUsuario/existeMailResponse" message="tns:existeMailResponse"></output>
+</operation>
+<operation name="tieneImagen">
+<input wsam:Action="http://Servidor/PublicadorControladorUsuario/tieneImagenRequest" message="tns:tieneImagen"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorUsuario/tieneImagenResponse" message="tns:tieneImagenResponse"></output>
 </operation>
 </portType>
 <binding name="PublicadorControladorUsuarioPortBinding" type="tns:PublicadorControladorUsuario">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"></soap:binding>
 <operation name="infoCliente">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</output>
+</operation>
+<operation name="listarPublicacionesProveedor">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</output>
+</operation>
+<operation name="listarProveedores">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
@@ -203,15 +231,6 @@
 <soap:fault name="Exception" use="literal"></soap:fault>
 </fault>
 </operation>
-<operation name="listarPublicacionesProveedor">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</output>
-</operation>
 <operation name="getImagenDelUsuario">
 <soap:operation soapAction=""></soap:operation>
 <input>
@@ -220,27 +239,6 @@
 <output>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
 </output>
-</operation>
-<operation name="listarProveedores">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</output>
-</operation>
-<operation name="altaProveedor">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</output>
-<fault name="Exception">
-<soap:fault name="Exception" use="literal"></soap:fault>
-</fault>
 </operation>
 <operation name="altaCliente">
 <soap:operation soapAction=""></soap:operation>
@@ -254,25 +252,19 @@
 <soap:fault name="Exception" use="literal"></soap:fault>
 </fault>
 </operation>
+<operation name="altaProveedor">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</output>
+<fault name="Exception">
+<soap:fault name="Exception" use="literal"></soap:fault>
+</fault>
+</operation>
 <operation name="listarClientes">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</output>
-</operation>
-<operation name="infoProveedor">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</output>
-</operation>
-<operation name="existeMail">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
@@ -299,7 +291,34 @@
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
 </output>
 </operation>
+<operation name="infoProveedor">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</output>
+</operation>
 <operation name="infoUsuario">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</output>
+</operation>
+<operation name="existeMail">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</output>
+</operation>
+<operation name="tieneImagen">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
