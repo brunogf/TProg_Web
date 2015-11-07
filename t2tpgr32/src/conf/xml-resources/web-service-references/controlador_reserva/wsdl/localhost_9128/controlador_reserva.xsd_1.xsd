@@ -96,17 +96,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="dataUsuario" abstract="true">
-<xs:sequence>
-<xs:element name="nickname_" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="nombre_" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="apellido_" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="correo_" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="fecha_" type="xs:dateTime" minOccurs="0"></xs:element>
-<xs:element name="img_" type="xs:string" minOccurs="0"></xs:element>
-</xs:sequence>
-</xs:complexType>
-
 <xs:simpleType name="estado">
 <xs:restriction base="xs:string">
 <xs:enumeration value="Registrada"></xs:enumeration>

@@ -6,6 +6,7 @@
 package com.h4t.controladores;
 
 import com.h4t.modelo.EstadoSesion;
+import com.h4t.servicios.DataUsuario;
 import com.h4t.servicios.Estado;
 import com.h4t.servicios.PublicadorControladorReserva;
 import com.h4t.servicios.PublicadorControladorReservaService;
@@ -40,8 +41,8 @@ public class CancelarReserva extends HttpServlet {
                 int reserva = Integer.parseInt(request.getParameter("nro"));
                 PublicadorControladorReservaService servicio = new PublicadorControladorReservaService();
                 PublicadorControladorReserva port = servicio.getPublicadorControladorReservaPort();    
-        
-                if (port.getInfoClienteReserva(reserva).getNickname().equals(usr))
+                String nick = port.getClienteReserva(reserva);
+                if (nick.equals(usr))
                         {
                             try{
                             port.actualizarEstado(reserva, Estado.CANCELADA);

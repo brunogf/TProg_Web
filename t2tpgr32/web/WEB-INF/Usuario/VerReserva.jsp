@@ -93,8 +93,8 @@
                                 <span>Descuento:<%=dp.getDescuento() %> </span><br>
                                 <span>Precio: $<%=dp.getPrecioTotal() %></span><br>
                                 <span>Proveedor: <%=dp.getProveedor() %></span><br>
-                                <span>Fecha inicio: <%=f.format(dd.getFechaIni()) %></span><br>
-                                <span>Fecha fin: <%=f.format(dd.getFechaFin()) %></span><br>
+                                <span>Fecha inicio: <%=f.format(dd.getFechaIni().toGregorianCalendar().getTime()) %></span><br>
+                                <span>Fecha fin: <%=f.format(dd.getFechaFin().toGregorianCalendar().getTime()) %></span><br>
                                 <span>Cantidad: <%=dd.getCant() %></span><br>
                             </div>
                     <%}}} %>

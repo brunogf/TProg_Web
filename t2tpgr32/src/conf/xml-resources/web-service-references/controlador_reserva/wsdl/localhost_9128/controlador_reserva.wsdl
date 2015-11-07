@@ -4,11 +4,13 @@
 <xsd:import namespace="http://Servidor/" schemaLocation="http://localhost:9128/controlador_reserva?xsd=1"></xsd:import>
 </xsd:schema>
 </types>
-<message name="infoReserva">
-<part name="arg0" type="xsd:int"></part>
+<message name="cambiarFechaCreacionReserva">
+<part name="arg0" type="xsd:string"></part>
+<part name="arg1" type="xsd:int"></part>
 </message>
-<message name="infoReservaResponse">
-<part name="return" type="tns:dataReserva"></part>
+<message name="cambiarFechaCreacionReservaResponse"></message>
+<message name="ParseException">
+<part name="fault" element="tns:ParseException"></part>
 </message>
 <message name="actualizarEstado">
 <part name="arg0" type="xsd:int"></part>
@@ -18,19 +20,17 @@
 <message name="Exception">
 <part name="fault" element="tns:Exception"></part>
 </message>
-<message name="cambiarFechaCreacionReserva">
-<part name="arg0" type="xsd:string"></part>
-<part name="arg1" type="xsd:int"></part>
-</message>
-<message name="cambiarFechaCreacionReservaResponse"></message>
-<message name="ParseException">
-<part name="fault" element="tns:ParseException"></part>
-</message>
-<message name="getInfoClienteReserva">
+<message name="infoReserva">
 <part name="arg0" type="xsd:int"></part>
 </message>
-<message name="getInfoClienteReservaResponse">
-<part name="return" type="tns:dataUsuario"></part>
+<message name="infoReservaResponse">
+<part name="return" type="tns:dataReserva"></part>
+</message>
+<message name="getClienteReserva">
+<part name="arg0" type="xsd:int"></part>
+</message>
+<message name="getClienteReservaResponse">
+<part name="return" type="xsd:string"></part>
 </message>
 <message name="generarReserva">
 <part name="arg0" type="xsd:string"></part>
@@ -40,23 +40,23 @@
 <part name="return" type="xsd:int"></part>
 </message>
 <portType name="PublicadorControladorReserva">
-<operation name="infoReserva">
-<input wsam:Action="http://Servidor/PublicadorControladorReserva/infoReservaRequest" message="tns:infoReserva"></input>
-<output wsam:Action="http://Servidor/PublicadorControladorReserva/infoReservaResponse" message="tns:infoReservaResponse"></output>
+<operation name="cambiarFechaCreacionReserva" parameterOrder="arg0 arg1">
+<input wsam:Action="http://Servidor/PublicadorControladorReserva/cambiarFechaCreacionReservaRequest" message="tns:cambiarFechaCreacionReserva"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorReserva/cambiarFechaCreacionReservaResponse" message="tns:cambiarFechaCreacionReservaResponse"></output>
+<fault message="tns:ParseException" name="ParseException" wsam:Action="http://Servidor/PublicadorControladorReserva/cambiarFechaCreacionReserva/Fault/ParseException"></fault>
 </operation>
 <operation name="actualizarEstado" parameterOrder="arg0 arg1">
 <input wsam:Action="http://Servidor/PublicadorControladorReserva/actualizarEstadoRequest" message="tns:actualizarEstado"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorReserva/actualizarEstadoResponse" message="tns:actualizarEstadoResponse"></output>
 <fault message="tns:Exception" name="Exception" wsam:Action="http://Servidor/PublicadorControladorReserva/actualizarEstado/Fault/Exception"></fault>
 </operation>
-<operation name="cambiarFechaCreacionReserva" parameterOrder="arg0 arg1">
-<input wsam:Action="http://Servidor/PublicadorControladorReserva/cambiarFechaCreacionReservaRequest" message="tns:cambiarFechaCreacionReserva"></input>
-<output wsam:Action="http://Servidor/PublicadorControladorReserva/cambiarFechaCreacionReservaResponse" message="tns:cambiarFechaCreacionReservaResponse"></output>
-<fault message="tns:ParseException" name="ParseException" wsam:Action="http://Servidor/PublicadorControladorReserva/cambiarFechaCreacionReserva/Fault/ParseException"></fault>
+<operation name="infoReserva">
+<input wsam:Action="http://Servidor/PublicadorControladorReserva/infoReservaRequest" message="tns:infoReserva"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorReserva/infoReservaResponse" message="tns:infoReservaResponse"></output>
 </operation>
-<operation name="getInfoClienteReserva">
-<input wsam:Action="http://Servidor/PublicadorControladorReserva/getInfoClienteReservaRequest" message="tns:getInfoClienteReserva"></input>
-<output wsam:Action="http://Servidor/PublicadorControladorReserva/getInfoClienteReservaResponse" message="tns:getInfoClienteReservaResponse"></output>
+<operation name="getClienteReserva">
+<input wsam:Action="http://Servidor/PublicadorControladorReserva/getClienteReservaRequest" message="tns:getClienteReserva"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorReserva/getClienteReservaResponse" message="tns:getClienteReservaResponse"></output>
 </operation>
 <operation name="generarReserva" parameterOrder="arg0 arg1">
 <input wsam:Action="http://Servidor/PublicadorControladorReserva/generarReservaRequest" message="tns:generarReserva"></input>
@@ -65,7 +65,7 @@
 </portType>
 <binding name="PublicadorControladorReservaPortBinding" type="tns:PublicadorControladorReserva">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"></soap:binding>
-<operation name="infoReserva">
+<operation name="cambiarFechaCreacionReserva">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
@@ -73,6 +73,9 @@
 <output>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
 </output>
+<fault name="ParseException">
+<soap:fault name="ParseException" use="literal"></soap:fault>
+</fault>
 </operation>
 <operation name="actualizarEstado">
 <soap:operation soapAction=""></soap:operation>
@@ -86,7 +89,7 @@
 <soap:fault name="Exception" use="literal"></soap:fault>
 </fault>
 </operation>
-<operation name="cambiarFechaCreacionReserva">
+<operation name="infoReserva">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
@@ -94,11 +97,8 @@
 <output>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
 </output>
-<fault name="ParseException">
-<soap:fault name="ParseException" use="literal"></soap:fault>
-</fault>
 </operation>
-<operation name="getInfoClienteReserva">
+<operation name="getClienteReserva">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
