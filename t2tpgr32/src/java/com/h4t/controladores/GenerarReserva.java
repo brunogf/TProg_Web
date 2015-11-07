@@ -5,8 +5,8 @@
  */
 package com.h4t.controladores;
 
+import com.google.gson.Gson;
 import com.h4t.servicios.ParDPD;
-import com.h4t.servicios.ParDPDArray;
 import com.h4t.servicios.PublicadorControladorReserva;
 import com.h4t.servicios.PublicadorControladorReservaService;
 import java.io.IOException;
@@ -46,16 +46,10 @@ public class GenerarReserva extends HttpServlet {
         Set<ParDPD> pubs = (HashSet)request.getSession().getAttribute("publicaciones-carro");
         PublicadorControladorReservaService servicio = new PublicadorControladorReservaService();
         PublicadorControladorReserva port = servicio.getPublicadorControladorReservaPort();    
-        List<ParDPD> arrPDPD = null;
-        ParDPDArray Array = new ParDPDArray();
-        if (pubs.size() > 0){
-            arrPDPD = new ArrayList<ParDPD>(pubs);
-            Array.getItem().addAll(arrPDPD);
-        }
-        
-        port.generarReserva(Array, (String)(request.getSession().getAttribute("Usuario")));
-        
-        int nro = port.generarReserva(Array,(String)(request.getSession().getAttribute("Usuario")));
+       
+        String usr = request.getSession().getAttribute("Usuario").toString();
+        String json = new Gson().toJson(pubs);
+        int nro = port.generarReserva(json, usr);
         Date fechaactual = new Date();
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         try{

@@ -115,10 +115,4 @@
 <xs:enumeration value="Facturada"></xs:enumeration>
 </xs:restriction>
 </xs:simpleType>
-
-<xs:complexType name="parDPDArray" final="#all">
-<xs:sequence>
-<xs:element name="item" type="tns:parDPD" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
-</xs:sequence>
-</xs:complexType>
 </xs:schema>
