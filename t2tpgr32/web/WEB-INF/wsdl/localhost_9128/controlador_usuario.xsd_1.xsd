@@ -9,6 +9,52 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="dataServicioBean">
+<xs:complexContent>
+<xs:extension base="tns:dataPublicacion">
+<xs:sequence>
+<xs:element name="descripcion_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="precio_" type="xs:float"></xs:element>
+<xs:element name="paisOrigen_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ciudadOrigen_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="paisDestino_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ciudadDestino_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="imagenes_" type="xs:base64Binary" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+<xs:element name="categorias_" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="dataPromocion">
+<xs:complexContent>
+<xs:extension base="tns:dataPublicacion">
+<xs:sequence>
+<xs:element name="descuento_" type="xs:float"></xs:element>
+<xs:element name="precioTotal_" type="xs:float"></xs:element>
+<xs:element name="servicios_" type="tns:dataServicio" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="dataServicio">
+<xs:complexContent>
+<xs:extension base="tns:dataPublicacion">
+<xs:sequence>
+<xs:element name="descripcion_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="precio_" type="xs:float"></xs:element>
+<xs:element name="paisOrigen_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ciudadOrigen_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="paisDestino_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ciudadDestino_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="imagenes_" type="xs:base64Binary" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+<xs:element name="categorias_" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
 <xs:complexType name="Exception">
 <xs:sequence>
 <xs:element name="message" type="xs:string" minOccurs="0"></xs:element>

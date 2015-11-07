@@ -6,6 +6,9 @@
 package com.h4t.controladores;
 
 import com.google.gson.Gson;
+import com.h4t.servicios.DataPublicacion;
+import com.h4t.servicios.PublicadorControladorPublicacion;
+import com.h4t.servicios.PublicadorControladorPublicacionService;
 import java.io.IOException;
 import java.text.Collator;
 import java.util.ArrayList;
@@ -18,9 +21,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.DataPublicacion;
-import tpgr32.FabricaControladores;
-import tpgr32.IControladorPublicacion;
 
 /**
  *
@@ -40,8 +40,9 @@ public class AjaxSearchRequest extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cont_pub = fab.getControladorPublicacion();
+        PublicadorControladorPublicacionService servicio = new PublicadorControladorPublicacionService();
+        PublicadorControladorPublicacion port = servicio.getPublicadorControladorPublicacionPort();    
+        
         String json;
         if ((request.getParameter("criterio"))==null)
         {
@@ -50,7 +51,13 @@ public class AjaxSearchRequest extends HttpServlet {
         }
         else
         {
-            Set<DataPublicacion> publicaciones = cont_pub.buscarPublicacion((String)request.getParameter("criterio"));
+            Set<DataPublicacion> publicaciones;
+            List<DataPublicacion> ldtp = port.buscarPublicacion((String)request.getParameter("criterio")).getItem();
+            if ((ldtp == null)||(ldtp.isEmpty())){
+                publicaciones = new HashSet<DataPublicacion>();
+            }
+            else
+                publicaciones = new HashSet(ldtp);
             request.setAttribute("publicaciones", publicaciones);
             List<String> lista = new ArrayList<String>();
             for(DataPublicacion p : publicaciones)

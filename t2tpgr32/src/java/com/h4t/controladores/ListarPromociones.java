@@ -5,16 +5,18 @@
  */
 package com.h4t.controladores;
 
+import com.h4t.servicios.DataPromocion;
+import com.h4t.servicios.PublicadorControladorPublicacion;
+import com.h4t.servicios.PublicadorControladorPublicacionService;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.DataPromocion;
-import tpgr32.FabricaControladores;
-import tpgr32.IControladorPublicacion;
 
 /**
  *
@@ -35,9 +37,15 @@ public class ListarPromociones extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cont_pub = fab.getControladorPublicacion();
-        Set<DataPromocion> Promociones = cont_pub.listarPromociones();
+        PublicadorControladorPublicacionService servicio = new PublicadorControladorPublicacionService();
+        PublicadorControladorPublicacion port = servicio.getPublicadorControladorPublicacionPort();  
+        List<DataPromocion> ldp = port.listarPromociones().getItem();
+        Set<DataPromocion> Promociones = null;  
+        if((ldp == null) || (ldp.isEmpty()))
+            Promociones = new HashSet<DataPromocion>();
+        else
+            Promociones = new HashSet<DataPromocion>(ldp);
+                    
         request.setAttribute("Promociones", Promociones);
         request.getRequestDispatcher("/Promociones.jsp").forward(request, response);       
     }

@@ -5,6 +5,7 @@
  */
 package com.h4t.controladores;
 
+import com.h4t.servicios.ParDPD;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -14,7 +15,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.*;
 
 /**
  *
@@ -43,7 +43,7 @@ public class QuitarDelCarro extends HttpServlet {
         Iterator<ParDPD> it =pub.iterator();
         while (it.hasNext()){
               p = it.next();
-              if((p.getDpub_().getNombre().equals(nombre))  && (p.getDpub_().getProveedor().equals(prov)) && (p.getDd_().getCant() == cant)){
+              if((p.getDpub().getNombre().equals(nombre))  && (p.getDpub().getProveedor().equals(prov)) && (p.getDd().getCant() == cant)){
                 it.remove();
               }
         }

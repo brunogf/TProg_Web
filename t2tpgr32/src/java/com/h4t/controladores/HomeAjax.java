@@ -6,15 +6,24 @@
 package com.h4t.controladores;
 
 import com.google.gson.Gson;
+import com.h4t.servicios.DataPromocion;
+import com.h4t.servicios.DataServicio;
+import com.h4t.servicios.DataServicioBean;
+import com.h4t.servicios.PublicadorControladorPublicacion;
+import com.h4t.servicios.PublicadorControladorPublicacionService;
+import com.h4t.servicios.PublicadorControladorReserva;
+import com.h4t.servicios.PublicadorControladorReservaService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.*;
+
 
 /**
  *
@@ -37,14 +46,25 @@ public class HomeAjax extends HttpServlet {
         String tipo = request.getParameter("tipo");
         String Categoria = request.getParameter("cat");
         String Json = "";
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cont_pub = fab.getControladorPublicacion();
+        PublicadorControladorPublicacionService servicio = new PublicadorControladorPublicacionService();
+        PublicadorControladorPublicacion port = servicio.getPublicadorControladorPublicacionPort();    
         if (tipo.equals("Promocion")){
-            Set<DataPromocion> Promociones = cont_pub.listarPromociones();  
+            List<DataPromocion> ldp = port.listarPromociones().getItem();
+            Set<DataPromocion> Promociones = null;  
+            if((ldp == null) || (ldp.isEmpty()))
+                Promociones = new HashSet<DataPromocion>();
+            else
+                Promociones = new HashSet<DataPromocion>(ldp);
+                    
             Json = new Gson().toJson(Promociones);
         }
         else if (tipo.equals("Servicio")){
-            Set<DataServicio> ServiciosDeCategoria = cont_pub.listarServiciosDeCategoria(Categoria);
+            List<DataServicioBean> ldsb = port.listarServiciosDeCategoria(Categoria).getItem();
+            Set<DataServicioBean> ServiciosDeCategoria = null;
+            if((ldsb == null) || (ldsb.isEmpty()))
+                ServiciosDeCategoria = new HashSet<DataServicioBean>();
+            else
+                ServiciosDeCategoria = new HashSet<DataServicioBean>(ldsb);
             Json = new Gson().toJson(ServiciosDeCategoria);
         }
         response.setContentType("application/json");

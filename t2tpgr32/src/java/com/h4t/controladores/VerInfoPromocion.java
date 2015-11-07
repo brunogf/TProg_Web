@@ -5,15 +5,20 @@
  */
 package com.h4t.controladores;
 
+import com.h4t.servicios.DataPromocion;
+import com.h4t.servicios.DataServicioBean;
+import com.h4t.servicios.DataServicioBeanArray;
+import com.h4t.servicios.PublicadorControladorPublicacion;
+import com.h4t.servicios.PublicadorControladorPublicacionService;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.FabricaControladores;
-import tpgr32.IControladorPublicacion;
-import tpgr32.IControladorUsuario;
 
 /**
  *
@@ -32,12 +37,21 @@ public class VerInfoPromocion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cont_pub = fab.getControladorPublicacion();     
+        PublicadorControladorPublicacionService servicio = new PublicadorControladorPublicacionService();
+        PublicadorControladorPublicacion port = servicio.getPublicadorControladorPublicacionPort(); 
         String promocion = (String)request.getParameter("Promocion");
         String proveedor = (String)request.getParameter("proveedor");
-        request.setAttribute("info_promocion", cont_pub.infoPromocion(proveedor, promocion));   
-        request.setAttribute("servicios_de_promocion", cont_pub.infoPromocion(proveedor, promocion).getServicios());
+        DataPromocion dtp = port.infoPromocion(proveedor, promocion);
+        request.setAttribute("info_promocion", dtp);   
+        DataServicioBeanArray dtsba = port.listarServiciosDePromocion(dtp.getProveedor(), dtp.getNombre());
+        List<DataServicioBean> dtbl = dtsba.getItem();
+        Set<DataServicioBean> dtbs = null;
+        if((dtbl == null)||(dtbl.isEmpty()))
+            dtbs = new HashSet<DataServicioBean>();
+        else
+            dtbs = new HashSet<DataServicioBean>(dtbl);
+            
+        request.setAttribute("servicios_de_promocion", dtbs);
         request.getRequestDispatcher("InfoPromocion.jsp").forward(request, response);
     }
 

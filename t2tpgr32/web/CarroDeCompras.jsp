@@ -4,12 +4,15 @@
     Author     : piñe
 --%>
 
+
+<%@page import="com.h4t.servicios.DataPromocion"%>
+<%@page import="com.h4t.servicios.DataServicioBean"%>
+<%@page import="com.h4t.servicios.ParDPD"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.util.HashSet"%>
-
 <%@page import="java.util.Set"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -48,41 +51,41 @@
                         float precio;
                         String link;
                         String descr ="";
-                        String linkQuitar = "QuitarDelCarro?Nombre=" + p.getDpub_().getNombre() +"&Cantidad=" + String.valueOf(p.getDd_().getCant())
-                                              + "&Proveedor=" + p.getDpub_().getProveedor();
-                        if (p.getDpub_() instanceof DataServicio)
+                        String linkQuitar = "QuitarDelCarro?Nombre=" + p.getDpub().getNombre() +"&Cantidad=" + String.valueOf(p.getDd().getCant())
+                                              + "&Proveedor=" + p.getDpub().getProveedor();
+                        if (p.getDpub() instanceof DataServicioBean)
                         {
                             pos = "Servicio";
-                            precio = ((DataServicio)p.getDpub_()).getPrecio();
-                            descr = ((DataServicio)p.getDpub_()).getDescripcion();
-                            link = "VerInfoServicio?Servicio=" + p.getDpub_().getNombre() +"&proveedor="+ p.getDpub_().getProveedor();
+                            precio = ((DataServicioBean)p.getDpub()).getPrecio();
+                            descr = ((DataServicioBean)p.getDpub()).getDescripcion();
+                            link = "VerInfoServicio?Servicio=" + p.getDpub().getNombre() +"&proveedor="+ p.getDpub().getProveedor();
                         }
                         else
                         {
                             pos = "Promoción";
-                            link = "VerInfoPromocion?Promocion=" + p.getDpub_().getNombre() +"&proveedor="+ p.getDpub_().getProveedor();
-                            precio = ((DataPromocion)p.getDpub_()).getPrecioTotal();
+                            link = "VerInfoPromocion?Promocion=" + p.getDpub().getNombre() +"&proveedor="+ p.getDpub().getProveedor();
+                            precio = ((DataPromocion)p.getDpub()).getPrecioTotal();
                         }
                         
-                        subt = subt + p.getDd_().getCant()* precio;
+                        subt = subt + p.getDd().getCant()* precio;
 
             %>
             <tr class="result"><!--link a servlet ver info publicacion-->
-                <td class="col-xs-4" onclick="location.href='<%=link%>'"><h3><%=p.getDpub_().getNombre()%></h3>
+                <td class="col-xs-4" onclick="location.href='<%=link%>'"><h3><%=p.getDpub().getNombre()%></h3>
                     <p><%=descr%></p>
                 </td>
               <td><%=pos%></td>
               <td><%= "USD "+String.valueOf(df.format(precio)) %></td>
-              <% if (p.getDpub_() instanceof DataServicio) 
+              <% if (p.getDpub() instanceof DataServicioBean) 
               {
                  %>
               <td>% 0</td>
               <% }
               else{ %>
-              <td><%= "% "+ String.valueOf(((DataPromocion)p.getDpub_()).getDescuento()) %></td>
+              <td><%= "% "+ String.valueOf(((DataPromocion)p.getDpub()).getDescuento()) %></td>
               <% } %>
-              <td><%= p.getDd_().getCant() %></td>
-              <td><%= "USD "+String.valueOf(df.format(p.getDd_().getCant()* precio)) %></td>
+              <td><%= p.getDd().getCant() %></td>
+              <td><%= "USD "+String.valueOf(df.format(p.getDd().getCant()* precio)) %></td>
               <td><button type="button" onclick="location.href='<%=linkQuitar%>'" class="btn btn-primary">X</button></td>
             </tr><%
             }%>

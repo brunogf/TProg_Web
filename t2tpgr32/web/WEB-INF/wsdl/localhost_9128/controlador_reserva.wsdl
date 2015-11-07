@@ -12,6 +12,12 @@
 <message name="ParseException">
 <part name="fault" element="tns:ParseException"></part>
 </message>
+<message name="getInfoClienteReserva">
+<part name="arg0" type="xsd:int"></part>
+</message>
+<message name="getInfoClienteReservaResponse">
+<part name="return" type="tns:dataUsuario"></part>
+</message>
 <message name="infoReserva">
 <part name="arg0" type="xsd:int"></part>
 </message>
@@ -30,12 +36,18 @@
 <part name="arg0" type="tns:parDPDArray"></part>
 <part name="arg1" type="xsd:string"></part>
 </message>
-<message name="generarReservaResponse"></message>
+<message name="generarReservaResponse">
+<part name="return" type="xsd:int"></part>
+</message>
 <portType name="PublicadorControladorReserva">
 <operation name="cambiarFechaCreacionReserva" parameterOrder="arg0 arg1">
 <input wsam:Action="http://Servidor/PublicadorControladorReserva/cambiarFechaCreacionReservaRequest" message="tns:cambiarFechaCreacionReserva"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorReserva/cambiarFechaCreacionReservaResponse" message="tns:cambiarFechaCreacionReservaResponse"></output>
 <fault message="tns:ParseException" name="ParseException" wsam:Action="http://Servidor/PublicadorControladorReserva/cambiarFechaCreacionReserva/Fault/ParseException"></fault>
+</operation>
+<operation name="getInfoClienteReserva">
+<input wsam:Action="http://Servidor/PublicadorControladorReserva/getInfoClienteReservaRequest" message="tns:getInfoClienteReserva"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorReserva/getInfoClienteReservaResponse" message="tns:getInfoClienteReservaResponse"></output>
 </operation>
 <operation name="infoReserva">
 <input wsam:Action="http://Servidor/PublicadorControladorReserva/infoReservaRequest" message="tns:infoReserva"></input>
@@ -64,6 +76,15 @@
 <fault name="ParseException">
 <soap:fault name="ParseException" use="literal"></soap:fault>
 </fault>
+</operation>
+<operation name="getInfoClienteReserva">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</output>
 </operation>
 <operation name="infoReserva">
 <soap:operation soapAction=""></soap:operation>

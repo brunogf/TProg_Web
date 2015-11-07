@@ -5,16 +5,18 @@
  */
 package com.h4t.controladores;
 
+import com.h4t.servicios.DataServicioBean;
+import com.h4t.servicios.PublicadorControladorPublicacion;
+import com.h4t.servicios.PublicadorControladorPublicacionService;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.DataServicio;
-import tpgr32.FabricaControladores;
-import tpgr32.IControladorPublicacion;
 
 /**
  *
@@ -34,10 +36,15 @@ public class ListarServiciosDeCategoria extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cont_pub = fab.getControladorPublicacion();   
+        PublicadorControladorPublicacionService servicio = new PublicadorControladorPublicacionService();
+        PublicadorControladorPublicacion port = servicio.getPublicadorControladorPublicacionPort(); 
         String Categoria = (String)request.getParameter("Categoria");
-        Set<DataServicio> ServiciosDeCategoria = cont_pub.listarServiciosDeCategoria(Categoria);
+        List<DataServicioBean> ldsb = port.listarServiciosDeCategoria(Categoria).getItem();
+            Set<DataServicioBean> ServiciosDeCategoria = null;
+            if((ldsb == null) || (ldsb.isEmpty()))
+                ServiciosDeCategoria = new HashSet<DataServicioBean>();
+            else
+                ServiciosDeCategoria = new HashSet<DataServicioBean>(ldsb);
         request.setAttribute("ServiciosDeCategoria", ServiciosDeCategoria);
         request.getRequestDispatcher("ServiciosDeCategoria.jsp").forward(request, response);
     }

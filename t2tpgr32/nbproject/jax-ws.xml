@@ -5,7 +5,7 @@
     <client name="controlador_reserva">
       <wsdl-url>http://localhost:9128/controlador_reserva?wsdl</wsdl-url>
       <local-wsdl-file>localhost_9128/controlador_reserva.wsdl</local-wsdl-file>
-      <package-name forceReplace="true">com.h4t.servicios_reserva</package-name>
+      <package-name forceReplace="true">com.h4t.servicios</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
         <wsimport-option>
@@ -34,50 +34,14 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>package</wsimport-option-name>
-          <wsimport-option-value>com.h4t.servicios_reserva</wsimport-option-value>
-        </wsimport-option>
-      </wsimport-options>
-    </client>
-    <client name="controlador_usuario">
-      <wsdl-url>http://localhost:9128/controlador_usuario?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_9128/controlador_usuario.wsdl</local-wsdl-file>
-      <package-name forceReplace="true">com.h4t.servicios_usuario</package-name>
-      <catalog-file>catalog.xml</catalog-file>
-      <wsimport-options>
-        <wsimport-option>
-          <wsimport-option-name>extension</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>verbose</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>fork</wsimport-option-name>
-          <wsimport-option-value>false</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:9128/controlador_usuario?wsdl</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xnocompile</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xendorsed</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>package</wsimport-option-name>
-          <wsimport-option-value>com.h4t.servicios_usuario</wsimport-option-value>
+          <wsimport-option-value>com.h4t.servicios</wsimport-option-value>
         </wsimport-option>
       </wsimport-options>
     </client>
     <client name="controlador_publicacion">
       <wsdl-url>http://localhost:9128/controlador_publicacion?wsdl</wsdl-url>
       <local-wsdl-file>localhost_9128/controlador_publicacion.wsdl</local-wsdl-file>
-      <package-name forceReplace="true">com.h4t.servicios_publicacion</package-name>
+      <package-name forceReplace="true">com.h4t.servicios</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
         <wsimport-option>
@@ -106,7 +70,43 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>package</wsimport-option-name>
-          <wsimport-option-value>com.h4t.servicios_publicacion</wsimport-option-value>
+          <wsimport-option-value>com.h4t.servicios</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
+    <client name="controlador_usuario">
+      <wsdl-url>http://localhost:9128/controlador_usuario?wsdl</wsdl-url>
+      <local-wsdl-file>localhost_9128/controlador_usuario.wsdl</local-wsdl-file>
+      <package-name forceReplace="true">com.h4t.servicios</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>fork</wsimport-option-name>
+          <wsimport-option-value>false</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://localhost:9128/controlador_usuario?wsdl</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xendorsed</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>package</wsimport-option-name>
+          <wsimport-option-value>com.h4t.servicios</wsimport-option-value>
         </wsimport-option>
       </wsimport-options>
     </client>

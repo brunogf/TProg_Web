@@ -24,20 +24,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="dataUbicacion">
-<xs:sequence>
-<xs:element name="pais_" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="ciudad_" type="xs:string" minOccurs="0"></xs:element>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="catTree">
-<xs:sequence>
-<xs:element name="cat_" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="hijos_" type="tns:catTree" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="dataPromocion">
 <xs:complexContent>
 <xs:extension base="tns:dataPublicacion">
@@ -65,6 +51,20 @@
 </xs:sequence>
 </xs:extension>
 </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="dataUbicacion">
+<xs:sequence>
+<xs:element name="pais_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ciudad_" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="catTree">
+<xs:sequence>
+<xs:element name="cat_" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="hijos_" type="tns:catTree" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="dataServicioBeanArray" final="#all">

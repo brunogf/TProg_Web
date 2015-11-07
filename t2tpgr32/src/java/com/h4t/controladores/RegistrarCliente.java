@@ -6,8 +6,8 @@
 package com.h4t.controladores;
 
 import com.h4t.exceptions.ErrorRegistrarCliente;
-import com.h4t.servicios_usuario.PublicadorControladorUsuario;
-import com.h4t.servicios_usuario.PublicadorControladorUsuarioService;
+import com.h4t.servicios.PublicadorControladorUsuario;
+import com.h4t.servicios.PublicadorControladorUsuarioService;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;

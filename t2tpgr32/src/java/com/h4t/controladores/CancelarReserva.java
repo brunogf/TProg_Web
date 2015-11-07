@@ -6,15 +6,15 @@
 package com.h4t.controladores;
 
 import com.h4t.modelo.EstadoSesion;
+import com.h4t.servicios.Estado;
+import com.h4t.servicios.PublicadorControladorReserva;
+import com.h4t.servicios.PublicadorControladorReservaService;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.Estado;
-import tpgr32.FabricaControladores;
-import tpgr32.IControladorReserva;
 
 /**
  *
@@ -38,12 +38,13 @@ public class CancelarReserva extends HttpServlet {
             {
                 String usr = (String)request.getSession().getAttribute("Usuario");
                 int reserva = Integer.parseInt(request.getParameter("nro"));
-                FabricaControladores fab = FabricaControladores.getInstancia();
-                IControladorReserva cont_reserva = fab.getControladorReserva();
-                if (cont_reserva.getInfoClienteReserva(reserva).getNickname().equals(usr))
+                PublicadorControladorReservaService servicio = new PublicadorControladorReservaService();
+                PublicadorControladorReserva port = servicio.getPublicadorControladorReservaPort();    
+        
+                if (port.getInfoClienteReserva(reserva).getNickname().equals(usr))
                         {
                             try{
-                            cont_reserva.actualizarEstado(reserva, Estado.Cancelada);
+                            port.actualizarEstado(reserva, Estado.CANCELADA);
                             }catch(Exception ex){}
                              response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/VerInfoReserva?nro=" + request.getParameter("nro")));
                         }

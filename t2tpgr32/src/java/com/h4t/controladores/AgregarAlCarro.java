@@ -5,12 +5,18 @@
  */
 package com.h4t.controladores;
 
+import com.h4t.servicios.DataDisponibilidad;
+import com.h4t.servicios.DataPublicacion;
+import com.h4t.servicios.ParDPD;
+import com.h4t.servicios.PublicadorControladorPublicacion;
+import com.h4t.servicios.PublicadorControladorPublicacionService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
@@ -20,7 +26,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.*;
+import javax.xml.datatype.DatatypeFactory;
 
 /**
  *
@@ -41,6 +47,8 @@ public class AgregarAlCarro extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         String Promo = (String)request.getParameter("promocion");
+        PublicadorControladorPublicacionService servicio = new PublicadorControladorPublicacionService();
+        PublicadorControladorPublicacion port = servicio.getPublicadorControladorPublicacionPort();    
         if (Promo == null){
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
@@ -49,18 +57,24 @@ public class AgregarAlCarro extends HttpServlet {
                 carro = new HashSet<ParDPD>();
                 request.getSession().setAttribute("publicaciones-carro", carro);
             }
-            FabricaControladores fab = FabricaControladores.getInstancia();
-            IControladorPublicacion pub = fab.getControladorPublicacion();
-            DataPublicacion d_pub = pub.infoServicio(request.getParameter("proveedor").toString(),request.getParameter("servicio").toString());
+            DataPublicacion d_pub = port.infoServicio(request.getParameter("proveedor").toString(),request.getParameter("servicio").toString());
             try{
              DateFormat dfini = new SimpleDateFormat("yyyy-MM-dd");
              DateFormat dffin = new SimpleDateFormat("yyyy-MM-dd");
              Date fechainicial = dfini.parse(request.getParameter("fechaini").toString());
              Date fechafinal = dffin.parse(request.getParameter("fechafin").toString());
-              DataDisponibilidad d_disp = new DataDisponibilidad(Integer.parseInt(request.getParameter("cantidad")),
-                                        fechainicial,fechafinal);
+             DataDisponibilidad d_disp = new DataDisponibilidad();
+             d_disp.setCant(Integer.parseInt(request.getParameter("cantidad")));
+             GregorianCalendar fecha = new GregorianCalendar();
+             fecha.setTime(fechainicial);
+             d_disp.setFechaIni(DatatypeFactory.newInstance().newXMLGregorianCalendar(fecha));
+             fecha.setTime(fechafinal);
+             d_disp.setFechaFin(DatatypeFactory.newInstance().newXMLGregorianCalendar(fecha));
+             
 
-            ParDPD par = new ParDPD(d_pub,d_disp);
+            ParDPD par = new ParDPD();
+            par.setDd(d_disp);
+            par.setDpub(d_pub);
             carro.add(par);
             request.getSession().setAttribute("publicaciones-carro", carro);
             request.getRequestDispatcher("CarroDeCompras.jsp").forward(request, response);
@@ -77,21 +91,26 @@ public class AgregarAlCarro extends HttpServlet {
                 carro = new HashSet<ParDPD>();
                 request.getSession().setAttribute("publicaciones-carro", carro);
             }
-            FabricaControladores fab = FabricaControladores.getInstancia();
-            IControladorPublicacion pub = fab.getControladorPublicacion();
-            DataPublicacion d_pub = pub.infoPromocion(request.getParameter("proveedor").toString(),request.getParameter("promocion").toString());
+            DataPublicacion d_pub = port.infoPromocion(request.getParameter("proveedor").toString(),request.getParameter("promocion").toString());
             try{
-             DateFormat dfini = new SimpleDateFormat("yyyy-MM-dd");
-             DateFormat dffin = new SimpleDateFormat("yyyy-MM-dd");
-             Date fechainicial = dfini.parse(request.getParameter("fechaini").toString());
-             Date fechafinal = dffin.parse(request.getParameter("fechafin").toString());
-              DataDisponibilidad d_disp = new DataDisponibilidad(Integer.parseInt(request.getParameter("cantidad")),
-                                        fechainicial,fechafinal);
+                DateFormat dfini = new SimpleDateFormat("yyyy-MM-dd");
+                DateFormat dffin = new SimpleDateFormat("yyyy-MM-dd");
+                Date fechainicial = dfini.parse(request.getParameter("fechaini").toString());
+                Date fechafinal = dffin.parse(request.getParameter("fechafin").toString());
+                DataDisponibilidad d_disp = new DataDisponibilidad();
+                d_disp.setCant(Integer.parseInt(request.getParameter("cantidad")));
+                GregorianCalendar fecha = new GregorianCalendar();
+                fecha.setTime(fechainicial);
+                d_disp.setFechaIni(DatatypeFactory.newInstance().newXMLGregorianCalendar(fecha));
+                fecha.setTime(fechafinal);
+                d_disp.setFechaFin(DatatypeFactory.newInstance().newXMLGregorianCalendar(fecha));
 
-            ParDPD par = new ParDPD(d_pub,d_disp);
-            carro.add(par);
-            request.getSession().setAttribute("publicaciones-carro", carro);
-            request.getRequestDispatcher("CarroDeCompras.jsp").forward(request, response);
+               ParDPD par = new ParDPD();
+               par.setDd(d_disp);
+               par.setDpub(d_pub);
+               carro.add(par);
+               request.getSession().setAttribute("publicaciones-carro", carro);
+               request.getRequestDispatcher("CarroDeCompras.jsp").forward(request, response);
             }
             catch(Exception e){
                out.print(e.getMessage());

@@ -5,16 +5,17 @@
  */
 package com.h4t.controladores;
 
+import com.h4t.servicios.DataPublicacion;
+import com.h4t.servicios.PublicadorControladorPublicacion;
+import com.h4t.servicios.PublicadorControladorPublicacionService;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.DataPublicacion;
-import tpgr32.FabricaControladores;
-import tpgr32.IControladorPublicacion;
 
 /**
  *
@@ -33,15 +34,20 @@ public class Search extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cont_pub = fab.getControladorPublicacion();
+        PublicadorControladorPublicacionService servicio = new PublicadorControladorPublicacionService();
+        PublicadorControladorPublicacion port = servicio.getPublicadorControladorPublicacionPort(); 
         if ((request.getParameter("criterio"))==null)
         {
             request.setAttribute("publicaciones", new HashSet<DataPublicacion>());
         }
         else
         {
-            Set<DataPublicacion> publicaciones = cont_pub.buscarPublicacionCompleta(((String)request.getParameter("criterio")));
+            Set<DataPublicacion> publicaciones = null;
+            List<DataPublicacion> ldp = port.buscarPublicacionCompleta(((String)request.getParameter("criterio"))).getItem();
+            if((ldp == null)||(ldp.isEmpty()))
+                publicaciones = new HashSet<DataPublicacion>();
+            else
+                publicaciones = new HashSet<DataPublicacion>(ldp);
             request.setAttribute("publicaciones", publicaciones);
         }
         request.getRequestDispatcher("WEB-INF/Search/Search.jsp").forward(request, response);

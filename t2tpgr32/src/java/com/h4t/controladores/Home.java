@@ -5,17 +5,19 @@
  */
 package com.h4t.controladores;
 
+import com.h4t.servicios.CatTree;
+import com.h4t.servicios.DataPromocion;
+import com.h4t.servicios.PublicadorControladorPublicacion;
+import com.h4t.servicios.PublicadorControladorPublicacionService;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.CatTree;
-import tpgr32.DataPromocion;
-import tpgr32.FabricaControladores;
-import tpgr32.IControladorPublicacion;
 
 /**
  *
@@ -35,11 +37,16 @@ public class Home extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion cont_pub = fab.getControladorPublicacion();
-        CatTree cats = cont_pub.getCatTree();
+        PublicadorControladorPublicacionService servicio = new PublicadorControladorPublicacionService();
+        PublicadorControladorPublicacion port = servicio.getPublicadorControladorPublicacionPort();    
+        CatTree cats = port.getCatTree();
         request.setAttribute("categorias", cats);
-        Set<DataPromocion> Promos = cont_pub.listarPromociones();
+        List<DataPromocion> ldp = port.listarPromociones().getItem();
+        Set<DataPromocion> Promos = null;
+        if((ldp == null) || (ldp.isEmpty()))
+            Promos = new HashSet<DataPromocion>();
+        else
+            Promos = new HashSet<DataPromocion>(ldp);
         request.setAttribute("Promos", Promos);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
     }

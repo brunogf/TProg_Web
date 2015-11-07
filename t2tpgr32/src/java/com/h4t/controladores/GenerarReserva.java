@@ -5,17 +5,23 @@
  */
 package com.h4t.controladores;
 
+import com.h4t.servicios.ParDPD;
+import com.h4t.servicios.ParDPDArray;
+import com.h4t.servicios.PublicadorControladorReserva;
+import com.h4t.servicios.PublicadorControladorReservaService;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.*;
 
 /**
  *
@@ -38,18 +44,23 @@ public class GenerarReserva extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
          
         Set<ParDPD> pubs = (HashSet)request.getSession().getAttribute("publicaciones-carro");
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorReserva cont_r = fab.getControladorReserva();
-        cont_r.borrarPublicacionesSeleccionadas();
-        for(ParDPD par: pubs){   
-            cont_r.seleccionarProveedor(par.getDpub_().getProveedor());
-            cont_r.seleccionarCliente(request.getSession().getAttribute("Usuario").toString());
-            cont_r.seleccionarPublicacion(par.getDpub_().getNombre(),par.getDd_().getCant(),par.getDd_().getFechaIni(),par.getDd_().getFechaFin());
-            
-        }
-        int nro = cont_r.confirmarReserva();
+        PublicadorControladorReservaService servicio = new PublicadorControladorReservaService();
+        PublicadorControladorReserva port = servicio.getPublicadorControladorReservaPort();    
+        List<ParDPD> arrPDPD = null;
+        if (pubs.size() > 0)
+            arrPDPD = new ArrayList<ParDPD>(pubs);
+        
+        ParDPDArray Array = new ParDPDArray();
+        Array.setItem(arrPDPD);
+
+        int nro = port.generarReserva(Array,(String)(request.getSession().getAttribute("Usuario")));
         Date fechaactual = new Date();
-        cont_r.cambiarFechaCreacionReserva(fechaactual, nro);
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        try{
+        port.cambiarFechaCreacionReserva(df.format(fechaactual) , nro);
+        }catch(Exception ex){
+            //Pagina ERROR
+        }
         request.getSession().setAttribute("publicaciones-carro", null);
         request.getRequestDispatcher("MisReservas").forward(request, response);
     }
