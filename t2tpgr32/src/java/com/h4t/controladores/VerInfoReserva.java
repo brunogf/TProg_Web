@@ -5,14 +5,14 @@
  */
 package com.h4t.controladores;
 
+import com.h4t.servicios.PublicadorControladorReserva;
+import com.h4t.servicios.PublicadorControladorReservaService;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.FabricaControladores;
-import tpgr32.IControladorReserva;
 
 /**
  *
@@ -34,10 +34,9 @@ public class VerInfoReserva extends HttpServlet {
             throws ServletException, IOException {
         //Requiere el nro de la reserva en request.getAtribute("nro");
         int nro = Integer.parseInt((String)request.getParameter("nro"));
-        
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorReserva cont_res = fab.getControladorReserva();
-        request.setAttribute("info_reserva_dr", cont_res.infoReserva(nro));
+        PublicadorControladorReservaService servicio = new PublicadorControladorReservaService();
+        PublicadorControladorReserva port = servicio.getPublicadorControladorReservaPort();  
+        request.setAttribute("info_reserva_dr", port.infoReserva(nro));
         request.getRequestDispatcher("WEB-INF/Usuario/VerReserva.jsp").forward(request, response);
     }
 

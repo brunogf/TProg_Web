@@ -4,11 +4,11 @@
     Author     : piñe
 --%>
 
+<%@page import="com.h4t.servicios.DataServicioBean"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.h4t.modelo.EstadoSesion"%>
-<%@page import="tpgr32.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,7 @@
     </head>
     <body>
         <jsp:include page="WEB-INF/templates/header.jsp"/>
-        <% DataServicio info = (DataServicio)request.getAttribute("info_servicio"); 
+        <% DataServicioBean info = (DataServicioBean)request.getAttribute("info_servicio"); 
            String imagen0 = (String)request.getAttribute("imagen0");
            String imagen1 = (String)request.getAttribute("imagen1");
            String imagen2 = (String)request.getAttribute("imagen2");

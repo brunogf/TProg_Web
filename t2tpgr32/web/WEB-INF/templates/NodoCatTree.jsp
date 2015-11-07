@@ -4,19 +4,20 @@
     Author     : spesamosca
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="com.h4t.servicios.CatTree"%>
 <%@page import="java.util.Set"%>
-<%@page import="tpgr32.CatTree"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
                 <%
                 CatTree raiz = (CatTree)request.getAttribute("categorias");
-                if (raiz.tieneHijos())
+                if ((raiz.getHijos() != null)&&(raiz.getHijos().size() > 0))
                 {
-                    Set<CatTree> cs = raiz.getHijos();
+                    List<CatTree> cs = raiz.getHijos();
                 %>                  
                         <li class = "padre" id='<%=raiz.nombre() + "_tree"%>'>
                             
-                           <%=raiz.nombre()%>
+                           <%=raiz.getCat()%>
                             
                                           
                             <ul>
@@ -31,11 +32,11 @@
                 else{
                 String link;
                 //link = "ListarServiciosDeCategoria?Categoria=" + raiz.nombre();
-                link = "servicio('" + raiz.nombre() +"')";
+                link = "servicio('" + raiz.getCat()+"')";
                 %>             
                     <li>
                         <div class ="hoja" onclick="<%=link%>">
-                        <%=raiz.nombre()%>
+                        <%=raiz.getCat()%>
                         </div>
                     </li>
                 <%}%>

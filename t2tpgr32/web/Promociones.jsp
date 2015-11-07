@@ -4,9 +4,9 @@
     Author     : spesamosca
 --%>
 
+<%@page import="com.h4t.servicios.DataPromocion"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Set"%>
-<%@page import="tpgr32.DataPromocion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

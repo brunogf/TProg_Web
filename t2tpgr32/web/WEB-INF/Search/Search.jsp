@@ -4,13 +4,13 @@
     Author     : Nicolás
 --%>
 
-<%@page import="tpgr32.ParDPD"%>
+<%@page import="com.h4t.servicios.ParDPD"%>
+<%@page import="com.h4t.servicios.DataPromocion"%>
+<%@page import="com.h4t.servicios.DataServicioBean"%>
+<%@page import="com.h4t.servicios.DataPublicacion"%>
 <%@page import="com.h4t.modelo.EstadoSesion"%>
-<%@page import="tpgr32.DataPromocion"%>
-<%@page import="tpgr32.DataServicio"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Set"%>
-<%@page import="tpgr32.DataPublicacion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -45,10 +45,10 @@
                         String pos;
                         float precio;
                         String link;
-                        if (p instanceof DataServicio)
+                        if (p instanceof DataServicioBean)
                         {
                             pos = "Servicio";
-                            precio = ((DataServicio)p).getPrecio();
+                            precio = ((DataServicioBean)p).getPrecio();
                             link = "VerInfoServicio?Servicio=" + p.getNombre() +"&proveedor="+ p.getProveedor();
                         }
                         else
@@ -69,7 +69,7 @@
               if(session.getAttribute("publicaciones-carro") != null)
                       for(ParDPD dpd : (Set<ParDPD>)session.getAttribute("publicaciones-carro"))
                       {
-                          if(p.getNombre().toUpperCase().equals(dpd.getDpub_().getNombre().toUpperCase())){
+                          if(p.getNombre().toUpperCase().equals(dpd.getDpub().getNombre().toUpperCase())){
                               e = true;
                         }
                       }

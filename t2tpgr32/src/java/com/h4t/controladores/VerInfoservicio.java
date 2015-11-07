@@ -5,11 +5,17 @@
  */
 package com.h4t.controladores;
 
+import com.h4t.servicios.DataServicioBean;
+import com.h4t.servicios.PublicadorControladorPublicacion;
+import com.h4t.servicios.PublicadorControladorPublicacionService;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -17,7 +23,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tpgr32.*;
 
 /**
  *
@@ -42,10 +47,17 @@ public class VerInfoservicio extends HttpServlet {
         String servicio = (String)request.getParameter("Servicio");
         String proveedor = (String)request.getParameter("proveedor");
         
-        FabricaControladores fab = FabricaControladores.getInstancia();
-        IControladorPublicacion pub = fab.getControladorPublicacion();
-        DataServicio dts = pub.infoServicio(proveedor, servicio);
-        Set<Image> imagenes = dts.getImagenes();
+        PublicadorControladorPublicacionService service = new PublicadorControladorPublicacionService();
+        PublicadorControladorPublicacion port = service.getPublicadorControladorPublicacionPort(); 
+        
+        DataServicioBean dts = port.infoServicio(proveedor, servicio);
+        List<byte[]> imList = dts.getImagenes();
+        Set<Image> imagenes = new HashSet<Image>();
+        for (byte[] barr : imList){
+            BufferedImage bi = ImageIO.read(new ByteArrayInputStream(barr));
+            imagenes.add(bi);
+        }
+        
         int num = 0;
         for (Image i : imagenes){
             BufferedImage b_img = (BufferedImage)i;
@@ -61,7 +73,7 @@ public class VerInfoservicio extends HttpServlet {
             request.setAttribute(atr,"media/Images/"+servicio+String.valueOf(num)+".jpg");
             num++;
         }
-        request.setAttribute("info_servicio",pub.infoServicio(proveedor, servicio));
+        request.setAttribute("info_servicio",dts);
         request.getRequestDispatcher("/InfoServicio.jsp").forward(request, response);
     }
 

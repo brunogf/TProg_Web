@@ -4,14 +4,14 @@
     Author     : Nico
 --%>
 
-<%@page import="tpgr32.Estado"%>
-<%@page import="tpgr32.DataPromocion"%>
-<%@page import="tpgr32.DataDisponibilidad"%>
-<%@page import="tpgr32.DataServicio"%>
+<%@page import="com.h4t.servicios.DataPromocion"%>
+<%@page import="com.h4t.servicios.DataDisponibilidad"%>
+<%@page import="com.h4t.servicios.DataServicioBean"%>
+<%@page import="com.h4t.servicios.ParDPD"%>
+<%@page import="com.h4t.servicios.Estado"%>
+<%@page import="com.h4t.servicios.DataReserva"%>
 <%@page import="java.text.Format"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="tpgr32.DataReserva"%>
-<%@page import="tpgr32.ParDPD"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,8 +30,8 @@
                 <br>
                 <span class="creacionReserva">Fecha de creación: <%=f.format(dr.getCreacion())%></span>
                 <br>
-                <span class="estadoReserva">Estado: <%=dr.getStringEstado()%></span> 
-                <%if((dr.getEstado() == Estado.Registrada) && (((String)session.getAttribute("Usuario")).equals(dr.getCliente()))){%>
+                <span class="estadoReserva">Estado: <%=dr.getEstado().toString()%></span> 
+                <%if((dr.getEstado() == Estado.REGISTRADA) && (((String)session.getAttribute("Usuario")).equals(dr.getCliente()))){%>
                 <span> - </span>
                 <span class ="cancelar-reserva btn-link" onclick="cancelar(<%=dr.getNum()%>)">Cancelar</span>
                 <%}%>
@@ -40,9 +40,9 @@
             <div class="row infoPublicacionesReserva">
                 <%  int cant_servicios = 0;
                     int cant_promo = 0;
-                    for(ParDPD dpd : dr.getdpd())
+                    for(ParDPD dpd : dr.getDpd())
                     {
-                        if(dpd.getDpub_() instanceof DataServicio)
+                        if(dpd.getDpub()instanceof DataServicioBean)
                             cant_servicios++;
                         else
                             cant_promo++;
@@ -53,12 +53,12 @@
                 <h4 class="servicios">Servicios</h4>
 
                 <div class="serviciosDiv">
-                    <%for(ParDPD dpd : dr.getdpd())
+                    <%for(ParDPD dpd : dr.getDpd())
                     {
-                        if(dpd.getDpub_() instanceof DataServicio)
+                        if(dpd.getDpub()instanceof DataServicioBean)
                         {
-                            DataServicio ds = (DataServicio)dpd.getDpub_();
-                            DataDisponibilidad dd = dpd.getDd_();
+                            DataServicioBean ds = (DataServicioBean)dpd.getDpub();
+                            DataDisponibilidad dd = dpd.getDd();
                             String link = "VerInfoServicio?Servicio=" + ds.getNombre() +"&proveedor="+ ds.getProveedor();
                         %>
                         <div class="BloqueServicio BloquePublicacion" onclick="location.href='<%=link%>'">
@@ -79,12 +79,12 @@
                        <h4 class="promociones">Promociones</h4>
 
                         
-                            <%for(ParDPD dpd : dr.getdpd())
+                            <%for(ParDPD dpd : dr.getDpd())
                             {
-                                if(dpd.getDpub_() instanceof DataPromocion)
+                                if(dpd.getDpub() instanceof DataPromocion)
                                 {
-                                    DataPromocion dp = (DataPromocion)dpd.getDpub_();
-                                    DataDisponibilidad dd = dpd.getDd_();
+                                    DataPromocion dp = (DataPromocion)dpd.getDpub();
+                                    DataDisponibilidad dd = dpd.getDd();
                                     String link = "VerInfoPromocion?Promocion=" + dp.getNombre() +"&proveedor="+ dp.getProveedor();
                                 %>
                             <div class="promosDiv BloquePublicacion" onclick="location.href='<%=link%>'">
@@ -102,7 +102,7 @@
             </div>
                 <br>
                 <div class="col-xs-offset-10">
-                <span class="precioSubtotal">Total: US$ <%=dr.getPrecio_total()%></span>
+                <span class="precioSubtotal">Total: US$ <%=dr.getPrecioTotal()%></span>
                 </div>
         </div>
         </div>

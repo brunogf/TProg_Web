@@ -4,7 +4,7 @@
     Author     : spesamosca
 --%>
 
-<%@page import="tpgr32.DataServicio"%>
+<%@page import="com.h4t.servicios.DataServicioBean"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Set"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,7 +19,7 @@
           <div class="row">
             <%--Acá van los resultados--%>       
             <%
-                Set<DataServicio> Servicios =(HashSet) request.getAttribute("Servicios");
+                Set<DataServicioBean> Servicios =(HashSet) request.getAttribute("Servicios");
                 if (!Servicios.isEmpty())
                 {%>                             
                     <div class="col-xs-12 table-responsive">
@@ -30,7 +30,7 @@
                                 </tr>    
                         <%    
                             String link;
-                            for(DataServicio s : Servicios)
+                            for(DataServicioBean s : Servicios)
                             {    
                                 link = "VerInfoServicio?Servicio=" + s.getNombre() +"&proveedor="+ s.getProveedor();%>
                                 <tr class="result" onclick="location.href='<%=link%>'">

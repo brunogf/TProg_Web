@@ -4,11 +4,11 @@
     Author     : spesamosca
 --%>
 
+<%@page import="com.h4t.servicios.DataPromocion"%>
+<%@page import="com.h4t.servicios.DataServicioBean"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Set"%>
 <%@page import="com.h4t.modelo.EstadoSesion"%>
-<%@page import="tpgr32.DataServicio"%>
-<%@page import="tpgr32.DataPromocion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,7 +20,7 @@
         <div class="container InfoPromocion"> 
               <% 
                  DataPromocion info_promocion = (DataPromocion) request.getAttribute("info_promocion");
-                 Set<DataServicio> servicios_de_promocion =(HashSet) request.getAttribute("servicios_de_promocion");                 
+                 Set<DataServicioBean> servicios_de_promocion =(HashSet) request.getAttribute("servicios_de_promocion");                 
               %>
                     <h3>Información de la promoción</h3>
                         <br/>
@@ -43,7 +43,7 @@
                                         </tr>    
                                 <%    
                                     String link;                                   
-                                    for(DataServicio s : servicios_de_promocion)
+                                    for(DataServicioBean s : servicios_de_promocion)
                                     { 
                                         link = "VerInfoServicio?Servicio=" + s.getNombre() +"&proveedor="+ s.getProveedor();%>
                                         <tr class="result" onclick="location.href='<%=link%>'">
