@@ -73,12 +73,12 @@
                     for(var key in responseJson)
                     {
                         var item = responseJson[key];
-                        var precio = item.precioTotal_.toFixed(2);
+                        var precio = item.precioTotal.toFixed(2);
                         var tr = '<tr class="home_pub" onclick="location.href='
-                        tr = tr + '\'VerInfoPromocion?Promocion=' + item.nombre_ + '&proveedor=' + item.proveedor_ + '\''; 
+                        tr = tr + '\'VerInfoPromocion?Promocion=' + item.nombre + '&proveedor=' + item.proveedor + '\''; 
                         tr = tr + '"><td class="Nombre_pub_home col-xs-4">';
-                        tr = tr + item.nombre_ + '</td><td class="Proveedor_pub_home col-xs-4">';
-                        tr = tr + item.proveedor_ + '</td><td class="Precio_pub_home col-xs-4"> US$ ';
+                        tr = tr + item.nombre + '</td><td class="Proveedor_pub_home col-xs-4">';
+                        tr = tr + item.proveedor + '</td><td class="Precio_pub_home col-xs-4"> US$ ';
                         tr = tr + precio + ' <span class="home_oferta">¡Promoción!</span> </td></tr>'
                         
                         $('#tbody_home:last-child').append(tr);
@@ -92,13 +92,13 @@
                     $("#tbody_home").empty();
                     for(var key in responseJson){
                         var item = responseJson[key];
-                        var precio = item.precio_.toFixed(2);
+                        var precio = item.precio.toFixed(2);
                         var tr = '<tr class="home_pub" ';
-                        tr = tr + 'onclick="location.href=\'VerInfoServicio?Servicio=' + item.nombre_;
-                        tr = tr + '&proveedor=' + item.proveedor_ + '\'"';
+                        tr = tr + 'onclick="location.href=\'VerInfoServicio?Servicio=' + item.nombre;
+                        tr = tr + '&proveedor=' + item.proveedor + '\'"';
                         tr = tr + '><td class="Nombre_pub_home col-xs-4">';
-                        tr = tr + item.nombre_ + '</td><td class="Proveedor_pub_home col-xs-4">';
-                        tr = tr + item.proveedor_ + '</td><td class="Precio_pub_home col-xs-4"> US$ ';
+                        tr = tr + item.nombre + '</td><td class="Proveedor_pub_home col-xs-4">';
+                        tr = tr + item.proveedor + '</td><td class="Precio_pub_home col-xs-4"> US$ ';
                         tr = tr + precio + '</td></tr>'
                         
                         $('#tbody_home:last-child').append(tr);
