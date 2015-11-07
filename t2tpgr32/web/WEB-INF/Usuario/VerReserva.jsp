@@ -4,6 +4,7 @@
     Author     : Nico
 --%>
 
+<%@page import="java.util.Date"%>
 <%@page import="com.h4t.servicios.DataPromocion"%>
 <%@page import="com.h4t.servicios.DataDisponibilidad"%>
 <%@page import="com.h4t.servicios.DataServicioBean"%>
@@ -28,7 +29,7 @@
                 <h2 class="Titulo">Detalles de la reserva</h2>
                 <span class="nroReserva">Número de reserva: <%=dr.getNum()%></span>
                 <br>
-                <span class="creacionReserva">Fecha de creación: <%=f.format(dr.getCreacion())%></span>
+                <span class="creacionReserva">Fecha de creación: <%=f.format((dr.getCreacion()).toGregorianCalendar().getTime())%></span>
                 <br>
                 <span class="estadoReserva">Estado: <%=dr.getEstado().toString()%></span> 
                 <%if((dr.getEstado() == Estado.REGISTRADA) && (((String)session.getAttribute("Usuario")).equals(dr.getCliente()))){%>
@@ -68,8 +69,8 @@
                         </div>
                         <span>Precio: $<%=ds.getPrecio() %></span><br>
                         <span>Proveedor: <%=ds.getProveedor() %> </span><br>
-                        <span>Fecha inicio: <%=f.format(dd.getFechaIni()) %></span><br>
-                        <span>Fecha fin: <%=f.format(dd.getFechaFin()) %></span><br>
+                        <span>Fecha inicio: <%=f.format(dd.getFechaIni().toGregorianCalendar().getTime()) %></span><br>
+                        <span>Fecha fin: <%=f.format(dd.getFechaFin().toGregorianCalendar().getTime()) %></span><br>
                         <span>Cantidad: <%=dd.getCant() %></span><br>
                         
                     </div>
