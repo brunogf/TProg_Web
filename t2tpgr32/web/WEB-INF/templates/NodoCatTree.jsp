@@ -15,7 +15,7 @@
                 {
                     List<CatTree> cs = raiz.getHijos();
                 %>                  
-                        <li class = "padre" id='<%=raiz.nombre() + "_tree"%>'>
+                        <li class = "padre" id='<%=raiz.getCat() + "_tree"%>'>
                             
                            <%=raiz.getCat()%>
                             
