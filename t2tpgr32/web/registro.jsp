@@ -11,11 +11,11 @@
         <jsp:include page="WEB-INF/templates/head.jsp"/>
     </head>
     <body>
-       <jsp:include page="WEB-INF/templates/header.jsp"/>
-         <div class="container registro">
-             <div clas="row">
+        <jsp:include page="WEB-INF/templates/header.jsp"/>
+        <div class="container registro">
+            <div clas="row">
                 <span class="titulo_registro">Completa todos los campos:</span>
-             </div>
+            </div>
             <div class="row">
                 <form class="form-horizontal formulario_registro" action="Registrar" method="post" enctype="multipart/form-data">
                     <div class="form-group">
@@ -45,8 +45,8 @@
                         </div>
                         <div class="col-xs-4 col-xs-offset-4">
                             <div class="img_div">
-                            <button class="btn btn-default"><!-- this is skinnable -->Imagen de perfil</button>
-                            <input type="file" name="file" />
+                                <button class="btn btn-default"><!-- this is skinnable -->Imagen de perfil</button>
+                                <input type="file" name="file" />
                             </div>
                         </div>
                         <div class="col-xs-4 col-xs-offset-4">
@@ -54,93 +54,94 @@
                         </div>
                     </div>
                 </form>
-          </div>
-         </div>
-         
-         <script>
-             var arr = {nick : false, email : false};
-             function val(){
-             if ((($("#nick_registro").val()) === ("")) || (($("#email_registro").val()) === ("")) || (($("#nombre_registro").val()) === ("")) || (($("#apellido_registro").val()) === ("")) || (($("#contrasena_registro").val()) === ("")) || (($("#fecha_registro").val()) === ("")))
-                 $("#submit_btn_registro").attr('disabled', 'disabled');
-             else if ((arr.nick) || (arr.email))
-             {
-                 $("#submit_btn_registro").attr('disabled', 'disabled');
-             }
-             else if(($("#contrasena_registro").val()) !== ($('#conf_contrasena_registro').val()))
-             {
-                 $("#cont_warning").css('visibility', 'visible');
-                 $("#submit_btn_registro").attr('disabled', 'disabled');
+            </div>
+        </div>
+
+        <script>
+            var arr = {nick: false, email: false};
+            function val() {
+                if ((($("#nick_registro").val()) === ("")) || (($("#email_registro").val()) === ("")) || (($("#nombre_registro").val()) === ("")) || (($("#apellido_registro").val()) === ("")) || (($("#contrasena_registro").val()) === ("")) || (($("#fecha_registro").val()) === ("")))
+                    $("#submit_btn_registro").attr('disabled', 'disabled');
+                else if ((arr.nick) || (arr.email))
+                {
+                    $("#submit_btn_registro").attr('disabled', 'disabled');
+                }
+                else if (($("#contrasena_registro").val()) !== ($('#conf_contrasena_registro').val()))
+                {
+                    $("#cont_warning").css('visibility', 'visible');
+                    $("#submit_btn_registro").attr('disabled', 'disabled');
+                }
+                else
+                {
+                    $("#cont_warning").css('visibility', 'hidden');
+                    $("#submit_btn_registro").removeAttr('disabled');
+                }
             }
-             else
-             {
-                  $("#cont_warning").css('visibility', 'hidden');
-                 $("#submit_btn_registro").removeAttr('disabled');
-             }
-             }
-             $(document).ready(function(){
-             $("#submit_btn_registro").attr('disabled', 'disabled');
-             $("#nick_registro").keyup(function(){
-                 $.get("RegistroAjax", {nick : $("#nick_registro").val(), email : $("#email_registro").val()}, function(responseJson) {
-                     arr = responseJson;
-                     val();
-                     if (arr.nick)
-                     {
-                         $("#nick_registro").css('color', 'red');
-                         $("#nick_warning").css('visibility', 'visible');
-                         $("#submit_btn_registro").attr('disabled', 'disabled');
-                     }
-                     else
-                     {
-                         $("#nick_warning").css('visibility', 'hidden');
-                         $("#nick_registro").css('color', 'inherit');
-                     }
-                     
-                 });
-             });
-             $("#email_registro").keyup(function(){
-                 $.get("RegistroAjax", {nick : $("#nick_registro").val(), email : $("#email_registro").val()}, function(responseJson) {
-                     arr = responseJson;
-                     val();
-                     if (arr.email)
-                     {
-                         $("#email_registro").css('color', 'red');
-                          $("#email_warning").css('visibility', 'visible');
-                          $("#submit_btn_registro").attr('disabled', 'disabled');
-                     }
-                      else
-                      {
-                          $("#email_warning").css('visibility', 'hidden');
-                         $("#email_registro").css('color', 'inherit');
-                     }
-                 });
-             });
-             
-             $("#fecha_registro").keyup(function(){
-                 val();
-             });
-             
-             $("#conf_contrasena_registro").focusout(function(){
-                 val();
-             });
-             
-             $("#conf_contrasena_registro").keyup(function(){
-                 val();
-             });
-             
-             $("#contrasena_registro").keyup(function(){
-                 val();
-             });
-             
-             $("#apellido_registro").keyup(function(){
-                 val();
-             });
-             
-             $("#nombre_registro").keyup(function(){
-                 val();
-             });
-             });
-            
-         </script>
-         <jsp:include page="WEB-INF/templates/footer.jsp"/>
+            $(document).ready(function () {
+                $("#submit_btn_registro").attr('disabled', 'disabled');
+                $("#nick_registro").keyup(function () {
+                    $.get("RegistroAjax", {nick: $("#nick_registro").val(), email: $("#email_registro").val()}, function (responseJson) {
+                        arr = responseJson;
+                        val();
+                        if (arr.nick)
+                        {
+                            $("#nick_registro").css('color', 'red');
+                            $("#nick_warning").css('visibility', 'visible');
+                            $("#submit_btn_registro").attr('disabled', 'disabled');
+                        }
+                        else
+                        {
+                            $("#nick_warning").css('visibility', 'hidden');
+                            $("#nick_registro").css('color', 'inherit');
+                        }
+
+                    });
+                });
+                $("#email_registro").keyup(function () {
+                    $.get("RegistroAjax", {nick: $("#nick_registro").val(), email: $("#email_registro").val()}, function (responseJson) {
+                        arr = responseJson;
+                        val();
+                        if (arr.email)
+                        {
+                            $("#email_registro").css('color', 'red');
+                            $("#email_warning").css('visibility', 'visible');
+                            $("#submit_btn_registro").attr('disabled', 'disabled');
+                        }
+                        else
+                        {
+                            $("#email_warning").css('visibility', 'hidden');
+                            $("#email_registro").css('color', 'inherit');
+                        }
+                    });
+                });
+
+                $("#fecha_registro").keyup(function () {
+                    val();
+                });
+
+                $("#conf_contrasena_registro").focusout(function () {
+                    val();
+                });
+
+                $("#conf_contrasena_registro").keyup(function () {
+                    val();
+                });
+
+                $("#contrasena_registro").keyup(function () {
+                    val();
+                });
+
+                $("#apellido_registro").keyup(function () {
+                    val();
+                });
+
+                $("#nombre_registro").keyup(function () {
+                    val();
+
+                });
+            });
+
+        </script>
+        <jsp:include page="WEB-INF/templates/footer.jsp"/>
     </body>
 </html>

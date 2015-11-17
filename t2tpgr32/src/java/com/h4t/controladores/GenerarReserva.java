@@ -45,32 +45,33 @@ public class GenerarReserva extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         
-        Set<ParDPD> pubs = (HashSet)request.getSession().getAttribute("publicaciones-carro");
+
+        Set<ParDPD> pubs = (HashSet) request.getSession().getAttribute("publicaciones-carro");
         String srv = "http://";
         Properties config = new Properties();
-        try{
+        try {
             FileInputStream input;
-            if(System.getProperty("os.name").toUpperCase().contains("WINDOWS"))
+            if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")) {
                 input = new FileInputStream(System.getProperty("user.home") + "/Documents/server.properties");
-            else
+            } else {
                 input = new FileInputStream(System.getProperty("user.home") + "/Quick Order/server.properties");
+            }
             config.load(input);
-            srv = srv + config.getProperty("host") +":"+ config.getProperty("port");
-        }catch(Exception e){
+            srv = srv + config.getProperty("host") + ":" + config.getProperty("port");
+        } catch (Exception e) {
             srv = "http://localhost:9128";
         }
-        PublicadorControladorReservaService servicio = new PublicadorControladorReservaService(new URL(srv +"/controlador_reserva?wsdl"));
-        PublicadorControladorReserva port = servicio.getPublicadorControladorReservaPort();    
-       
+        PublicadorControladorReservaService servicio = new PublicadorControladorReservaService(new URL(srv + "/controlador_reserva?wsdl"));
+        PublicadorControladorReserva port = servicio.getPublicadorControladorReservaPort();
+
         String usr = request.getSession().getAttribute("Usuario").toString();
         String json = new Gson().toJson(pubs);
         int nro = port.generarReserva(json, usr);
         Date fechaactual = new Date();
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        try{
-        port.cambiarFechaCreacionReserva(df.format(fechaactual) , nro);
-        }catch(Exception ex){
+        try {
+            port.cambiarFechaCreacionReserva(df.format(fechaactual), nro);
+        } catch (Exception ex) {
             //Pagina ERROR
         }
         request.getSession().setAttribute("publicaciones-carro", null);
