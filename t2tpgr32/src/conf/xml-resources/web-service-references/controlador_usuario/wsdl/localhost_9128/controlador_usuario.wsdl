@@ -10,12 +10,6 @@
 <message name="infoClienteResponse">
 <part name="return" type="tns:dataCliente"></part>
 </message>
-<message name="listarPublicacionesProveedor">
-<part name="arg0" type="xsd:string"></part>
-</message>
-<message name="listarPublicacionesProveedorResponse">
-<part name="return" type="tns:dataPublicacionArray"></part>
-</message>
 <message name="listarProveedores"></message>
 <message name="listarProveedoresResponse">
 <part name="return" type="tns:dataUsuarioArray"></part>
@@ -51,6 +45,12 @@
 <message name="getImagenDelUsuarioResponse">
 <part name="return" type="xsd:base64Binary"></part>
 </message>
+<message name="listarPublicacionesProveedor">
+<part name="arg0" type="xsd:string"></part>
+</message>
+<message name="listarPublicacionesProveedorResponse">
+<part name="return" type="tns:dataPublicacionArray"></part>
+</message>
 <message name="altaCliente">
 <part name="arg0" type="xsd:string"></part>
 <part name="arg1" type="xsd:string"></part>
@@ -82,17 +82,17 @@
 <message name="comprobarUsuarioResponse">
 <part name="return" type="xsd:int"></part>
 </message>
-<message name="getNickUsuario">
-<part name="arg0" type="xsd:string"></part>
-</message>
-<message name="getNickUsuarioResponse">
-<part name="return" type="xsd:string"></part>
-</message>
 <message name="infoProveedor">
 <part name="arg0" type="xsd:string"></part>
 </message>
 <message name="infoProveedorResponse">
 <part name="return" type="tns:dataProveedorBean"></part>
+</message>
+<message name="getNickUsuario">
+<part name="arg0" type="xsd:string"></part>
+</message>
+<message name="getNickUsuarioResponse">
+<part name="return" type="xsd:string"></part>
 </message>
 <message name="infoUsuario">
 <part name="arg0" type="xsd:string"></part>
@@ -117,10 +117,6 @@
 <input wsam:Action="http://Servidor/PublicadorControladorUsuario/infoClienteRequest" message="tns:infoCliente"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorUsuario/infoClienteResponse" message="tns:infoClienteResponse"></output>
 </operation>
-<operation name="listarPublicacionesProveedor">
-<input wsam:Action="http://Servidor/PublicadorControladorUsuario/listarPublicacionesProveedorRequest" message="tns:listarPublicacionesProveedor"></input>
-<output wsam:Action="http://Servidor/PublicadorControladorUsuario/listarPublicacionesProveedorResponse" message="tns:listarPublicacionesProveedorResponse"></output>
-</operation>
 <operation name="listarProveedores">
 <input wsam:Action="http://Servidor/PublicadorControladorUsuario/listarProveedoresRequest" message="tns:listarProveedores"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorUsuario/listarProveedoresResponse" message="tns:listarProveedoresResponse"></output>
@@ -138,6 +134,10 @@
 <operation name="getImagenDelUsuario">
 <input wsam:Action="http://Servidor/PublicadorControladorUsuario/getImagenDelUsuarioRequest" message="tns:getImagenDelUsuario"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorUsuario/getImagenDelUsuarioResponse" message="tns:getImagenDelUsuarioResponse"></output>
+</operation>
+<operation name="listarPublicacionesProveedor">
+<input wsam:Action="http://Servidor/PublicadorControladorUsuario/listarPublicacionesProveedorRequest" message="tns:listarPublicacionesProveedor"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorUsuario/listarPublicacionesProveedorResponse" message="tns:listarPublicacionesProveedorResponse"></output>
 </operation>
 <operation name="altaCliente" parameterOrder="arg0 arg1 arg2 arg3 arg4 arg5">
 <input wsam:Action="http://Servidor/PublicadorControladorUsuario/altaClienteRequest" message="tns:altaCliente"></input>
@@ -157,13 +157,13 @@
 <input wsam:Action="http://Servidor/PublicadorControladorUsuario/comprobarUsuarioRequest" message="tns:comprobarUsuario"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorUsuario/comprobarUsuarioResponse" message="tns:comprobarUsuarioResponse"></output>
 </operation>
-<operation name="getNickUsuario">
-<input wsam:Action="http://Servidor/PublicadorControladorUsuario/getNickUsuarioRequest" message="tns:getNickUsuario"></input>
-<output wsam:Action="http://Servidor/PublicadorControladorUsuario/getNickUsuarioResponse" message="tns:getNickUsuarioResponse"></output>
-</operation>
 <operation name="infoProveedor">
 <input wsam:Action="http://Servidor/PublicadorControladorUsuario/infoProveedorRequest" message="tns:infoProveedor"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorUsuario/infoProveedorResponse" message="tns:infoProveedorResponse"></output>
+</operation>
+<operation name="getNickUsuario">
+<input wsam:Action="http://Servidor/PublicadorControladorUsuario/getNickUsuarioRequest" message="tns:getNickUsuario"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorUsuario/getNickUsuarioResponse" message="tns:getNickUsuarioResponse"></output>
 </operation>
 <operation name="infoUsuario">
 <input wsam:Action="http://Servidor/PublicadorControladorUsuario/infoUsuarioRequest" message="tns:infoUsuario"></input>
@@ -181,15 +181,6 @@
 <binding name="PublicadorControladorUsuarioPortBinding" type="tns:PublicadorControladorUsuario">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"></soap:binding>
 <operation name="infoCliente">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</output>
-</operation>
-<operation name="listarPublicacionesProveedor">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
@@ -240,6 +231,15 @@
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
 </output>
 </operation>
+<operation name="listarPublicacionesProveedor">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</output>
+</operation>
 <operation name="altaCliente">
 <soap:operation soapAction=""></soap:operation>
 <input>
@@ -282,7 +282,7 @@
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
 </output>
 </operation>
-<operation name="getNickUsuario">
+<operation name="infoProveedor">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
@@ -291,7 +291,7 @@
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
 </output>
 </operation>
-<operation name="infoProveedor">
+<operation name="getNickUsuario">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>

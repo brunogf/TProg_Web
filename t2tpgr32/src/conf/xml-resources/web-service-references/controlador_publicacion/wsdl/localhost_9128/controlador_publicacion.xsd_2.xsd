@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.9-b130926.1035 svn-revision#5f6196f2b90e9460065a4c2f4e30e065b245e51e. --><xs:schema xmlns:tns="http://Servidor/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://Servidor/">
 
+<xs:element name="ParseException" type="tns:ParseException"></xs:element>
+
 <xs:complexType name="dataServicioBean">
 <xs:complexContent>
 <xs:extension base="tns:dataPublicacion">
@@ -12,6 +14,7 @@
 <xs:element name="ciudadDestino_" type="xs:string" minOccurs="0"></xs:element>
 <xs:element name="imagenes_" type="xs:base64Binary" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
 <xs:element name="categorias_" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+<xs:element name="cantVisitas_" type="xs:int"></xs:element>
 </xs:sequence>
 </xs:extension>
 </xs:complexContent>
@@ -48,6 +51,7 @@
 <xs:element name="ciudadDestino_" type="xs:string" minOccurs="0"></xs:element>
 <xs:element name="imagenes_" type="xs:base64Binary" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
 <xs:element name="categorias_" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+<xs:element name="cantVisitas_" type="xs:int"></xs:element>
 </xs:sequence>
 </xs:extension>
 </xs:complexContent>
@@ -57,6 +61,13 @@
 <xs:sequence>
 <xs:element name="pais_" type="xs:string" minOccurs="0"></xs:element>
 <xs:element name="ciudad_" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ParseException">
+<xs:sequence>
+<xs:element name="errorOffset" type="xs:int"></xs:element>
+<xs:element name="message" type="xs:string" minOccurs="0"></xs:element>
 </xs:sequence>
 </xs:complexType>
 

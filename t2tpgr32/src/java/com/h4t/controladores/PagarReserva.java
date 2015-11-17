@@ -9,8 +9,11 @@ import com.h4t.modelo.EstadoSesion;
 import com.h4t.servicios.Estado;
 import com.h4t.servicios.PublicadorControladorReserva;
 import com.h4t.servicios.PublicadorControladorReservaService;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URL;
+import java.util.Properties;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +42,20 @@ public class PagarReserva extends HttpServlet {
             {
                 String usr = (String)request.getSession().getAttribute("Usuario");
                 int reserva = Integer.parseInt(request.getParameter("nro"));
-                PublicadorControladorReservaService servicio = new PublicadorControladorReservaService();
+                String srv = "http://";
+                Properties config = new Properties();
+                try{
+                    FileInputStream input;
+                    if(System.getProperty("os.name").toUpperCase().contains("WINDOWS"))
+                        input = new FileInputStream(System.getProperty("user.home") + "/Documents/server.properties");
+                    else
+                        input = new FileInputStream(System.getProperty("user.home") + "/Quick Order/server.properties");
+                    config.load(input);
+                    srv = srv + config.getProperty("host") +":"+ config.getProperty("port");
+                }catch(Exception e){
+                    srv = "http://localhost:9128";
+                }
+                PublicadorControladorReservaService servicio = new PublicadorControladorReservaService(new URL(srv +"/controlador_reserva?wsdl"));
                 PublicadorControladorReserva port = servicio.getPublicadorControladorReservaPort();    
                 String nick = port.getClienteReserva(reserva);
                 if (nick.equals(usr))

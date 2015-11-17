@@ -8,8 +8,11 @@ package com.h4t.controladores;
 import com.h4t.servicios.DataUsuario;
 import com.h4t.servicios.PublicadorControladorUsuario;
 import com.h4t.servicios.PublicadorControladorUsuarioService;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashSet;
+import java.util.Properties;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +36,20 @@ public class ListarProveedores extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PublicadorControladorUsuarioService servicio = new PublicadorControladorUsuarioService();
+        String srv = "http://";
+        Properties config = new Properties();
+        try{
+            FileInputStream input;
+            if(System.getProperty("os.name").toUpperCase().contains("WINDOWS"))
+                input = new FileInputStream(System.getProperty("user.home") + "/Documents/server.properties");
+            else
+                input = new FileInputStream(System.getProperty("user.home") + "/Quick Order/server.properties");
+            config.load(input);
+            srv = srv + config.getProperty("host") +":"+ config.getProperty("port");
+        }catch(Exception e){
+            srv = "http://localhost:9128";
+        }
+        PublicadorControladorUsuarioService servicio = new PublicadorControladorUsuarioService(new URL(srv +"/controlador_usuario?wsdl"));
         PublicadorControladorUsuario port = servicio.getPublicadorControladorUsuarioPort();
         Set<DataUsuario> Proveedores = new HashSet<DataUsuario>();
         for(DataUsuario dtu : (port.listarProveedores().getItem()))

@@ -15,7 +15,10 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
+import java.util.Properties;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +47,20 @@ public class VerPerfil extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PublicadorControladorUsuarioService servicio = new PublicadorControladorUsuarioService();
+        String srv = "http://";
+        Properties config = new Properties();
+        try{
+            FileInputStream input;
+            if(System.getProperty("os.name").toUpperCase().contains("WINDOWS"))
+                input = new FileInputStream(System.getProperty("user.home") + "/Documents/server.properties");
+            else
+                input = new FileInputStream(System.getProperty("user.home") + "/Quick Order/server.properties");
+            config.load(input);
+            srv = srv + config.getProperty("host") +":"+ config.getProperty("port");
+        }catch(Exception e){
+            srv = "http://localhost:9128";
+        }
+        PublicadorControladorUsuarioService servicio = new PublicadorControladorUsuarioService(new URL(srv +"/controlador_usuario?wsdl"));
         PublicadorControladorUsuario port = servicio.getPublicadorControladorUsuarioPort();
         
         

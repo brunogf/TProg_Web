@@ -13,9 +13,12 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -47,7 +50,20 @@ public class VerInfoservicio extends HttpServlet {
         String servicio = (String)request.getParameter("Servicio");
         String proveedor = (String)request.getParameter("proveedor");
         
-        PublicadorControladorPublicacionService service = new PublicadorControladorPublicacionService();
+        String srv = "http://";
+        Properties config = new Properties();
+        try{
+            FileInputStream input;
+            if(System.getProperty("os.name").toUpperCase().contains("WINDOWS"))
+                input = new FileInputStream(System.getProperty("user.home") + "/Documents/server.properties");
+            else
+                input = new FileInputStream(System.getProperty("user.home") + "/Quick Order/server.properties");
+            config.load(input);
+            srv = srv + config.getProperty("host") +":"+ config.getProperty("port");
+        }catch(Exception e){
+            srv = "http://localhost:9128";
+        }
+        PublicadorControladorPublicacionService service = new PublicadorControladorPublicacionService(new URL(srv +"/controlador_publicacion?wsdl"));
         PublicadorControladorPublicacion port = service.getPublicadorControladorPublicacionPort(); 
         
         DataServicioBean dts = port.infoServicio(proveedor, servicio);

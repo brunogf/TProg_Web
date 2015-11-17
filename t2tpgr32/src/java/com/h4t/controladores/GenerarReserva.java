@@ -9,13 +9,16 @@ import com.google.gson.Gson;
 import com.h4t.servicios.ParDPD;
 import com.h4t.servicios.PublicadorControladorReserva;
 import com.h4t.servicios.PublicadorControladorReservaService;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,7 +47,20 @@ public class GenerarReserva extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
          
         Set<ParDPD> pubs = (HashSet)request.getSession().getAttribute("publicaciones-carro");
-        PublicadorControladorReservaService servicio = new PublicadorControladorReservaService();
+        String srv = "http://";
+        Properties config = new Properties();
+        try{
+            FileInputStream input;
+            if(System.getProperty("os.name").toUpperCase().contains("WINDOWS"))
+                input = new FileInputStream(System.getProperty("user.home") + "/Documents/server.properties");
+            else
+                input = new FileInputStream(System.getProperty("user.home") + "/Quick Order/server.properties");
+            config.load(input);
+            srv = srv + config.getProperty("host") +":"+ config.getProperty("port");
+        }catch(Exception e){
+            srv = "http://localhost:9128";
+        }
+        PublicadorControladorReservaService servicio = new PublicadorControladorReservaService(new URL(srv +"/controlador_reserva?wsdl"));
         PublicadorControladorReserva port = servicio.getPublicadorControladorReservaPort();    
        
         String usr = request.getSession().getAttribute("Usuario").toString();

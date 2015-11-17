@@ -12,8 +12,10 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
@@ -45,7 +47,20 @@ public class RegistrarCliente extends HttpServlet {
         BufferedImage iBuff = ImageIO.read(fileContent);
         
    
-       PublicadorControladorUsuarioService servicio = new PublicadorControladorUsuarioService();
+        String srv = "http://";
+        Properties config = new Properties();
+        try{
+            FileInputStream input;
+            if(System.getProperty("os.name").toUpperCase().contains("WINDOWS"))
+                input = new FileInputStream(System.getProperty("user.home") + "/Documents/server.properties");
+            else
+                input = new FileInputStream(System.getProperty("user.home") + "/Quick Order/server.properties");
+            config.load(input);
+            srv = srv + config.getProperty("host") +":"+ config.getProperty("port");
+        }catch(Exception e){
+            srv = "http://localhost:9128";
+        }
+        PublicadorControladorUsuarioService servicio = new PublicadorControladorUsuarioService(new URL(srv +"/controlador_usuario?wsdl"));
         PublicadorControladorUsuario port = servicio.getPublicadorControladorUsuarioPort();
         
         DateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
