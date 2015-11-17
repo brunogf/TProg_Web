@@ -122,7 +122,7 @@
                     <br/>
                     <label>Correo:</label><%=" " + info.getCorreo().toLowerCase()%>
                     <br/>
-                    <label>Fecha de nacimiento:</label><%=" " + df.format(info.getFecha())%>
+                    <label>Fecha de nacimiento:</label><%=" " + df.format(info.getFecha().toGregorianCalendar().getTime())%>
                     <br/>
                     <%
                         String imagen = "media/Images/";
