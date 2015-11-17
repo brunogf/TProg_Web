@@ -53,6 +53,7 @@ public class VerInfoReserva extends HttpServlet {
         PublicadorControladorReservaService servicio = new PublicadorControladorReservaService(new URL(srv +"/controlador_reserva?wsdl"));
         PublicadorControladorReserva port = servicio.getPublicadorControladorReservaPort();  
         request.setAttribute("info_reserva_dr", port.infoReserva(nro));
+        request.setAttribute("info_reserva_fac", port.obtenerFacturaReserva(nro));
         request.getRequestDispatcher("WEB-INF/Usuario/VerReserva.jsp").forward(request, response);
     }
 

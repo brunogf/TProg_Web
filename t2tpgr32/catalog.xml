@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:9128/controlador_usuario?wsdl" uri="src/conf/xml-resources/web-service-references/controlador_usuario/wsdl/localhost_9128/controlador_usuario.wsdl"/>
+    <system systemId="http://localhost:9128/controlador_usuario?xsd=1" uri="src/conf/xml-resources/web-service-references/controlador_usuario/wsdl/localhost_9128/controlador_usuario.xsd_1.xsd"/>
     <system systemId="http://localhost:9128/controlador_publicacion?wsdl" uri="src/conf/xml-resources/web-service-references/controlador_publicacion/wsdl/localhost_9128/controlador_publicacion.wsdl"/>
     <system systemId="http://localhost:9128/controlador_publicacion?xsd=1" uri="src/conf/xml-resources/web-service-references/controlador_publicacion/wsdl/localhost_9128/controlador_publicacion.xsd_1.xsd"/>
     <system systemId="http://localhost:9128/controlador_publicacion?xsd=2" uri="src/conf/xml-resources/web-service-references/controlador_publicacion/wsdl/localhost_9128/controlador_publicacion.xsd_2.xsd"/>
     <system systemId="http://localhost:9128/controlador_reserva?wsdl" uri="src/conf/xml-resources/web-service-references/controlador_reserva/wsdl/localhost_9128/controlador_reserva.wsdl"/>
     <system systemId="http://localhost:9128/controlador_reserva?xsd=1" uri="src/conf/xml-resources/web-service-references/controlador_reserva/wsdl/localhost_9128/controlador_reserva.xsd_1.xsd"/>
-    <system systemId="http://localhost:9128/controlador_usuario?wsdl" uri="src/conf/xml-resources/web-service-references/controlador_usuario/wsdl/localhost_9128/controlador_usuario.wsdl"/>
-    <system systemId="http://localhost:9128/controlador_usuario?xsd=1" uri="src/conf/xml-resources/web-service-references/controlador_usuario/wsdl/localhost_9128/controlador_usuario.xsd_1.xsd"/>
 </catalog>

@@ -35,6 +35,9 @@
                 <%if((dr.getEstado() == Estado.REGISTRADA) && (((String)session.getAttribute("Usuario")).equals(dr.getCliente()))){%>
                 <span> - </span>
                 <span class ="cancelar-reserva btn-link" onclick="cancelar(<%=dr.getNum()%>)">Cancelar</span>
+                <%}else if((dr.getEstado() == Estado.FACTURADA) && (((Integer)request.getAttribute("info_reserva_fac")) != -1)){%>
+                <span> - </span>
+                <span class="cancelar-reserva btn-link" onclick="location.href='VerFactura?id=<%=request.getAttribute("info_reserva_fac")%>'">Ver Factura</span>
                 <%}%>
             </div>
             <br>
@@ -103,7 +106,7 @@
             </div>
                 <br>
                 <div class="col-xs-offset-10">
-                <span class="precioSubtotal">Total: US$ <%=dr.getPrecioTotal()%></span>
+                    <span class="precioSubtotal">Total: US$ <%=String.format("%.2f", dr.getPrecioTotal())%></span>
                 <br>
                 <br>
                 <%if(dr.getEstado() == Estado.REGISTRADA){%>
