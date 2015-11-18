@@ -6,6 +6,7 @@
 package com.h4t.controladores;
 
 import com.google.gson.Gson;
+import com.h4t.modelo.FabricaWS;
 import com.h4t.servicios.ParDPD;
 import com.h4t.servicios.PublicadorControladorReserva;
 import com.h4t.servicios.PublicadorControladorReservaService;
@@ -47,21 +48,8 @@ public class GenerarReserva extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         Set<ParDPD> pubs = (HashSet) request.getSession().getAttribute("publicaciones-carro");
-        String srv = "http://";
-        Properties config = new Properties();
-        try {
-            FileInputStream input;
-            if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")) {
-                input = new FileInputStream(System.getProperty("user.home") + "/Documents/server.properties");
-            } else {
-                input = new FileInputStream(System.getProperty("user.home") + "/Quick Order/server.properties");
-            }
-            config.load(input);
-            srv = srv + config.getProperty("host") + ":" + config.getProperty("port");
-        } catch (Exception e) {
-            srv = "http://localhost:9128";
-        }
-        PublicadorControladorReservaService servicio = new PublicadorControladorReservaService(new URL(srv + "/controlador_reserva?wsdl"));
+        
+        PublicadorControladorReservaService servicio = FabricaWS.getInstance().getReservaService();
         PublicadorControladorReserva port = servicio.getPublicadorControladorReservaPort();
 
         String usr = request.getSession().getAttribute("Usuario").toString();

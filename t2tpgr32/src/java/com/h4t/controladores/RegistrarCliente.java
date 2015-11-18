@@ -6,6 +6,7 @@
 package com.h4t.controladores;
 
 import com.h4t.exceptions.ErrorRegistrarCliente;
+import com.h4t.modelo.FabricaWS;
 import com.h4t.servicios.PublicadorControladorUsuario;
 import com.h4t.servicios.PublicadorControladorUsuarioService;
 import java.awt.Color;
@@ -45,22 +46,7 @@ public class RegistrarCliente extends HttpServlet {
         Part filePart = request.getPart("file");
         InputStream fileContent = filePart.getInputStream();
         BufferedImage iBuff = ImageIO.read(fileContent);
-        
-   
-        String srv = "http://";
-        Properties config = new Properties();
-        try{
-            FileInputStream input;
-            if(System.getProperty("os.name").toUpperCase().contains("WINDOWS"))
-                input = new FileInputStream(System.getProperty("user.home") + "/Documents/server.properties");
-            else
-                input = new FileInputStream(System.getProperty("user.home") + "/Quick Order/server.properties");
-            config.load(input);
-            srv = srv + config.getProperty("host") +":"+ config.getProperty("port");
-        }catch(Exception e){
-            srv = "http://localhost:9128";
-        }
-        PublicadorControladorUsuarioService servicio = new PublicadorControladorUsuarioService(new URL(srv +"/controlador_usuario?wsdl"));
+        PublicadorControladorUsuarioService servicio = FabricaWS.getInstance().getUsuarioService();
         PublicadorControladorUsuario port = servicio.getPublicadorControladorUsuarioPort();
         
         DateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");

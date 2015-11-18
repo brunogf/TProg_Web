@@ -6,6 +6,7 @@
 package com.h4t.controladores;
 
 import com.h4t.modelo.EstadoSesion;
+import com.h4t.modelo.FabricaWS;
 import com.h4t.servicios.DataCliente;
 import com.h4t.servicios.PublicadorControladorUsuario;
 import com.h4t.servicios.PublicadorControladorUsuarioService;
@@ -39,20 +40,8 @@ public class ListarReservasCliente extends HttpServlet {
             throws ServletException, IOException {
         if(request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGGED_IN)
         {
-            String srv = "http://";
-            Properties config = new Properties();
-            try{
-                FileInputStream input;
-                if(System.getProperty("os.name").toUpperCase().contains("WINDOWS"))
-                    input = new FileInputStream(System.getProperty("user.home") + "/Documents/server.properties");
-                else
-                    input = new FileInputStream(System.getProperty("user.home") + "/Quick Order/server.properties");
-                config.load(input);
-                srv = srv + config.getProperty("host") +":"+ config.getProperty("port");
-            }catch(Exception e){
-                srv = "http://localhost:9128";
-            }
-            PublicadorControladorUsuarioService servicio = new PublicadorControladorUsuarioService(new URL(srv +"/controlador_usuario?wsdl"));PublicadorControladorUsuario port = servicio.getPublicadorControladorUsuarioPort();
+            PublicadorControladorUsuarioService servicio = FabricaWS.getInstance().getUsuarioService();
+            PublicadorControladorUsuario port = servicio.getPublicadorControladorUsuarioPort();
             DataCliente data_sur = port.infoCliente((String)request.getSession().getAttribute("Usuario"));
             request.setAttribute("reservas_usuario", data_sur.getReservas());
             request.getRequestDispatcher("/WEB-INF/Usuario/VerReservas.jsp").forward(request, response);

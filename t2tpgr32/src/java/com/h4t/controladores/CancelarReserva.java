@@ -6,6 +6,7 @@
 package com.h4t.controladores;
 
 import com.h4t.modelo.EstadoSesion;
+import com.h4t.modelo.FabricaWS;
 import com.h4t.servicios.DataUsuario;
 import com.h4t.servicios.Estado;
 import com.h4t.servicios.PublicadorControladorReserva;
@@ -43,20 +44,8 @@ public class CancelarReserva extends HttpServlet {
                 String usr = (String)request.getSession().getAttribute("Usuario");
                 int reserva = Integer.parseInt(request.getParameter("nro"));
                 
-                String srv = "http://";
-                Properties config = new Properties();
-                try{
-                    FileInputStream input;
-                    if(System.getProperty("os.name").toUpperCase().contains("WINDOWS"))
-                        input = new FileInputStream(System.getProperty("user.home") + "/Documents/server.properties");
-                    else
-                        input = new FileInputStream(System.getProperty("user.home") + "/Quick Order/server.properties");
-                    config.load(input);
-                    srv = srv + config.getProperty("host") +":"+ config.getProperty("port");
-                }catch(Exception e){
-                    srv = "http://localhost:9128";
-                }
-                PublicadorControladorReservaService servicio = new PublicadorControladorReservaService(new URL(srv +"/controlador_reserva?wsdl"));
+                
+                PublicadorControladorReservaService servicio = FabricaWS.getInstance().getReservaService();
                 PublicadorControladorReserva port = servicio.getPublicadorControladorReservaPort();    
                 String nick = port.getClienteReserva(reserva);
                 if (nick.equals(usr))
