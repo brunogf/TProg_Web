@@ -37,7 +37,7 @@
                 <span class ="cancelar-reserva btn-link" onclick="cancelar(<%=dr.getNum()%>)">Cancelar</span>
                 <%}else if((dr.getEstado() == Estado.FACTURADA) && (((Integer)request.getAttribute("info_reserva_fac")) != -1)){%>
                 <span> - </span>
-                <span class="cancelar-reserva btn-link" onclick="location.href='VerFactura?id=<%=request.getAttribute("info_reserva_fac")%>'">Ver Factura</span>
+                <span class="cancelar-reserva btn-link" onclick="window.open='VerFactura?id=<%=request.getAttribute("info_reserva_fac")%>'">Ver Factura</span>
                 <%}%>
             </div>
             <br>

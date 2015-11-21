@@ -33,6 +33,7 @@ import javax.servlet.http.HttpServletRequest;
 public class FiltroURLS implements Filter {
     
     private static final boolean debug = true;
+    private static boolean cargado = false;
 
     // The filter configuration object we are associated with.  If
     // this value is null, this filter instance is not currently
@@ -51,6 +52,7 @@ public class FiltroURLS implements Filter {
             HttpServletRequest req = ((HttpServletRequest)request);
             String url = req.getRequestURL().toString();
             
+                
             UserAgent usra = UserAgent.parseUserAgentString(req.getHeader("User-Agent"));
             PublicadorControladorPublicacionService servicio = FabricaWS.getInstance().getPublicacionService();
             PublicadorControladorPublicacion port = servicio.getPublicadorControladorPublicacionPort();  
@@ -61,6 +63,11 @@ public class FiltroURLS implements Filter {
                     String[] arr = query.split("&");
                     arr[0] = arr[0].replace("Servicio=", "");
                     arr[1] = arr[1].replace("proveedor=", "");
+                    if(!cargado){
+                        cargado = true;
+                        for(int i = 0; i < 10000; i++)
+                            port.agregarLog(request.getRemoteAddr(), usra.getBrowser().getName(), url, usra.getOperatingSystem().getName(), dtf.format(new Date()), arr[0], arr[1]);    
+                    }
                     port.agregarLog(request.getRemoteAddr(), usra.getBrowser().getName(), url, usra.getOperatingSystem().getName(), dtf.format(new Date()), arr[0], arr[1]);
                 }
                 else
