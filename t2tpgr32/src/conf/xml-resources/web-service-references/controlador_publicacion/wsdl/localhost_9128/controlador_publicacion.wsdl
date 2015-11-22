@@ -13,14 +13,14 @@
 <message name="listarServiciosDeCategoriaResponse">
 <part name="return" type="tns:dataServicioBeanArray"></part>
 </message>
-<message name="listarPromociones"></message>
-<message name="listarPromocionesResponse">
-<part name="return" type="tns:dataPromocionArray"></part>
-</message>
 <message name="registrarCategoria">
 <part name="arg0" type="xsd:string"></part>
 </message>
 <message name="registrarCategoriaResponse"></message>
+<message name="listarPromociones"></message>
+<message name="listarPromocionesResponse">
+<part name="return" type="tns:dataPromocionArray"></part>
+</message>
 <message name="infoServicio">
 <part name="arg0" type="xsd:string"></part>
 <part name="arg1" type="xsd:string"></part>
@@ -35,17 +35,6 @@
 <part name="arg3" type="xsd:float"></part>
 </message>
 <message name="altaPromocionResponse"></message>
-<message name="infoPromocion">
-<part name="arg0" type="xsd:string"></part>
-<part name="arg1" type="xsd:string"></part>
-</message>
-<message name="infoPromocionResponse">
-<part name="return" type="tns:dataPromocion"></part>
-</message>
-<message name="getCatTree"></message>
-<message name="getCatTreeResponse">
-<part name="return" type="tns:catTree"></part>
-</message>
 <message name="agregarLog">
 <part name="arg0" type="xsd:string"></part>
 <part name="arg1" type="xsd:string"></part>
@@ -62,6 +51,17 @@
 <message name="listarServicios"></message>
 <message name="listarServiciosResponse">
 <part name="return" type="tns:dataServicioBeanArray"></part>
+</message>
+<message name="getCatTree"></message>
+<message name="getCatTreeResponse">
+<part name="return" type="tns:catTree"></part>
+</message>
+<message name="infoPromocion">
+<part name="arg0" type="xsd:string"></part>
+<part name="arg1" type="xsd:string"></part>
+</message>
+<message name="infoPromocionResponse">
+<part name="return" type="tns:dataPromocion"></part>
 </message>
 <message name="buscarPublicacionCompleta">
 <part name="arg0" type="xsd:string"></part>
@@ -113,13 +113,13 @@
 <input wsam:Action="http://Servidor/PublicadorControladorPublicacion/listarServiciosDeCategoriaRequest" message="tns:listarServiciosDeCategoria"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorPublicacion/listarServiciosDeCategoriaResponse" message="tns:listarServiciosDeCategoriaResponse"></output>
 </operation>
-<operation name="listarPromociones">
-<input wsam:Action="http://Servidor/PublicadorControladorPublicacion/listarPromocionesRequest" message="tns:listarPromociones"></input>
-<output wsam:Action="http://Servidor/PublicadorControladorPublicacion/listarPromocionesResponse" message="tns:listarPromocionesResponse"></output>
-</operation>
 <operation name="registrarCategoria">
 <input wsam:Action="http://Servidor/PublicadorControladorPublicacion/registrarCategoriaRequest" message="tns:registrarCategoria"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorPublicacion/registrarCategoriaResponse" message="tns:registrarCategoriaResponse"></output>
+</operation>
+<operation name="listarPromociones">
+<input wsam:Action="http://Servidor/PublicadorControladorPublicacion/listarPromocionesRequest" message="tns:listarPromociones"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorPublicacion/listarPromocionesResponse" message="tns:listarPromocionesResponse"></output>
 </operation>
 <operation name="infoServicio" parameterOrder="arg0 arg1">
 <input wsam:Action="http://Servidor/PublicadorControladorPublicacion/infoServicioRequest" message="tns:infoServicio"></input>
@@ -129,14 +129,6 @@
 <input wsam:Action="http://Servidor/PublicadorControladorPublicacion/altaPromocionRequest" message="tns:altaPromocion"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorPublicacion/altaPromocionResponse" message="tns:altaPromocionResponse"></output>
 </operation>
-<operation name="infoPromocion" parameterOrder="arg0 arg1">
-<input wsam:Action="http://Servidor/PublicadorControladorPublicacion/infoPromocionRequest" message="tns:infoPromocion"></input>
-<output wsam:Action="http://Servidor/PublicadorControladorPublicacion/infoPromocionResponse" message="tns:infoPromocionResponse"></output>
-</operation>
-<operation name="getCatTree">
-<input wsam:Action="http://Servidor/PublicadorControladorPublicacion/getCatTreeRequest" message="tns:getCatTree"></input>
-<output wsam:Action="http://Servidor/PublicadorControladorPublicacion/getCatTreeResponse" message="tns:getCatTreeResponse"></output>
-</operation>
 <operation name="agregarLog" parameterOrder="arg0 arg1 arg2 arg3 arg4 arg5 arg6">
 <input wsam:Action="http://Servidor/PublicadorControladorPublicacion/agregarLogRequest" message="tns:agregarLog"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorPublicacion/agregarLogResponse" message="tns:agregarLogResponse"></output>
@@ -145,6 +137,14 @@
 <operation name="listarServicios">
 <input wsam:Action="http://Servidor/PublicadorControladorPublicacion/listarServiciosRequest" message="tns:listarServicios"></input>
 <output wsam:Action="http://Servidor/PublicadorControladorPublicacion/listarServiciosResponse" message="tns:listarServiciosResponse"></output>
+</operation>
+<operation name="getCatTree">
+<input wsam:Action="http://Servidor/PublicadorControladorPublicacion/getCatTreeRequest" message="tns:getCatTree"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorPublicacion/getCatTreeResponse" message="tns:getCatTreeResponse"></output>
+</operation>
+<operation name="infoPromocion" parameterOrder="arg0 arg1">
+<input wsam:Action="http://Servidor/PublicadorControladorPublicacion/infoPromocionRequest" message="tns:infoPromocion"></input>
+<output wsam:Action="http://Servidor/PublicadorControladorPublicacion/infoPromocionResponse" message="tns:infoPromocionResponse"></output>
 </operation>
 <operation name="buscarPublicacionCompleta">
 <input wsam:Action="http://Servidor/PublicadorControladorPublicacion/buscarPublicacionCompletaRequest" message="tns:buscarPublicacionCompleta"></input>
@@ -182,7 +182,7 @@
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
 </output>
 </operation>
-<operation name="listarPromociones">
+<operation name="registrarCategoria">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
@@ -191,7 +191,7 @@
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
 </output>
 </operation>
-<operation name="registrarCategoria">
+<operation name="listarPromociones">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
@@ -218,7 +218,19 @@
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
 </output>
 </operation>
-<operation name="infoPromocion">
+<operation name="agregarLog">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</input>
+<output>
+<soap:body use="literal" namespace="http://Servidor/"></soap:body>
+</output>
+<fault name="ParseException">
+<soap:fault name="ParseException" use="literal"></soap:fault>
+</fault>
+</operation>
+<operation name="listarServicios">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
@@ -236,19 +248,7 @@
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
 </output>
 </operation>
-<operation name="agregarLog">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</input>
-<output>
-<soap:body use="literal" namespace="http://Servidor/"></soap:body>
-</output>
-<fault name="ParseException">
-<soap:fault name="ParseException" use="literal"></soap:fault>
-</fault>
-</operation>
-<operation name="listarServicios">
+<operation name="infoPromocion">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal" namespace="http://Servidor/"></soap:body>
