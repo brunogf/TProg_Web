@@ -8,7 +8,6 @@ package com.h4t.modelo;
 import com.h4t.servicios.PublicadorControladorPublicacionService;
 import com.h4t.servicios.PublicadorControladorReservaService;
 import com.h4t.servicios.PublicadorControladorUsuarioService;
-import com.oracle.webservices.internal.api.message.PropertySet.Property;
 import java.io.FileInputStream;
 import java.net.URL;
 import java.util.Properties;
