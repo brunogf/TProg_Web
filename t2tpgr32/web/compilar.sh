@@ -1,0 +1,1 @@
+jar cvf t2tpgr32.war *
