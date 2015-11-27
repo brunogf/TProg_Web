@@ -4,6 +4,7 @@
     Author     : spesamosca
 --%>
 
+<%@page import="com.h4t.servicios.DataPromocion"%>
 <%@page import="com.h4t.servicios.DataPublicacion"%>
 <%@page import="com.h4t.servicios.DataProveedorBean"%>
 <%@page import="java.util.HashSet"%>
@@ -51,15 +52,15 @@
                                     
 
                                     for(DataPublicacion p : publicaciones_de_proveedor)
-                                    { /*                                  FALTA PASAR A WEB-SERVICES
+                                    { 
                                         if (p instanceof DataPromocion){
-                                            link = "VerInfoServicio?Servicio=" + p.getNombre() +"&proveedor="+ p.getProveedor();
+                                            link = "VerInfoPromocion?Promocion=" + p.getNombre() +"&proveedor="+ p.getProveedor();
                                             pos = "Servicio";
                                         }
                                         else{
-                                            link = "VerInfoPromocion?Promocion=" + p.getNombre() +"&proveedor="+ p.getProveedor();
+                                            link = "VerInfoServicio?Servicio=" + p.getNombre() +"&proveedor="+ p.getProveedor();
                                             pos = "Promocion";
-                                        }*/%>
+                                        }%>
                                         <tr class="result" onclick="location.href='<%=link%>'">
                                             <td><%=p.getNombre()%></td>
                                             <td><%=pos%></td>
